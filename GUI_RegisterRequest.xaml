@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGMP_Client"
         mc:Ignorable="d"
-        Title="GUI_RegisterRequest" Height="450" Width="800">
-    <Grid>
-        
+        Title="Solicitud a proyecto" Height="620" Width="1200">
+    <Grid Margin="0,-2,0,2">
+        <Rectangle HorizontalAlignment="Center"  Fill="#FF3399FF" Height="65" Stroke="Black" VerticalAlignment="Top" Width="1200"/>
+        <Label Content="Formulario de registro de solicitud" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Height="59" Width="439" FontSize="26" Foreground="White"/>
+        <Label Content="Datos del proyecto" HorizontalAlignment="Left" Margin="206,66,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Nombre:" HorizontalAlignment="Left" Margin="216,106,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Dependencia:" HorizontalAlignment="Left" Margin="626,130,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Tipo de apoyo:" HorizontalAlignment="Left" Margin="913,130,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox HorizontalAlignment="Left" Margin="222,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287" Height="55" Text="Becas Benito Juárez: jovenes escribien el fututo " FontSize="14"/>
+        <TextBox HorizontalAlignment="Left" Margin="626,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" Height="54" TextChanged="TextBox_TextChanged" FontSize="14" Text="Secretaría de Educación Pública"/>
+        <TextBox HorizontalAlignment="Left" Margin="930,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Height="34" Text="Económico"/>
+        <Label Content="Datos del beneficiario" HorizontalAlignment="Left" Margin="218,212,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Nombre:" HorizontalAlignment="Left" Margin="231,298,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.473,0.241"/>
+        <Label Content="Apellido paterno:" HorizontalAlignment="Left" Margin="626,302,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.473,0.241"/>
+        <Label Content="CURP:" HorizontalAlignment="Left" Margin="930,304,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.473,0.241"/>
+        <Label Content="Dirección:" HorizontalAlignment="Left" Margin="235,383,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.473,0.241"/>
+        <Label Content="Correo:" HorizontalAlignment="Left" Margin="630,381,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.473,0.241"/>
+        <TextBox HorizontalAlignment="Left" Margin="235,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" Height="31" Text="Jasiel Emir " FontSize="14"/>
+        <TextBox HorizontalAlignment="Left" Margin="626,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" Height="31" Text="Jasiel Emir " FontSize="14"/>
+        <TextBox HorizontalAlignment="Left" Margin="931,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" Height="31" Text="Jasiel Emir " FontSize="14"/>
+        <TextBox HorizontalAlignment="Left" Margin="235,413,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287" Height="27" Text="Becas Benito Juárez: jovenes escribien el fututo " FontSize="14"/>
+        <TextBox HorizontalAlignment="Left" Margin="626,413,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287" Height="27" Text="Becas Benito Juárez: jovenes escribien el fututo " FontSize="14"/>
+        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="770,539,0,0" VerticalAlignment="Top" Height="33" Width="148" Click="Button_Click"/>
+        <Button Content="Registrar solicitud" HorizontalAlignment="Left" Margin="1001,538,0,0" VerticalAlignment="Top" Height="34" Width="149"/>
+        <Label Content="Datos del beneficiario" HorizontalAlignment="Left" Margin="226,452,0,0" VerticalAlignment="Top" FontSize="20"/>
+
     </Grid>
 </Window>
