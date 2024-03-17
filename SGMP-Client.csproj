@@ -108,5 +108,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\adjunto-archivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\agregar-archivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\eliminar.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
