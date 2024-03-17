@@ -5,8 +5,87 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGMP_Client"
         mc:Ignorable="d"
-        Title="GUI_RegisterRequest" Height="450" Width="800">
-    <Grid>
-        
+        Title="Solicitud a proyecto" Height="640" Width="1200">
+    <Grid Margin="0,-5,1,5" HorizontalAlignment="Right" Width="1025">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid Background="#FF2A7A99" Grid.Column="0" Margin="-232,2,1,-7" RenderTransformOrigin="0.5,0.5">
+
+
+        </Grid>
+
+        <Grid Grid.Column="1" Margin="4,4,0,-4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65*"/>
+                <RowDefinition Height="132*"/>
+                <RowDefinition Height="256*"/>
+                <RowDefinition Height="151*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Formulario de registro de solicitud." HorizontalAlignment="Left" Margin="4,5,0,0" VerticalAlignment="Top" Height="51" Width="492" FontSize="28" FontWeight="Bold"/>
+            <Rectangle HorizontalAlignment="Center" Height="5" Margin="0,53,0,0" Fill="Sienna" Stroke="Silver" VerticalAlignment="Top" Width="999" RenderTransformOrigin="0.5,0.5"/>
+
+
+            <Label Content="Datos del proyecto." HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Height="42" Width="230" Grid.RowSpan="2"/>
+            <Label Content="Nombre del proyecto:" HorizontalAlignment="Left" Margin="10,34,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="204"/>
+            <TextBox HorizontalAlignment="Left" Margin="13,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="60" FontSize="20"/>
+            <TextBox HorizontalAlignment="Center" Margin="0,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <Label Content="Dependencia:" HorizontalAlignment="Left" Margin="339,35,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.35,0.52" Height="37" Width="130"/>
+            <Label Content="Tipo de apoyo:" HorizontalAlignment="Left" Margin="660,35,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.159,0.383" Height="37" Width="141"/>
+            <TextBox HorizontalAlignment="Left" Margin="666,68,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+
+            <Label Content="Datos del beneficiario." HorizontalAlignment="Left" Margin="10,3,0,0" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Height="39" Width="242"/>
+            <Label Content="Ingrese el nombre a buscar" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="18" Height="37" Width="424"/>
+            <TextBox HorizontalAlignment="Left" Margin="13,69,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <Label Content="Nombre(s):" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" VerticalAlignment="Center" FontSize="20" Height="37" Width="108"/>
+            <Label Content="Apellido paterno:" HorizontalAlignment="Left" Margin="350,111,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="162"/>
+            <Label Content="CURP:" HorizontalAlignment="Left" Margin="670,114,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="64"/>
+            <Label Content="Dirección: " HorizontalAlignment="Left" Margin="10,187,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="32" Width="102"/>
+            <Label Content="Correo:" HorizontalAlignment="Left" Margin="354,189,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="33" Width="75"/>
+            <TextBox HorizontalAlignment="Left" Margin="13,146,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30"/>
+            <TextBox HorizontalAlignment="Left" Margin="354,146,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <TextBox HorizontalAlignment="Left" Margin="667,146,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30"/>
+            <TextBox HorizontalAlignment="Left" Margin="13,218,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <TextBox HorizontalAlignment="Left" Margin="360,220,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" FontSize="20" Height="30"/>
+
+
+            <Label Content="Documentación." HorizontalAlignment="Left" Margin="10,3,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+            <Button Content="Cancelar" HorizontalAlignment="Left" Margin="598,101,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Width="170" Height="45" Background="#FFD44646" Foreground="White"  Click="Btn_Cancel_Request_Click"/>
+            <Button Content="Registrar solicitud" HorizontalAlignment="Left" Margin="802,99,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="45" Width="170" Background="#FF33AA3E" Foreground="White"/>
+            <Label Content="Adjuntar archivo" HorizontalAlignment="Left" Margin="294,103,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="10"/>
+            <Button x:Name="Btn_attach_file" HorizontalAlignment="Left" Margin="314,56,0,0" Grid.Row="3" VerticalAlignment="Top" Height="42" Width="45" Click="Btn_Attach_File_Click">
+                <StackPanel>
+                    <Image Source="/Icons/agregar-archivo.png" Height="31" Width="33" Stretch="UniformToFill"/>
+                </StackPanel>
+            </Button>
+
+            <ListBox  x:Name="lib_files" Grid.Row="3"  Margin="13,40,736,14">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Margin="5"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button HorizontalAlignment="Left" Margin="410,56,0,0" Grid.Row="3" VerticalAlignment="Top" Width="45" Height="42" Click="Btn_Remove_File_Click">
+                <StackPanel>
+                    <Image Source="/Icons/eliminar.png" Height="31" Width="33" Stretch="UniformToFill"/>
+                </StackPanel>
+            </Button>
+            <Label Content="Remover archivo" HorizontalAlignment="Left" Margin="394,103,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="10"/>
+
+
+        </Grid>
+
+
+
+
+
+
+
     </Grid>
 </Window>
