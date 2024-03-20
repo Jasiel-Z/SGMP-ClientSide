@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="SolicitudSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArchivoSet" nillable="true" type="tns:ArrayOfArchivoSet" />
+      <xs:element minOccurs="0" name="BeneficiarioSet" nillable="true" type="tns:ArrayOfBeneficiarioSet" />
+      <xs:element minOccurs="0" name="CuentaBancariaSolicitudSet" nillable="true" type="tns:ArrayOfCuentaBancariaSolicitudSet" />
+      <xs:element minOccurs="0" name="DevolucionesSet" nillable="true" type="tns:ArrayOfDevolucionesSet" />
+      <xs:element minOccurs="0" name="DictamenSet" nillable="true" type="tns:DictamenSet" />
+      <xs:element minOccurs="0" name="Dictamen_IdDictamen" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdSolicitud" type="xs:int" />
+      <xs:element minOccurs="0" name="ProyectoFolio" type="xs:int" />
+      <xs:element minOccurs="0" name="ProyectoSet" nillable="true" type="tns:ProyectoSet" />
+      <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaCreacion" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SolicitudSet" nillable="true" type="tns:SolicitudSet" />
+  <xs:complexType name="ArrayOfArchivoSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ArchivoSet" nillable="true" type="tns:ArchivoSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfArchivoSet" nillable="true" type="tns:ArrayOfArchivoSet" />
+  <xs:complexType name="ArchivoSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SolicitudIdSolicitud" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SolicitudSet" nillable="true" type="tns:SolicitudSet" />
+      <xs:element minOccurs="0" name="contenido" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="extension" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idArchivo" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArchivoSet" nillable="true" type="tns:ArchivoSet" />
+  <xs:complexType name="ArrayOfBeneficiarioSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BeneficiarioSet" nillable="true" type="tns:BeneficiarioSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBeneficiarioSet" nillable="true" type="tns:ArrayOfBeneficiarioSet" />
+  <xs:complexType name="BeneficiarioSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LocalidadSet" nillable="true" type="tns:LocalidadSet" />
+      <xs:element minOccurs="0" name="Localidad_IdLocalidad" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PersonaSet" nillable="true" type="tns:ArrayOfPersonaSet" />
+      <xs:element minOccurs="0" name="SolicitudSet" nillable="true" type="tns:SolicitudSet" />
+      <xs:element minOccurs="0" name="Solicitud_IdSolicitud" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="calle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ciudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="empresaSet" nillable="true" type="tns:ArrayOfempresaSet" />
+      <xs:element minOccurs="0" name="idBeneficiario" type="xs:int" />
+      <xs:element minOccurs="0" name="numero" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rfc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BeneficiarioSet" nillable="true" type="tns:BeneficiarioSet" />
+  <xs:complexType name="LocalidadSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BeneficiarioSet" nillable="true" type="tns:ArrayOfBeneficiarioSet" />
+      <xs:element minOccurs="0" name="EmpleadoSet" nillable="true" type="tns:ArrayOfEmpleadoSet" />
+      <xs:element minOccurs="0" name="IdLocalidad" type="xs:int" />
+      <xs:element minOccurs="0" name="LocalidadDependenciaSet" nillable="true" type="tns:ArrayOfLocalidadDependenciaSet" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocalidadSet" nillable="true" type="tns:LocalidadSet" />
+  <xs:complexType name="ArrayOfEmpleadoSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmpleadoSet" nillable="true" type="tns:EmpleadoSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmpleadoSet" nillable="true" type="tns:ArrayOfEmpleadoSet" />
+  <xs:complexType name="EmpleadoSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DictamenSet" nillable="true" type="tns:ArrayOfDictamenSet" />
+      <xs:element minOccurs="0" name="LocalidadIdLocalidad" type="xs:int" />
+      <xs:element minOccurs="0" name="LocalidadSet" nillable="true" type="tns:LocalidadSet" />
+      <xs:element minOccurs="0" name="NumeroEmpleado" type="xs:int" />
+      <xs:element minOccurs="0" name="UsuarioSet" nillable="true" type="tns:UsuarioSet" />
+      <xs:element minOccurs="0" name="Usuario_IdUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="apellidoMaterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="apellidoPaterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="calle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ciudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="numero" type="xs:int" />
+      <xs:element minOccurs="0" name="rol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmpleadoSet" nillable="true" type="tns:EmpleadoSet" />
+  <xs:complexType name="ArrayOfDictamenSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DictamenSet" nillable="true" type="tns:DictamenSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDictamenSet" nillable="true" type="tns:ArrayOfDictamenSet" />
+  <xs:complexType name="DictamenSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmpleadoNumeroEmpleado" type="xs:int" />
+      <xs:element minOccurs="0" name="EmpleadoSet" nillable="true" type="tns:EmpleadoSet" />
+      <xs:element minOccurs="0" name="IdDictamen" type="xs:int" />
+      <xs:element minOccurs="0" name="SolicitudSet" nillable="true" type="tns:ArrayOfSolicitudSet" />
+      <xs:element minOccurs="0" name="comentarios" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DictamenSet" nillable="true" type="tns:DictamenSet" />
+  <xs:complexType name="ArrayOfSolicitudSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SolicitudSet" nillable="true" type="tns:SolicitudSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSolicitudSet" nillable="true" type="tns:ArrayOfSolicitudSet" />
+  <xs:complexType name="UsuarioSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmpleadoSet" nillable="true" type="tns:ArrayOfEmpleadoSet" />
+      <xs:element minOccurs="0" name="IdUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="contrasena" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UsuarioSet" nillable="true" type="tns:UsuarioSet" />
+  <xs:complexType name="ArrayOfLocalidadDependenciaSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LocalidadDependenciaSet" nillable="true" type="tns:LocalidadDependenciaSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLocalidadDependenciaSet" nillable="true" type="tns:ArrayOfLocalidadDependenciaSet" />
+  <xs:complexType name="LocalidadDependenciaSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DependenciaIdDependencia" type="xs:int" />
+      <xs:element minOccurs="0" name="DependenciaSet" nillable="true" type="tns:DependenciaSet" />
+      <xs:element minOccurs="0" name="IdLocalidadDependencia" type="xs:int" />
+      <xs:element minOccurs="0" name="LocalidadIdLocalidad" type="xs:int" />
+      <xs:element minOccurs="0" name="LocalidadSet" nillable="true" type="tns:LocalidadSet" />
+      <xs:element minOccurs="0" name="ProyectoSet" nillable="true" type="tns:ArrayOfProyectoSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocalidadDependenciaSet" nillable="true" type="tns:LocalidadDependenciaSet" />
+  <xs:complexType name="DependenciaSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdDependencia" type="xs:int" />
+      <xs:element minOccurs="0" name="LocalidadDependenciaSet" nillable="true" type="tns:ArrayOfLocalidadDependenciaSet" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DependenciaSet" nillable="true" type="tns:DependenciaSet" />
+  <xs:complexType name="ArrayOfProyectoSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProyectoSet" nillable="true" type="tns:ProyectoSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProyectoSet" nillable="true" type="tns:ArrayOfProyectoSet" />
+  <xs:complexType name="ProyectoSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Folio" type="xs:int" />
+      <xs:element minOccurs="0" name="LocalidadDependenciaIdLocalidadDependencia" type="xs:int" />
+      <xs:element minOccurs="0" name="LocalidadDependenciaSet" nillable="true" type="tns:LocalidadDependenciaSet" />
+      <xs:element minOccurs="0" name="OrdenEntregaSet" nillable="true" type="tns:OrdenEntregaSet" />
+      <xs:element minOccurs="0" name="OrdenEntrega_IdOrdenEntrega" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PoliticaProyectoSet" nillable="true" type="tns:ArrayOfPoliticaProyectoSet" />
+      <xs:element minOccurs="0" name="SolicitudSet" nillable="true" type="tns:ArrayOfSolicitudSet" />
+      <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaFin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fechaLimiteEvidencia" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fechaLimiteSolicitud" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="grupoAtencion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="modalidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="numeroBeneficiarios" type="xs:int" />
+      <xs:element minOccurs="0" name="tipo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProyectoSet" nillable="true" type="tns:ProyectoSet" />
+  <xs:complexType name="OrdenEntregaSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdOrdenEntrega" type="xs:int" />
+      <xs:element minOccurs="0" name="ProyectoSet" nillable="true" type="tns:ArrayOfProyectoSet" />
+      <xs:element minOccurs="0" name="RecursoSet" nillable="true" type="tns:RecursoSet" />
+      <xs:element minOccurs="0" name="Recurso_IdRecurso" type="xs:int" />
+      <xs:element minOccurs="0" name="fechaEntrega" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lugarEntrega" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrdenEntregaSet" nillable="true" type="tns:OrdenEntregaSet" />
+  <xs:complexType name="RecursoSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdRecurso" type="xs:int" />
+      <xs:element minOccurs="0" name="OrdenEntregaSet" nillable="true" type="tns:ArrayOfOrdenEntregaSet" />
+      <xs:element minOccurs="0" name="concepto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="valor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RecursoSet" nillable="true" type="tns:RecursoSet" />
+  <xs:complexType name="ArrayOfOrdenEntregaSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrdenEntregaSet" nillable="true" type="tns:OrdenEntregaSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrdenEntregaSet" nillable="true" type="tns:ArrayOfOrdenEntregaSet" />
+  <xs:complexType name="ArrayOfPoliticaProyectoSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PoliticaProyectoSet" nillable="true" type="tns:PoliticaProyectoSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPoliticaProyectoSet" nillable="true" type="tns:ArrayOfPoliticaProyectoSet" />
+  <xs:complexType name="PoliticaProyectoSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdPoliticaProyecto" type="xs:int" />
+      <xs:element minOccurs="0" name="PoliticaOtorgamientoIdPolitica" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PoliticaOtorgamientoSet" nillable="true" type="tns:PoliticaOtorgamientoSet" />
+      <xs:element minOccurs="0" name="ProyectoFolio" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProyectoSet" nillable="true" type="tns:ProyectoSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PoliticaProyectoSet" nillable="true" type="tns:PoliticaProyectoSet" />
+  <xs:complexType name="PoliticaOtorgamientoSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdPolitica" type="xs:int" />
+      <xs:element minOccurs="0" name="PoliticaProyectoSet" nillable="true" type="tns:ArrayOfPoliticaProyectoSet" />
+      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PoliticaOtorgamientoSet" nillable="true" type="tns:PoliticaOtorgamientoSet" />
+  <xs:complexType name="ArrayOfPersonaSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PersonaSet" nillable="true" type="tns:PersonaSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPersonaSet" nillable="true" type="tns:ArrayOfPersonaSet" />
+  <xs:complexType name="PersonaSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BeneficiarioSet" nillable="true" type="tns:BeneficiarioSet" />
+      <xs:element minOccurs="0" name="Beneficiario_idBeneficiario" type="xs:int" />
+      <xs:element minOccurs="0" name="apellidoMaterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="apellidoPaterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="curp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idBeneficiario" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PersonaSet" nillable="true" type="tns:PersonaSet" />
+  <xs:complexType name="ArrayOfempresaSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="empresaSet" nillable="true" type="tns:empresaSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfempresaSet" nillable="true" type="tns:ArrayOfempresaSet" />
+  <xs:complexType name="empresaSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BeneficiarioSet" nillable="true" type="tns:BeneficiarioSet" />
+      <xs:element minOccurs="0" name="Beneficiario_idBeneficiario" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="idBeneficiario" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="empresaSet" nillable="true" type="tns:empresaSet" />
+  <xs:complexType name="ArrayOfCuentaBancariaSolicitudSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CuentaBancariaSolicitudSet" nillable="true" type="tns:CuentaBancariaSolicitudSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCuentaBancariaSolicitudSet" nillable="true" type="tns:ArrayOfCuentaBancariaSolicitudSet" />
+  <xs:complexType name="CuentaBancariaSolicitudSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CuentaBancariaSet" nillable="true" type="tns:CuentaBancariaSet" />
+      <xs:element minOccurs="0" name="CuentaBancaria_numeroCuenta" type="xs:int" />
+      <xs:element minOccurs="0" name="IdCuentaBancariaSolicitud" type="xs:int" />
+      <xs:element minOccurs="0" name="SolicitudIdSolicitud" type="xs:int" />
+      <xs:element minOccurs="0" name="SolicitudSet" nillable="true" type="tns:SolicitudSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CuentaBancariaSolicitudSet" nillable="true" type="tns:CuentaBancariaSolicitudSet" />
+  <xs:complexType name="CuentaBancariaSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CuentaBancariaSolicitudSet" nillable="true" type="tns:ArrayOfCuentaBancariaSolicitudSet" />
+      <xs:element minOccurs="0" name="apellidoMaternoTitular" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="apellidoPaternoTitular" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombreTitular" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="numeroCuenta" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CuentaBancariaSet" nillable="true" type="tns:CuentaBancariaSet" />
+  <xs:complexType name="ArrayOfDevolucionesSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DevolucionesSet" nillable="true" type="tns:DevolucionesSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDevolucionesSet" nillable="true" type="tns:ArrayOfDevolucionesSet" />
+  <xs:complexType name="DevolucionesSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdDevolucion" type="xs:int" />
+      <xs:element minOccurs="0" name="SolicitudIdSolicitud" type="xs:int" />
+      <xs:element minOccurs="0" name="SolicitudSet" nillable="true" type="tns:SolicitudSet" />
+      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaDevolucion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fechaLimite" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="montoDeuda" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DevolucionesSet" nillable="true" type="tns:DevolucionesSet" />
+</xs:schema>

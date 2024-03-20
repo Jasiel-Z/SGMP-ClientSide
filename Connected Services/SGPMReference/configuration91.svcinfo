@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="hDmwaVFZyqyUCB1zMmYlUJDKtHaBptjxa0AiUYjPFWw=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="qupqx6mg06xZI4aWpweE7SImX7Rr/DmE/M5yEXkiP0I=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IProjectsManagement">
       <properties>
@@ -357,10 +357,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_IProjectsManagement" contract="SGPMReference.IProjectsManagement" bindingType="netTcpBinding" address="net.tcp://localhost:8083/ProjectService" bindingConfiguration="NetTcpBinding_IProjectsManagement">
+    <endpoint name="NetTcpBinding_IProjectsManagement" contract="SGPMReference.IProjectsManagement" bindingType="netTcpBinding" address="net.tcp://localhost:8083/SGPM_Services" bindingConfiguration="NetTcpBinding_IProjectsManagement">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:8083/ProjectService</serializedValue>
+          <serializedValue>net.tcp://localhost:8083/SGPM_Services</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -442,10 +442,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IBeneficiaryManagement" contract="SGPMReference.IBeneficiaryManagement" bindingType="netTcpBinding" address="net.tcp://localhost:8083/BeneficiaryService" bindingConfiguration="NetTcpBinding_IBeneficiaryManagement">
+    <endpoint name="NetTcpBinding_IBeneficiaryManagement" contract="SGPMReference.IBeneficiaryManagement" bindingType="netTcpBinding" address="net.tcp://localhost:8083/SGPM_Services" bindingConfiguration="NetTcpBinding_IBeneficiaryManagement">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:8083/BeneficiaryService</serializedValue>
+          <serializedValue>net.tcp://localhost:8083/SGPM_Services</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -527,10 +527,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IRequestManagement" contract="SGPMReference.IRequestManagement" bindingType="netTcpBinding" address="net.tcp://localhost:8083/RequestService" bindingConfiguration="NetTcpBinding_IRequestManagement">
+    <endpoint name="NetTcpBinding_IRequestManagement" contract="SGPMReference.IRequestManagement" bindingType="netTcpBinding" address="net.tcp://localhost:8083/SGPM_Services" bindingConfiguration="NetTcpBinding_IRequestManagement">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:8083/RequestService</serializedValue>
+          <serializedValue>net.tcp://localhost:8083/SGPM_Services</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

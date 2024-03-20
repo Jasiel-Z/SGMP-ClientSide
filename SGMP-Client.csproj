@@ -78,6 +78,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="DTO%27s\DTOCompany.cs" />
+    <Compile Include="DTO%27s\DTOPerson.cs" />
+    <Compile Include="DTO%27s\DTOProject.cs" />
     <Compile Include="GUI_GenerateOpinion.xaml.cs">
       <DependentUpon>GUI_GenerateOpinion.xaml</DependentUpon>
     </Compile>
@@ -116,13 +119,28 @@
     <None Include="Connected Services\SGPMReference\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Beneficiario.datasource">
+    <None Include="Connected Services\SGPMReference\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SGPMReference\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SGPMReference\item5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Beneficiary.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Proyecto.datasource">
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Company.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Solicitud.datasource">
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Person.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Project.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.SolicitudSet.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SGPMReference\SGPMManager.wsdl" />

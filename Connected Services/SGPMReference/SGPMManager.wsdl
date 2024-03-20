@@ -40,7 +40,10 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IProjectsManagement_GetProjectDetails_InputMessage">
@@ -54,6 +57,18 @@
   </wsdl:message>
   <wsdl:message name="IBeneficiaryManagement_GetBeneficiaries_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetBeneficiariesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_GetPersons_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersons" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_GetPersons_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_GetCompanies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanies" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_GetCompanies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompaniesResponse" />
   </wsdl:message>
   <wsdl:message name="IRequestManagement_RegisterRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:RegisterRequest" />
@@ -83,6 +98,14 @@
     <wsdl:operation name="GetBeneficiaries">
       <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/GetBeneficiaries" message="tns:IBeneficiaryManagement_GetBeneficiaries_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/GetBeneficiariesResponse" message="tns:IBeneficiaryManagement_GetBeneficiaries_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersons">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/GetPersons" message="tns:IBeneficiaryManagement_GetPersons_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/GetPersonsResponse" message="tns:IBeneficiaryManagement_GetPersons_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/GetCompanies" message="tns:IBeneficiaryManagement_GetCompanies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/GetCompaniesResponse" message="tns:IBeneficiaryManagement_GetCompanies_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRequestManagement">
@@ -124,6 +147,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetPersons">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/GetPersons" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanies">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/GetCompanies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IRequestManagement" type="tns:IRequestManagement">
     <wsp:PolicyReference URI="#NetTcpBinding_IRequestManagement_policy" />
@@ -158,21 +199,21 @@
   </wsdl:binding>
   <wsdl:service name="SGPMManager">
     <wsdl:port name="NetTcpBinding_IProjectsManagement" binding="tns:NetTcpBinding_IProjectsManagement">
-      <soap12:address location="net.tcp://localhost:8083/ProjectService" />
+      <soap12:address location="net.tcp://localhost:8083/SGPM_Services" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8083/ProjectService</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8083/SGPM_Services</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IBeneficiaryManagement" binding="tns:NetTcpBinding_IBeneficiaryManagement">
-      <soap12:address location="net.tcp://localhost:8083/BeneficiaryService" />
+      <soap12:address location="net.tcp://localhost:8083/SGPM_Services" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8083/BeneficiaryService</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8083/SGPM_Services</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IRequestManagement" binding="tns:NetTcpBinding_IRequestManagement">
-      <soap12:address location="net.tcp://localhost:8083/RequestService" />
+      <soap12:address location="net.tcp://localhost:8083/SGPM_Services" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8083/RequestService</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8083/SGPM_Services</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
