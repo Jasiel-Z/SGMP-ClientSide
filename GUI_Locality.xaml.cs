@@ -1,6 +1,8 @@
-﻿using System;
+﻿using SGMP_Client.SGPMManagerService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Configuration;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,8 +31,31 @@ namespace SGMP_Client
             string localityName = tbxLocalityName.Text.ToString();
             if (ValidateField(localityName))
             {
-                //TODO
+                int result = SaveLocality(localityName);
+
+                if (result == 1)
+                {
+                    MessageBox.Show("Se ha guardado la nueva localidad correctamente", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Ha ocurrido un error al intentar guardar la nueva localidad. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
+        }
+
+        private int SaveLocality(string localityName)
+        {
+            Locality locality = new Locality
+            {
+                Name = localityName
+            };
+
+            SGPMManagerService.LocalityManagementClient client = new SGPMManagerService.LocalityManagementClient();
+
+            int result = client.SaveLocality(locality);
+
+            return result;
         }
 
         private bool ValidateField(string localityName)

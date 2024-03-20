@@ -28,7 +28,7 @@
             <Label Content="Registro de Localidad." HorizontalAlignment="Left" Margin="4,5,0,0" VerticalAlignment="Top" Height="51" Width="492" FontSize="28" FontWeight="Bold"/>
             <Rectangle HorizontalAlignment="Center" Height="5" Margin="0,53,0,0" Fill="Sienna" Stroke="Silver" VerticalAlignment="Top" Width="999" RenderTransformOrigin="0.5,0.5"/>
 
-            <Button Content="Cancelar" HorizontalAlignment="Left" Margin="598,101,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Width="170" Height="45" Background="#FFD44646" Foreground="White"  Click="Btn_Cancel_Request_Click"/>
+            <Button Content="Cancelar" HorizontalAlignment="Left" Margin="598,101,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Width="170" Height="45" Background="#FFD44646" Foreground="White"/>
             <Button Content="Guardar" HorizontalAlignment="Left" Margin="802,99,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="45" Width="170" Background="#FF33AA3E" Foreground="White" Click="Btn_Save_Locality_Click"/>
 
             <Label Content="Nombre de Localidad:" HorizontalAlignment="Left" Margin="10,34,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="204"/>

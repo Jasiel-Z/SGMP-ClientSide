@@ -24,5 +24,12 @@ namespace SGMP_Client
         {
             InitializeComponent();
         }
+
+        private void Btn_Save_User_Click(object sender, RoutedEventArgs e)
+        {
+            Window userWindow = new GUI_User();
+            userWindow.Show();
+            this.Close();
+        }
     }
 }

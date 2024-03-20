@@ -1,6 +1,8 @@
-﻿using System;
+﻿using SGMP_Client.SGPMManagerService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Configuration;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,8 +33,30 @@ namespace SGMP_Client
 
             if (ValidateFields(policyName, policyDescription))
             {
-                //TODO
+                int result = SavePolicy(policyName, policyDescription);
+                if (result == 1)
+                {
+                    MessageBox.Show("Se ha guardado la nueva política de participación correctamente", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Ha ocurrido un error al intentar guardar la nueva política de participación. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
+        }
+
+        private int SavePolicy(string policyName, string policyDescription)
+        {
+            Policy policy = new Policy
+            {
+                Name = policyName,
+                Description = policyDescription
+            };
+
+            SGPMManagerService.PolicyManagementClient client = new SGPMManagerService.PolicyManagementClient();
+
+            int result = client.SavePolicy(policy);
+            return result;
         }
 
         private bool ValidateFields(string policyName, string policyDescription)
