@@ -59,7 +59,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI_Locality.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_Policy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI_RegisterRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_User.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -74,8 +86,17 @@
     <Compile Include="GUI_GenerateOpinion.xaml.cs">
       <DependentUpon>GUI_GenerateOpinion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI_Locality.xaml.cs">
+      <DependentUpon>GUI_Locality.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_Policy.xaml.cs">
+      <DependentUpon>GUI_Policy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI_RegisterRequest.xaml.cs">
       <DependentUpon>GUI_RegisterRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_User.xaml.cs">
+      <DependentUpon>GUI_User.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
