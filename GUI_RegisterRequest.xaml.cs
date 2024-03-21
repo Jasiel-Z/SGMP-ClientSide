@@ -14,6 +14,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using System.Runtime.CompilerServices;
+using SGMP_Client.SGPMReference;
+using SGMP_Client.DTO_s;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace SGMP_Client
 {
@@ -24,19 +28,25 @@ namespace SGMP_Client
     {
 
         public ObservableCollection<string> AttachFiles { get; set; }
+        public List<SGPMReference.File> Files { get; set; }
+        SGPMReference.ProjectsManagementClient client;
+        public SGMP_Client.SGPMReference.Project project { get; set; }
 
         public GUI_RegisterRequest()
         {
             InitializeComponent();
             AttachFiles = new ObservableCollection<string>();  
+            Files = new List<SGPMReference.File>();
             lib_files.ItemsSource = AttachFiles;
+            client = new SGPMReference.ProjectsManagementClient();
+            project = new Project();
+            GetProyectDetails();
         }
 
 
         private void Btn_Attach_File_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = true;
             openFileDialog.Filter = "Archivos PDF (*.pdf)|*.pdf";
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
@@ -44,31 +54,262 @@ namespace SGMP_Client
 
             if (result == true)
             {
-                foreach (string fileName in openFileDialog.FileNames)
+                string ruta = openFileDialog.FileName;
+                AttachFiles.Add(ruta);
+
+                try
                 {
-                    string fileNameOnly = System.IO.Path.GetFileName(fileName); // Obtener solo el nombre del archivo
-                    AttachFiles.Add(fileNameOnly);
+                    using (FileStream fileStream = new FileStream(ruta, FileMode.Open, FileAccess.Read))
+                    {
+                        byte[] fileBytes = new byte[fileStream.Length];
+                        fileStream.Read(fileBytes, 0, (int)fileStream.Length);
+
+                        SGPMReference.File file = new SGPMReference.File
+                        {
+                            Name = System.IO.Path.GetFileName(ruta),
+                            Content = new byte[0],
+                            Extension = System.IO.Path.GetExtension(ruta),
+                            RequestId = 1,
+                            Description = ruta,
+                        };
+
+                        Files.Add(file);
+                    }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al leer el archivo: {ex.Message}");
+                }
+
+
             }
         }
 
-        private void AgregarArchivoAdjunto(string nombreArchivo)
-        {
-            AttachFiles.Add(nombreArchivo);
-            lib_files.UpdateLayout();
-        }
+
 
         private void Btn_Cancel_Request_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult cancelationResult = MessageBox.Show("¿Estás seguro de que deseas cancelar?", 
+                "Confirmar cancelación", MessageBoxButton.OKCancel);
 
+            if (cancelationResult == MessageBoxResult.OK)
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         private void Btn_Remove_File_Click(object sender, RoutedEventArgs e)
         {
             if (lib_files.SelectedItem != null)
             {
-                AttachFiles.Remove(lib_files.SelectedItem.ToString());
+                string selectedFileName = lib_files.SelectedItem.ToString();
+                AttachFiles.Remove(selectedFileName);
+
+                SGPMReference.File fileToRemove = null;
+                foreach (SGPMReference.File file in Files)
+                {
+                    if (file.Name == selectedFileName)
+                    {
+                        fileToRemove = file;
+                        break;
+                    }
+                }
+
+                if (fileToRemove != null)
+                {
+                    Files.Remove(fileToRemove);
+                }
             }
+        }
+
+        private void Btn_Register_Request_Click(object sender, RoutedEventArgs e)
+        {
+
+            bool validData = validateInformation();
+
+            if (validData)
+            {
+                SGPMReference.SolicitudSet request = new SGPMReference.SolicitudSet
+                {
+                    estado = "creada",
+                    fechaCreacion = System.DateTime.Now,
+                    ProyectoFolio = project.Folio,
+                    BeneficiarioId = GetBeneficiaryId(),
+                };
+
+                SGPMReference.RequestManagementClient client = new SGPMReference.RequestManagementClient();
+
+                bool beneficiaryFound = client.BeneficiaryHasRequest((int)request.BeneficiarioId, request.ProyectoFolio);
+
+                if(beneficiaryFound)
+                {
+                    MessageBox.Show("El beneficiario ya cuenta con una solicitud para el proyecto actual", "Beneficiario registrado");
+                }
+                else
+                {
+                    int result = client.RegisterRequestWithDocuments(request, Files.ToArray());
+                    if (result >= 1)
+                    {
+                        MessageBox.Show("La solicitud  ha sido registrada", "Registro exitoso");
+                        ClearFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No fue posible guardar el registro, por favor inténtelo más tarde", 
+                            "Problema de conexión con la base de datos");
+                    }
+                }
+
+
+            }
+        }
+
+        private bool validateInformation()
+        {
+            bool result = true;
+            if (Files.Count == 0)
+            {
+                MessageBox.Show("Una solicitud no puede ser registrada sin documentos. Por favor inténtelo de nuevo","Datos incompletos");
+                result = false;
+
+            }
+
+            return result;
+        }
+
+
+
+        private int GetBeneficiaryId()
+        {
+            int id = -1;
+
+            if (lib_beneficiaries.SelectedItem != null)
+            {
+                if (lib_beneficiaries.SelectedItem is Person)
+                {
+                    Person person = (Person)lib_beneficiaries.SelectedItem;
+                    id = person.BeneficiaryId;
+                }
+                else if (lib_beneficiaries.SelectedItem is Company)
+                {
+                    Company company = (Company)lib_beneficiaries.SelectedItem;
+                    id = company.BeneficiaryId;
+                }
+            }
+
+            return id;
+        }
+
+        #region Data recuperation
+
+        private void GetProyectDetails()
+        {
+
+            project = client.GetProjectDetails(7);
+            tb_modality.Text = project.Modality;
+            tb_group.Text = project.AttentionGroup;
+            tb_type.Text = project.Type;
+
+        }
+
+
+        private void Btn_Search_Beneficiary(object sender, RoutedEventArgs e)
+        {
+            string tipoBeneficiario = ((ComboBoxItem)cb_beneficiary_type.SelectedItem).Content.ToString();
+
+            string beneficiaryName = tb_search_beneficiary.Text;
+
+            if (tipoBeneficiario == "Persona")
+            {
+                SGPMReference.BeneficiaryManagementClient client = new SGPMReference.BeneficiaryManagementClient();
+                List<SGMP_Client.SGPMReference.Person> personsList = client.GetPersons(beneficiaryName).ToList();
+                MessageBox.Show("Todo bien");
+
+                lib_beneficiaries.Items.Clear();
+
+                foreach (var person in personsList)
+                {
+                    lib_beneficiaries.Items.Add(person);
+                }
+
+                lib_beneficiaries.DisplayMemberPath = "Name";
+
+            }
+            else if (tipoBeneficiario == "Empresa")
+            {
+                SGPMReference.BeneficiaryManagementClient client = new SGPMReference.BeneficiaryManagementClient();
+                List<SGMP_Client.SGPMReference.Company> companiesList = client.GetCompanies(beneficiaryName).ToList();
+                MessageBox.Show("Todo bien");
+
+                lib_beneficiaries.Items.Clear();
+
+                foreach (var company in companiesList)
+                {
+                    lib_beneficiaries.Items.Add(company);
+                }
+
+                lib_beneficiaries.DisplayMemberPath = "Name";
+            }
+        }
+
+
+
+
+        #endregion
+
+
+
+        private void tb_search_beneficiary_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void lib_beneficiaries_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox listBox = sender as ListBox;
+
+            if (listBox.SelectedItem != null)
+            {
+                object selectedItem = listBox.SelectedItem;
+
+
+                if (selectedItem is SGMP_Client.SGPMReference.Person)
+                {
+                    SGMP_Client.SGPMReference.Person selectedPerson = (SGMP_Client.SGPMReference.Person)selectedItem;
+
+                    tb_beneficiary_name.Text = selectedPerson.Name;
+                    tb_benef_lastN.Text = selectedPerson.LastName;
+                    tb_address.Text = selectedPerson.Street;
+                    tb_cellphone.Text = selectedPerson.PhoneNumber;
+
+                }
+                else if (selectedItem is SGMP_Client.SGPMReference.Company)
+                {
+                    SGMP_Client.SGPMReference.Company selectedCompany = (SGMP_Client.SGPMReference.Company)selectedItem;
+
+                    tb_beneficiary_name.Text = selectedCompany.Name;
+                    tb_cellphone.Text = selectedCompany.PhoneNumber;
+                    tb_address.Text = selectedCompany.Street;
+                }
+            }
+        }
+
+
+        private void ClearFields()
+        {
+            tb_beneficiary_name.Text = "";
+            tb_beneficiary_name.Text = "";
+            tb_address.Text = "";
+            tb_cellphone.Text = "";
+            lib_beneficiaries.Items.Clear();
+            Files.Clear();
+            lib_files.Items.Clear();
+
+
         }
     }
 }
