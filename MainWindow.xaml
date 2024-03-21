@@ -29,8 +29,8 @@
                    " HorizontalAlignment="Left" Margin="4,5,0,0" VerticalAlignment="Top" Height="51" Width="492" FontSize="28" FontWeight="Bold"/>
             <Rectangle HorizontalAlignment="Center" Height="5" Margin="0,53,0,0" Fill="Sienna" Stroke="Silver" VerticalAlignment="Top" Width="999" RenderTransformOrigin="0.5,0.5"/>
             <Button Content="Guardar Usuario" HorizontalAlignment="Left" Margin="57,29,0,0" Grid.Row="3" VerticalAlignment="Top" Height="49" Width="170" FontSize="20" Click="Btn_Save_User_Click"/>
-            <Button Content="Guardar Localidad" HorizontalAlignment="Left" Margin="304,29,0,0" Grid.Row="3" VerticalAlignment="Top" Height="49" Width="170" FontSize="20"/>
-            <Button Content="Guardar Política" HorizontalAlignment="Left" Margin="549,29,0,0" Grid.Row="3" VerticalAlignment="Top" Height="49" Width="170" FontSize="20"/>
+            <Button Content="Guardar Localidad" HorizontalAlignment="Left" Margin="304,29,0,0" Grid.Row="3" VerticalAlignment="Top" Height="49" Width="170" FontSize="20" Click="Btn_Save_Locality_Click"/>
+            <Button Content="Guardar Política" HorizontalAlignment="Left" Margin="549,29,0,0" Grid.Row="3" VerticalAlignment="Top" Height="49" Width="170" FontSize="20" Click="Btn_Save_Policy_Click"/>
 
 
         </Grid>

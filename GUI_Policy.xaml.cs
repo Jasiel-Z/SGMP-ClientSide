@@ -29,14 +29,14 @@ namespace SGMP_Client
         private void Btn_Save_Policy_Click(object sender, RoutedEventArgs e)
         {
             string policyName = tbxName.Text.ToString();
-            string policyDescription = tbxName.Text.ToString();
+            string policyDescription = tbxDescription.Text.ToString();
 
             if (ValidateFields(policyName, policyDescription))
             {
                 int result = SavePolicy(policyName, policyDescription);
                 if (result == 1)
                 {
-                    MessageBox.Show("Se ha guardado la nueva política de participación correctamente", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Se ha guardado la nueva política de participación correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
@@ -96,6 +96,13 @@ namespace SGMP_Client
             }
 
             return isPolicyNameValid && isPolicyDescriptionValid;
+        }
+
+        private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Window mainMenuWindow = new MainWindow();
+            mainMenuWindow.Show();
+            this.Close();
         }
     }
 }

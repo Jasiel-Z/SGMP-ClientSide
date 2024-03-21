@@ -35,7 +35,7 @@ namespace SGMP_Client
 
                 if (result == 1)
                 {
-                    MessageBox.Show("Se ha guardado la nueva localidad correctamente", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Se ha guardado la nueva localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
@@ -64,7 +64,7 @@ namespace SGMP_Client
 
             if (!string.IsNullOrEmpty(localityName))
             {
-                lbEmptyFieldsMessage.Visibility = Visibility.Visible;
+                lbEmptyFieldsMessage.Visibility = Visibility.Hidden;
 
                 if (localityName.Length <= 30)
                 {
@@ -82,6 +82,13 @@ namespace SGMP_Client
             }
 
             return isLocalityNameValid;
+        }
+
+        private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Window mainMenuWindow = new MainWindow();
+            mainMenuWindow.Show();
+            this.Close();
         }
     }
 }

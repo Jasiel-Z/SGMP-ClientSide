@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Configuration;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace SGMP_Client
 
                 if (result == 1)
                 {
-                    MessageBox.Show("Se ha guardado el nuevo usuario correctamente", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Se ha guardado el nuevo usuario correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
@@ -57,7 +58,7 @@ namespace SGMP_Client
             {
                 StaffNumber = staffNumber,
                 Email = email,
-                Password = password
+                Password = Utility.ComputeSha256Hash(password)
             };
 
             int result = client.SaveUser(user);
@@ -92,12 +93,23 @@ namespace SGMP_Client
             bool isStaffNumberValid;
             if (staffNumber.Length == 10 && Regex.IsMatch(staffNumber, "^[0-9]+$"))
             {
-                isStaffNumberValid = true;
-                lbInvalidStaffNumberMessage.Visibility = Visibility.Hidden;
+                SGPMManagerService.UserManagementClient client = new SGPMManagerService.UserManagementClient();
+
+                // if (client.ValidateStaffNumberDoesNotExist(staffNumber)) 
+                // {
+                    isStaffNumberValid = true;            
+                    lbInvalidStaffNumberMessage.Visibility = Visibility.Hidden;
+                // }
+                // else 
+                // {
+                //     lbInvalidStaffNumberMessage.Content = "El número de empleado ya está asociado a una cuenta.";
+                //     lbInvalidStaffNumberMessage.Visibility = Visibility.Visible;
+                // }
             }
             else
             {
                 isStaffNumberValid = false;
+                lbInvalidStaffNumberMessage.Content = "Debe contener 10 dígitos.";
                 lbInvalidStaffNumberMessage.Visibility = Visibility.Visible;
             }
             return isStaffNumberValid;
@@ -124,7 +136,7 @@ namespace SGMP_Client
             else
             {
                 isEmailValid = false;
-                lbInvalidEmailMessage.Content = "Revise que incluya el dominio \"gob.mx\".";
+                lbInvalidEmailMessage.Content = "Revise que incluya el dominio \"@gob.mx\".";
                 lbInvalidEmailMessage.Visibility = Visibility.Visible;
             }
             return isEmailValid;
@@ -180,6 +192,13 @@ namespace SGMP_Client
             {
                 e.Handled = true;
             }
+        }
+
+        private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Window mainMenuWindow = new MainWindow();
+            mainMenuWindow.Show();
+            this.Close();
         }
     }
 }

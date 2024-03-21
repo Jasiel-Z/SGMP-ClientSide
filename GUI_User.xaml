@@ -31,17 +31,17 @@
 
             <Label Content="Número de Personal:" HorizontalAlignment="Left" Margin="10,34,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="204"/>
             <TextBox Name="tbxStaffNumber" PreviewTextInput="OnlyNumbers_PreviewTextInput" PreviewKeyDown="TbxStaffNumber_PreviewKeyDown" CommandManager.PreviewExecuted="TbxStaffNumber_PreviewExecuted" MaxLength="10" HorizontalAlignment="Left" Margin="13,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="29" FontSize="20"/>
-            <TextBox  Name="tbxEMail" HorizontalAlignment="Center" Margin="0,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <TextBox  Name="tbxEMail" MaxLength="30" HorizontalAlignment="Center" Margin="0,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
             <Label Content="Correo Electrónico:" HorizontalAlignment="Left" Margin="376,35,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.35,0.52" Height="37" Width="178"/>
             <Label Content="Contraseña:" HorizontalAlignment="Left" Margin="13,8,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.159,0.383" Height="37" Width="117"/>
-            <PasswordBox Name="pwbPassword" HorizontalAlignment="Left" Margin="13,45,0,0" Grid.Row="2" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <PasswordBox Name="pwbPassword" MaxLength="16" HorizontalAlignment="Left" Margin="13,45,0,0" Grid.Row="2" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
             <Label Content="Repetir contraseña:" HorizontalAlignment="Left" Margin="376,8,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.159,0.383" Height="37" Width="178"/>
-            <PasswordBox x:Name="pwbRepeatPassword" HorizontalAlignment="Center" Margin="0,45,0,0" Grid.Row="2" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <PasswordBox x:Name="pwbRepeatPassword" MaxLength="16" HorizontalAlignment="Center" Margin="0,45,0,0" Grid.Row="2" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
 
-            <Button Content="Cancelar" HorizontalAlignment="Left" Margin="598,101,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Width="170" Height="45" Background="#FFD44646" Foreground="White"/>
+            <Button Content="Cancelar" HorizontalAlignment="Left" Margin="598,101,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Width="170" Height="45" Background="#FFD44646" Foreground="White" Click="Btn_Cancel_Click"/>
             <Button Content="Guardar" HorizontalAlignment="Left" Margin="802,99,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="45" Width="170" Background="#FF33AA3E" Foreground="White" Click="Btn_Save_User_Click"/>
             <Label x:Name="lbInvalidStaffNumberMessage" Content="Debe contener 10 dígitos." HorizontalAlignment="Left" Margin="13,98,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" Height="37" Width="204" Foreground="Red" Visibility="Hidden"/>
-            <Label x:Name="lbInvalidEmailMessage" Content="Revise que incluya el dominio &quot;@gob.mx&quot;." HorizontalAlignment="Left" Margin="376,100,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" Height="37" Width="307" Foreground="Red" Grid.RowSpan="2" Visibility="Hidden"/>
+            <Label x:Name="lbInvalidEmailMessage" Content="Revise que incluya el dominio &quot;@gob.mx&quot;." HorizontalAlignment="Left" Margin="370,94,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" Height="37" Width="578" Foreground="Red" Visibility="Hidden"/>
             <TextBlock x:Name="tbInvalidPasswordMessage" HorizontalAlignment="Left" Margin="13,80,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Height="153" Width="270" Foreground="Red" Visibility="Hidden">
                 - La contraseña debe contener entre 8 y 16 caracteres.
                 <LineBreak/>
