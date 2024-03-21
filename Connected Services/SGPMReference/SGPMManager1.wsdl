@@ -36,14 +36,27 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IUserManagement_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" />
-      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" />
-      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" />
-      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" />
+      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" />
+      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" />
+      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" />
+      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" />
+      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IProjectsManagement_GetProjectDetails_InputMessage">
@@ -51,6 +64,12 @@
   </wsdl:message>
   <wsdl:message name="IProjectsManagement_GetProjectDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProjectDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProjectsManagement_GetProjectPolicies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectPolicies" />
+  </wsdl:message>
+  <wsdl:message name="IProjectsManagement_GetProjectPolicies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectPoliciesResponse" />
   </wsdl:message>
   <wsdl:message name="IBeneficiaryManagement_GetBeneficiaries_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBeneficiaries" />
@@ -88,10 +107,44 @@
   <wsdl:message name="IRequestManagement_RecoverRequestDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecoverRequestDetailsResponse" />
   </wsdl:message>
+  <wsdl:message name="IRequestManagement_RegisterRequestWithDocuments_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterRequestWithDocuments" />
+  </wsdl:message>
+  <wsdl:message name="IRequestManagement_RegisterRequestWithDocuments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterRequestWithDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRequestManagement_BeneficiaryHasRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:BeneficiaryHasRequest" />
+  </wsdl:message>
+  <wsdl:message name="IRequestManagement_BeneficiaryHasRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BeneficiaryHasRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRequestManagement_GetRequestFiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequestFiles" />
+  </wsdl:message>
+  <wsdl:message name="IRequestManagement_GetRequestFiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequestFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRequestManagement_RegisterOpinion_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterOpinion" />
+  </wsdl:message>
+  <wsdl:message name="IRequestManagement_RegisterOpinion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterOpinionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProjectsManagement">
     <wsdl:operation name="GetProjectDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectDetails" message="tns:IProjectsManagement_GetProjectDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectDetailsResponse" message="tns:IProjectsManagement_GetProjectDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectPolicies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectPolicies" message="tns:IProjectsManagement_GetProjectPolicies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectPoliciesResponse" message="tns:IProjectsManagement_GetProjectPolicies_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IBeneficiaryManagement">
@@ -121,12 +174,43 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRequestManagement/RecoverRequestDetails" message="tns:IRequestManagement_RecoverRequestDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRequestManagement/RecoverRequestDetailsResponse" message="tns:IRequestManagement_RecoverRequestDetails_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RegisterRequestWithDocuments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequestManagement/RegisterRequestWithDocuments" message="tns:IRequestManagement_RegisterRequestWithDocuments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequestManagement/RegisterRequestWithDocumentsResponse" message="tns:IRequestManagement_RegisterRequestWithDocuments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BeneficiaryHasRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequestManagement/BeneficiaryHasRequest" message="tns:IRequestManagement_BeneficiaryHasRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequestManagement/BeneficiaryHasRequestResponse" message="tns:IRequestManagement_BeneficiaryHasRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequestFiles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequestManagement/GetRequestFiles" message="tns:IRequestManagement_GetRequestFiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequestManagement/GetRequestFilesResponse" message="tns:IRequestManagement_GetRequestFiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterOpinion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequestManagement/RegisterOpinion" message="tns:IRequestManagement_RegisterOpinion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequestManagement/RegisterOpinionResponse" message="tns:IRequestManagement_RegisterOpinion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IUserManagement">
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/GetUser" message="tns:IUserManagement_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/GetUserResponse" message="tns:IUserManagement_GetUser_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IProjectsManagement" type="tns:IProjectsManagement">
     <wsp:PolicyReference URI="#NetTcpBinding_IProjectsManagement_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="GetProjectDetails">
       <soap12:operation soapAction="http://tempuri.org/IProjectsManagement/GetProjectDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectPolicies">
+      <soap12:operation soapAction="http://tempuri.org/IProjectsManagement/GetProjectPolicies" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -196,6 +280,55 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RegisterRequestWithDocuments">
+      <soap12:operation soapAction="http://tempuri.org/IRequestManagement/RegisterRequestWithDocuments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BeneficiaryHasRequest">
+      <soap12:operation soapAction="http://tempuri.org/IRequestManagement/BeneficiaryHasRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequestFiles">
+      <soap12:operation soapAction="http://tempuri.org/IRequestManagement/GetRequestFiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterOpinion">
+      <soap12:operation soapAction="http://tempuri.org/IRequestManagement/RegisterOpinion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IUserManagement" type="tns:IUserManagement">
+    <wsp:PolicyReference URI="#NetTcpBinding_IUserManagement_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetUser">
+      <soap12:operation soapAction="http://tempuri.org/IUserManagement/GetUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="SGPMManager">
     <wsdl:port name="NetTcpBinding_IProjectsManagement" binding="tns:NetTcpBinding_IProjectsManagement">
@@ -211,6 +344,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IRequestManagement" binding="tns:NetTcpBinding_IRequestManagement">
+      <soap12:address location="net.tcp://localhost:8083/SGPM_Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8083/SGPM_Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IUserManagement" binding="tns:NetTcpBinding_IUserManagement">
       <soap12:address location="net.tcp://localhost:8083/SGPM_Services" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8083/SGPM_Services</wsa10:Address>

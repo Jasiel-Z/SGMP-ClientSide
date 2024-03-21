@@ -17,6 +17,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using SGMP_Client.SGPMReference;
 using SGMP_Client.DTO_s;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace SGMP_Client
 {
@@ -27,7 +28,7 @@ namespace SGMP_Client
     {
 
         public ObservableCollection<string> AttachFiles { get; set; }
-        public List<SGPMReference.ArchivoSet> Files { get; set; }
+        public List<SGPMReference.File> Files { get; set; }
         SGPMReference.ProjectsManagementClient client;
         public SGMP_Client.SGPMReference.Project project { get; set; }
 
@@ -35,7 +36,7 @@ namespace SGMP_Client
         {
             InitializeComponent();
             AttachFiles = new ObservableCollection<string>();  
-            Files = new List<SGPMReference.ArchivoSet>();
+            Files = new List<SGPMReference.File>();
             lib_files.ItemsSource = AttachFiles;
             client = new SGPMReference.ProjectsManagementClient();
             project = new Project();
@@ -46,7 +47,6 @@ namespace SGMP_Client
         private void Btn_Attach_File_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = true;
             openFileDialog.Filter = "Archivos PDF (*.pdf)|*.pdf";
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
@@ -54,43 +54,34 @@ namespace SGMP_Client
 
             if (result == true)
             {
-                foreach (string fileName in openFileDialog.FileNames)
+                string ruta = openFileDialog.FileName;
+                AttachFiles.Add(ruta);
+
+                try
                 {
-                    string fileNameOnly = System.IO.Path.GetFileName(fileName);
-                    AttachFiles.Add(fileNameOnly);
-
-                
-
-                    byte[] fileBytes = System.IO.File.ReadAllBytes(fileName);
-                    long fileSize = fileBytes.Length;
-
-                    // Mostrar el tamaño del archivo
-                    MessageBox.Show($"Tamaño del archivo '{fileNameOnly}': {fileSize} bytes");
-
-
-                    SGPMReference.ArchivoSet file = new SGPMReference.ArchivoSet
+                    using (FileStream fileStream = new FileStream(ruta, FileMode.Open, FileAccess.Read))
                     {
-                        nombre = fileNameOnly,
-                        contenido = fileBytes,
-                        extension = System.IO.Path.GetExtension(fileName),
-                        SolicitudIdSolicitud = 1,
-                        descripcion = "Prueba 1"
-                    };
+                        byte[] fileBytes = new byte[fileStream.Length];
+                        fileStream.Read(fileBytes, 0, (int)fileStream.Length);
 
+                        SGPMReference.File file = new SGPMReference.File
+                        {
+                            Name = System.IO.Path.GetFileName(ruta),
+                            Content = new byte[0],
+                            Extension = System.IO.Path.GetExtension(ruta),
+                            RequestId = 1,
+                            Description = ruta,
+                        };
 
-
-
-                    if (file.contenido != null)
-                    {
-                        MessageBox.Show("Hay contenido en el archivo");
+                        Files.Add(file);
                     }
-                    else
-                    {
-                        MessageBox.Show("No hay contenido");
-                    }
-;                    Files.Add(file);
-
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al leer el archivo: {ex.Message}");
+                }
+
+
             }
         }
 
@@ -118,10 +109,10 @@ namespace SGMP_Client
                 string selectedFileName = lib_files.SelectedItem.ToString();
                 AttachFiles.Remove(selectedFileName);
 
-                SGPMReference.ArchivoSet fileToRemove = null;
-                foreach (SGPMReference.ArchivoSet file in Files)
+                SGPMReference.File fileToRemove = null;
+                foreach (SGPMReference.File file in Files)
                 {
-                    if (file.nombre == selectedFileName)
+                    if (file.Name == selectedFileName)
                     {
                         fileToRemove = file;
                         break;
@@ -138,65 +129,80 @@ namespace SGMP_Client
         private void Btn_Register_Request_Click(object sender, RoutedEventArgs e)
         {
 
-            RegisterDocumentation();
+            bool validData = validateInformation();
 
-            SGPMReference.SolicitudSet request = new SGPMReference.SolicitudSet
+            if (validData)
             {
-                estado = "creada",
-                fechaCreacion = System.DateTime.Now,
-                ProyectoFolio = project.Folio,
-            };
-
-            SGPMReference.RequestManagementClient client = new SGPMReference.RequestManagementClient();
-
-
-            int result = client.RegisterRequest(request);
-            if (result == 1)
-            {
-                MessageBox.Show("Éxito en el registro de la solicitud");
-            }
-            else
-            {
-                MessageBox.Show("Ocurrió un error al registrar la solicitud");
-            }
-
-        }
-
-
-
-        private void RegisterDocumentation()
-        {
-            SGPMReference.RequestManagementClient client = new RequestManagementClient();
-            List<SGPMReference.File> sFiles = new List<SGPMReference.File>();
-
-            foreach(ArchivoSet file in Files)
-            {
-                SGPMReference.File sFile = new SGPMReference.File
+                SGPMReference.SolicitudSet request = new SGPMReference.SolicitudSet
                 {
-                    Name = file.nombre,
-                    Content = file.contenido,
-                    Description = file.descripcion,
-                    Extension = file.extension,
-                    
+                    estado = "creada",
+                    fechaCreacion = System.DateTime.Now,
+                    ProyectoFolio = project.Folio,
+                    BeneficiarioId = GetBeneficiaryId(),
                 };
 
-                sFiles.Add(sFile);
+                SGPMReference.RequestManagementClient client = new SGPMReference.RequestManagementClient();
+
+                bool beneficiaryFound = client.BeneficiaryHasRequest((int)request.BeneficiarioId, request.ProyectoFolio);
+
+                if(beneficiaryFound)
+                {
+                    MessageBox.Show("El beneficiario ya cuenta con una solicitud para el proyecto actual", "Beneficiario registrado");
+                }
+                else
+                {
+                    int result = client.RegisterRequestWithDocuments(request, Files.ToArray());
+                    if (result >= 1)
+                    {
+                        MessageBox.Show("La solicitud  ha sido registrada", "Registro exitoso");
+                        ClearFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No fue posible guardar el registro, por favor inténtelo más tarde", 
+                            "Problema de conexión con la base de datos");
+                    }
+                }
+
 
             }
-
-            int result = client.RegisterRequestDocumentation(sFiles.ToArray());
-            if (result == 1)
-            {
-                MessageBox.Show("se guardaron con éxito");
-            }
-            else
-            {
-                MessageBox.Show("ya vete a dormir wey");
-            }
-
-
         }
 
+        private bool validateInformation()
+        {
+            bool result = true;
+            if (Files.Count == 0)
+            {
+                MessageBox.Show("Una solicitud no puede ser registrada sin documentos. Por favor inténtelo de nuevo","Datos incompletos");
+                result = false;
+
+            }
+
+            return result;
+        }
+
+
+
+        private int GetBeneficiaryId()
+        {
+            int id = -1;
+
+            if (lib_beneficiaries.SelectedItem != null)
+            {
+                if (lib_beneficiaries.SelectedItem is Person)
+                {
+                    Person person = (Person)lib_beneficiaries.SelectedItem;
+                    id = person.BeneficiaryId;
+                }
+                else if (lib_beneficiaries.SelectedItem is Company)
+                {
+                    Company company = (Company)lib_beneficiaries.SelectedItem;
+                    id = company.BeneficiaryId;
+                }
+            }
+
+            return id;
+        }
 
         #region Data recuperation
 
@@ -250,6 +256,9 @@ namespace SGMP_Client
             }
         }
 
+
+
+
         #endregion
 
 
@@ -287,6 +296,20 @@ namespace SGMP_Client
                     tb_address.Text = selectedCompany.Street;
                 }
             }
+        }
+
+
+        private void ClearFields()
+        {
+            tb_beneficiary_name.Text = "";
+            tb_beneficiary_name.Text = "";
+            tb_address.Text = "";
+            tb_cellphone.Text = "";
+            lib_beneficiaries.Items.Clear();
+            Files.Clear();
+            lib_files.Items.Clear();
+
+
         }
     }
 }

@@ -1,0 +1,39 @@
+﻿<Window x:Class="SGMP_Client.GUI_MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGMP_Client"
+        mc:Ignorable="d"
+        Title="Menú principal" Height="640" Width="1200">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="77*"/>
+            <RowDefinition Height="547*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Menú principal" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" FontSize="28" FontWeight="Bold"/>
+        <Grid x:Name="grid_options" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image x:Name="im_projects" HorizontalAlignment="Left" Height="190" Margin="68,30,0,0" VerticalAlignment="Top" Width="180" Source="/proyecto.png"/>
+            <Image x:Name="beneficiaries" Grid.Column="1" HorizontalAlignment="Left" Height="190" Margin="56,39,0,0" VerticalAlignment="Top" Width="180" Source="/beneficiario.png"/>
+            <Image x:Name="requests" Grid.Column="2" HorizontalAlignment="Center" Height="190" Margin="0,39,0,0" VerticalAlignment="Top" Width="180" Source="/solicitud.png"/>
+            <Image x:Name="location" Grid.Column="3" HorizontalAlignment="Left" Height="190" Margin="70,40,0,0" VerticalAlignment="Top" Width="180" Source="/marcador-de-posicion.png"/>
+            <Image x:Name="users" HorizontalAlignment="Left" Height="190" Margin="72,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="180" Source="/programador.png"/>
+            <Label Content="Gestión de proyectos" HorizontalAlignment="Left" Margin="82,222,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+            <Label Content="Gestión de beneficiarios" HorizontalAlignment="Left" Margin="70,234,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+            <Label Content="Gestión de solicitudes" HorizontalAlignment="Left" Margin="77,231,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="2"/>
+            <Label Content="Gestión de localidades" HorizontalAlignment="Left" Margin="81,231,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="3"/>
+        </Grid>
+        <Rectangle HorizontalAlignment="Left" Height="5" Margin="26,51,0,0" Fill="Sienna" Stroke="Silver" VerticalAlignment="Top" Width="1152" RenderTransformOrigin="0.5,0.5"/>
+    </Grid>
+</Window>

@@ -61,7 +61,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI_Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI_RegisterRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_RequestsMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -81,11 +93,21 @@
     <Compile Include="DTO%27s\DTOCompany.cs" />
     <Compile Include="DTO%27s\DTOPerson.cs" />
     <Compile Include="DTO%27s\DTOProject.cs" />
+    <Compile Include="DTO%27s\User.cs" />
     <Compile Include="GUI_GenerateOpinion.xaml.cs">
       <DependentUpon>GUI_GenerateOpinion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI_Login.xaml.cs">
+      <DependentUpon>GUI_Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_MainMenu.xaml.cs">
+      <DependentUpon>GUI_MainMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI_RegisterRequest.xaml.cs">
       <DependentUpon>GUI_RegisterRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_RequestsMenu.xaml.cs">
+      <DependentUpon>GUI_RequestsMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -113,19 +135,22 @@
     <None Include="Connected Services\SGPMReference\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SGPMReference\item1.xsd">
+    <None Include="Connected Services\SGPMReference\item6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SGPMReference\item2.xsd">
+    <None Include="Connected Services\SGPMReference\item61.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SGPMReference\item3.xsd">
+    <None Include="Connected Services\SGPMReference\item62.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SGPMReference\item4.xsd">
+    <None Include="Connected Services\SGPMReference\item63.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SGPMReference\item5.xsd">
+    <None Include="Connected Services\SGPMReference\item64.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SGPMReference\item65.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Beneficiary.datasource">
@@ -134,16 +159,25 @@
     <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Company.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.File.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Person.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Project.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.SolicitudSet.datasource">
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.ProjectPolicy.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SGPMReference\SGPMManager.wsdl" />
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Request.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SGPMReference\SGPMManager1.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -168,9 +202,6 @@
     <WCFMetadataStorage Include="Connected Services\SGPMReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SGPMReference\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\SGPMReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +212,48 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\iconoVeracruz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconoVeracruz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="agregar-archivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SGPMReference\item1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\proyecto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="proyecto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\beneficiario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="beneficiario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\solicitud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="solicitud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\marcador-de-posicion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="marcador-de-posicion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\programador.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="programador.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

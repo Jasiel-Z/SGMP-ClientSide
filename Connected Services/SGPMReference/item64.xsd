@@ -3,7 +3,9 @@
   <xs:complexType name="SolicitudSet">
     <xs:sequence>
       <xs:element minOccurs="0" name="ArchivoSet" nillable="true" type="tns:ArrayOfArchivoSet" />
+      <xs:element minOccurs="0" name="BeneficiarioId" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="BeneficiarioSet" nillable="true" type="tns:ArrayOfBeneficiarioSet" />
+      <xs:element minOccurs="0" name="BeneficiarioSet1" nillable="true" type="tns:BeneficiarioSet" />
       <xs:element minOccurs="0" name="CuentaBancariaSolicitudSet" nillable="true" type="tns:ArrayOfCuentaBancariaSolicitudSet" />
       <xs:element minOccurs="0" name="DevolucionesSet" nillable="true" type="tns:ArrayOfDevolucionesSet" />
       <xs:element minOccurs="0" name="DictamenSet" nillable="true" type="tns:DictamenSet" />
@@ -46,6 +48,7 @@
       <xs:element minOccurs="0" name="Localidad_IdLocalidad" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PersonaSet" nillable="true" type="tns:ArrayOfPersonaSet" />
       <xs:element minOccurs="0" name="SolicitudSet" nillable="true" type="tns:SolicitudSet" />
+      <xs:element minOccurs="0" name="SolicitudSet1" nillable="true" type="tns:ArrayOfSolicitudSet" />
       <xs:element minOccurs="0" name="Solicitud_IdSolicitud" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="calle" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ciudad" nillable="true" type="xs:string" />
