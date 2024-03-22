@@ -23,27 +23,29 @@ namespace SGMP_Client
     {
 
         public List<SGPMReference.File> Files { get; set; }
-        SGPMReference.ProjectsManagementClient client;
-        public SGMP_Client.SGPMReference.Project Project { get; set; }
+        SGPMReference.ProjectsManagementClient Client;
+        private Project project;
 
         public SGMP_Client.SGPMReference.Person Person { get; set; }
         public SGMP_Client.SGPMReference.Company Company { get; set; }
 
-        public SGPMReference.Request Request { get; set; }
+        private Request request;
 
         public SGPMReference.Beneficiary Beneficiary { get; set; }
 
         public List<SGMP_Client.SGPMReference.ProjectPolicy> ProjectPolicies { get; set; }
 
 
-        public GUI_GenerateOpinion()
+        public GUI_GenerateOpinion(Project project, Request request)
         {
             InitializeComponent();
 
             Files = new List<SGPMReference.File>();
-            client = new SGPMReference.ProjectsManagementClient();
-            Project = new Project();
+            Client = new SGPMReference.ProjectsManagementClient();
+            this.project = project;
+            this.request = request;
             GetProyectDetails();
+
             GetPolicies();
             GetFiles();
             GetRequest();
@@ -54,10 +56,9 @@ namespace SGMP_Client
         private void GetProyectDetails()
         {
 
-            Project = client.GetProjectDetails(7);
-            tb_modality.Text = Project.Modality;
-            tb_group.Text = Project.AttentionGroup;
-            tb_type.Text = Project.Type;
+            tb_modality.Text = project.Modality;
+            tb_group.Text = project.AttentionGroup;
+            tb_type.Text = project.Type;
 
 
         }
@@ -70,7 +71,7 @@ namespace SGMP_Client
 
         private void GetPolicies()
         {
-            ProjectPolicies = client.GetProjectPolicies(Project.Folio).ToList();
+            ProjectPolicies = Client.GetProjectPolicies(project.Folio).ToList();
             foreach (var policy in ProjectPolicies)
             {
                 var listBoxItem = new ListBoxItem();
@@ -108,8 +109,6 @@ namespace SGMP_Client
 
         private void GetRequest()
         {
-            SGPMReference.RequestManagementClient client = new SGPMReference.RequestManagementClient();
-            Request = client.RecoverRequestDetails(30);
 
         }
 
@@ -117,7 +116,7 @@ namespace SGMP_Client
         private void GetFiles()
         {
             SGPMReference.RequestManagementClient client = new RequestManagementClient();
-            Files = client.GetRequestFiles(30).ToList();
+            Files = client.GetRequestFiles(request.Id).ToList();
             foreach (var file in Files)
             {
                 var listBoxItem = new ListBoxItem();
@@ -195,14 +194,121 @@ namespace SGMP_Client
             return null; 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult cancelationResult = MessageBox.Show("¿Estás seguro de que deseas cancelar?",
+            "Confirmar cancelación", MessageBoxButton.OKCancel);
+
+            if (cancelationResult == MessageBoxResult.OK)
+            {
+                GUI_RequestsManagement requestsManagement = new GUI_RequestsManagement(project);
+                requestsManagement.Show();
+                this.Close();
+            }
+        }
+
+        private void Btn_Register_Opinion(object sender, RoutedEventArgs e)
+        {
+            if (ValidateData())
+            {
+                if (IsOptionSelected())
+                {
+                    MessageBoxResult confirmation = MessageBox.Show("¿Estás seguro de enviar el dictamen de la solicitud?",
+                    "Confirmación de registro", MessageBoxButton.OKCancel);
+
+
+                    bool solution = DeterminateSolution();
+                    string state = null;
+
+                    if (solution)
+                    {
+                        state = "aceptado";
+                    }
+                    else
+                    {
+                        state = "rechazado";
+                    }
+
+                    if (confirmation == MessageBoxResult.OK)
+                    {
+
+                        Opinion opinion = new Opinion
+                        {
+                            State = state,
+                            Comment = tb_comments.Text,
+                            Date = DateTime.Now,
+                            EmployeeNumber = DTO_s.User.UserClient.EmployerId,
+                        
+                        };
+
+
+                        SGPMReference.RequestManagementClient client = new SGPMReference.RequestManagementClient();
+                        int result = client.RegisterOpinion(opinion, request.Id);
+                        if (result >= 1)
+                        {
+                            MessageBox.Show("Registro realizado con éxito");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrió un problema con la base de datos, por favor inténtelo más tarde",
+                                "Problema de conexión con la base de datos");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor selecciona una opción para el cumplimiento de las políticas", "Datos faltantes");
+                }
+            }
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
 
+        private bool ValidateData()
+        {
+            bool valid = true;
+
+            if(tb_comments.Text == "")
+            {
+                valid = false;
+                MessageBox.Show("Un dictamen debe tener comentarios, por favor ingrese uno", "Datos faltantes");
+            }
+            return valid;
+        }
+
+
+        private bool DeterminateSolution()
+        {
+            bool acceptedRequest = false;
+
+
+            if(rb_accomplish.IsChecked == true)
+            {
+                acceptedRequest = true;
+            }
+
+            return acceptedRequest;
+ 
+        }
+
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            var radioButton = sender as RadioButton;
+
+            if (radioButton == rb_accomplish)
+            {
+                rb_no_accomplish.IsChecked = false;
+            }
+            else if (radioButton == rb_no_accomplish)
+            {
+                rb_accomplish.IsChecked = false;
+            }
+        }
+
+        private bool IsOptionSelected()
+        {
+            return rb_accomplish.IsChecked == true || rb_no_accomplish.IsChecked == true;
         }
     }
 }

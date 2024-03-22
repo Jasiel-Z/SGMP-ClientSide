@@ -97,10 +97,7 @@ namespace SGMP_Client
                 requestsManagement.Show();
                 this.Close();
             }
-            else
-            {
 
-            }
         }
 
         private void Btn_Remove_File_Click(object sender, RoutedEventArgs e)

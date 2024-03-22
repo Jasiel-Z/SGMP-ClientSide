@@ -29,10 +29,16 @@ namespace SGMP_Client.SGPMReference {
         private int BeneficiaryNumbersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int FolioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ModalityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TypeField;
@@ -74,6 +80,19 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Folio {
             get {
                 return this.FolioField;
@@ -95,6 +114,19 @@ namespace SGMP_Client.SGPMReference {
                 if ((object.ReferenceEquals(this.ModalityField, value) != true)) {
                     this.ModalityField = value;
                     this.RaisePropertyChanged("Modality");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
                 }
             }
         }
@@ -1268,6 +1300,9 @@ namespace SGMP_Client.SGPMReference {
         private SGMP_Client.SGPMReference.SolicitudSet[] SolicitudSetField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descripcionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string estadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1284,6 +1319,9 @@ namespace SGMP_Client.SGPMReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string modalidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int numeroBeneficiariosField;
@@ -1393,6 +1431,19 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descripcion {
+            get {
+                return this.descripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descripcionField, value) != true)) {
+                    this.descripcionField = value;
+                    this.RaisePropertyChanged("descripcion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string estado {
             get {
                 return this.estadoField;
@@ -1466,6 +1517,19 @@ namespace SGMP_Client.SGPMReference {
                 if ((object.ReferenceEquals(this.modalidadField, value) != true)) {
                     this.modalidadField = value;
                     this.RaisePropertyChanged("modalidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
+                    this.nombreField = value;
+                    this.RaisePropertyChanged("nombre");
                 }
             }
         }
@@ -2265,7 +2329,7 @@ namespace SGMP_Client.SGPMReference {
         private SGMP_Client.SGPMReference.UsuarioSet UsuarioSetField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Usuario_IdUsuarioField;
+        private System.Nullable<int> Usuario_IdUsuarioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string apellidoMaternoField;
@@ -2367,7 +2431,7 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Usuario_IdUsuario {
+        public System.Nullable<int> Usuario_IdUsuario {
             get {
                 return this.Usuario_IdUsuarioField;
             }
@@ -3553,6 +3617,115 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Opinion", Namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement")]
+    [System.SerializableAttribute()]
+    public partial class Opinion : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CommentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EmployeeNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OpinionIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StateField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Comment {
+            get {
+                return this.CommentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CommentField, value) != true)) {
+                    this.CommentField = value;
+                    this.RaisePropertyChanged("Comment");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((this.DateField.Equals(value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int EmployeeNumber {
+            get {
+                return this.EmployeeNumberField;
+            }
+            set {
+                if ((this.EmployeeNumberField.Equals(value) != true)) {
+                    this.EmployeeNumberField = value;
+                    this.RaisePropertyChanged("EmployeeNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OpinionId {
+            get {
+                return this.OpinionIdField;
+            }
+            set {
+                if ((this.OpinionIdField.Equals(value) != true)) {
+                    this.OpinionIdField = value;
+                    this.RaisePropertyChanged("OpinionId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string State {
+            get {
+                return this.StateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StateField, value) != true)) {
+                    this.StateField = value;
+                    this.RaisePropertyChanged("State");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement")]
     [System.SerializableAttribute()]
     public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -3851,10 +4024,10 @@ namespace SGMP_Client.SGPMReference {
         System.Threading.Tasks.Task<SGMP_Client.SGPMReference.File[]> GetRequestFilesAsync(int requestId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/RegisterOpinion", ReplyAction="http://tempuri.org/IRequestManagement/RegisterOpinionResponse")]
-        int RegisterOpinion(SGMP_Client.SGPMReference.Request request);
+        int RegisterOpinion(SGMP_Client.SGPMReference.Opinion opinion, int requestId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/RegisterOpinion", ReplyAction="http://tempuri.org/IRequestManagement/RegisterOpinionResponse")]
-        System.Threading.Tasks.Task<int> RegisterOpinionAsync(SGMP_Client.SGPMReference.Request request);
+        System.Threading.Tasks.Task<int> RegisterOpinionAsync(SGMP_Client.SGPMReference.Opinion opinion, int requestId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/GetRequestsOfProject", ReplyAction="http://tempuri.org/IRequestManagement/GetRequestsOfProjectResponse")]
         SGMP_Client.SGPMReference.Request[] GetRequestsOfProject(int projectId);
@@ -3938,12 +4111,12 @@ namespace SGMP_Client.SGPMReference {
             return base.Channel.GetRequestFilesAsync(requestId);
         }
         
-        public int RegisterOpinion(SGMP_Client.SGPMReference.Request request) {
-            return base.Channel.RegisterOpinion(request);
+        public int RegisterOpinion(SGMP_Client.SGPMReference.Opinion opinion, int requestId) {
+            return base.Channel.RegisterOpinion(opinion, requestId);
         }
         
-        public System.Threading.Tasks.Task<int> RegisterOpinionAsync(SGMP_Client.SGPMReference.Request request) {
-            return base.Channel.RegisterOpinionAsync(request);
+        public System.Threading.Tasks.Task<int> RegisterOpinionAsync(SGMP_Client.SGPMReference.Opinion opinion, int requestId) {
+            return base.Channel.RegisterOpinionAsync(opinion, requestId);
         }
         
         public SGMP_Client.SGPMReference.Request[] GetRequestsOfProject(int projectId) {
