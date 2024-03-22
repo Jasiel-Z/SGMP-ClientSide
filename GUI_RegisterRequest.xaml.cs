@@ -40,6 +40,7 @@ namespace SGMP_Client
             lib_files.ItemsSource = AttachFiles;
             client = new SGPMReference.ProjectsManagementClient();
             this.project = project;
+            GetProyectDetails();
         }
 
 
@@ -153,7 +154,9 @@ namespace SGMP_Client
                     if (result >= 1)
                     {
                         MessageBox.Show("La solicitud  ha sido registrada", "Registro exitoso");
-                        ClearFields();
+                        GUI_RequestsManagement requestsManagement = new GUI_RequestsManagement(project);
+                        requestsManagement.Show();
+                        this.Close();
                     }
                     else
                     {

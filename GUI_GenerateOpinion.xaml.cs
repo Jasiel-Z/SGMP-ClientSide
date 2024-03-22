@@ -56,7 +56,7 @@ namespace SGMP_Client
         private void GetProyectDetails()
         {
 
-            tb_modality.Text = project.Modality;
+            tb_description.Text = project.Description;
             tb_group.Text = project.AttentionGroup;
             tb_type.Text = project.Type;
 
@@ -109,6 +109,12 @@ namespace SGMP_Client
 
         private void GetRequest()
         {
+            DateTime requestDate = request.CreationTime;
+            string requestDateString = requestDate.ToString("yyyy-MM-dd HH:mm:ss");
+            tb_request_date.Text = requestDateString;
+            tb_folio.Text = request.ProyectFolio.ToString();
+            tb_state.Text = request.State;
+
 
         }
 
@@ -247,6 +253,9 @@ namespace SGMP_Client
                         if (result >= 1)
                         {
                             MessageBox.Show("Registro realizado con éxito");
+                            GUI_RequestsManagement requestsManagement = new GUI_RequestsManagement(project);
+                            requestsManagement.Show();
+                            this.Close();
                         }
                         else
                         {

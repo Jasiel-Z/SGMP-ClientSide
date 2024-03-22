@@ -79,13 +79,13 @@ namespace SGMP_Client
             {
                 foreach (Request request in Requests)
                 {
-                    MessageBox.Show(request.State);
                     liv_requests.Items.Add(request);
                 }
             }
             else
             {
-                MessageBox.Show("Errro");
+                MessageBox.Show("No se pudieron recuperar los registros, por favor inténtelo más tarde"
+                 , "Error de conexión con la base de datos");
             }
         }
     }

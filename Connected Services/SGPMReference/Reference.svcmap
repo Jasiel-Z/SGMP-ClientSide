@@ -19,18 +19,18 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.1.129:8082" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8082" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="19f93598-b13c-457e-a491-022c3e41ba68" SourceId="1" SourceUrl="http://192.168.1.129:8082/?xsd=xsd1" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="4528c076-6ae5-4724-a8e8-5e56e8345920" SourceId="1" SourceUrl="http://192.168.1.129:8082/?xsd=xsd6" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="ae6b6e8e-b570-47cc-88f8-8111f1cde7ba" SourceId="1" SourceUrl="http://192.168.1.129:8082/?xsd=xsd4" />
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="5092071b-e051-4f39-b1a4-1f8f706418b0" SourceId="1" SourceUrl="http://192.168.1.129:8082/?xsd=xsd5" />
-    <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="aa818ca7-e691-4b0d-8022-adb80faa8a6b" SourceId="1" SourceUrl="http://192.168.1.129:8082/?disco" />
-    <MetadataFile FileName="SGPMManager1.wsdl" MetadataType="Wsdl" ID="641bb15a-fbbc-43cf-8085-fd191fed3a64" SourceId="1" SourceUrl="http://192.168.1.129:8082/?wsdl" />
-    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="e042336b-7bed-450b-918e-50bf3d6918b6" SourceId="1" SourceUrl="http://192.168.1.129:8082/?xsd=xsd2" />
-    <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="c0fcf969-107a-42e2-9492-83a6906d1060" SourceId="1" SourceUrl="http://192.168.1.129:8082/?xsd=xsd3" />
-    <MetadataFile FileName="item6.xsd" MetadataType="Schema" ID="bcf01ba9-cdc2-449f-b4b0-9c4d7fa789ef" SourceId="1" SourceUrl="http://192.168.1.129:8082/?xsd=xsd0" />
+    <MetadataFile FileName="item7.xsd" MetadataType="Schema" ID="5714cffc-2d0d-4680-9227-b9d6c385ac16" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd6" />
+    <MetadataFile FileName="item71.xsd" MetadataType="Schema" ID="3c103179-e96e-437c-9c12-44abc184c8fc" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd0" />
+    <MetadataFile FileName="item72.xsd" MetadataType="Schema" ID="6f1022fc-a6ff-4bed-8a22-634bb3c29e12" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd1" />
+    <MetadataFile FileName="item73.xsd" MetadataType="Schema" ID="d26675a8-925a-4934-b243-290a1d8c9921" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd2" />
+    <MetadataFile FileName="item74.xsd" MetadataType="Schema" ID="4e07f1e0-ac37-4a5e-81b7-c7553657adfd" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd3" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="acce1cbc-8f7e-48bc-8aa9-e157574e65be" SourceId="1" SourceUrl="http://localhost:8082/?disco" />
+    <MetadataFile FileName="item75.xsd" MetadataType="Schema" ID="d2a7a9a0-7817-46cd-bb93-ae9a5e0e838f" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd4" />
+    <MetadataFile FileName="SGPMManager.wsdl" MetadataType="Wsdl" ID="bc243ec2-4dde-4093-a6ec-937bbb4bb437" SourceId="1" SourceUrl="http://localhost:8082/?wsdl" />
+    <MetadataFile FileName="item76.xsd" MetadataType="Schema" ID="2930bc03-2336-4268-b2af-5b06ac57724b" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd5" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

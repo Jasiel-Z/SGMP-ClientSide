@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" />
-  <xs:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" />
-  <xs:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" />
-  <xs:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" />
-  <xs:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" />
+  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" />
+  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" />
+  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" />
+  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" />
+  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" />
   <xs:element name="GetProjectDetails">
     <xs:complexType>
       <xs:sequence>
