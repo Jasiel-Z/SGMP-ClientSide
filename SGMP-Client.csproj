@@ -73,6 +73,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI_RequestsManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI_RequestsMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -106,6 +110,9 @@
     <Compile Include="GUI_RegisterRequest.xaml.cs">
       <DependentUpon>GUI_RegisterRequest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI_RequestsManagement.xaml.cs">
+      <DependentUpon>GUI_RequestsManagement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI_RequestsMenu.xaml.cs">
       <DependentUpon>GUI_RequestsMenu.xaml</DependentUpon>
     </Compile>
@@ -135,22 +142,22 @@
     <None Include="Connected Services\SGPMReference\item.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\SGPMReference\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SGPMReference\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SGPMReference\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SGPMReference\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SGPMReference\item5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\SGPMReference\item6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\SGPMReference\item61.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\SGPMReference\item62.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\SGPMReference\item63.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\SGPMReference\item64.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\SGPMReference\item65.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Beneficiary.datasource">
@@ -223,9 +230,6 @@
     <Resource Include="agregar-archivo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SGPMReference\item1.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Icons\proyecto.png" />
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +258,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="programador.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SGPMReference\item1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

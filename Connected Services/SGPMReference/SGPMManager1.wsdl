@@ -50,13 +50,13 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" />
-      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" />
-      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" />
-      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" />
-      <xsd:import schemaLocation="http://10.30.5.36:8082/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IProjectsManagement_GetProjectDetails_InputMessage">
@@ -70,6 +70,12 @@
   </wsdl:message>
   <wsdl:message name="IProjectsManagement_GetProjectPolicies_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProjectPoliciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProjectsManagement_GetProjectsFromLocality_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectsFromLocality" />
+  </wsdl:message>
+  <wsdl:message name="IProjectsManagement_GetProjectsFromLocality_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectsFromLocalityResponse" />
   </wsdl:message>
   <wsdl:message name="IBeneficiaryManagement_GetBeneficiaries_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBeneficiaries" />
@@ -131,6 +137,12 @@
   <wsdl:message name="IRequestManagement_RegisterOpinion_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterOpinionResponse" />
   </wsdl:message>
+  <wsdl:message name="IRequestManagement_GetRequestsOfProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequestsOfProject" />
+  </wsdl:message>
+  <wsdl:message name="IRequestManagement_GetRequestsOfProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequestsOfProjectResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserManagement_GetUser_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUser" />
   </wsdl:message>
@@ -145,6 +157,10 @@
     <wsdl:operation name="GetProjectPolicies">
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectPolicies" message="tns:IProjectsManagement_GetProjectPolicies_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectPoliciesResponse" message="tns:IProjectsManagement_GetProjectPolicies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectsFromLocality">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectsFromLocality" message="tns:IProjectsManagement_GetProjectsFromLocality_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectsFromLocalityResponse" message="tns:IProjectsManagement_GetProjectsFromLocality_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IBeneficiaryManagement">
@@ -190,6 +206,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRequestManagement/RegisterOpinion" message="tns:IRequestManagement_RegisterOpinion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRequestManagement/RegisterOpinionResponse" message="tns:IRequestManagement_RegisterOpinion_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetRequestsOfProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequestManagement/GetRequestsOfProject" message="tns:IRequestManagement_GetRequestsOfProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequestManagement/GetRequestsOfProjectResponse" message="tns:IRequestManagement_GetRequestsOfProject_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IUserManagement">
     <wsdl:operation name="GetUser">
@@ -211,6 +231,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetProjectPolicies">
       <soap12:operation soapAction="http://tempuri.org/IProjectsManagement/GetProjectPolicies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectsFromLocality">
+      <soap12:operation soapAction="http://tempuri.org/IProjectsManagement/GetProjectsFromLocality" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -309,6 +338,15 @@
     </wsdl:operation>
     <wsdl:operation name="RegisterOpinion">
       <soap12:operation soapAction="http://tempuri.org/IRequestManagement/RegisterOpinion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequestsOfProject">
+      <soap12:operation soapAction="http://tempuri.org/IRequestManagement/GetRequestsOfProject" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

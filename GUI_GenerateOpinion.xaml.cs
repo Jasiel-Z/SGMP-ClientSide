@@ -48,12 +48,7 @@ namespace SGMP_Client
             GetFiles();
             GetRequest();
 
-
-
         }
-
-
-
 
         #region Recovery data
         private void GetProyectDetails()
@@ -116,8 +111,6 @@ namespace SGMP_Client
             SGPMReference.RequestManagementClient client = new SGPMReference.RequestManagementClient();
             Request = client.RecoverRequestDetails(30);
 
-            //client = new BeneficiaryManagementClient();
-            //Beneficiary = client.Ge
         }
 
 
@@ -127,18 +120,14 @@ namespace SGMP_Client
             Files = client.GetRequestFiles(30).ToList();
             foreach (var file in Files)
             {
-                // Crea un ListBoxItem para cada archivo
                 var listBoxItem = new ListBoxItem();
 
-                // Asigna el objeto File como DataContext del ListBoxItem
                 listBoxItem.DataContext = file;
 
-                // Agrega un botón de descarga al ListBoxItem
                 var downloadButton = new Button();
                 downloadButton.Content = "Descargar";
                 downloadButton.Click += (sender, e) =>
                 {
-                    // Maneja el evento Click del botón de descarga para realizar la descarga del archivo
                     var selectedFile = (sender as Button).DataContext as File;
                     if (selectedFile != null)
                     {
@@ -146,7 +135,6 @@ namespace SGMP_Client
                     }
                 };
 
-                // Agrega el botón de descarga al ListBoxItem
                 listBoxItem.Content = new StackPanel()
                 {
                     Orientation = Orientation.Horizontal,
@@ -157,7 +145,6 @@ namespace SGMP_Client
             }
                 };
 
-                // Agrega el ListBoxItem al ListBox
                 lib_files.Items.Add(listBoxItem);
             }
         }
@@ -166,10 +153,8 @@ namespace SGMP_Client
 
         private void DownloadFile(File selectedFile)
         {
-            // Obtén la ruta del archivo original desde el atributo Description del archivo
             string rutaArchivoOriginal = selectedFile.Description;
 
-            // Mostrar el diálogo de selección de directorio personalizado
             string directorioDestino = SeleccionarDirectorio();
 
             if (directorioDestino != null)
@@ -200,15 +185,24 @@ namespace SGMP_Client
             dialogo.ValidateNames = false;
             dialogo.CheckFileExists = false;
             dialogo.CheckPathExists = true;
-            dialogo.FileName = "Folder Selection"; // Nombre ficticio para que funcione el diálogo de selección de carpeta
+            dialogo.FileName = "Folder Selection"; 
 
-            // Muestra el cuadro de diálogo y devuelve la ruta seleccionada si el usuario hace clic en "Aceptar"
             if (dialogo.ShowDialog() == true)
             {
                 return System.IO.Path.GetDirectoryName(dialogo.FileName);
             }
 
             return null; 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

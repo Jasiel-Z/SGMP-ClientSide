@@ -25,10 +25,10 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Image x:Name="im_projects" HorizontalAlignment="Left" Height="190" Margin="68,30,0,0" VerticalAlignment="Top" Width="180" Source="/proyecto.png"/>
-            <Image x:Name="beneficiaries" Grid.Column="1" HorizontalAlignment="Left" Height="190" Margin="56,39,0,0" VerticalAlignment="Top" Width="180" Source="/beneficiario.png"/>
-            <Image x:Name="requests" Grid.Column="2" HorizontalAlignment="Center" Height="190" Margin="0,39,0,0" VerticalAlignment="Top" Width="180" Source="/solicitud.png"/>
-            <Image x:Name="location" Grid.Column="3" HorizontalAlignment="Left" Height="190" Margin="70,40,0,0" VerticalAlignment="Top" Width="180" Source="/marcador-de-posicion.png"/>
-            <Image x:Name="users" HorizontalAlignment="Left" Height="190" Margin="72,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="180" Source="/programador.png"/>
+            <Image x:Name="im_beneficiaries" Grid.Column="1" HorizontalAlignment="Left" Height="190" Margin="56,39,0,0" VerticalAlignment="Top" Width="180" Source="/beneficiario.png"/>
+            <Image x:Name="im_requests" Grid.Column="2" HorizontalAlignment="Center" Height="190" Margin="0,39,0,0" VerticalAlignment="Top" Width="180" Source="/solicitud.png"/>
+            <Image x:Name="im_location" Grid.Column="3" HorizontalAlignment="Left" Height="190" Margin="70,40,0,0" VerticalAlignment="Top" Width="180" Source="/marcador-de-posicion.png"/>
+            <Image x:Name="im_users" HorizontalAlignment="Left" Height="190" Margin="72,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="180" Source="/programador.png"/>
             <Label Content="Gestión de proyectos" HorizontalAlignment="Left" Margin="82,222,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
             <Label Content="Gestión de beneficiarios" HorizontalAlignment="Left" Margin="70,234,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
             <Label Content="Gestión de solicitudes" HorizontalAlignment="Left" Margin="77,231,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="2"/>

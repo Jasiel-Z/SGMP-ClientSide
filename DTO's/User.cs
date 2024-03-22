@@ -19,6 +19,7 @@ namespace SGMP_Client.DTO_s
         public int Password { get; set; }
         public string UserName { get; set; }
         public int EmployerId { get; set; }
+        public int LocationId { get; set; }
 
     }
 }
