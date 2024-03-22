@@ -19,7 +19,7 @@
 
         </Grid>
 
-        <Grid Grid.Column="1" Margin="4,4,0,-4">
+        <Grid Grid.Column="1" Margin="5,4,-1,-4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="65*"/>
                 <RowDefinition Height="132*"/>
@@ -32,31 +32,29 @@
 
 
             <Label Content="Datos del proyecto." HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Height="42" Width="230" Grid.RowSpan="2"/>
-            <Label Content="Nombre del proyecto:" HorizontalAlignment="Left" Margin="10,34,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="204"/>
-            <TextBox HorizontalAlignment="Left" Margin="13,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="60" FontSize="20"/>
-            <TextBox HorizontalAlignment="Center" Margin="0,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
-            <Label Content="Dependencia:" HorizontalAlignment="Left" Margin="339,35,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.35,0.52" Height="37" Width="130"/>
-            <Label Content="Tipo de apoyo:" HorizontalAlignment="Left" Margin="660,35,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.159,0.383" Height="37" Width="141"/>
-            <TextBox HorizontalAlignment="Left" Margin="666,68,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <Label Content="Modalidad:" HorizontalAlignment="Left" Margin="10,34,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="204"/>
+            <TextBox x:Name="tb_modality" IsReadOnly="True" HorizontalAlignment="Left" Margin="9,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <TextBox x:Name="tb_group" IsReadOnly="true" HorizontalAlignment="Left" Margin="348,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <Label Content="Grupo de atención:" HorizontalAlignment="Left" Margin="339,35,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.35,0.52" Height="37" Width="189"/>
+            <Label Content="Tipo:" HorizontalAlignment="Left" Margin="660,35,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.159,0.383" Height="37" Width="141"/>
+            <TextBox x:Name="tb_type" IsReadOnly="True" HorizontalAlignment="Left" Margin="666,68,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
 
             <Label Content="Datos del beneficiario." HorizontalAlignment="Left" Margin="10,3,0,0" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Height="39" Width="242"/>
-            <Label Content="Ingrese el nombre a buscar" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="18" Height="37" Width="424"/>
-            <TextBox HorizontalAlignment="Left" Margin="13,69,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
-            <Label Content="Nombre(s):" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" VerticalAlignment="Center" FontSize="20" Height="37" Width="108"/>
-            <Label Content="Apellido paterno:" HorizontalAlignment="Left" Margin="350,111,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="162"/>
-            <Label Content="CURP:" HorizontalAlignment="Left" Margin="670,114,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="64"/>
-            <Label Content="Dirección: " HorizontalAlignment="Left" Margin="10,187,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="32" Width="102"/>
-            <Label Content="Correo:" HorizontalAlignment="Left" Margin="354,189,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="33" Width="75"/>
-            <TextBox HorizontalAlignment="Left" Margin="13,146,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30"/>
-            <TextBox HorizontalAlignment="Left" Margin="354,146,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
-            <TextBox HorizontalAlignment="Left" Margin="667,146,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30"/>
-            <TextBox HorizontalAlignment="Left" Margin="13,218,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
-            <TextBox HorizontalAlignment="Left" Margin="360,220,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" FontSize="20" Height="30"/>
+            <Label Content="Ingrese el nombre a buscar:" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="18" Height="37" Width="291"/>
+            <TextBox x:Name="tb_search_beneficiary" HorizontalAlignment="Left" Margin="13,69,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="30" FontSize="20" TextChanged="tb_search_beneficiary_TextChanged"/>
+            <Label Content="Nombre(s):" HorizontalAlignment="Left" Margin="417,85,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="108"/>
+            <Label Content="Apellido paterno:" HorizontalAlignment="Left" Margin="721,85,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="162"/>
+            <Label Content="Dirección: " HorizontalAlignment="Left" Margin="413,170,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="32" Width="102"/>
+            <Label Content="Teléfono:" HorizontalAlignment="Left" Margin="719,168,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="33" Width="92"/>
+            <TextBox x:Name="tb_beneficiary_name" IsReadOnly="True" HorizontalAlignment="Left" Margin="422,127,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <TextBox x:Name="tb_benef_lastN" IsReadOnly="True" HorizontalAlignment="Left" Margin="719,128,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <TextBox x:Name="tb_address" IsReadOnly="True" HorizontalAlignment="Left" Margin="419,214,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <TextBox x:Name="tb_cellphone" IsReadOnly="True" HorizontalAlignment="Left" Margin="717,214,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" FontSize="20" Height="30"/>
 
 
             <Label Content="Documentación." HorizontalAlignment="Left" Margin="10,3,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
             <Button Content="Cancelar" HorizontalAlignment="Left" Margin="598,101,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Width="170" Height="45" Background="#FFD44646" Foreground="White"  Click="Btn_Cancel_Request_Click"/>
-            <Button Content="Registrar solicitud" HorizontalAlignment="Left" Margin="802,99,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="45" Width="170" Background="#FF33AA3E" Foreground="White"/>
+            <Button Content="Registrar solicitud" HorizontalAlignment="Left" Margin="802,99,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="45" Width="170" Background="#FF33AA3E" Foreground="White" Click="Btn_Register_Request_Click"/>
             <Label Content="Adjuntar archivo" HorizontalAlignment="Left" Margin="294,103,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="10"/>
             <Button x:Name="Btn_attach_file" HorizontalAlignment="Left" Margin="314,56,0,0" Grid.Row="3" VerticalAlignment="Top" Height="42" Width="45" Click="Btn_Attach_File_Click">
                 <StackPanel>
@@ -77,6 +75,16 @@
                 </StackPanel>
             </Button>
             <Label Content="Remover archivo" HorizontalAlignment="Left" Margin="394,103,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="10"/>
+            <Label Content="Tipo de beneficiario:" HorizontalAlignment="Left" Margin="320,7,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+            <ComboBox x:Name="cb_beneficiary_type" HorizontalAlignment="Center" Margin="0,13,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                <ComboBoxItem Content="Persona"/>
+                <ComboBoxItem Content="Empresa"/>
+            </ComboBox>
+
+            <ListBox x:Name="lib_beneficiaries" Grid.Row="2" SelectionChanged="lib_beneficiaries_SelectionChanged" Margin="16,130,675,18">
+
+            </ListBox>
+            <Button Content="Buscar" HorizontalAlignment="Left" Margin="224,69,0,0" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="90" Background="#FF22ABD9" Foreground="#FFF3F3F3" FontSize="16" RenderTransformOrigin="0.215,0.395" Click="Btn_Search_Beneficiary"/>
 
 
         </Grid>

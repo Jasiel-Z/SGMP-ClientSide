@@ -62,6 +62,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI_Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_MainMenu.xaml">
     <Page Include="GUI_Locality.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -74,6 +79,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI_RequestsManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_RequestsMenu.xaml">
     <Page Include="GUI_User.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -91,6 +101,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="DTO%27s\DTOCompany.cs" />
+    <Compile Include="DTO%27s\DTOPerson.cs" />
+    <Compile Include="DTO%27s\DTOProject.cs" />
+    <Compile Include="DTO%27s\User.cs" />
+    <Compile Include="GUI_Login.xaml.cs">
+      <DependentUpon>GUI_Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_MainMenu.xaml.cs">
+      <DependentUpon>GUI_MainMenu.xaml</DependentUpon>
     <Compile Include="GUI_GenerateOpinion.xaml.cs">
       <DependentUpon>GUI_GenerateOpinion.xaml</DependentUpon>
     </Compile>
@@ -103,6 +122,11 @@
     <Compile Include="GUI_RegisterRequest.xaml.cs">
       <DependentUpon>GUI_RegisterRequest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI_RequestsManagement.xaml.cs">
+      <DependentUpon>GUI_RequestsManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_RequestsMenu.xaml.cs">
+      <DependentUpon>GUI_RequestsMenu.xaml</DependentUpon>
     <Compile Include="GUI_User.xaml.cs">
       <DependentUpon>GUI_User.xaml</DependentUpon>
     </Compile>
@@ -197,6 +221,48 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\iconoVeracruz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconoVeracruz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="agregar-archivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\proyecto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="proyecto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\beneficiario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="beneficiario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\solicitud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="solicitud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\marcador-de-posicion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="marcador-de-posicion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\programador.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="programador.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SGPMReference\item1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
