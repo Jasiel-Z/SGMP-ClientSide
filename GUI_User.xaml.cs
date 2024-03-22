@@ -196,7 +196,7 @@ namespace SGMP_Client
 
         private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Window mainMenuWindow = new MainWindow();
+            Window mainMenuWindow = new GUI_MainMenu();
             mainMenuWindow.Show();
             this.Close();
         }

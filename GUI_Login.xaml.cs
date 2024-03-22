@@ -35,7 +35,9 @@ namespace SGMP_Client
             if (validData)
             {
                 Client = new SGPMManagerService.UserManagementClient();
-                SGPMManagerService.User user = Client.GetUser(tb_email.Text,pb_password.Password);
+
+                String hashedPassword = Utility.ComputeSha256Hash(pb_password.Password);
+                SGPMManagerService.User user = Client.GetUser(tb_email.Text, hashedPassword);
 
                 if (user != null)
                 {

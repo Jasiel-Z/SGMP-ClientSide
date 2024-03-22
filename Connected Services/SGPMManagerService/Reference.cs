@@ -4287,10 +4287,10 @@ namespace SGMP_Client.SGPMManagerService {
     public interface IUserManagement {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetUser", ReplyAction="http://tempuri.org/IUserManagement/GetUserResponse")]
-        SGMP_Client.SGPMManagerService.User GetUser(string username, string password);
+        SGMP_Client.SGPMManagerService.User GetUser(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetUser", ReplyAction="http://tempuri.org/IUserManagement/GetUserResponse")]
-        System.Threading.Tasks.Task<SGMP_Client.SGPMManagerService.User> GetUserAsync(string username, string password);
+        System.Threading.Tasks.Task<SGMP_Client.SGPMManagerService.User> GetUserAsync(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/SaveUser", ReplyAction="http://tempuri.org/IUserManagement/SaveUserResponse")]
         int SaveUser(SGMP_Client.SGPMManagerService.User user);
@@ -4338,12 +4338,12 @@ namespace SGMP_Client.SGPMManagerService {
                 base(binding, remoteAddress) {
         }
         
-        public SGMP_Client.SGPMManagerService.User GetUser(string username, string password) {
-            return base.Channel.GetUser(username, password);
+        public SGMP_Client.SGPMManagerService.User GetUser(string email, string password) {
+            return base.Channel.GetUser(email, password);
         }
         
-        public System.Threading.Tasks.Task<SGMP_Client.SGPMManagerService.User> GetUserAsync(string username, string password) {
-            return base.Channel.GetUserAsync(username, password);
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMManagerService.User> GetUserAsync(string email, string password) {
+            return base.Channel.GetUserAsync(email, password);
         }
         
         public int SaveUser(SGMP_Client.SGPMManagerService.User user) {
