@@ -44,10 +44,15 @@
             <Label Content="Comentarios:" HorizontalAlignment="Left" Margin="683,9,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
             <Label Content="Políticas de participación:" HorizontalAlignment="Left" Margin="285,12,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
             <TextBox x:Name="tb_comments" HorizontalAlignment="Left" Margin="684,51,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="321" Height="90" FontSize="20"/>
-            <Button Content="Cancelar" HorizontalAlignment="Left" Margin="618,193,0,0" Grid.Row="3" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Background="#FFD44646" Foreground="White" Click="Button_Click"/>
-            <Button Content="Enviar dictamen" HorizontalAlignment="Left" Margin="816,193,0,0" Grid.Row="3" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Foreground="White" Background="#FF33AA3E" Click="Button_Click_1"/>
+            <Button Content="Cancelar" HorizontalAlignment="Left" Margin="618,193,0,0" Grid.Row="3" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Background="#FFD44646" Foreground="White" Click="Btn_Cancel_Click"/>
+            <Button Content="Enviar dictamen" HorizontalAlignment="Left" Margin="816,193,0,0" Grid.Row="3" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Foreground="White" Background="#FF33AA3E" Click="Btn_Register_Opinion"/>
             <ListBox Name="lib_files" Grid.Row="3"  Margin="9,51,765,94"/>
             <ListBox x:Name="lib_policies" Grid.Row="3"  Margin="282,53,366,80"/>
+            <StackPanel x:Name="sp_politics" Grid.Row="3" Margin="288,188,558,14">
+                <RadioButton  x:Name="rb_accomplish" Content="Cumple las políticas" Checked="RadioButton_Checked" Margin="3,5,3,3"/>
+                <RadioButton x:Name="rb_no_accomplish" Content="No cumple las políticas" Checked="RadioButton_Checked" Margin="3,5,3,3"/>
+
+            </StackPanel>
         </Grid>
 
 

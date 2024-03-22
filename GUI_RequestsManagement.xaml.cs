@@ -32,6 +32,8 @@ namespace SGMP_Client
             Client = new SGPMReference.RequestManagementClient();
             Requests = new List<Request>();
             GetRequestsFromProyect();
+            lb_proyect_name.Content = project.Name;
+
 
         }
 
@@ -50,8 +52,26 @@ namespace SGMP_Client
         }
 
 
+        private void Btn_Go_Opinion_Click(object sender, RoutedEventArgs e)
+        {
+            Request selectedRequest = (Request)liv_requests.SelectedItem;
+            if (selectedRequest != null)
+            {
+                GUI_GenerateOpinion requestsManagement = new GUI_GenerateOpinion(project,selectedRequest);
+                requestsManagement.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Por favor selecciona el registro de la tabla y luego presiona el botón", "No se ha seleccionado " +
+                    "un proyecto");
+            }
+
+        }
+
         private void GetRequestsFromProyect()
         {
+
             int folio = project.Folio;
             Requests = Client.GetRequestsOfProject(folio).ToList();
 

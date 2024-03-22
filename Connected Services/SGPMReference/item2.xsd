@@ -83,7 +83,7 @@
       <xs:element minOccurs="0" name="LocalidadSet" nillable="true" type="tns:LocalidadSet" />
       <xs:element minOccurs="0" name="NumeroEmpleado" type="xs:int" />
       <xs:element minOccurs="0" name="UsuarioSet" nillable="true" type="tns:UsuarioSet" />
-      <xs:element minOccurs="0" name="Usuario_IdUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="Usuario_IdUsuario" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="apellidoMaterno" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="apellidoPaterno" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="calle" nillable="true" type="xs:string" />
@@ -168,12 +168,14 @@
       <xs:element minOccurs="0" name="OrdenEntrega_IdOrdenEntrega" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PoliticaProyectoSet" nillable="true" type="tns:ArrayOfPoliticaProyectoSet" />
       <xs:element minOccurs="0" name="SolicitudSet" nillable="true" type="tns:ArrayOfSolicitudSet" />
+      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="fechaFin" type="xs:dateTime" />
       <xs:element minOccurs="0" name="fechaLimiteEvidencia" type="xs:dateTime" />
       <xs:element minOccurs="0" name="fechaLimiteSolicitud" type="xs:dateTime" />
       <xs:element minOccurs="0" name="grupoAtencion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="modalidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="numeroBeneficiarios" type="xs:int" />
       <xs:element minOccurs="0" name="tipo" nillable="true" type="xs:string" />
     </xs:sequence>

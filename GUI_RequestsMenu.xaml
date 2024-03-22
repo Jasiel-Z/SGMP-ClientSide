@@ -11,13 +11,13 @@
             <RowDefinition Height="65*"/>
             <RowDefinition Height="369*"/>
         </Grid.RowDefinitions>
-        <ListView Name="lib_proyects" Margin="55,14,257,111" Grid.Row="1">
+        <ListView Name="lib_proyects" Margin="55,20,257,105" Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Folio}" Width="200"/>
-                    <GridViewColumn Header="Descripción" DisplayMemberBinding="{Binding Modality}" Width="200"/>
-                    <GridViewColumn Header="Fecha de inicio" DisplayMemberBinding="{Binding AttentionGroup}" Width="200"/>
-                    <GridViewColumn Header="Fecha de fin" DisplayMemberBinding="{Binding Type}" Width="200"/>
+                    <GridViewColumn Header="Nombre de proyecto" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                    <GridViewColumn Header="Descripción" DisplayMemberBinding="{Binding Description}" Width="200"/>
+                    <GridViewColumn Header="Grupo de apoyo" DisplayMemberBinding="{Binding AttentionGroup}" Width="200"/>
+                    <GridViewColumn Header="Tipo" DisplayMemberBinding="{Binding Type}" Width="200"/>
                     <GridViewColumn Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
