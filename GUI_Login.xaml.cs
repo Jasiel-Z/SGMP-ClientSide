@@ -20,12 +20,12 @@ namespace SGMP_Client
     public partial class GUI_Login : Window
     {
 
-        SGPMReference.UserManagementClient Client { get; set; }
+        SGPMManagerService.UserManagementClient Client { get; set; }
         public GUI_Login()
         {
             InitializeComponent();
 
-           Client = new SGPMReference.UserManagementClient();
+           Client = new SGPMManagerService.UserManagementClient();
 
         }
 
@@ -34,8 +34,8 @@ namespace SGMP_Client
            bool validData = ValidateFields();
             if (validData)
             {
-                Client = new SGPMReference.UserManagementClient();
-                SGPMReference.User user = Client.GetUser(tb_email.Text,pb_password.Password);
+                Client = new SGPMManagerService.UserManagementClient();
+                SGPMManagerService.User user = Client.GetUser(tb_email.Text,pb_password.Password);
 
                 if (user != null)
                 {

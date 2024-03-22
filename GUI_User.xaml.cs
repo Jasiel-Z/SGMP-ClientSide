@@ -56,7 +56,7 @@ namespace SGMP_Client
 
             User user = new User
             {
-                StaffNumber = staffNumber,
+                EmployeeNumber = staffNumber,
                 Email = email,
                 Password = Utility.ComputeSha256Hash(password)
             };

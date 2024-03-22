@@ -4,9 +4,34 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="AttentionGroup" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="BeneficiaryNumbers" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Folio" type="xs:int" />
       <xs:element minOccurs="0" name="Modality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Project" nillable="true" type="tns:Project" />
+  <xs:complexType name="ArrayOfProjectPolicy">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProjectPolicy" nillable="true" type="tns:ProjectPolicy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProjectPolicy" nillable="true" type="tns:ArrayOfProjectPolicy" />
+  <xs:complexType name="ProjectPolicy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GrantingPolicy" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProyectFolio" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectPolicy" nillable="true" type="tns:ProjectPolicy" />
+  <xs:complexType name="ArrayOfProject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProject" nillable="true" type="tns:ArrayOfProject" />
 </xs:schema>
