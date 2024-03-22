@@ -30,17 +30,16 @@ namespace SGMP_Client
         public ObservableCollection<string> AttachFiles { get; set; }
         public List<SGPMReference.File> Files { get; set; }
         SGPMReference.ProjectsManagementClient client;
-        public SGMP_Client.SGPMReference.Project project { get; set; }
+        private Project project;
 
-        public GUI_RegisterRequest()
+        public GUI_RegisterRequest(Project project)
         {
             InitializeComponent();
-            AttachFiles = new ObservableCollection<string>();  
+            AttachFiles = new ObservableCollection<string>();
             Files = new List<SGPMReference.File>();
             lib_files.ItemsSource = AttachFiles;
             client = new SGPMReference.ProjectsManagementClient();
-            project = new Project();
-            GetProyectDetails();
+            this.project = project;
         }
 
 
@@ -94,7 +93,9 @@ namespace SGMP_Client
 
             if (cancelationResult == MessageBoxResult.OK)
             {
-
+                GUI_RequestsManagement requestsManagement = new GUI_RequestsManagement(project);
+                requestsManagement.Show();
+                this.Close();
             }
             else
             {
@@ -209,7 +210,6 @@ namespace SGMP_Client
         private void GetProyectDetails()
         {
 
-            project = client.GetProjectDetails(7);
             tb_modality.Text = project.Modality;
             tb_group.Text = project.AttentionGroup;
             tb_type.Text = project.Type;

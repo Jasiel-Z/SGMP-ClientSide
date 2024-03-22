@@ -3564,6 +3564,9 @@ namespace SGMP_Client.SGPMReference {
         private int EmployeeNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LocationIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -3591,6 +3594,19 @@ namespace SGMP_Client.SGPMReference {
                 if ((this.EmployeeNumberField.Equals(value) != true)) {
                     this.EmployeeNumberField = value;
                     this.RaisePropertyChanged("EmployeeNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LocationId {
+            get {
+                return this.LocationIdField;
+            }
+            set {
+                if ((this.LocationIdField.Equals(value) != true)) {
+                    this.LocationIdField = value;
+                    this.RaisePropertyChanged("LocationId");
                 }
             }
         }
@@ -3659,6 +3675,12 @@ namespace SGMP_Client.SGPMReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/GetProjectPolicies", ReplyAction="http://tempuri.org/IProjectsManagement/GetProjectPoliciesResponse")]
         System.Threading.Tasks.Task<SGMP_Client.SGPMReference.ProjectPolicy[]> GetProjectPoliciesAsync(int idProject);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/GetProjectsFromLocality", ReplyAction="http://tempuri.org/IProjectsManagement/GetProjectsFromLocalityResponse")]
+        SGMP_Client.SGPMReference.Project[] GetProjectsFromLocality(int locationId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/GetProjectsFromLocality", ReplyAction="http://tempuri.org/IProjectsManagement/GetProjectsFromLocalityResponse")]
+        System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Project[]> GetProjectsFromLocalityAsync(int locationId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3702,6 +3724,14 @@ namespace SGMP_Client.SGPMReference {
         
         public System.Threading.Tasks.Task<SGMP_Client.SGPMReference.ProjectPolicy[]> GetProjectPoliciesAsync(int idProject) {
             return base.Channel.GetProjectPoliciesAsync(idProject);
+        }
+        
+        public SGMP_Client.SGPMReference.Project[] GetProjectsFromLocality(int locationId) {
+            return base.Channel.GetProjectsFromLocality(locationId);
+        }
+        
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Project[]> GetProjectsFromLocalityAsync(int locationId) {
+            return base.Channel.GetProjectsFromLocalityAsync(locationId);
         }
     }
     
@@ -3825,6 +3855,12 @@ namespace SGMP_Client.SGPMReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/RegisterOpinion", ReplyAction="http://tempuri.org/IRequestManagement/RegisterOpinionResponse")]
         System.Threading.Tasks.Task<int> RegisterOpinionAsync(SGMP_Client.SGPMReference.Request request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/GetRequestsOfProject", ReplyAction="http://tempuri.org/IRequestManagement/GetRequestsOfProjectResponse")]
+        SGMP_Client.SGPMReference.Request[] GetRequestsOfProject(int projectId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/GetRequestsOfProject", ReplyAction="http://tempuri.org/IRequestManagement/GetRequestsOfProjectResponse")]
+        System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Request[]> GetRequestsOfProjectAsync(int projectId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3908,6 +3944,14 @@ namespace SGMP_Client.SGPMReference {
         
         public System.Threading.Tasks.Task<int> RegisterOpinionAsync(SGMP_Client.SGPMReference.Request request) {
             return base.Channel.RegisterOpinionAsync(request);
+        }
+        
+        public SGMP_Client.SGPMReference.Request[] GetRequestsOfProject(int projectId) {
+            return base.Channel.GetRequestsOfProject(projectId);
+        }
+        
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Request[]> GetRequestsOfProjectAsync(int projectId) {
+            return base.Channel.GetRequestsOfProjectAsync(projectId);
         }
     }
     

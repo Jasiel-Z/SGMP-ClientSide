@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SGMP_Client.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,38 @@ namespace SGMP_Client
         public GUI_MainMenu()
         {
             InitializeComponent();
+            im_requests.MouseLeftButtonDown += GoRequestsModule;
+            im_beneficiaries.MouseLeftButtonDown += GoBeneficiariesModule;
+            im_location.MouseLeftButtonDown += GoLocationsModule;
+            im_projects.MouseLeftButtonDown += GoProjectsModule;
+            im_users.MouseLeftButtonDown += GoUserSModule;
+        }
+
+        private void GoUserSModule(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void GoProjectsModule(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void GoLocationsModule(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void GoBeneficiariesModule(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void GoRequestsModule(object sender, MouseButtonEventArgs e)
+        {
+            GUI_RequestsMenu requestsMenu = new GUI_RequestsMenu();
+            requestsMenu.Show();
+            this.Close();
         }
     }
 }

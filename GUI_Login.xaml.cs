@@ -45,6 +45,7 @@ namespace SGMP_Client
                     {
                         UserId = user.UserId,
                         EmployerId = user.EmployeeNumber,
+                        LocationId = user.LocationId,
                     };
 
                     GUI_MainMenu mainMenu = new GUI_MainMenu();
