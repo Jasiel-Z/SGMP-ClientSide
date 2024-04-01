@@ -32,7 +32,9 @@ namespace SGMP_Client
 
         private void GoUserSModule(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            Window userWindow = new GUI_User();
+            userWindow.Show();
+            this.Close();
         }
 
         private void GoProjectsModule(object sender, MouseButtonEventArgs e)
@@ -42,7 +44,9 @@ namespace SGMP_Client
 
         private void GoLocationsModule(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            Window locationWindow = new GUI_Locality();
+            locationWindow.Show();
+            this.Close();
         }
 
         private void GoBeneficiariesModule(object sender, MouseButtonEventArgs e)

@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using System.Runtime.CompilerServices;
-using SGMP_Client.SGPMReference;
+using SGMP_Client.SGPMManagerService;
 using SGMP_Client.DTO_s;
 using System.Runtime.InteropServices.WindowsRuntime;
 
@@ -28,17 +28,17 @@ namespace SGMP_Client
     {
 
         public ObservableCollection<string> AttachFiles { get; set; }
-        public List<SGPMReference.File> Files { get; set; }
-        SGPMReference.ProjectsManagementClient client;
+        public List<SGPMManagerService.File> Files { get; set; }
+        SGPMManagerService.ProjectsManagementClient client;
         private Project project;
 
         public GUI_RegisterRequest(Project project)
         {
             InitializeComponent();
             AttachFiles = new ObservableCollection<string>();
-            Files = new List<SGPMReference.File>();
+            Files = new List<SGPMManagerService.File>();
             lib_files.ItemsSource = AttachFiles;
-            client = new SGPMReference.ProjectsManagementClient();
+            client = new SGPMManagerService.ProjectsManagementClient();
             this.project = project;
             GetProyectDetails();
         }
@@ -64,7 +64,7 @@ namespace SGMP_Client
                         byte[] fileBytes = new byte[fileStream.Length];
                         fileStream.Read(fileBytes, 0, (int)fileStream.Length);
 
-                        SGPMReference.File file = new SGPMReference.File
+                        SGPMManagerService.File file = new SGPMManagerService.File
                         {
                             Name = System.IO.Path.GetFileName(ruta),
                             Content = new byte[0],
@@ -108,8 +108,8 @@ namespace SGMP_Client
                 string selectedFileName = lib_files.SelectedItem.ToString();
                 AttachFiles.Remove(selectedFileName);
 
-                SGPMReference.File fileToRemove = null;
-                foreach (SGPMReference.File file in Files)
+                SGPMManagerService.File fileToRemove = null;
+                foreach (SGPMManagerService.File file in Files)
                 {
                     if (file.Name == selectedFileName)
                     {
@@ -132,7 +132,7 @@ namespace SGMP_Client
 
             if (validData)
             {
-                SGPMReference.SolicitudSet request = new SGPMReference.SolicitudSet
+                SGPMManagerService.SolicitudSet request = new SGPMManagerService.SolicitudSet
                 {
                     estado = "creada",
                     fechaCreacion = System.DateTime.Now,
@@ -140,7 +140,7 @@ namespace SGMP_Client
                     BeneficiarioId = GetBeneficiaryId(),
                 };
 
-                SGPMReference.RequestManagementClient client = new SGPMReference.RequestManagementClient();
+                SGPMManagerService.RequestManagementClient client = new SGPMManagerService.RequestManagementClient();
 
                 bool beneficiaryFound = client.BeneficiaryHasRequest((int)request.BeneficiarioId, request.ProyectoFolio);
 
@@ -225,8 +225,8 @@ namespace SGMP_Client
 
             if (tipoBeneficiario == "Persona")
             {
-                SGPMReference.BeneficiaryManagementClient client = new SGPMReference.BeneficiaryManagementClient();
-                List<SGMP_Client.SGPMReference.Person> personsList = client.GetPersons(beneficiaryName).ToList();
+                SGPMManagerService.BeneficiaryManagementClient client = new SGPMManagerService.BeneficiaryManagementClient();
+                List<SGMP_Client.SGPMManagerService.Person> personsList = client.GetPersons(beneficiaryName).ToList();
                 MessageBox.Show("Todo bien");
 
                 lib_beneficiaries.Items.Clear();
@@ -241,8 +241,8 @@ namespace SGMP_Client
             }
             else if (tipoBeneficiario == "Empresa")
             {
-                SGPMReference.BeneficiaryManagementClient client = new SGPMReference.BeneficiaryManagementClient();
-                List<SGMP_Client.SGPMReference.Company> companiesList = client.GetCompanies(beneficiaryName).ToList();
+                SGPMManagerService.BeneficiaryManagementClient client = new SGPMManagerService.BeneficiaryManagementClient();
+                List<SGMP_Client.SGPMManagerService.Company> companiesList = client.GetCompanies(beneficiaryName).ToList();
                 MessageBox.Show("Todo bien");
 
                 lib_beneficiaries.Items.Clear();
@@ -277,9 +277,9 @@ namespace SGMP_Client
                 object selectedItem = listBox.SelectedItem;
 
 
-                if (selectedItem is SGMP_Client.SGPMReference.Person)
+                if (selectedItem is SGMP_Client.SGPMManagerService.Person)
                 {
-                    SGMP_Client.SGPMReference.Person selectedPerson = (SGMP_Client.SGPMReference.Person)selectedItem;
+                    SGMP_Client.SGPMManagerService.Person selectedPerson = (SGMP_Client.SGPMManagerService.Person)selectedItem;
 
                     tb_beneficiary_name.Text = selectedPerson.Name;
                     tb_benef_lastN.Text = selectedPerson.LastName;
@@ -287,9 +287,9 @@ namespace SGMP_Client
                     tb_cellphone.Text = selectedPerson.PhoneNumber;
 
                 }
-                else if (selectedItem is SGMP_Client.SGPMReference.Company)
+                else if (selectedItem is SGMP_Client.SGPMManagerService.Company)
                 {
-                    SGMP_Client.SGPMReference.Company selectedCompany = (SGMP_Client.SGPMReference.Company)selectedItem;
+                    SGMP_Client.SGPMManagerService.Company selectedCompany = (SGMP_Client.SGPMManagerService.Company)selectedItem;
 
                     tb_beneficiary_name.Text = selectedCompany.Name;
                     tb_cellphone.Text = selectedCompany.PhoneNumber;
