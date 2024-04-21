@@ -32,9 +32,9 @@
             <Button Content="Guardar" HorizontalAlignment="Left" Margin="802,99,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="45" Width="170" Background="#FF33AA3E" Foreground="White" Click="Btn_Save_Policy_Click"/>
 
             <Label Content="Nombre de Política:" HorizontalAlignment="Left" Margin="10,34,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="204"/>
-            <TextBox Name="tbxName" MaxLength="20" HorizontalAlignment="Left" Margin="13,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="29" FontSize="20"/>
+            <TextBox Name="tbxName" MaxLength="35" HorizontalAlignment="Left" Margin="13,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="29" FontSize="20"/>
             <Label Content="Descripción:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="204"/>
-            <TextBox Name="tbxDescription" MaxLength="100" HorizontalAlignment="Left" Margin="13,45,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="755" Height="87" FontSize="20"/>
+            <TextBox Name="tbxDescription" MaxLength="250" HorizontalAlignment="Left" Margin="13,45,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="755" Height="87" FontSize="20"/>
 
             <Label x:Name="lbInvalidNameMessage" Content="El nombre puede contener máximo 20 caracteres." HorizontalAlignment="Left" Margin="13,98,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" Height="37" Width="361" Foreground="Red" Visibility="Hidden"/>
             <Label x:Name="lbInvalidDescriptionMessage" Content="El nombre puede contener máximo 100 caracteres." HorizontalAlignment="Left" Margin="13,132,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="16" Height="37" Width="377" Foreground="Red" Visibility="Hidden"/>
