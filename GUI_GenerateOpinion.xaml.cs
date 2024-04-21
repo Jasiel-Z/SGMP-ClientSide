@@ -237,7 +237,7 @@ namespace SGMP_Client
                             State = state,
                             Comment = tb_comments.Text,
                             Date = DateTime.Now,
-                            EmployeeNumber = DTO_s.User.UserClient.EmployerId,
+                            EmployeeNumber = DTO_s.User.UserClient.EmployeeNumber
                         
                         };
 

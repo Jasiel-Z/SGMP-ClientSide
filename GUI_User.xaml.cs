@@ -22,9 +22,37 @@ namespace SGMP_Client
     /// </summary>
     public partial class GUI_User : Window
     {
+        private Dictionary<string, int> localitiesDictionary = new Dictionary<string, int>();
+
         public GUI_User()
         {
             InitializeComponent();
+            LoadComboBoxes();
+        }
+
+        private void LoadComboBoxes()
+        {
+            List<string> roles = new List<string>
+            {
+                "Administrador",
+                "Director",
+                "Analista"
+            };
+            
+            List<string> localitiesNames = new List<string>();
+            localitiesDictionary = new Dictionary<string, int>();
+            var localities = GetLocalitiesFromDatabase();
+            foreach (var locality in localities)
+            {
+                string localityTownship;
+                localityTownship = locality.Name + ", " + locality.Township;
+                localitiesNames.Add(localityTownship);
+                localitiesDictionary[localityTownship] = locality.LocalityID;
+            }
+            localitiesNames.Sort();
+
+            cbRole.ItemsSource = roles;
+            cbLocality.ItemsSource = localitiesNames;
         }
 
         private void Btn_Save_User_Click(object sender, RoutedEventArgs e)
@@ -33,52 +61,76 @@ namespace SGMP_Client
             string email = tbxEMail.Text.ToString();
             string password = pwbPassword.Password.ToString();
             string repeatPassword = pwbRepeatPassword.Password.ToString();
-
-            if (ValidateFields(staffNumberString, email, password, repeatPassword))
+            string name = tbxName.Text.ToString();
+            string middleName = tbxMiddleName.Text.ToString();
+            string lastName = tbxLastName.Text.ToString();
+            string city = tbxCity.Text.ToString();
+            string street = tbxStreet.Text.ToString();
+            string number = tbxNumber.Text.ToString();
+            string phoneNumber = tbxPhoneNumber.Text.ToString();
+            string role = "";
+            string locality = "";
+            if (cbRole.SelectedItem != null && cbLocality.SelectedItem != null)
             {
-                int staffNumber = int.Parse(staffNumberString);
-                int result = SaveUser(staffNumber, email, password);
+                role = cbRole.SelectedItem.ToString();
+                locality = cbLocality.SelectedItem.ToString();
+            }
 
-                if (result == 1)
+            if (ValidateUserFields(staffNumberString, email, password, repeatPassword) 
+                && ValidateEmployeeFields(name, middleName, lastName, city, street, number, phoneNumber, role, locality))
+            {
+                User user = new User
+                {
+                    Name = name,
+                    MiddleName = middleName,
+                    LastName = lastName,
+                    City = city,
+                    Street = street,
+                    Number = int.Parse(number),
+                    PhoneNumber = phoneNumber,
+                    Role = role,
+                    LocationId = localitiesDictionary[locality],
+                    EmployeeNumber = int.Parse(staffNumberString),
+                    Email = email,
+                    Password = Utility.ComputeSha256Hash(password)
+                };
+
+                int result = SaveUser(user);
+
+                if (result == 2)
                 {
                     MessageBox.Show("Se ha guardado el nuevo usuario correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
                     MessageBox.Show("Ha ocurrido un error al intentar guardar el nuevo usuario. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Console.WriteLine(result);
                 }
             }
         }
 
-        private int SaveUser(int staffNumber, string email, string password)
+        private int SaveUser(User user)
         {
             SGPMManagerService.UserManagementClient client = new SGPMManagerService.UserManagementClient();
-
-            User user = new User
-            {
-                EmployeeNumber = staffNumber,
-                Email = email,
-                Password = Utility.ComputeSha256Hash(password)
-            };
 
             int result = client.SaveUser(user);
 
             return result;
         }
 
-        private bool ValidateFields(string staffNumber, string email, string password, string repeatPassword)
+        private bool ValidateUserFields(string employeeNumber, string email, string password, string repeatPassword)
         {
             bool isStaffNumberValid = false;
             bool isEmailValid = false;
             bool isPasswordValid = false;
 
-            if (!string.IsNullOrEmpty(staffNumber.ToString()) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(repeatPassword))
+            if (!string.IsNullOrEmpty(employeeNumber.ToString()) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(repeatPassword))
             {
                 lbEmptyFieldsMessage.Visibility = Visibility.Hidden;
 
-                isStaffNumberValid = ValidateStaffNumber(staffNumber);
+                isStaffNumberValid = ValidateEmployeeNumber(employeeNumber);
                 isEmailValid = ValidateEmail(email);
-                isPasswordValid = ValidatePassword(password, repeatPassword);           
+                isPasswordValid = ValidatePassword(password, repeatPassword); 
             }
             else
             {
@@ -88,31 +140,49 @@ namespace SGMP_Client
             return isStaffNumberValid && isEmailValid && isPasswordValid;
         }
 
-        public bool ValidateStaffNumber(string staffNumber)
+        private bool ValidateEmployeeFields(string name, string middleName, string lastName, string city, string street, string number, string phoneNumber, string role, string locality)
         {
-            bool isStaffNumberValid;
-            if (staffNumber.Length == 10 && Regex.IsMatch(staffNumber, "^[0-9]+$"))
-            {
-                SGPMManagerService.UserManagementClient client = new SGPMManagerService.UserManagementClient();
+            bool areFieldsValid = false;
 
-                // if (client.ValidateStaffNumberDoesNotExist(staffNumber)) 
-                // {
-                    isStaffNumberValid = true;            
-                    lbInvalidStaffNumberMessage.Visibility = Visibility.Hidden;
-                // }
-                // else 
-                // {
-                //     lbInvalidStaffNumberMessage.Content = "El número de empleado ya está asociado a una cuenta.";
-                //     lbInvalidStaffNumberMessage.Visibility = Visibility.Visible;
-                // }
+            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(middleName) && !string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(city) && !string.IsNullOrEmpty(street) 
+                && !string.IsNullOrEmpty(number) && !string.IsNullOrEmpty(phoneNumber) && !string.IsNullOrEmpty(role) && !string.IsNullOrEmpty(locality))
+            {
+                lbEmptyFieldsMessage.Visibility = Visibility.Hidden;
+                areFieldsValid = true;
             }
             else
             {
-                isStaffNumberValid = false;
-                lbInvalidStaffNumberMessage.Content = "Debe contener 10 dígitos.";
-                lbInvalidStaffNumberMessage.Visibility = Visibility.Visible;
+                lbEmptyFieldsMessage.Visibility = Visibility.Visible;
             }
-            return isStaffNumberValid;
+
+            return areFieldsValid;
+        }
+
+        public bool ValidateEmployeeNumber(string employeeNumber)
+        {
+            bool isEmployeeNumberValid = false;
+            if (employeeNumber.Length == 8 && Regex.IsMatch(employeeNumber, "^[0-9]+$"))
+            {
+                SGPMManagerService.UserManagementClient client = new SGPMManagerService.UserManagementClient();
+                
+                if (client.ValidateEmployeeNumberDoesNotExist(employeeNumber))
+                {
+                    isEmployeeNumberValid = true;            
+                    lbInvalidEmployeeNumberMessage.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lbInvalidEmployeeNumberMessage.Content = "El número de empleado ya existe.";
+                    lbInvalidEmployeeNumberMessage.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                isEmployeeNumberValid = false;
+                lbInvalidEmployeeNumberMessage.Content = "Debe contener 10 dígitos.";
+                lbInvalidEmployeeNumberMessage.Visibility = Visibility.Visible;
+            }
+            return isEmployeeNumberValid;
         }
 
         public bool ValidateEmail(string email)
@@ -199,6 +269,21 @@ namespace SGMP_Client
             Window mainMenuWindow = new GUI_MainMenu();
             mainMenuWindow.Show();
             this.Close();
+        }
+
+        private List<Locality> GetLocalitiesFromDatabase()
+        {
+            var localities = new List<Locality>();
+            SGPMManagerService.LocalityManagementClient client = new SGPMManagerService.LocalityManagementClient();
+
+            var localitiesFromDatabaseList = client.GetLocalities();
+
+            foreach ( var locality in localitiesFromDatabaseList ) 
+            { 
+                localities.Add( locality ); 
+            }
+
+            return localities;
         }
     }
 }

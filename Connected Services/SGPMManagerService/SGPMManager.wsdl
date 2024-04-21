@@ -187,11 +187,11 @@
   <wsdl:message name="IUserManagement_ValidateEmailDoesNotExist_OutputMessage">
     <wsdl:part name="parameters" element="tns:ValidateEmailDoesNotExistResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserManagement_ValidateStaffNumberDoesNotExist_InputMessage">
-    <wsdl:part name="parameters" element="tns:ValidateStaffNumberDoesNotExist" />
+  <wsdl:message name="IUserManagement_ValidateEmployeeNumberDoesNotExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmployeeNumberDoesNotExist" />
   </wsdl:message>
-  <wsdl:message name="IUserManagement_ValidateStaffNumberDoesNotExist_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ValidateStaffNumberDoesNotExistResponse" />
+  <wsdl:message name="IUserManagement_ValidateEmployeeNumberDoesNotExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmployeeNumberDoesNotExistResponse" />
   </wsdl:message>
   <wsdl:message name="ILocalityManagement_SaveLocality_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveLocality" />
@@ -204,6 +204,12 @@
   </wsdl:message>
   <wsdl:message name="ILocalityManagement_ValidateLocalityDoesNotExist_OutputMessage">
     <wsdl:part name="parameters" element="tns:ValidateLocalityDoesNotExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILocalityManagement_GetLocalities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocalities" />
+  </wsdl:message>
+  <wsdl:message name="ILocalityManagement_GetLocalities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocalitiesResponse" />
   </wsdl:message>
   <wsdl:message name="IPolicyManagement_SavePolicy_InputMessage">
     <wsdl:part name="parameters" element="tns:SavePolicy" />
@@ -286,9 +292,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/ValidateEmailDoesNotExist" message="tns:IUserManagement_ValidateEmailDoesNotExist_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/ValidateEmailDoesNotExistResponse" message="tns:IUserManagement_ValidateEmailDoesNotExist_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ValidateStaffNumberDoesNotExist">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/ValidateStaffNumberDoesNotExist" message="tns:IUserManagement_ValidateStaffNumberDoesNotExist_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/ValidateStaffNumberDoesNotExistResponse" message="tns:IUserManagement_ValidateStaffNumberDoesNotExist_OutputMessage" />
+    <wsdl:operation name="ValidateEmployeeNumberDoesNotExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/ValidateEmployeeNumberDoesNotExist" message="tns:IUserManagement_ValidateEmployeeNumberDoesNotExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/ValidateEmployeeNumberDoesNotExistResponse" message="tns:IUserManagement_ValidateEmployeeNumberDoesNotExist_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILocalityManagement">
@@ -299,6 +305,10 @@
     <wsdl:operation name="ValidateLocalityDoesNotExist">
       <wsdl:input wsaw:Action="http://tempuri.org/ILocalityManagement/ValidateLocalityDoesNotExist" message="tns:ILocalityManagement_ValidateLocalityDoesNotExist_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILocalityManagement/ValidateLocalityDoesNotExistResponse" message="tns:ILocalityManagement_ValidateLocalityDoesNotExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalities">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILocalityManagement/GetLocalities" message="tns:ILocalityManagement_GetLocalities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILocalityManagement/GetLocalitiesResponse" message="tns:ILocalityManagement_GetLocalities_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IPolicyManagement">
@@ -475,8 +485,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ValidateStaffNumberDoesNotExist">
-      <soap12:operation soapAction="http://tempuri.org/IUserManagement/ValidateStaffNumberDoesNotExist" style="document" />
+    <wsdl:operation name="ValidateEmployeeNumberDoesNotExist">
+      <soap12:operation soapAction="http://tempuri.org/IUserManagement/ValidateEmployeeNumberDoesNotExist" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -499,6 +509,15 @@
     </wsdl:operation>
     <wsdl:operation name="ValidateLocalityDoesNotExist">
       <soap12:operation soapAction="http://tempuri.org/ILocalityManagement/ValidateLocalityDoesNotExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalities">
+      <soap12:operation soapAction="http://tempuri.org/ILocalityManagement/GetLocalities" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

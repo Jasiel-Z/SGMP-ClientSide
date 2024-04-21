@@ -1983,6 +1983,9 @@ namespace SGMP_Client.SGPMManagerService {
         private SGMP_Client.SGPMManagerService.LocalidadDependenciaSet[] LocalidadDependenciaSetField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string municipioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nombreField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -2043,6 +2046,19 @@ namespace SGMP_Client.SGPMManagerService {
                 if ((object.ReferenceEquals(this.LocalidadDependenciaSetField, value) != true)) {
                     this.LocalidadDependenciaSetField = value;
                     this.RaisePropertyChanged("LocalidadDependenciaSet");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string municipio {
+            get {
+                return this.municipioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.municipioField, value) != true)) {
+                    this.municipioField = value;
+                    this.RaisePropertyChanged("municipio");
                 }
             }
         }
@@ -3734,16 +3750,40 @@ namespace SGMP_Client.SGPMManagerService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int EmployeeNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int LocationIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MiddleNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PhoneNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StreetField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int UserIdField;
@@ -3758,6 +3798,19 @@ namespace SGMP_Client.SGPMManagerService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
             }
         }
         
@@ -3788,6 +3841,19 @@ namespace SGMP_Client.SGPMManagerService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int LocationId {
             get {
                 return this.LocationIdField;
@@ -3801,6 +3867,45 @@ namespace SGMP_Client.SGPMManagerService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MiddleName {
+            get {
+                return this.MiddleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MiddleNameField, value) != true)) {
+                    this.MiddleNameField = value;
+                    this.RaisePropertyChanged("MiddleName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Number {
+            get {
+                return this.NumberField;
+            }
+            set {
+                if ((this.NumberField.Equals(value) != true)) {
+                    this.NumberField = value;
+                    this.RaisePropertyChanged("Number");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Password {
             get {
                 return this.PasswordField;
@@ -3809,6 +3914,45 @@ namespace SGMP_Client.SGPMManagerService {
                 if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
                     this.PasswordField = value;
                     this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PhoneNumber {
+            get {
+                return this.PhoneNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhoneNumberField, value) != true)) {
+                    this.PhoneNumberField = value;
+                    this.RaisePropertyChanged("PhoneNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Role {
+            get {
+                return this.RoleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoleField, value) != true)) {
+                    this.RoleField = value;
+                    this.RaisePropertyChanged("Role");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Street {
+            get {
+                return this.StreetField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StreetField, value) != true)) {
+                    this.StreetField = value;
+                    this.RaisePropertyChanged("Street");
                 }
             }
         }
@@ -3864,6 +4008,9 @@ namespace SGMP_Client.SGPMManagerService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TownshipField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -3896,6 +4043,19 @@ namespace SGMP_Client.SGPMManagerService {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Township {
+            get {
+                return this.TownshipField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TownshipField, value) != true)) {
+                    this.TownshipField = value;
+                    this.RaisePropertyChanged("Township");
                 }
             }
         }
@@ -4304,11 +4464,11 @@ namespace SGMP_Client.SGPMManagerService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ValidateEmailDoesNotExist", ReplyAction="http://tempuri.org/IUserManagement/ValidateEmailDoesNotExistResponse")]
         System.Threading.Tasks.Task<bool> ValidateEmailDoesNotExistAsync(string email);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ValidateStaffNumberDoesNotExist", ReplyAction="http://tempuri.org/IUserManagement/ValidateStaffNumberDoesNotExistResponse")]
-        bool ValidateStaffNumberDoesNotExist(string staffNumber);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ValidateEmployeeNumberDoesNotExist", ReplyAction="http://tempuri.org/IUserManagement/ValidateEmployeeNumberDoesNotExistResponse")]
+        bool ValidateEmployeeNumberDoesNotExist(string employeeNumber);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ValidateStaffNumberDoesNotExist", ReplyAction="http://tempuri.org/IUserManagement/ValidateStaffNumberDoesNotExistResponse")]
-        System.Threading.Tasks.Task<bool> ValidateStaffNumberDoesNotExistAsync(string staffNumber);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ValidateEmployeeNumberDoesNotExist", ReplyAction="http://tempuri.org/IUserManagement/ValidateEmployeeNumberDoesNotExistResponse")]
+        System.Threading.Tasks.Task<bool> ValidateEmployeeNumberDoesNotExistAsync(string employeeNumber);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4362,12 +4522,12 @@ namespace SGMP_Client.SGPMManagerService {
             return base.Channel.ValidateEmailDoesNotExistAsync(email);
         }
         
-        public bool ValidateStaffNumberDoesNotExist(string staffNumber) {
-            return base.Channel.ValidateStaffNumberDoesNotExist(staffNumber);
+        public bool ValidateEmployeeNumberDoesNotExist(string employeeNumber) {
+            return base.Channel.ValidateEmployeeNumberDoesNotExist(employeeNumber);
         }
         
-        public System.Threading.Tasks.Task<bool> ValidateStaffNumberDoesNotExistAsync(string staffNumber) {
-            return base.Channel.ValidateStaffNumberDoesNotExistAsync(staffNumber);
+        public System.Threading.Tasks.Task<bool> ValidateEmployeeNumberDoesNotExistAsync(string employeeNumber) {
+            return base.Channel.ValidateEmployeeNumberDoesNotExistAsync(employeeNumber);
         }
     }
     
@@ -4386,6 +4546,12 @@ namespace SGMP_Client.SGPMManagerService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocalityManagement/ValidateLocalityDoesNotExist", ReplyAction="http://tempuri.org/ILocalityManagement/ValidateLocalityDoesNotExistResponse")]
         System.Threading.Tasks.Task<bool> ValidateLocalityDoesNotExistAsync(string localityName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocalityManagement/GetLocalities", ReplyAction="http://tempuri.org/ILocalityManagement/GetLocalitiesResponse")]
+        SGMP_Client.SGPMManagerService.Locality[] GetLocalities();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocalityManagement/GetLocalities", ReplyAction="http://tempuri.org/ILocalityManagement/GetLocalitiesResponse")]
+        System.Threading.Tasks.Task<SGMP_Client.SGPMManagerService.Locality[]> GetLocalitiesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4429,6 +4595,14 @@ namespace SGMP_Client.SGPMManagerService {
         
         public System.Threading.Tasks.Task<bool> ValidateLocalityDoesNotExistAsync(string localityName) {
             return base.Channel.ValidateLocalityDoesNotExistAsync(localityName);
+        }
+        
+        public SGMP_Client.SGPMManagerService.Locality[] GetLocalities() {
+            return base.Channel.GetLocalities();
+        }
+        
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMManagerService.Locality[]> GetLocalitiesAsync() {
+            return base.Channel.GetLocalitiesAsync();
         }
     }
     

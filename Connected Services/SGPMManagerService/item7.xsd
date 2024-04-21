@@ -4,7 +4,14 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="LocalityID" type="xs:int" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Township" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Locality" nillable="true" type="tns:Locality" />
+  <xs:complexType name="ArrayOfLocality">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Locality" nillable="true" type="tns:Locality" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLocality" nillable="true" type="tns:ArrayOfLocality" />
 </xs:schema>

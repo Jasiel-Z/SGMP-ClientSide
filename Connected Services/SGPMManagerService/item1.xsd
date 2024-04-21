@@ -247,17 +247,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ValidateStaffNumberDoesNotExist">
+  <xs:element name="ValidateEmployeeNumberDoesNotExist">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="staffNumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="employeeNumber" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ValidateStaffNumberDoesNotExistResponse">
+  <xs:element name="ValidateEmployeeNumberDoesNotExistResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ValidateStaffNumberDoesNotExistResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ValidateEmployeeNumberDoesNotExistResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -289,10 +289,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetLocalities">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocalitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/SGPM_Contracts.ILocalityManagement" minOccurs="0" name="GetLocalitiesResult" nillable="true" type="q18:ArrayOfLocality" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SavePolicy">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IPolicyManagement" minOccurs="0" name="policy" nillable="true" type="q18:Policy" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IPolicyManagement" minOccurs="0" name="policy" nillable="true" type="q19:Policy" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

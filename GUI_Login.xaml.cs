@@ -31,7 +31,7 @@ namespace SGMP_Client
 
         private void Btn_Login(object sender, RoutedEventArgs e)
         {
-           bool validData = ValidateFields();
+            bool validData = ValidateFields();
             if (validData)
             {
                 Client = new SGPMManagerService.UserManagementClient();
@@ -46,7 +46,18 @@ namespace SGMP_Client
                     DTO_s.User.UserClient = new DTO_s.User()
                     {
                         UserId = user.UserId,
-                        EmployerId = user.EmployeeNumber,
+                        Email = user.Email,
+                        Password = user.Password,
+
+                        EmployeeNumber = user.EmployeeNumber,
+                        Name = user.Name,
+                        MiddleName = user.MiddleName,
+                        LastName = user.LastName,
+                        Role = user.Role,
+                        PhoneNumber = user.PhoneNumber,
+                        City = user.City,
+                        Street = user.Street,
+                        Number = user.Number,
                         LocationId = user.LocationId,
                     };
 

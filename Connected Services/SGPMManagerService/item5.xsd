@@ -66,6 +66,7 @@
       <xs:element minOccurs="0" name="EmpleadoSet" nillable="true" type="tns:ArrayOfEmpleadoSet" />
       <xs:element minOccurs="0" name="IdLocalidad" type="xs:int" />
       <xs:element minOccurs="0" name="LocalidadDependenciaSet" nillable="true" type="tns:ArrayOfLocalidadDependenciaSet" />
+      <xs:element minOccurs="0" name="municipio" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

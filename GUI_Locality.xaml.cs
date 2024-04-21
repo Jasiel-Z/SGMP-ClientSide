@@ -29,9 +29,11 @@ namespace SGMP_Client
         private void Btn_Save_Locality_Click(object sender, RoutedEventArgs e)
         {
             string localityName = tbxLocalityName.Text.ToString();
-            if (ValidateField(localityName))
+            string township = tbxTownship.Text.ToString();
+
+            if (ValidateFields(localityName, township))
             {
-                int result = SaveLocality(localityName);
+                int result = SaveLocality(localityName, township);
 
                 if (result == 1)
                 {
@@ -44,11 +46,12 @@ namespace SGMP_Client
             }
         }
 
-        private int SaveLocality(string localityName)
+        private int SaveLocality(string localityName, string township)
         {
             Locality locality = new Locality
             {
-                Name = localityName
+                Name = localityName,
+                Township = township
             };
 
             SGPMManagerService.LocalityManagementClient client = new SGPMManagerService.LocalityManagementClient();
@@ -58,11 +61,12 @@ namespace SGMP_Client
             return result;
         }
 
-        private bool ValidateField(string localityName)
+        private bool ValidateFields(string localityName, string township)
         {
             bool isLocalityNameValid = false;
+            bool isTownshipValid = false;
 
-            if (!string.IsNullOrEmpty(localityName))
+            if (!string.IsNullOrEmpty(localityName) && !string.IsNullOrEmpty(township))
             {
                 lbEmptyFieldsMessage.Visibility = Visibility.Hidden;
 
@@ -75,13 +79,23 @@ namespace SGMP_Client
                 {
                     lbInvalidLocalityNameMessage.Visibility = Visibility.Visible;
                 }
+
+                if (township.Length <= 40)
+                {
+                    isTownshipValid = true;
+                    lbInvalidTownshipMessage.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lbInvalidLocalityNameMessage.Visibility = Visibility.Visible;
+                }
             } 
             else
             {
                 lbEmptyFieldsMessage.Visibility = Visibility.Visible;
             }
 
-            return isLocalityNameValid;
+            return isLocalityNameValid && isTownshipValid;
         }
 
         private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
