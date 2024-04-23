@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" />
-  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" />
-  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" />
-  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" />
-  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" />
+  <xs:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" />
+  <xs:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" />
+  <xs:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" />
+  <xs:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" />
+  <xs:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" />
   <xs:element name="GetProjectDetails">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idProject" type="xs:int" />
+        <xs:element minOccurs="0" name="idProject" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -22,7 +22,7 @@
   <xs:element name="GetProjectPolicies">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idProject" type="xs:int" />
+        <xs:element minOccurs="0" name="idProject" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -87,10 +87,82 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RegisterPerson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="beneficiary" nillable="true" type="q7:Beneficiary" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="person" nillable="true" type="q8:Person" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterPersonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegisterPersonResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterCompany">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="beneficiary" nillable="true" type="q9:Beneficiary" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="company" nillable="true" type="q10:Company" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterCompanyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegisterCompanyResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setBeneficiaryDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="beneficiary" nillable="true" type="q11:Beneficiary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setBeneficiaryDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="setBeneficiaryDetailsResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RfcInUse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="rfc" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RfcInUseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RfcInUseResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CurpInUse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="curp" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CurpInUseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CurpInUseResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="RegisterRequest">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" minOccurs="0" name="request" nillable="true" type="q7:SolicitudSet" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" minOccurs="0" name="request" nillable="true" type="q12:Solicitudes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -104,7 +176,7 @@
   <xs:element name="RegisterRequestDocumentation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="files" nillable="true" type="q8:ArrayOfFile" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="files" nillable="true" type="q13:ArrayOfFile" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -125,15 +197,15 @@
   <xs:element name="RecoverRequestDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="RecoverRequestDetailsResult" nillable="true" type="q9:Request" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="RecoverRequestDetailsResult" nillable="true" type="q14:Request" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RegisterRequestWithDocuments">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" minOccurs="0" name="request" nillable="true" type="q10:SolicitudSet" />
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="files" nillable="true" type="q11:ArrayOfFile" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" minOccurs="0" name="request" nillable="true" type="q15:Solicitudes" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="files" nillable="true" type="q16:ArrayOfFile" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -148,7 +220,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="beneficiaryId" type="xs:int" />
-        <xs:element minOccurs="0" name="projectFolio" type="xs:int" />
+        <xs:element minOccurs="0" name="projectFolio" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -169,14 +241,14 @@
   <xs:element name="GetRequestFilesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="GetRequestFilesResult" nillable="true" type="q12:ArrayOfFile" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="GetRequestFilesResult" nillable="true" type="q17:ArrayOfFile" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RegisterOpinion">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="opinion" nillable="true" type="q13:Opinion" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="opinion" nillable="true" type="q18:Opinion" />
         <xs:element minOccurs="0" name="requestId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -191,14 +263,14 @@
   <xs:element name="GetRequestsOfProject">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="projectId" type="xs:int" />
+        <xs:element minOccurs="0" name="projectId" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetRequestsOfProjectResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="GetRequestsOfProjectResult" nillable="true" type="q14:ArrayOfRequest" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="GetRequestsOfProjectResult" nillable="true" type="q19:ArrayOfRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -213,7 +285,7 @@
   <xs:element name="GetUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" minOccurs="0" name="GetUserResult" nillable="true" type="q15:User" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" minOccurs="0" name="GetUserResult" nillable="true" type="q20:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

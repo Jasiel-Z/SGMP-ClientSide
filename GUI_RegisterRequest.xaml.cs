@@ -132,17 +132,17 @@ namespace SGMP_Client
 
             if (validData)
             {
-                SGPMReference.SolicitudSet request = new SGPMReference.SolicitudSet
+                SGPMReference.Solicitudes request = new SGPMReference.Solicitudes
                 {
                     estado = "creada",
                     fechaCreacion = System.DateTime.Now,
-                    ProyectoFolio = project.Folio,
-                    BeneficiarioId = GetBeneficiaryId(),
+                    Folio = project.Folio,
+                    IdBeneficiario = GetBeneficiaryId(),
                 };
 
                 SGPMReference.RequestManagementClient client = new SGPMReference.RequestManagementClient();
 
-                bool beneficiaryFound = client.BeneficiaryHasRequest((int)request.BeneficiarioId, request.ProyectoFolio);
+                bool beneficiaryFound = client.BeneficiaryHasRequest((int)request.IdBeneficiario, request.Folio);
 
                 if(beneficiaryFound)
                 {

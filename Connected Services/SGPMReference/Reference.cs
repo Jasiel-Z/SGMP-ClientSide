@@ -32,7 +32,7 @@ namespace SGMP_Client.SGPMReference {
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int FolioField;
+        private string FolioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ModalityField;
@@ -93,12 +93,12 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Folio {
+        public string Folio {
             get {
                 return this.FolioField;
             }
             set {
-                if ((this.FolioField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.FolioField, value) != true)) {
                     this.FolioField = value;
                     this.RaisePropertyChanged("Folio");
                 }
@@ -176,7 +176,7 @@ namespace SGMP_Client.SGPMReference {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ProyectFolioField;
+        private string ProyectFolioField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -241,12 +241,12 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ProyectFolio {
+        public string ProyectFolio {
             get {
                 return this.ProyectFolioField;
             }
             set {
-                if ((this.ProyectFolioField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.ProyectFolioField, value) != true)) {
                     this.ProyectFolioField = value;
                     this.RaisePropertyChanged("ProyectFolio");
                 }
@@ -656,51 +656,48 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SolicitudSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Solicitudes", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class SolicitudSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Solicitudes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.ArchivoSet[] ArchivoSetField;
+        private SGMP_Client.SGPMReference.Beneficiarios BeneficiariosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> BeneficiarioIdField;
+        private SGMP_Client.SGPMReference.Devoluciones[] DevolucionesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.BeneficiarioSet[] BeneficiarioSetField;
+        private SGMP_Client.SGPMReference.Dictamenes DictamenesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.BeneficiarioSet BeneficiarioSet1Field;
+        private SGMP_Client.SGPMReference.Documentos[] DocumentosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.CuentaBancariaSolicitudSet[] CuentaBancariaSolicitudSetField;
+        private SGMP_Client.SGPMReference.Evidencias[] EvidenciasField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.DevolucionesSet[] DevolucionesSetField;
+        private string FolioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.DictamenSet DictamenSetField;
+        private System.Nullable<int> IdBeneficiarioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Dictamen_IdDictamenField;
+        private System.Nullable<int> IdDictamenField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdSolicitudField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ProyectoFolioField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.ProyectoSet ProyectoSetField;
+        private SGMP_Client.SGPMReference.Proyectos ProyectosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string estadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime fechaCreacionField;
+        private System.Nullable<System.DateTime> fechaCreacionField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -713,105 +710,105 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.ArchivoSet[] ArchivoSet {
+        public SGMP_Client.SGPMReference.Beneficiarios Beneficiarios {
             get {
-                return this.ArchivoSetField;
+                return this.BeneficiariosField;
             }
             set {
-                if ((object.ReferenceEquals(this.ArchivoSetField, value) != true)) {
-                    this.ArchivoSetField = value;
-                    this.RaisePropertyChanged("ArchivoSet");
+                if ((object.ReferenceEquals(this.BeneficiariosField, value) != true)) {
+                    this.BeneficiariosField = value;
+                    this.RaisePropertyChanged("Beneficiarios");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> BeneficiarioId {
+        public SGMP_Client.SGPMReference.Devoluciones[] Devoluciones {
             get {
-                return this.BeneficiarioIdField;
+                return this.DevolucionesField;
             }
             set {
-                if ((this.BeneficiarioIdField.Equals(value) != true)) {
-                    this.BeneficiarioIdField = value;
-                    this.RaisePropertyChanged("BeneficiarioId");
+                if ((object.ReferenceEquals(this.DevolucionesField, value) != true)) {
+                    this.DevolucionesField = value;
+                    this.RaisePropertyChanged("Devoluciones");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.BeneficiarioSet[] BeneficiarioSet {
+        public SGMP_Client.SGPMReference.Dictamenes Dictamenes {
             get {
-                return this.BeneficiarioSetField;
+                return this.DictamenesField;
             }
             set {
-                if ((object.ReferenceEquals(this.BeneficiarioSetField, value) != true)) {
-                    this.BeneficiarioSetField = value;
-                    this.RaisePropertyChanged("BeneficiarioSet");
+                if ((object.ReferenceEquals(this.DictamenesField, value) != true)) {
+                    this.DictamenesField = value;
+                    this.RaisePropertyChanged("Dictamenes");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.BeneficiarioSet BeneficiarioSet1 {
+        public SGMP_Client.SGPMReference.Documentos[] Documentos {
             get {
-                return this.BeneficiarioSet1Field;
+                return this.DocumentosField;
             }
             set {
-                if ((object.ReferenceEquals(this.BeneficiarioSet1Field, value) != true)) {
-                    this.BeneficiarioSet1Field = value;
-                    this.RaisePropertyChanged("BeneficiarioSet1");
+                if ((object.ReferenceEquals(this.DocumentosField, value) != true)) {
+                    this.DocumentosField = value;
+                    this.RaisePropertyChanged("Documentos");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.CuentaBancariaSolicitudSet[] CuentaBancariaSolicitudSet {
+        public SGMP_Client.SGPMReference.Evidencias[] Evidencias {
             get {
-                return this.CuentaBancariaSolicitudSetField;
+                return this.EvidenciasField;
             }
             set {
-                if ((object.ReferenceEquals(this.CuentaBancariaSolicitudSetField, value) != true)) {
-                    this.CuentaBancariaSolicitudSetField = value;
-                    this.RaisePropertyChanged("CuentaBancariaSolicitudSet");
+                if ((object.ReferenceEquals(this.EvidenciasField, value) != true)) {
+                    this.EvidenciasField = value;
+                    this.RaisePropertyChanged("Evidencias");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.DevolucionesSet[] DevolucionesSet {
+        public string Folio {
             get {
-                return this.DevolucionesSetField;
+                return this.FolioField;
             }
             set {
-                if ((object.ReferenceEquals(this.DevolucionesSetField, value) != true)) {
-                    this.DevolucionesSetField = value;
-                    this.RaisePropertyChanged("DevolucionesSet");
+                if ((object.ReferenceEquals(this.FolioField, value) != true)) {
+                    this.FolioField = value;
+                    this.RaisePropertyChanged("Folio");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.DictamenSet DictamenSet {
+        public System.Nullable<int> IdBeneficiario {
             get {
-                return this.DictamenSetField;
+                return this.IdBeneficiarioField;
             }
             set {
-                if ((object.ReferenceEquals(this.DictamenSetField, value) != true)) {
-                    this.DictamenSetField = value;
-                    this.RaisePropertyChanged("DictamenSet");
+                if ((this.IdBeneficiarioField.Equals(value) != true)) {
+                    this.IdBeneficiarioField = value;
+                    this.RaisePropertyChanged("IdBeneficiario");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Dictamen_IdDictamen {
+        public System.Nullable<int> IdDictamen {
             get {
-                return this.Dictamen_IdDictamenField;
+                return this.IdDictamenField;
             }
             set {
-                if ((this.Dictamen_IdDictamenField.Equals(value) != true)) {
-                    this.Dictamen_IdDictamenField = value;
-                    this.RaisePropertyChanged("Dictamen_IdDictamen");
+                if ((this.IdDictamenField.Equals(value) != true)) {
+                    this.IdDictamenField = value;
+                    this.RaisePropertyChanged("IdDictamen");
                 }
             }
         }
@@ -830,27 +827,14 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ProyectoFolio {
+        public SGMP_Client.SGPMReference.Proyectos Proyectos {
             get {
-                return this.ProyectoFolioField;
+                return this.ProyectosField;
             }
             set {
-                if ((this.ProyectoFolioField.Equals(value) != true)) {
-                    this.ProyectoFolioField = value;
-                    this.RaisePropertyChanged("ProyectoFolio");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.ProyectoSet ProyectoSet {
-            get {
-                return this.ProyectoSetField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProyectoSetField, value) != true)) {
-                    this.ProyectoSetField = value;
-                    this.RaisePropertyChanged("ProyectoSet");
+                if ((object.ReferenceEquals(this.ProyectosField, value) != true)) {
+                    this.ProyectosField = value;
+                    this.RaisePropertyChanged("Proyectos");
                 }
             }
         }
@@ -869,7 +853,7 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime fechaCreacion {
+        public System.Nullable<System.DateTime> fechaCreacion {
             get {
                 return this.fechaCreacionField;
             }
@@ -893,51 +877,57 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BeneficiarioSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Beneficiarios", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class BeneficiarioSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Beneficiarios : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.LocalidadSet LocalidadSetField;
+        private string CuentaBancariaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Localidad_IdLocalidadField;
+        private SGMP_Client.SGPMReference.CuentasBancarias CuentasBancariasField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.PersonaSet[] PersonaSetField;
+        private SGMP_Client.SGPMReference.CuentasBancarias[] CuentasBancarias1Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.SolicitudSet SolicitudSetField;
+        private SGMP_Client.SGPMReference.Empresas[] EmpresasField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.SolicitudSet[] SolicitudSet1Field;
+        private int IdBeneficiarioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Solicitud_IdSolicitudField;
+        private System.Nullable<int> IdEmpresaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string calleField;
+        private System.Nullable<int> IdLocalidadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ciudadField;
+        private System.Nullable<int> IdPersonaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.empresaSet[] empresaSetField;
+        private SGMP_Client.SGPMReference.Localidades LocalidadesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idBeneficiarioField;
+        private SGMP_Client.SGPMReference.Personas[] PersonasField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string numeroField;
+        private SGMP_Client.SGPMReference.Solicitudes[] SolicitudesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string direccionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string rfcField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string telefonoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tiudadField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -950,144 +940,157 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.LocalidadSet LocalidadSet {
+        public string CuentaBancaria {
             get {
-                return this.LocalidadSetField;
+                return this.CuentaBancariaField;
             }
             set {
-                if ((object.ReferenceEquals(this.LocalidadSetField, value) != true)) {
-                    this.LocalidadSetField = value;
-                    this.RaisePropertyChanged("LocalidadSet");
+                if ((object.ReferenceEquals(this.CuentaBancariaField, value) != true)) {
+                    this.CuentaBancariaField = value;
+                    this.RaisePropertyChanged("CuentaBancaria");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Localidad_IdLocalidad {
+        public SGMP_Client.SGPMReference.CuentasBancarias CuentasBancarias {
             get {
-                return this.Localidad_IdLocalidadField;
+                return this.CuentasBancariasField;
             }
             set {
-                if ((this.Localidad_IdLocalidadField.Equals(value) != true)) {
-                    this.Localidad_IdLocalidadField = value;
-                    this.RaisePropertyChanged("Localidad_IdLocalidad");
+                if ((object.ReferenceEquals(this.CuentasBancariasField, value) != true)) {
+                    this.CuentasBancariasField = value;
+                    this.RaisePropertyChanged("CuentasBancarias");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.PersonaSet[] PersonaSet {
+        public SGMP_Client.SGPMReference.CuentasBancarias[] CuentasBancarias1 {
             get {
-                return this.PersonaSetField;
+                return this.CuentasBancarias1Field;
             }
             set {
-                if ((object.ReferenceEquals(this.PersonaSetField, value) != true)) {
-                    this.PersonaSetField = value;
-                    this.RaisePropertyChanged("PersonaSet");
+                if ((object.ReferenceEquals(this.CuentasBancarias1Field, value) != true)) {
+                    this.CuentasBancarias1Field = value;
+                    this.RaisePropertyChanged("CuentasBancarias1");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.SolicitudSet SolicitudSet {
+        public SGMP_Client.SGPMReference.Empresas[] Empresas {
             get {
-                return this.SolicitudSetField;
+                return this.EmpresasField;
             }
             set {
-                if ((object.ReferenceEquals(this.SolicitudSetField, value) != true)) {
-                    this.SolicitudSetField = value;
-                    this.RaisePropertyChanged("SolicitudSet");
+                if ((object.ReferenceEquals(this.EmpresasField, value) != true)) {
+                    this.EmpresasField = value;
+                    this.RaisePropertyChanged("Empresas");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.SolicitudSet[] SolicitudSet1 {
+        public int IdBeneficiario {
             get {
-                return this.SolicitudSet1Field;
+                return this.IdBeneficiarioField;
             }
             set {
-                if ((object.ReferenceEquals(this.SolicitudSet1Field, value) != true)) {
-                    this.SolicitudSet1Field = value;
-                    this.RaisePropertyChanged("SolicitudSet1");
+                if ((this.IdBeneficiarioField.Equals(value) != true)) {
+                    this.IdBeneficiarioField = value;
+                    this.RaisePropertyChanged("IdBeneficiario");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Solicitud_IdSolicitud {
+        public System.Nullable<int> IdEmpresa {
             get {
-                return this.Solicitud_IdSolicitudField;
+                return this.IdEmpresaField;
             }
             set {
-                if ((this.Solicitud_IdSolicitudField.Equals(value) != true)) {
-                    this.Solicitud_IdSolicitudField = value;
-                    this.RaisePropertyChanged("Solicitud_IdSolicitud");
+                if ((this.IdEmpresaField.Equals(value) != true)) {
+                    this.IdEmpresaField = value;
+                    this.RaisePropertyChanged("IdEmpresa");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string calle {
+        public System.Nullable<int> IdLocalidad {
             get {
-                return this.calleField;
+                return this.IdLocalidadField;
             }
             set {
-                if ((object.ReferenceEquals(this.calleField, value) != true)) {
-                    this.calleField = value;
-                    this.RaisePropertyChanged("calle");
+                if ((this.IdLocalidadField.Equals(value) != true)) {
+                    this.IdLocalidadField = value;
+                    this.RaisePropertyChanged("IdLocalidad");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ciudad {
+        public System.Nullable<int> IdPersona {
             get {
-                return this.ciudadField;
+                return this.IdPersonaField;
             }
             set {
-                if ((object.ReferenceEquals(this.ciudadField, value) != true)) {
-                    this.ciudadField = value;
-                    this.RaisePropertyChanged("ciudad");
+                if ((this.IdPersonaField.Equals(value) != true)) {
+                    this.IdPersonaField = value;
+                    this.RaisePropertyChanged("IdPersona");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.empresaSet[] empresaSet {
+        public SGMP_Client.SGPMReference.Localidades Localidades {
             get {
-                return this.empresaSetField;
+                return this.LocalidadesField;
             }
             set {
-                if ((object.ReferenceEquals(this.empresaSetField, value) != true)) {
-                    this.empresaSetField = value;
-                    this.RaisePropertyChanged("empresaSet");
+                if ((object.ReferenceEquals(this.LocalidadesField, value) != true)) {
+                    this.LocalidadesField = value;
+                    this.RaisePropertyChanged("Localidades");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int idBeneficiario {
+        public SGMP_Client.SGPMReference.Personas[] Personas {
             get {
-                return this.idBeneficiarioField;
+                return this.PersonasField;
             }
             set {
-                if ((this.idBeneficiarioField.Equals(value) != true)) {
-                    this.idBeneficiarioField = value;
-                    this.RaisePropertyChanged("idBeneficiario");
+                if ((object.ReferenceEquals(this.PersonasField, value) != true)) {
+                    this.PersonasField = value;
+                    this.RaisePropertyChanged("Personas");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string numero {
+        public SGMP_Client.SGPMReference.Solicitudes[] Solicitudes {
             get {
-                return this.numeroField;
+                return this.SolicitudesField;
             }
             set {
-                if ((object.ReferenceEquals(this.numeroField, value) != true)) {
-                    this.numeroField = value;
-                    this.RaisePropertyChanged("numero");
+                if ((object.ReferenceEquals(this.SolicitudesField, value) != true)) {
+                    this.SolicitudesField = value;
+                    this.RaisePropertyChanged("Solicitudes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string direccion {
+            get {
+                return this.direccionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.direccionField, value) != true)) {
+                    this.direccionField = value;
+                    this.RaisePropertyChanged("direccion");
                 }
             }
         }
@@ -1118,6 +1121,19 @@ namespace SGMP_Client.SGPMReference {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string tiudad {
+            get {
+                return this.tiudadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tiudadField, value) != true)) {
+                    this.tiudadField = value;
+                    this.RaisePropertyChanged("tiudad");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -1130,33 +1146,33 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DictamenSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Dictamenes", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class DictamenSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Dictamenes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int EmpleadoNumeroEmpleadoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.EmpleadoSet EmpleadoSetField;
+        private SGMP_Client.SGPMReference.Empleados EmpleadosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdDictamenField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.SolicitudSet[] SolicitudSetField;
+        private System.Nullable<int> NumeroEmpleadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string comentariosField;
+        private SGMP_Client.SGPMReference.Solicitudes[] SolicitudesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string comentarioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string estadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime fechaField;
+        private System.Nullable<System.DateTime> fechaField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1169,27 +1185,14 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int EmpleadoNumeroEmpleado {
+        public SGMP_Client.SGPMReference.Empleados Empleados {
             get {
-                return this.EmpleadoNumeroEmpleadoField;
+                return this.EmpleadosField;
             }
             set {
-                if ((this.EmpleadoNumeroEmpleadoField.Equals(value) != true)) {
-                    this.EmpleadoNumeroEmpleadoField = value;
-                    this.RaisePropertyChanged("EmpleadoNumeroEmpleado");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.EmpleadoSet EmpleadoSet {
-            get {
-                return this.EmpleadoSetField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmpleadoSetField, value) != true)) {
-                    this.EmpleadoSetField = value;
-                    this.RaisePropertyChanged("EmpleadoSet");
+                if ((object.ReferenceEquals(this.EmpleadosField, value) != true)) {
+                    this.EmpleadosField = value;
+                    this.RaisePropertyChanged("Empleados");
                 }
             }
         }
@@ -1208,27 +1211,40 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.SolicitudSet[] SolicitudSet {
+        public System.Nullable<int> NumeroEmpleado {
             get {
-                return this.SolicitudSetField;
+                return this.NumeroEmpleadoField;
             }
             set {
-                if ((object.ReferenceEquals(this.SolicitudSetField, value) != true)) {
-                    this.SolicitudSetField = value;
-                    this.RaisePropertyChanged("SolicitudSet");
+                if ((this.NumeroEmpleadoField.Equals(value) != true)) {
+                    this.NumeroEmpleadoField = value;
+                    this.RaisePropertyChanged("NumeroEmpleado");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string comentarios {
+        public SGMP_Client.SGPMReference.Solicitudes[] Solicitudes {
             get {
-                return this.comentariosField;
+                return this.SolicitudesField;
             }
             set {
-                if ((object.ReferenceEquals(this.comentariosField, value) != true)) {
-                    this.comentariosField = value;
-                    this.RaisePropertyChanged("comentarios");
+                if ((object.ReferenceEquals(this.SolicitudesField, value) != true)) {
+                    this.SolicitudesField = value;
+                    this.RaisePropertyChanged("Solicitudes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string comentario {
+            get {
+                return this.comentarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.comentarioField, value) != true)) {
+                    this.comentarioField = value;
+                    this.RaisePropertyChanged("comentario");
                 }
             }
         }
@@ -1247,7 +1263,7 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime fecha {
+        public System.Nullable<System.DateTime> fecha {
             get {
                 return this.fechaField;
             }
@@ -1271,33 +1287,33 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ProyectoSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Proyectos", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class ProyectoSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Proyectos : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int FolioField;
+        private SGMP_Client.SGPMReference.Dependencias DependenciasField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int LocalidadDependenciaIdLocalidadDependenciaField;
+        private string FolioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.LocalidadDependenciaSet LocalidadDependenciaSetField;
+        private System.Nullable<int> IdDependenciaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.OrdenEntregaSet OrdenEntregaSetField;
+        private System.Nullable<int> IdOrdenEntregaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> OrdenEntrega_IdOrdenEntregaField;
+        private SGMP_Client.SGPMReference.OrdenesEntrega OrdenesEntregaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.PoliticaProyectoSet[] PoliticaProyectoSetField;
+        private SGMP_Client.SGPMReference.ProyectoPoliticaOtorgamiento[] ProyectoPoliticaOtorgamientoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.SolicitudSet[] SolicitudSetField;
+        private SGMP_Client.SGPMReference.Solicitudes[] SolicitudesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descripcionField;
@@ -1306,13 +1322,16 @@ namespace SGMP_Client.SGPMReference {
         private string estadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime fechaFinField;
+        private System.Nullable<System.DateTime> fechaFinField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime fechaLimiteEvidenciaField;
+        private System.Nullable<System.DateTime> fechaInicioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime fechaLimiteSolicitudField;
+        private System.Nullable<System.DateTime> fechaLimiteEvidenciasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> fechaLimiteSolicitudesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string grupoAtencionField;
@@ -1321,10 +1340,13 @@ namespace SGMP_Client.SGPMReference {
         private string modalidadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> montoApoyoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nombreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int numeroBeneficiariosField;
+        private System.Nullable<int> numeroBeneficiariosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string tipoField;
@@ -1340,12 +1362,25 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Folio {
+        public SGMP_Client.SGPMReference.Dependencias Dependencias {
+            get {
+                return this.DependenciasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DependenciasField, value) != true)) {
+                    this.DependenciasField = value;
+                    this.RaisePropertyChanged("Dependencias");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Folio {
             get {
                 return this.FolioField;
             }
             set {
-                if ((this.FolioField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.FolioField, value) != true)) {
                     this.FolioField = value;
                     this.RaisePropertyChanged("Folio");
                 }
@@ -1353,79 +1388,66 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int LocalidadDependenciaIdLocalidadDependencia {
+        public System.Nullable<int> IdDependencia {
             get {
-                return this.LocalidadDependenciaIdLocalidadDependenciaField;
+                return this.IdDependenciaField;
             }
             set {
-                if ((this.LocalidadDependenciaIdLocalidadDependenciaField.Equals(value) != true)) {
-                    this.LocalidadDependenciaIdLocalidadDependenciaField = value;
-                    this.RaisePropertyChanged("LocalidadDependenciaIdLocalidadDependencia");
+                if ((this.IdDependenciaField.Equals(value) != true)) {
+                    this.IdDependenciaField = value;
+                    this.RaisePropertyChanged("IdDependencia");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.LocalidadDependenciaSet LocalidadDependenciaSet {
+        public System.Nullable<int> IdOrdenEntrega {
             get {
-                return this.LocalidadDependenciaSetField;
+                return this.IdOrdenEntregaField;
             }
             set {
-                if ((object.ReferenceEquals(this.LocalidadDependenciaSetField, value) != true)) {
-                    this.LocalidadDependenciaSetField = value;
-                    this.RaisePropertyChanged("LocalidadDependenciaSet");
+                if ((this.IdOrdenEntregaField.Equals(value) != true)) {
+                    this.IdOrdenEntregaField = value;
+                    this.RaisePropertyChanged("IdOrdenEntrega");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.OrdenEntregaSet OrdenEntregaSet {
+        public SGMP_Client.SGPMReference.OrdenesEntrega OrdenesEntrega {
             get {
-                return this.OrdenEntregaSetField;
+                return this.OrdenesEntregaField;
             }
             set {
-                if ((object.ReferenceEquals(this.OrdenEntregaSetField, value) != true)) {
-                    this.OrdenEntregaSetField = value;
-                    this.RaisePropertyChanged("OrdenEntregaSet");
+                if ((object.ReferenceEquals(this.OrdenesEntregaField, value) != true)) {
+                    this.OrdenesEntregaField = value;
+                    this.RaisePropertyChanged("OrdenesEntrega");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> OrdenEntrega_IdOrdenEntrega {
+        public SGMP_Client.SGPMReference.ProyectoPoliticaOtorgamiento[] ProyectoPoliticaOtorgamiento {
             get {
-                return this.OrdenEntrega_IdOrdenEntregaField;
+                return this.ProyectoPoliticaOtorgamientoField;
             }
             set {
-                if ((this.OrdenEntrega_IdOrdenEntregaField.Equals(value) != true)) {
-                    this.OrdenEntrega_IdOrdenEntregaField = value;
-                    this.RaisePropertyChanged("OrdenEntrega_IdOrdenEntrega");
+                if ((object.ReferenceEquals(this.ProyectoPoliticaOtorgamientoField, value) != true)) {
+                    this.ProyectoPoliticaOtorgamientoField = value;
+                    this.RaisePropertyChanged("ProyectoPoliticaOtorgamiento");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.PoliticaProyectoSet[] PoliticaProyectoSet {
+        public SGMP_Client.SGPMReference.Solicitudes[] Solicitudes {
             get {
-                return this.PoliticaProyectoSetField;
+                return this.SolicitudesField;
             }
             set {
-                if ((object.ReferenceEquals(this.PoliticaProyectoSetField, value) != true)) {
-                    this.PoliticaProyectoSetField = value;
-                    this.RaisePropertyChanged("PoliticaProyectoSet");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.SolicitudSet[] SolicitudSet {
-            get {
-                return this.SolicitudSetField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SolicitudSetField, value) != true)) {
-                    this.SolicitudSetField = value;
-                    this.RaisePropertyChanged("SolicitudSet");
+                if ((object.ReferenceEquals(this.SolicitudesField, value) != true)) {
+                    this.SolicitudesField = value;
+                    this.RaisePropertyChanged("Solicitudes");
                 }
             }
         }
@@ -1457,7 +1479,7 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime fechaFin {
+        public System.Nullable<System.DateTime> fechaFin {
             get {
                 return this.fechaFinField;
             }
@@ -1470,27 +1492,40 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime fechaLimiteEvidencia {
+        public System.Nullable<System.DateTime> fechaInicio {
             get {
-                return this.fechaLimiteEvidenciaField;
+                return this.fechaInicioField;
             }
             set {
-                if ((this.fechaLimiteEvidenciaField.Equals(value) != true)) {
-                    this.fechaLimiteEvidenciaField = value;
-                    this.RaisePropertyChanged("fechaLimiteEvidencia");
+                if ((this.fechaInicioField.Equals(value) != true)) {
+                    this.fechaInicioField = value;
+                    this.RaisePropertyChanged("fechaInicio");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime fechaLimiteSolicitud {
+        public System.Nullable<System.DateTime> fechaLimiteEvidencias {
             get {
-                return this.fechaLimiteSolicitudField;
+                return this.fechaLimiteEvidenciasField;
             }
             set {
-                if ((this.fechaLimiteSolicitudField.Equals(value) != true)) {
-                    this.fechaLimiteSolicitudField = value;
-                    this.RaisePropertyChanged("fechaLimiteSolicitud");
+                if ((this.fechaLimiteEvidenciasField.Equals(value) != true)) {
+                    this.fechaLimiteEvidenciasField = value;
+                    this.RaisePropertyChanged("fechaLimiteEvidencias");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> fechaLimiteSolicitudes {
+            get {
+                return this.fechaLimiteSolicitudesField;
+            }
+            set {
+                if ((this.fechaLimiteSolicitudesField.Equals(value) != true)) {
+                    this.fechaLimiteSolicitudesField = value;
+                    this.RaisePropertyChanged("fechaLimiteSolicitudes");
                 }
             }
         }
@@ -1522,6 +1557,19 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> montoApoyo {
+            get {
+                return this.montoApoyoField;
+            }
+            set {
+                if ((this.montoApoyoField.Equals(value) != true)) {
+                    this.montoApoyoField = value;
+                    this.RaisePropertyChanged("montoApoyo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string nombre {
             get {
                 return this.nombreField;
@@ -1535,7 +1583,7 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int numeroBeneficiarios {
+        public System.Nullable<int> numeroBeneficiarios {
             get {
                 return this.numeroBeneficiariosField;
             }
@@ -1572,259 +1620,9 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ArchivoSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Devoluciones", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class ArchivoSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> SolicitudIdSolicitudField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.SolicitudSet SolicitudSetField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte[] contenidoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descripcionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string extensionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idArchivoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nombreField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> SolicitudIdSolicitud {
-            get {
-                return this.SolicitudIdSolicitudField;
-            }
-            set {
-                if ((this.SolicitudIdSolicitudField.Equals(value) != true)) {
-                    this.SolicitudIdSolicitudField = value;
-                    this.RaisePropertyChanged("SolicitudIdSolicitud");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.SolicitudSet SolicitudSet {
-            get {
-                return this.SolicitudSetField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SolicitudSetField, value) != true)) {
-                    this.SolicitudSetField = value;
-                    this.RaisePropertyChanged("SolicitudSet");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte[] contenido {
-            get {
-                return this.contenidoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.contenidoField, value) != true)) {
-                    this.contenidoField = value;
-                    this.RaisePropertyChanged("contenido");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string descripcion {
-            get {
-                return this.descripcionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descripcionField, value) != true)) {
-                    this.descripcionField = value;
-                    this.RaisePropertyChanged("descripcion");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string extension {
-            get {
-                return this.extensionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.extensionField, value) != true)) {
-                    this.extensionField = value;
-                    this.RaisePropertyChanged("extension");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int idArchivo {
-            get {
-                return this.idArchivoField;
-            }
-            set {
-                if ((this.idArchivoField.Equals(value) != true)) {
-                    this.idArchivoField = value;
-                    this.RaisePropertyChanged("idArchivo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string nombre {
-            get {
-                return this.nombreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
-                    this.nombreField = value;
-                    this.RaisePropertyChanged("nombre");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CuentaBancariaSolicitudSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
-    [System.SerializableAttribute()]
-    public partial class CuentaBancariaSolicitudSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.CuentaBancariaSet CuentaBancariaSetField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CuentaBancaria_numeroCuentaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdCuentaBancariaSolicitudField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int SolicitudIdSolicitudField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.SolicitudSet SolicitudSetField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.CuentaBancariaSet CuentaBancariaSet {
-            get {
-                return this.CuentaBancariaSetField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CuentaBancariaSetField, value) != true)) {
-                    this.CuentaBancariaSetField = value;
-                    this.RaisePropertyChanged("CuentaBancariaSet");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CuentaBancaria_numeroCuenta {
-            get {
-                return this.CuentaBancaria_numeroCuentaField;
-            }
-            set {
-                if ((this.CuentaBancaria_numeroCuentaField.Equals(value) != true)) {
-                    this.CuentaBancaria_numeroCuentaField = value;
-                    this.RaisePropertyChanged("CuentaBancaria_numeroCuenta");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdCuentaBancariaSolicitud {
-            get {
-                return this.IdCuentaBancariaSolicitudField;
-            }
-            set {
-                if ((this.IdCuentaBancariaSolicitudField.Equals(value) != true)) {
-                    this.IdCuentaBancariaSolicitudField = value;
-                    this.RaisePropertyChanged("IdCuentaBancariaSolicitud");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int SolicitudIdSolicitud {
-            get {
-                return this.SolicitudIdSolicitudField;
-            }
-            set {
-                if ((this.SolicitudIdSolicitudField.Equals(value) != true)) {
-                    this.SolicitudIdSolicitudField = value;
-                    this.RaisePropertyChanged("SolicitudIdSolicitud");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.SolicitudSet SolicitudSet {
-            get {
-                return this.SolicitudSetField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SolicitudSetField, value) != true)) {
-                    this.SolicitudSetField = value;
-                    this.RaisePropertyChanged("SolicitudSet");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DevolucionesSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
-    [System.SerializableAttribute()]
-    public partial class DevolucionesSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Devoluciones : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -1833,22 +1631,19 @@ namespace SGMP_Client.SGPMReference {
         private int IdDevolucionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int SolicitudIdSolicitudField;
+        private System.Nullable<int> IdSolicitudField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.SolicitudSet SolicitudSetField;
+        private SGMP_Client.SGPMReference.Solicitudes SolicitudesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descripcionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime fechaDevolucionField;
+        private System.Nullable<System.DateTime> fechaCreacionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime fechaLimiteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int montoDeudaField;
+        private System.Nullable<double> montoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1874,27 +1669,27 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int SolicitudIdSolicitud {
+        public System.Nullable<int> IdSolicitud {
             get {
-                return this.SolicitudIdSolicitudField;
+                return this.IdSolicitudField;
             }
             set {
-                if ((this.SolicitudIdSolicitudField.Equals(value) != true)) {
-                    this.SolicitudIdSolicitudField = value;
-                    this.RaisePropertyChanged("SolicitudIdSolicitud");
+                if ((this.IdSolicitudField.Equals(value) != true)) {
+                    this.IdSolicitudField = value;
+                    this.RaisePropertyChanged("IdSolicitud");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.SolicitudSet SolicitudSet {
+        public SGMP_Client.SGPMReference.Solicitudes Solicitudes {
             get {
-                return this.SolicitudSetField;
+                return this.SolicitudesField;
             }
             set {
-                if ((object.ReferenceEquals(this.SolicitudSetField, value) != true)) {
-                    this.SolicitudSetField = value;
-                    this.RaisePropertyChanged("SolicitudSet");
+                if ((object.ReferenceEquals(this.SolicitudesField, value) != true)) {
+                    this.SolicitudesField = value;
+                    this.RaisePropertyChanged("Solicitudes");
                 }
             }
         }
@@ -1913,40 +1708,27 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime fechaDevolucion {
+        public System.Nullable<System.DateTime> fechaCreacion {
             get {
-                return this.fechaDevolucionField;
+                return this.fechaCreacionField;
             }
             set {
-                if ((this.fechaDevolucionField.Equals(value) != true)) {
-                    this.fechaDevolucionField = value;
-                    this.RaisePropertyChanged("fechaDevolucion");
+                if ((this.fechaCreacionField.Equals(value) != true)) {
+                    this.fechaCreacionField = value;
+                    this.RaisePropertyChanged("fechaCreacion");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime fechaLimite {
+        public System.Nullable<double> monto {
             get {
-                return this.fechaLimiteField;
+                return this.montoField;
             }
             set {
-                if ((this.fechaLimiteField.Equals(value) != true)) {
-                    this.fechaLimiteField = value;
-                    this.RaisePropertyChanged("fechaLimite");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int montoDeuda {
-            get {
-                return this.montoDeudaField;
-            }
-            set {
-                if ((this.montoDeudaField.Equals(value) != true)) {
-                    this.montoDeudaField = value;
-                    this.RaisePropertyChanged("montoDeuda");
+                if ((this.montoField.Equals(value) != true)) {
+                    this.montoField = value;
+                    this.RaisePropertyChanged("monto");
                 }
             }
         }
@@ -1963,24 +1745,24 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="LocalidadSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Documentos", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class LocalidadSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Documentos : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.BeneficiarioSet[] BeneficiarioSetField;
+        private int IdDocumentoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.EmpleadoSet[] EmpleadoSetField;
+        private System.Nullable<int> IdSolicitudField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdLocalidadField;
+        private SGMP_Client.SGPMReference.Solicitudes SolicitudesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.LocalidadDependenciaSet[] LocalidadDependenciaSetField;
+        private string direccionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nombreField;
@@ -1996,53 +1778,53 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.BeneficiarioSet[] BeneficiarioSet {
+        public int IdDocumento {
             get {
-                return this.BeneficiarioSetField;
+                return this.IdDocumentoField;
             }
             set {
-                if ((object.ReferenceEquals(this.BeneficiarioSetField, value) != true)) {
-                    this.BeneficiarioSetField = value;
-                    this.RaisePropertyChanged("BeneficiarioSet");
+                if ((this.IdDocumentoField.Equals(value) != true)) {
+                    this.IdDocumentoField = value;
+                    this.RaisePropertyChanged("IdDocumento");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.EmpleadoSet[] EmpleadoSet {
+        public System.Nullable<int> IdSolicitud {
             get {
-                return this.EmpleadoSetField;
+                return this.IdSolicitudField;
             }
             set {
-                if ((object.ReferenceEquals(this.EmpleadoSetField, value) != true)) {
-                    this.EmpleadoSetField = value;
-                    this.RaisePropertyChanged("EmpleadoSet");
+                if ((this.IdSolicitudField.Equals(value) != true)) {
+                    this.IdSolicitudField = value;
+                    this.RaisePropertyChanged("IdSolicitud");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdLocalidad {
+        public SGMP_Client.SGPMReference.Solicitudes Solicitudes {
             get {
-                return this.IdLocalidadField;
+                return this.SolicitudesField;
             }
             set {
-                if ((this.IdLocalidadField.Equals(value) != true)) {
-                    this.IdLocalidadField = value;
-                    this.RaisePropertyChanged("IdLocalidad");
+                if ((object.ReferenceEquals(this.SolicitudesField, value) != true)) {
+                    this.SolicitudesField = value;
+                    this.RaisePropertyChanged("Solicitudes");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.LocalidadDependenciaSet[] LocalidadDependenciaSet {
+        public string direccion {
             get {
-                return this.LocalidadDependenciaSetField;
+                return this.direccionField;
             }
             set {
-                if ((object.ReferenceEquals(this.LocalidadDependenciaSetField, value) != true)) {
-                    this.LocalidadDependenciaSetField = value;
-                    this.RaisePropertyChanged("LocalidadDependenciaSet");
+                if ((object.ReferenceEquals(this.direccionField, value) != true)) {
+                    this.direccionField = value;
+                    this.RaisePropertyChanged("direccion");
                 }
             }
         }
@@ -2072,30 +1854,27 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PersonaSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Evidencias", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class PersonaSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Evidencias : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.BeneficiarioSet BeneficiarioSetField;
+        private int IdEvidenciaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Beneficiario_idBeneficiarioField;
+        private System.Nullable<int> IdSolicitudField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string apellidoMaternoField;
+        private SGMP_Client.SGPMReference.Solicitudes SolicitudesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string apellidoPaternoField;
+        private string direccionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string curpField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idBeneficiarioField;
+        private System.Nullable<System.DateTime> fechaEntregaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nombreField;
@@ -2111,27 +1890,495 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.BeneficiarioSet BeneficiarioSet {
+        public int IdEvidencia {
             get {
-                return this.BeneficiarioSetField;
+                return this.IdEvidenciaField;
             }
             set {
-                if ((object.ReferenceEquals(this.BeneficiarioSetField, value) != true)) {
-                    this.BeneficiarioSetField = value;
-                    this.RaisePropertyChanged("BeneficiarioSet");
+                if ((this.IdEvidenciaField.Equals(value) != true)) {
+                    this.IdEvidenciaField = value;
+                    this.RaisePropertyChanged("IdEvidencia");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Beneficiario_idBeneficiario {
+        public System.Nullable<int> IdSolicitud {
             get {
-                return this.Beneficiario_idBeneficiarioField;
+                return this.IdSolicitudField;
             }
             set {
-                if ((this.Beneficiario_idBeneficiarioField.Equals(value) != true)) {
-                    this.Beneficiario_idBeneficiarioField = value;
-                    this.RaisePropertyChanged("Beneficiario_idBeneficiario");
+                if ((this.IdSolicitudField.Equals(value) != true)) {
+                    this.IdSolicitudField = value;
+                    this.RaisePropertyChanged("IdSolicitud");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SGMP_Client.SGPMReference.Solicitudes Solicitudes {
+            get {
+                return this.SolicitudesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SolicitudesField, value) != true)) {
+                    this.SolicitudesField = value;
+                    this.RaisePropertyChanged("Solicitudes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string direccion {
+            get {
+                return this.direccionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.direccionField, value) != true)) {
+                    this.direccionField = value;
+                    this.RaisePropertyChanged("direccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> fechaEntrega {
+            get {
+                return this.fechaEntregaField;
+            }
+            set {
+                if ((this.fechaEntregaField.Equals(value) != true)) {
+                    this.fechaEntregaField = value;
+                    this.RaisePropertyChanged("fechaEntrega");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
+                    this.nombreField = value;
+                    this.RaisePropertyChanged("nombre");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CuentasBancarias", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.SerializableAttribute()]
+    public partial class CuentasBancarias : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SGMP_Client.SGPMReference.Beneficiarios[] BeneficiariosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SGMP_Client.SGPMReference.Beneficiarios Beneficiarios1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CuentaBancariaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IdBeneficiarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string titularField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SGMP_Client.SGPMReference.Beneficiarios[] Beneficiarios {
+            get {
+                return this.BeneficiariosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BeneficiariosField, value) != true)) {
+                    this.BeneficiariosField = value;
+                    this.RaisePropertyChanged("Beneficiarios");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SGMP_Client.SGPMReference.Beneficiarios Beneficiarios1 {
+            get {
+                return this.Beneficiarios1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Beneficiarios1Field, value) != true)) {
+                    this.Beneficiarios1Field = value;
+                    this.RaisePropertyChanged("Beneficiarios1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CuentaBancaria {
+            get {
+                return this.CuentaBancariaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CuentaBancariaField, value) != true)) {
+                    this.CuentaBancariaField = value;
+                    this.RaisePropertyChanged("CuentaBancaria");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IdBeneficiario {
+            get {
+                return this.IdBeneficiarioField;
+            }
+            set {
+                if ((this.IdBeneficiarioField.Equals(value) != true)) {
+                    this.IdBeneficiarioField = value;
+                    this.RaisePropertyChanged("IdBeneficiario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string titular {
+            get {
+                return this.titularField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.titularField, value) != true)) {
+                    this.titularField = value;
+                    this.RaisePropertyChanged("titular");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Localidades", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.SerializableAttribute()]
+    public partial class Localidades : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SGMP_Client.SGPMReference.Beneficiarios[] BeneficiariosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SGMP_Client.SGPMReference.DependenciaLocalidad[] DependenciaLocalidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SGMP_Client.SGPMReference.Empleados[] EmpleadosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdLocalidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string municipioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SGMP_Client.SGPMReference.Beneficiarios[] Beneficiarios {
+            get {
+                return this.BeneficiariosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BeneficiariosField, value) != true)) {
+                    this.BeneficiariosField = value;
+                    this.RaisePropertyChanged("Beneficiarios");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SGMP_Client.SGPMReference.DependenciaLocalidad[] DependenciaLocalidad {
+            get {
+                return this.DependenciaLocalidadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DependenciaLocalidadField, value) != true)) {
+                    this.DependenciaLocalidadField = value;
+                    this.RaisePropertyChanged("DependenciaLocalidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SGMP_Client.SGPMReference.Empleados[] Empleados {
+            get {
+                return this.EmpleadosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmpleadosField, value) != true)) {
+                    this.EmpleadosField = value;
+                    this.RaisePropertyChanged("Empleados");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdLocalidad {
+            get {
+                return this.IdLocalidadField;
+            }
+            set {
+                if ((this.IdLocalidadField.Equals(value) != true)) {
+                    this.IdLocalidadField = value;
+                    this.RaisePropertyChanged("IdLocalidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string municipio {
+            get {
+                return this.municipioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.municipioField, value) != true)) {
+                    this.municipioField = value;
+                    this.RaisePropertyChanged("municipio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
+                    this.nombreField = value;
+                    this.RaisePropertyChanged("nombre");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Empresas", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.SerializableAttribute()]
+    public partial class Empresas : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SGMP_Client.SGPMReference.Beneficiarios BeneficiariosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IdBeneficiarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdEmpresaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SGMP_Client.SGPMReference.Beneficiarios Beneficiarios {
+            get {
+                return this.BeneficiariosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BeneficiariosField, value) != true)) {
+                    this.BeneficiariosField = value;
+                    this.RaisePropertyChanged("Beneficiarios");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IdBeneficiario {
+            get {
+                return this.IdBeneficiarioField;
+            }
+            set {
+                if ((this.IdBeneficiarioField.Equals(value) != true)) {
+                    this.IdBeneficiarioField = value;
+                    this.RaisePropertyChanged("IdBeneficiario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdEmpresa {
+            get {
+                return this.IdEmpresaField;
+            }
+            set {
+                if ((this.IdEmpresaField.Equals(value) != true)) {
+                    this.IdEmpresaField = value;
+                    this.RaisePropertyChanged("IdEmpresa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
+                    this.nombreField = value;
+                    this.RaisePropertyChanged("nombre");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Personas", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.SerializableAttribute()]
+    public partial class Personas : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SGMP_Client.SGPMReference.Beneficiarios BeneficiariosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IdBeneficiarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdPersonaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string apellidoMaternoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string apellidoPaternoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string curpField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SGMP_Client.SGPMReference.Beneficiarios Beneficiarios {
+            get {
+                return this.BeneficiariosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BeneficiariosField, value) != true)) {
+                    this.BeneficiariosField = value;
+                    this.RaisePropertyChanged("Beneficiarios");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IdBeneficiario {
+            get {
+                return this.IdBeneficiarioField;
+            }
+            set {
+                if ((this.IdBeneficiarioField.Equals(value) != true)) {
+                    this.IdBeneficiarioField = value;
+                    this.RaisePropertyChanged("IdBeneficiario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdPersona {
+            get {
+                return this.IdPersonaField;
+            }
+            set {
+                if ((this.IdPersonaField.Equals(value) != true)) {
+                    this.IdPersonaField = value;
+                    this.RaisePropertyChanged("IdPersona");
                 }
             }
         }
@@ -2176,19 +2423,6 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int idBeneficiario {
-            get {
-                return this.idBeneficiarioField;
-            }
-            set {
-                if ((this.idBeneficiarioField.Equals(value) != true)) {
-                    this.idBeneficiarioField = value;
-                    this.RaisePropertyChanged("idBeneficiario");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string nombre {
             get {
                 return this.nombreField;
@@ -2213,24 +2447,27 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="empresaSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DependenciaLocalidad", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class empresaSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DependenciaLocalidad : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.BeneficiarioSet BeneficiarioSetField;
+        private SGMP_Client.SGPMReference.Dependencias DependenciasField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Beneficiario_idBeneficiarioField;
+        private System.Nullable<int> IdDependenciaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idBeneficiarioField;
+        private int IdDependenciaLocalidadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nombreField;
+        private System.Nullable<int> IdLocalidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SGMP_Client.SGPMReference.Localidades LocalidadesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -2243,53 +2480,66 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.BeneficiarioSet BeneficiarioSet {
+        public SGMP_Client.SGPMReference.Dependencias Dependencias {
             get {
-                return this.BeneficiarioSetField;
+                return this.DependenciasField;
             }
             set {
-                if ((object.ReferenceEquals(this.BeneficiarioSetField, value) != true)) {
-                    this.BeneficiarioSetField = value;
-                    this.RaisePropertyChanged("BeneficiarioSet");
+                if ((object.ReferenceEquals(this.DependenciasField, value) != true)) {
+                    this.DependenciasField = value;
+                    this.RaisePropertyChanged("Dependencias");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Beneficiario_idBeneficiario {
+        public System.Nullable<int> IdDependencia {
             get {
-                return this.Beneficiario_idBeneficiarioField;
+                return this.IdDependenciaField;
             }
             set {
-                if ((this.Beneficiario_idBeneficiarioField.Equals(value) != true)) {
-                    this.Beneficiario_idBeneficiarioField = value;
-                    this.RaisePropertyChanged("Beneficiario_idBeneficiario");
+                if ((this.IdDependenciaField.Equals(value) != true)) {
+                    this.IdDependenciaField = value;
+                    this.RaisePropertyChanged("IdDependencia");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int idBeneficiario {
+        public int IdDependenciaLocalidad {
             get {
-                return this.idBeneficiarioField;
+                return this.IdDependenciaLocalidadField;
             }
             set {
-                if ((this.idBeneficiarioField.Equals(value) != true)) {
-                    this.idBeneficiarioField = value;
-                    this.RaisePropertyChanged("idBeneficiario");
+                if ((this.IdDependenciaLocalidadField.Equals(value) != true)) {
+                    this.IdDependenciaLocalidadField = value;
+                    this.RaisePropertyChanged("IdDependenciaLocalidad");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string nombre {
+        public System.Nullable<int> IdLocalidad {
             get {
-                return this.nombreField;
+                return this.IdLocalidadField;
             }
             set {
-                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
-                    this.nombreField = value;
-                    this.RaisePropertyChanged("nombre");
+                if ((this.IdLocalidadField.Equals(value) != true)) {
+                    this.IdLocalidadField = value;
+                    this.RaisePropertyChanged("IdLocalidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SGMP_Client.SGPMReference.Localidades Localidades {
+            get {
+                return this.LocalidadesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocalidadesField, value) != true)) {
+                    this.LocalidadesField = value;
+                    this.RaisePropertyChanged("Localidades");
                 }
             }
         }
@@ -2306,30 +2556,33 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EmpleadoSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Empleados", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class EmpleadoSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Empleados : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.DictamenSet[] DictamenSetField;
+        private SGMP_Client.SGPMReference.Dictamenes[] DictamenesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int LocalidadIdLocalidadField;
+        private System.Nullable<int> IdLocalidadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.LocalidadSet LocalidadSetField;
+        private System.Nullable<int> IdUsuarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SGMP_Client.SGPMReference.Localidades LocalidadesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int NumeroEmpleadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.UsuarioSet UsuarioSetField;
+        private SGMP_Client.SGPMReference.Usuarios UsuariosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Usuario_IdUsuarioField;
+        private SGMP_Client.SGPMReference.Usuarios[] Usuarios1Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string apellidoMaternoField;
@@ -2347,7 +2600,7 @@ namespace SGMP_Client.SGPMReference {
         private string nombreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int numeroField;
+        private System.Nullable<int> numeroCasaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string rolField;
@@ -2366,40 +2619,53 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.DictamenSet[] DictamenSet {
+        public SGMP_Client.SGPMReference.Dictamenes[] Dictamenes {
             get {
-                return this.DictamenSetField;
+                return this.DictamenesField;
             }
             set {
-                if ((object.ReferenceEquals(this.DictamenSetField, value) != true)) {
-                    this.DictamenSetField = value;
-                    this.RaisePropertyChanged("DictamenSet");
+                if ((object.ReferenceEquals(this.DictamenesField, value) != true)) {
+                    this.DictamenesField = value;
+                    this.RaisePropertyChanged("Dictamenes");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int LocalidadIdLocalidad {
+        public System.Nullable<int> IdLocalidad {
             get {
-                return this.LocalidadIdLocalidadField;
+                return this.IdLocalidadField;
             }
             set {
-                if ((this.LocalidadIdLocalidadField.Equals(value) != true)) {
-                    this.LocalidadIdLocalidadField = value;
-                    this.RaisePropertyChanged("LocalidadIdLocalidad");
+                if ((this.IdLocalidadField.Equals(value) != true)) {
+                    this.IdLocalidadField = value;
+                    this.RaisePropertyChanged("IdLocalidad");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.LocalidadSet LocalidadSet {
+        public System.Nullable<int> IdUsuario {
             get {
-                return this.LocalidadSetField;
+                return this.IdUsuarioField;
             }
             set {
-                if ((object.ReferenceEquals(this.LocalidadSetField, value) != true)) {
-                    this.LocalidadSetField = value;
-                    this.RaisePropertyChanged("LocalidadSet");
+                if ((this.IdUsuarioField.Equals(value) != true)) {
+                    this.IdUsuarioField = value;
+                    this.RaisePropertyChanged("IdUsuario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SGMP_Client.SGPMReference.Localidades Localidades {
+            get {
+                return this.LocalidadesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocalidadesField, value) != true)) {
+                    this.LocalidadesField = value;
+                    this.RaisePropertyChanged("Localidades");
                 }
             }
         }
@@ -2418,27 +2684,27 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.UsuarioSet UsuarioSet {
+        public SGMP_Client.SGPMReference.Usuarios Usuarios {
             get {
-                return this.UsuarioSetField;
+                return this.UsuariosField;
             }
             set {
-                if ((object.ReferenceEquals(this.UsuarioSetField, value) != true)) {
-                    this.UsuarioSetField = value;
-                    this.RaisePropertyChanged("UsuarioSet");
+                if ((object.ReferenceEquals(this.UsuariosField, value) != true)) {
+                    this.UsuariosField = value;
+                    this.RaisePropertyChanged("Usuarios");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Usuario_IdUsuario {
+        public SGMP_Client.SGPMReference.Usuarios[] Usuarios1 {
             get {
-                return this.Usuario_IdUsuarioField;
+                return this.Usuarios1Field;
             }
             set {
-                if ((this.Usuario_IdUsuarioField.Equals(value) != true)) {
-                    this.Usuario_IdUsuarioField = value;
-                    this.RaisePropertyChanged("Usuario_IdUsuario");
+                if ((object.ReferenceEquals(this.Usuarios1Field, value) != true)) {
+                    this.Usuarios1Field = value;
+                    this.RaisePropertyChanged("Usuarios1");
                 }
             }
         }
@@ -2509,14 +2775,14 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int numero {
+        public System.Nullable<int> numeroCasa {
             get {
-                return this.numeroField;
+                return this.numeroCasaField;
             }
             set {
-                if ((this.numeroField.Equals(value) != true)) {
-                    this.numeroField = value;
-                    this.RaisePropertyChanged("numero");
+                if ((this.numeroCasaField.Equals(value) != true)) {
+                    this.numeroCasaField = value;
+                    this.RaisePropertyChanged("numeroCasa");
                 }
             }
         }
@@ -2559,236 +2825,21 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="LocalidadDependenciaSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Dependencias", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class LocalidadDependenciaSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Dependencias : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int DependenciaIdDependenciaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.DependenciaSet DependenciaSetField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdLocalidadDependenciaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int LocalidadIdLocalidadField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.LocalidadSet LocalidadSetField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.ProyectoSet[] ProyectoSetField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int DependenciaIdDependencia {
-            get {
-                return this.DependenciaIdDependenciaField;
-            }
-            set {
-                if ((this.DependenciaIdDependenciaField.Equals(value) != true)) {
-                    this.DependenciaIdDependenciaField = value;
-                    this.RaisePropertyChanged("DependenciaIdDependencia");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.DependenciaSet DependenciaSet {
-            get {
-                return this.DependenciaSetField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DependenciaSetField, value) != true)) {
-                    this.DependenciaSetField = value;
-                    this.RaisePropertyChanged("DependenciaSet");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdLocalidadDependencia {
-            get {
-                return this.IdLocalidadDependenciaField;
-            }
-            set {
-                if ((this.IdLocalidadDependenciaField.Equals(value) != true)) {
-                    this.IdLocalidadDependenciaField = value;
-                    this.RaisePropertyChanged("IdLocalidadDependencia");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int LocalidadIdLocalidad {
-            get {
-                return this.LocalidadIdLocalidadField;
-            }
-            set {
-                if ((this.LocalidadIdLocalidadField.Equals(value) != true)) {
-                    this.LocalidadIdLocalidadField = value;
-                    this.RaisePropertyChanged("LocalidadIdLocalidad");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.LocalidadSet LocalidadSet {
-            get {
-                return this.LocalidadSetField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LocalidadSetField, value) != true)) {
-                    this.LocalidadSetField = value;
-                    this.RaisePropertyChanged("LocalidadSet");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.ProyectoSet[] ProyectoSet {
-            get {
-                return this.ProyectoSetField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProyectoSetField, value) != true)) {
-                    this.ProyectoSetField = value;
-                    this.RaisePropertyChanged("ProyectoSet");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UsuarioSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
-    [System.SerializableAttribute()]
-    public partial class UsuarioSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.EmpleadoSet[] EmpleadoSetField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdUsuarioField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string contrasenaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string correoField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.EmpleadoSet[] EmpleadoSet {
-            get {
-                return this.EmpleadoSetField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmpleadoSetField, value) != true)) {
-                    this.EmpleadoSetField = value;
-                    this.RaisePropertyChanged("EmpleadoSet");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdUsuario {
-            get {
-                return this.IdUsuarioField;
-            }
-            set {
-                if ((this.IdUsuarioField.Equals(value) != true)) {
-                    this.IdUsuarioField = value;
-                    this.RaisePropertyChanged("IdUsuario");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string contrasena {
-            get {
-                return this.contrasenaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.contrasenaField, value) != true)) {
-                    this.contrasenaField = value;
-                    this.RaisePropertyChanged("contrasena");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string correo {
-            get {
-                return this.correoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.correoField, value) != true)) {
-                    this.correoField = value;
-                    this.RaisePropertyChanged("correo");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DependenciaSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
-    [System.SerializableAttribute()]
-    public partial class DependenciaSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        private SGMP_Client.SGPMReference.DependenciaLocalidad[] DependenciaLocalidadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdDependenciaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.LocalidadDependenciaSet[] LocalidadDependenciaSetField;
+        private SGMP_Client.SGPMReference.Proyectos[] ProyectosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nombreField;
@@ -2800,6 +2851,19 @@ namespace SGMP_Client.SGPMReference {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SGMP_Client.SGPMReference.DependenciaLocalidad[] DependenciaLocalidad {
+            get {
+                return this.DependenciaLocalidadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DependenciaLocalidadField, value) != true)) {
+                    this.DependenciaLocalidadField = value;
+                    this.RaisePropertyChanged("DependenciaLocalidad");
+                }
             }
         }
         
@@ -2817,14 +2881,14 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.LocalidadDependenciaSet[] LocalidadDependenciaSet {
+        public SGMP_Client.SGPMReference.Proyectos[] Proyectos {
             get {
-                return this.LocalidadDependenciaSetField;
+                return this.ProyectosField;
             }
             set {
-                if ((object.ReferenceEquals(this.LocalidadDependenciaSetField, value) != true)) {
-                    this.LocalidadDependenciaSetField = value;
-                    this.RaisePropertyChanged("LocalidadDependenciaSet");
+                if ((object.ReferenceEquals(this.ProyectosField, value) != true)) {
+                    this.ProyectosField = value;
+                    this.RaisePropertyChanged("Proyectos");
                 }
             }
         }
@@ -2854,9 +2918,9 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrdenEntregaSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrdenesEntrega", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class OrdenEntregaSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class OrdenesEntrega : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -2865,16 +2929,19 @@ namespace SGMP_Client.SGPMReference {
         private int IdOrdenEntregaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.ProyectoSet[] ProyectoSetField;
+        private System.Nullable<int> IdRecursoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.RecursoSet RecursoSetField;
+        private SGMP_Client.SGPMReference.Proyectos[] ProyectosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Recurso_IdRecursoField;
+        private SGMP_Client.SGPMReference.Recursos RecursosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime fechaEntregaField;
+        private SGMP_Client.SGPMReference.Recursos[] Recursos1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> fechaEntregaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string lugarEntregaField;
@@ -2903,46 +2970,59 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.ProyectoSet[] ProyectoSet {
+        public System.Nullable<int> IdRecurso {
             get {
-                return this.ProyectoSetField;
+                return this.IdRecursoField;
             }
             set {
-                if ((object.ReferenceEquals(this.ProyectoSetField, value) != true)) {
-                    this.ProyectoSetField = value;
-                    this.RaisePropertyChanged("ProyectoSet");
+                if ((this.IdRecursoField.Equals(value) != true)) {
+                    this.IdRecursoField = value;
+                    this.RaisePropertyChanged("IdRecurso");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.RecursoSet RecursoSet {
+        public SGMP_Client.SGPMReference.Proyectos[] Proyectos {
             get {
-                return this.RecursoSetField;
+                return this.ProyectosField;
             }
             set {
-                if ((object.ReferenceEquals(this.RecursoSetField, value) != true)) {
-                    this.RecursoSetField = value;
-                    this.RaisePropertyChanged("RecursoSet");
+                if ((object.ReferenceEquals(this.ProyectosField, value) != true)) {
+                    this.ProyectosField = value;
+                    this.RaisePropertyChanged("Proyectos");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Recurso_IdRecurso {
+        public SGMP_Client.SGPMReference.Recursos Recursos {
             get {
-                return this.Recurso_IdRecursoField;
+                return this.RecursosField;
             }
             set {
-                if ((this.Recurso_IdRecursoField.Equals(value) != true)) {
-                    this.Recurso_IdRecursoField = value;
-                    this.RaisePropertyChanged("Recurso_IdRecurso");
+                if ((object.ReferenceEquals(this.RecursosField, value) != true)) {
+                    this.RecursosField = value;
+                    this.RaisePropertyChanged("Recursos");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime fechaEntrega {
+        public SGMP_Client.SGPMReference.Recursos[] Recursos1 {
+            get {
+                return this.Recursos1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Recursos1Field, value) != true)) {
+                    this.Recursos1Field = value;
+                    this.RaisePropertyChanged("Recursos1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> fechaEntrega {
             get {
                 return this.fechaEntregaField;
             }
@@ -2979,27 +3059,27 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PoliticaProyectoSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProyectoPoliticaOtorgamiento", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class PoliticaProyectoSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ProyectoPoliticaOtorgamiento : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdPoliticaProyectoField;
+        private string FolioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> PoliticaOtorgamientoIdPoliticaField;
+        private System.Nullable<int> IdPoliticaOtorgamientoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.PoliticaOtorgamientoSet PoliticaOtorgamientoSetField;
+        private int IdProyectoPoliticaOtorgamientoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> ProyectoFolioField;
+        private SGMP_Client.SGPMReference.PoliticasOtorgamiento PoliticasOtorgamientoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.ProyectoSet ProyectoSetField;
+        private SGMP_Client.SGPMReference.Proyectos ProyectosField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -3012,66 +3092,66 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdPoliticaProyecto {
+        public string Folio {
             get {
-                return this.IdPoliticaProyectoField;
+                return this.FolioField;
             }
             set {
-                if ((this.IdPoliticaProyectoField.Equals(value) != true)) {
-                    this.IdPoliticaProyectoField = value;
-                    this.RaisePropertyChanged("IdPoliticaProyecto");
+                if ((object.ReferenceEquals(this.FolioField, value) != true)) {
+                    this.FolioField = value;
+                    this.RaisePropertyChanged("Folio");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> PoliticaOtorgamientoIdPolitica {
+        public System.Nullable<int> IdPoliticaOtorgamiento {
             get {
-                return this.PoliticaOtorgamientoIdPoliticaField;
+                return this.IdPoliticaOtorgamientoField;
             }
             set {
-                if ((this.PoliticaOtorgamientoIdPoliticaField.Equals(value) != true)) {
-                    this.PoliticaOtorgamientoIdPoliticaField = value;
-                    this.RaisePropertyChanged("PoliticaOtorgamientoIdPolitica");
+                if ((this.IdPoliticaOtorgamientoField.Equals(value) != true)) {
+                    this.IdPoliticaOtorgamientoField = value;
+                    this.RaisePropertyChanged("IdPoliticaOtorgamiento");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.PoliticaOtorgamientoSet PoliticaOtorgamientoSet {
+        public int IdProyectoPoliticaOtorgamiento {
             get {
-                return this.PoliticaOtorgamientoSetField;
+                return this.IdProyectoPoliticaOtorgamientoField;
             }
             set {
-                if ((object.ReferenceEquals(this.PoliticaOtorgamientoSetField, value) != true)) {
-                    this.PoliticaOtorgamientoSetField = value;
-                    this.RaisePropertyChanged("PoliticaOtorgamientoSet");
+                if ((this.IdProyectoPoliticaOtorgamientoField.Equals(value) != true)) {
+                    this.IdProyectoPoliticaOtorgamientoField = value;
+                    this.RaisePropertyChanged("IdProyectoPoliticaOtorgamiento");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> ProyectoFolio {
+        public SGMP_Client.SGPMReference.PoliticasOtorgamiento PoliticasOtorgamiento {
             get {
-                return this.ProyectoFolioField;
+                return this.PoliticasOtorgamientoField;
             }
             set {
-                if ((this.ProyectoFolioField.Equals(value) != true)) {
-                    this.ProyectoFolioField = value;
-                    this.RaisePropertyChanged("ProyectoFolio");
+                if ((object.ReferenceEquals(this.PoliticasOtorgamientoField, value) != true)) {
+                    this.PoliticasOtorgamientoField = value;
+                    this.RaisePropertyChanged("PoliticasOtorgamiento");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.ProyectoSet ProyectoSet {
+        public SGMP_Client.SGPMReference.Proyectos Proyectos {
             get {
-                return this.ProyectoSetField;
+                return this.ProyectosField;
             }
             set {
-                if ((object.ReferenceEquals(this.ProyectoSetField, value) != true)) {
-                    this.ProyectoSetField = value;
-                    this.RaisePropertyChanged("ProyectoSet");
+                if ((object.ReferenceEquals(this.ProyectosField, value) != true)) {
+                    this.ProyectosField = value;
+                    this.RaisePropertyChanged("Proyectos");
                 }
             }
         }
@@ -3088,24 +3168,30 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RecursoSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Recursos", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class RecursoSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Recursos : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IdOrdenEntregaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdRecursoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.OrdenEntregaSet[] OrdenEntregaSetField;
+        private SGMP_Client.SGPMReference.OrdenesEntrega[] OrdenesEntregaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string conceptoField;
+        private SGMP_Client.SGPMReference.OrdenesEntrega OrdenesEntrega1Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string valorField;
+        private string cantidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -3114,6 +3200,19 @@ namespace SGMP_Client.SGPMReference {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IdOrdenEntrega {
+            get {
+                return this.IdOrdenEntregaField;
+            }
+            set {
+                if ((this.IdOrdenEntregaField.Equals(value) != true)) {
+                    this.IdOrdenEntregaField = value;
+                    this.RaisePropertyChanged("IdOrdenEntrega");
+                }
             }
         }
         
@@ -3131,40 +3230,53 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.OrdenEntregaSet[] OrdenEntregaSet {
+        public SGMP_Client.SGPMReference.OrdenesEntrega[] OrdenesEntrega {
             get {
-                return this.OrdenEntregaSetField;
+                return this.OrdenesEntregaField;
             }
             set {
-                if ((object.ReferenceEquals(this.OrdenEntregaSetField, value) != true)) {
-                    this.OrdenEntregaSetField = value;
-                    this.RaisePropertyChanged("OrdenEntregaSet");
+                if ((object.ReferenceEquals(this.OrdenesEntregaField, value) != true)) {
+                    this.OrdenesEntregaField = value;
+                    this.RaisePropertyChanged("OrdenesEntrega");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string concepto {
+        public SGMP_Client.SGPMReference.OrdenesEntrega OrdenesEntrega1 {
             get {
-                return this.conceptoField;
+                return this.OrdenesEntrega1Field;
             }
             set {
-                if ((object.ReferenceEquals(this.conceptoField, value) != true)) {
-                    this.conceptoField = value;
-                    this.RaisePropertyChanged("concepto");
+                if ((object.ReferenceEquals(this.OrdenesEntrega1Field, value) != true)) {
+                    this.OrdenesEntrega1Field = value;
+                    this.RaisePropertyChanged("OrdenesEntrega1");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string valor {
+        public string cantidad {
             get {
-                return this.valorField;
+                return this.cantidadField;
             }
             set {
-                if ((object.ReferenceEquals(this.valorField, value) != true)) {
-                    this.valorField = value;
-                    this.RaisePropertyChanged("valor");
+                if ((object.ReferenceEquals(this.cantidadField, value) != true)) {
+                    this.cantidadField = value;
+                    this.RaisePropertyChanged("cantidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
+                    this.nombreField = value;
+                    this.RaisePropertyChanged("nombre");
                 }
             }
         }
@@ -3181,18 +3293,18 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PoliticaOtorgamientoSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PoliticasOtorgamiento", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class PoliticaOtorgamientoSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class PoliticasOtorgamiento : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdPoliticaField;
+        private int IdPoliticaOtorgamientoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.PoliticaProyectoSet[] PoliticaProyectoSetField;
+        private SGMP_Client.SGPMReference.ProyectoPoliticaOtorgamiento[] ProyectoPoliticaOtorgamientoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descripcionField;
@@ -3211,27 +3323,27 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdPolitica {
+        public int IdPoliticaOtorgamiento {
             get {
-                return this.IdPoliticaField;
+                return this.IdPoliticaOtorgamientoField;
             }
             set {
-                if ((this.IdPoliticaField.Equals(value) != true)) {
-                    this.IdPoliticaField = value;
-                    this.RaisePropertyChanged("IdPolitica");
+                if ((this.IdPoliticaOtorgamientoField.Equals(value) != true)) {
+                    this.IdPoliticaOtorgamientoField = value;
+                    this.RaisePropertyChanged("IdPoliticaOtorgamiento");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.PoliticaProyectoSet[] PoliticaProyectoSet {
+        public SGMP_Client.SGPMReference.ProyectoPoliticaOtorgamiento[] ProyectoPoliticaOtorgamiento {
             get {
-                return this.PoliticaProyectoSetField;
+                return this.ProyectoPoliticaOtorgamientoField;
             }
             set {
-                if ((object.ReferenceEquals(this.PoliticaProyectoSetField, value) != true)) {
-                    this.PoliticaProyectoSetField = value;
-                    this.RaisePropertyChanged("PoliticaProyectoSet");
+                if ((object.ReferenceEquals(this.ProyectoPoliticaOtorgamientoField, value) != true)) {
+                    this.ProyectoPoliticaOtorgamientoField = value;
+                    this.RaisePropertyChanged("ProyectoPoliticaOtorgamiento");
                 }
             }
         }
@@ -3274,27 +3386,30 @@ namespace SGMP_Client.SGPMReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CuentaBancariaSet", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Usuarios", Namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse")]
     [System.SerializableAttribute()]
-    public partial class CuentaBancariaSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Usuarios : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SGMP_Client.SGPMReference.CuentaBancariaSolicitudSet[] CuentaBancariaSolicitudSetField;
+        private SGMP_Client.SGPMReference.Empleados[] EmpleadosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string apellidoMaternoTitularField;
+        private SGMP_Client.SGPMReference.Empleados Empleados1Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string apellidoPaternoTitularField;
+        private int IdUsuarioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nombreTitularField;
+        private System.Nullable<int> NumeroEmpleadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int numeroCuentaField;
+        private string contrasenaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string correoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -3307,66 +3422,79 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SGMP_Client.SGPMReference.CuentaBancariaSolicitudSet[] CuentaBancariaSolicitudSet {
+        public SGMP_Client.SGPMReference.Empleados[] Empleados {
             get {
-                return this.CuentaBancariaSolicitudSetField;
+                return this.EmpleadosField;
             }
             set {
-                if ((object.ReferenceEquals(this.CuentaBancariaSolicitudSetField, value) != true)) {
-                    this.CuentaBancariaSolicitudSetField = value;
-                    this.RaisePropertyChanged("CuentaBancariaSolicitudSet");
+                if ((object.ReferenceEquals(this.EmpleadosField, value) != true)) {
+                    this.EmpleadosField = value;
+                    this.RaisePropertyChanged("Empleados");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string apellidoMaternoTitular {
+        public SGMP_Client.SGPMReference.Empleados Empleados1 {
             get {
-                return this.apellidoMaternoTitularField;
+                return this.Empleados1Field;
             }
             set {
-                if ((object.ReferenceEquals(this.apellidoMaternoTitularField, value) != true)) {
-                    this.apellidoMaternoTitularField = value;
-                    this.RaisePropertyChanged("apellidoMaternoTitular");
+                if ((object.ReferenceEquals(this.Empleados1Field, value) != true)) {
+                    this.Empleados1Field = value;
+                    this.RaisePropertyChanged("Empleados1");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string apellidoPaternoTitular {
+        public int IdUsuario {
             get {
-                return this.apellidoPaternoTitularField;
+                return this.IdUsuarioField;
             }
             set {
-                if ((object.ReferenceEquals(this.apellidoPaternoTitularField, value) != true)) {
-                    this.apellidoPaternoTitularField = value;
-                    this.RaisePropertyChanged("apellidoPaternoTitular");
+                if ((this.IdUsuarioField.Equals(value) != true)) {
+                    this.IdUsuarioField = value;
+                    this.RaisePropertyChanged("IdUsuario");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string nombreTitular {
+        public System.Nullable<int> NumeroEmpleado {
             get {
-                return this.nombreTitularField;
+                return this.NumeroEmpleadoField;
             }
             set {
-                if ((object.ReferenceEquals(this.nombreTitularField, value) != true)) {
-                    this.nombreTitularField = value;
-                    this.RaisePropertyChanged("nombreTitular");
+                if ((this.NumeroEmpleadoField.Equals(value) != true)) {
+                    this.NumeroEmpleadoField = value;
+                    this.RaisePropertyChanged("NumeroEmpleado");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int numeroCuenta {
+        public string contrasena {
             get {
-                return this.numeroCuentaField;
+                return this.contrasenaField;
             }
             set {
-                if ((this.numeroCuentaField.Equals(value) != true)) {
-                    this.numeroCuentaField = value;
-                    this.RaisePropertyChanged("numeroCuenta");
+                if ((object.ReferenceEquals(this.contrasenaField, value) != true)) {
+                    this.contrasenaField = value;
+                    this.RaisePropertyChanged("contrasena");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string correo {
+            get {
+                return this.correoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.correoField, value) != true)) {
+                    this.correoField = value;
+                    this.RaisePropertyChanged("correo");
                 }
             }
         }
@@ -3525,7 +3653,7 @@ namespace SGMP_Client.SGPMReference {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ProyectFolioField;
+        private string ProyectFolioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StateField;
@@ -3580,12 +3708,12 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ProyectFolio {
+        public string ProyectFolio {
             get {
                 return this.ProyectFolioField;
             }
             set {
-                if ((this.ProyectFolioField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.ProyectFolioField, value) != true)) {
                     this.ProyectFolioField = value;
                     this.RaisePropertyChanged("ProyectFolio");
                 }
@@ -3838,16 +3966,16 @@ namespace SGMP_Client.SGPMReference {
     public interface IProjectsManagement {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/GetProjectDetails", ReplyAction="http://tempuri.org/IProjectsManagement/GetProjectDetailsResponse")]
-        SGMP_Client.SGPMReference.Project GetProjectDetails(int idProject);
+        SGMP_Client.SGPMReference.Project GetProjectDetails(string idProject);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/GetProjectDetails", ReplyAction="http://tempuri.org/IProjectsManagement/GetProjectDetailsResponse")]
-        System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Project> GetProjectDetailsAsync(int idProject);
+        System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Project> GetProjectDetailsAsync(string idProject);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/GetProjectPolicies", ReplyAction="http://tempuri.org/IProjectsManagement/GetProjectPoliciesResponse")]
-        SGMP_Client.SGPMReference.ProjectPolicy[] GetProjectPolicies(int idProject);
+        SGMP_Client.SGPMReference.ProjectPolicy[] GetProjectPolicies(string idProject);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/GetProjectPolicies", ReplyAction="http://tempuri.org/IProjectsManagement/GetProjectPoliciesResponse")]
-        System.Threading.Tasks.Task<SGMP_Client.SGPMReference.ProjectPolicy[]> GetProjectPoliciesAsync(int idProject);
+        System.Threading.Tasks.Task<SGMP_Client.SGPMReference.ProjectPolicy[]> GetProjectPoliciesAsync(string idProject);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/GetProjectsFromLocality", ReplyAction="http://tempuri.org/IProjectsManagement/GetProjectsFromLocalityResponse")]
         SGMP_Client.SGPMReference.Project[] GetProjectsFromLocality(int locationId);
@@ -3883,19 +4011,19 @@ namespace SGMP_Client.SGPMReference {
                 base(binding, remoteAddress) {
         }
         
-        public SGMP_Client.SGPMReference.Project GetProjectDetails(int idProject) {
+        public SGMP_Client.SGPMReference.Project GetProjectDetails(string idProject) {
             return base.Channel.GetProjectDetails(idProject);
         }
         
-        public System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Project> GetProjectDetailsAsync(int idProject) {
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Project> GetProjectDetailsAsync(string idProject) {
             return base.Channel.GetProjectDetailsAsync(idProject);
         }
         
-        public SGMP_Client.SGPMReference.ProjectPolicy[] GetProjectPolicies(int idProject) {
+        public SGMP_Client.SGPMReference.ProjectPolicy[] GetProjectPolicies(string idProject) {
             return base.Channel.GetProjectPolicies(idProject);
         }
         
-        public System.Threading.Tasks.Task<SGMP_Client.SGPMReference.ProjectPolicy[]> GetProjectPoliciesAsync(int idProject) {
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMReference.ProjectPolicy[]> GetProjectPoliciesAsync(string idProject) {
             return base.Channel.GetProjectPoliciesAsync(idProject);
         }
         
@@ -3929,6 +4057,36 @@ namespace SGMP_Client.SGPMReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/GetCompanies", ReplyAction="http://tempuri.org/IBeneficiaryManagement/GetCompaniesResponse")]
         System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Company[]> GetCompaniesAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/RegisterPerson", ReplyAction="http://tempuri.org/IBeneficiaryManagement/RegisterPersonResponse")]
+        int RegisterPerson(SGMP_Client.SGPMReference.Beneficiary beneficiary, SGMP_Client.SGPMReference.Person person);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/RegisterPerson", ReplyAction="http://tempuri.org/IBeneficiaryManagement/RegisterPersonResponse")]
+        System.Threading.Tasks.Task<int> RegisterPersonAsync(SGMP_Client.SGPMReference.Beneficiary beneficiary, SGMP_Client.SGPMReference.Person person);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/RegisterCompany", ReplyAction="http://tempuri.org/IBeneficiaryManagement/RegisterCompanyResponse")]
+        int RegisterCompany(SGMP_Client.SGPMReference.Beneficiary beneficiary, SGMP_Client.SGPMReference.Company company);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/RegisterCompany", ReplyAction="http://tempuri.org/IBeneficiaryManagement/RegisterCompanyResponse")]
+        System.Threading.Tasks.Task<int> RegisterCompanyAsync(SGMP_Client.SGPMReference.Beneficiary beneficiary, SGMP_Client.SGPMReference.Company company);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/setBeneficiaryDetails", ReplyAction="http://tempuri.org/IBeneficiaryManagement/setBeneficiaryDetailsResponse")]
+        int setBeneficiaryDetails(SGMP_Client.SGPMReference.Beneficiary beneficiary);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/setBeneficiaryDetails", ReplyAction="http://tempuri.org/IBeneficiaryManagement/setBeneficiaryDetailsResponse")]
+        System.Threading.Tasks.Task<int> setBeneficiaryDetailsAsync(SGMP_Client.SGPMReference.Beneficiary beneficiary);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/RfcInUse", ReplyAction="http://tempuri.org/IBeneficiaryManagement/RfcInUseResponse")]
+        bool RfcInUse(string rfc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/RfcInUse", ReplyAction="http://tempuri.org/IBeneficiaryManagement/RfcInUseResponse")]
+        System.Threading.Tasks.Task<bool> RfcInUseAsync(string rfc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/CurpInUse", ReplyAction="http://tempuri.org/IBeneficiaryManagement/CurpInUseResponse")]
+        bool CurpInUse(string curp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/CurpInUse", ReplyAction="http://tempuri.org/IBeneficiaryManagement/CurpInUseResponse")]
+        System.Threading.Tasks.Task<bool> CurpInUseAsync(string curp);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3981,6 +4139,46 @@ namespace SGMP_Client.SGPMReference {
         public System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Company[]> GetCompaniesAsync(string name) {
             return base.Channel.GetCompaniesAsync(name);
         }
+        
+        public int RegisterPerson(SGMP_Client.SGPMReference.Beneficiary beneficiary, SGMP_Client.SGPMReference.Person person) {
+            return base.Channel.RegisterPerson(beneficiary, person);
+        }
+        
+        public System.Threading.Tasks.Task<int> RegisterPersonAsync(SGMP_Client.SGPMReference.Beneficiary beneficiary, SGMP_Client.SGPMReference.Person person) {
+            return base.Channel.RegisterPersonAsync(beneficiary, person);
+        }
+        
+        public int RegisterCompany(SGMP_Client.SGPMReference.Beneficiary beneficiary, SGMP_Client.SGPMReference.Company company) {
+            return base.Channel.RegisterCompany(beneficiary, company);
+        }
+        
+        public System.Threading.Tasks.Task<int> RegisterCompanyAsync(SGMP_Client.SGPMReference.Beneficiary beneficiary, SGMP_Client.SGPMReference.Company company) {
+            return base.Channel.RegisterCompanyAsync(beneficiary, company);
+        }
+        
+        public int setBeneficiaryDetails(SGMP_Client.SGPMReference.Beneficiary beneficiary) {
+            return base.Channel.setBeneficiaryDetails(beneficiary);
+        }
+        
+        public System.Threading.Tasks.Task<int> setBeneficiaryDetailsAsync(SGMP_Client.SGPMReference.Beneficiary beneficiary) {
+            return base.Channel.setBeneficiaryDetailsAsync(beneficiary);
+        }
+        
+        public bool RfcInUse(string rfc) {
+            return base.Channel.RfcInUse(rfc);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RfcInUseAsync(string rfc) {
+            return base.Channel.RfcInUseAsync(rfc);
+        }
+        
+        public bool CurpInUse(string curp) {
+            return base.Channel.CurpInUse(curp);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CurpInUseAsync(string curp) {
+            return base.Channel.CurpInUseAsync(curp);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3988,10 +4186,10 @@ namespace SGMP_Client.SGPMReference {
     public interface IRequestManagement {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/RegisterRequest", ReplyAction="http://tempuri.org/IRequestManagement/RegisterRequestResponse")]
-        int RegisterRequest(SGMP_Client.SGPMReference.SolicitudSet request);
+        int RegisterRequest(SGMP_Client.SGPMReference.Solicitudes request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/RegisterRequest", ReplyAction="http://tempuri.org/IRequestManagement/RegisterRequestResponse")]
-        System.Threading.Tasks.Task<int> RegisterRequestAsync(SGMP_Client.SGPMReference.SolicitudSet request);
+        System.Threading.Tasks.Task<int> RegisterRequestAsync(SGMP_Client.SGPMReference.Solicitudes request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/RegisterRequestDocumentation", ReplyAction="http://tempuri.org/IRequestManagement/RegisterRequestDocumentationResponse")]
         int RegisterRequestDocumentation(SGMP_Client.SGPMReference.File[] files);
@@ -4006,16 +4204,16 @@ namespace SGMP_Client.SGPMReference {
         System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Request> RecoverRequestDetailsAsync(int requestId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/RegisterRequestWithDocuments", ReplyAction="http://tempuri.org/IRequestManagement/RegisterRequestWithDocumentsResponse")]
-        int RegisterRequestWithDocuments(SGMP_Client.SGPMReference.SolicitudSet request, SGMP_Client.SGPMReference.File[] files);
+        int RegisterRequestWithDocuments(SGMP_Client.SGPMReference.Solicitudes request, SGMP_Client.SGPMReference.File[] files);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/RegisterRequestWithDocuments", ReplyAction="http://tempuri.org/IRequestManagement/RegisterRequestWithDocumentsResponse")]
-        System.Threading.Tasks.Task<int> RegisterRequestWithDocumentsAsync(SGMP_Client.SGPMReference.SolicitudSet request, SGMP_Client.SGPMReference.File[] files);
+        System.Threading.Tasks.Task<int> RegisterRequestWithDocumentsAsync(SGMP_Client.SGPMReference.Solicitudes request, SGMP_Client.SGPMReference.File[] files);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/BeneficiaryHasRequest", ReplyAction="http://tempuri.org/IRequestManagement/BeneficiaryHasRequestResponse")]
-        bool BeneficiaryHasRequest(int beneficiaryId, int projectFolio);
+        bool BeneficiaryHasRequest(int beneficiaryId, string projectFolio);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/BeneficiaryHasRequest", ReplyAction="http://tempuri.org/IRequestManagement/BeneficiaryHasRequestResponse")]
-        System.Threading.Tasks.Task<bool> BeneficiaryHasRequestAsync(int beneficiaryId, int projectFolio);
+        System.Threading.Tasks.Task<bool> BeneficiaryHasRequestAsync(int beneficiaryId, string projectFolio);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/GetRequestFiles", ReplyAction="http://tempuri.org/IRequestManagement/GetRequestFilesResponse")]
         SGMP_Client.SGPMReference.File[] GetRequestFiles(int requestId);
@@ -4030,10 +4228,10 @@ namespace SGMP_Client.SGPMReference {
         System.Threading.Tasks.Task<int> RegisterOpinionAsync(SGMP_Client.SGPMReference.Opinion opinion, int requestId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/GetRequestsOfProject", ReplyAction="http://tempuri.org/IRequestManagement/GetRequestsOfProjectResponse")]
-        SGMP_Client.SGPMReference.Request[] GetRequestsOfProject(int projectId);
+        SGMP_Client.SGPMReference.Request[] GetRequestsOfProject(string projectId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRequestManagement/GetRequestsOfProject", ReplyAction="http://tempuri.org/IRequestManagement/GetRequestsOfProjectResponse")]
-        System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Request[]> GetRequestsOfProjectAsync(int projectId);
+        System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Request[]> GetRequestsOfProjectAsync(string projectId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4063,11 +4261,11 @@ namespace SGMP_Client.SGPMReference {
                 base(binding, remoteAddress) {
         }
         
-        public int RegisterRequest(SGMP_Client.SGPMReference.SolicitudSet request) {
+        public int RegisterRequest(SGMP_Client.SGPMReference.Solicitudes request) {
             return base.Channel.RegisterRequest(request);
         }
         
-        public System.Threading.Tasks.Task<int> RegisterRequestAsync(SGMP_Client.SGPMReference.SolicitudSet request) {
+        public System.Threading.Tasks.Task<int> RegisterRequestAsync(SGMP_Client.SGPMReference.Solicitudes request) {
             return base.Channel.RegisterRequestAsync(request);
         }
         
@@ -4087,19 +4285,19 @@ namespace SGMP_Client.SGPMReference {
             return base.Channel.RecoverRequestDetailsAsync(requestId);
         }
         
-        public int RegisterRequestWithDocuments(SGMP_Client.SGPMReference.SolicitudSet request, SGMP_Client.SGPMReference.File[] files) {
+        public int RegisterRequestWithDocuments(SGMP_Client.SGPMReference.Solicitudes request, SGMP_Client.SGPMReference.File[] files) {
             return base.Channel.RegisterRequestWithDocuments(request, files);
         }
         
-        public System.Threading.Tasks.Task<int> RegisterRequestWithDocumentsAsync(SGMP_Client.SGPMReference.SolicitudSet request, SGMP_Client.SGPMReference.File[] files) {
+        public System.Threading.Tasks.Task<int> RegisterRequestWithDocumentsAsync(SGMP_Client.SGPMReference.Solicitudes request, SGMP_Client.SGPMReference.File[] files) {
             return base.Channel.RegisterRequestWithDocumentsAsync(request, files);
         }
         
-        public bool BeneficiaryHasRequest(int beneficiaryId, int projectFolio) {
+        public bool BeneficiaryHasRequest(int beneficiaryId, string projectFolio) {
             return base.Channel.BeneficiaryHasRequest(beneficiaryId, projectFolio);
         }
         
-        public System.Threading.Tasks.Task<bool> BeneficiaryHasRequestAsync(int beneficiaryId, int projectFolio) {
+        public System.Threading.Tasks.Task<bool> BeneficiaryHasRequestAsync(int beneficiaryId, string projectFolio) {
             return base.Channel.BeneficiaryHasRequestAsync(beneficiaryId, projectFolio);
         }
         
@@ -4119,11 +4317,11 @@ namespace SGMP_Client.SGPMReference {
             return base.Channel.RegisterOpinionAsync(opinion, requestId);
         }
         
-        public SGMP_Client.SGPMReference.Request[] GetRequestsOfProject(int projectId) {
+        public SGMP_Client.SGPMReference.Request[] GetRequestsOfProject(string projectId) {
             return base.Channel.GetRequestsOfProject(projectId);
         }
         
-        public System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Request[]> GetRequestsOfProjectAsync(int projectId) {
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Request[]> GetRequestsOfProjectAsync(string projectId) {
             return base.Channel.GetRequestsOfProjectAsync(projectId);
         }
     }

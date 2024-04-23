@@ -44,6 +44,7 @@ namespace SGMP_Client
                     DTO_s.User.UserClient = new DTO_s.User()
                     {
                         UserId = user.UserId,
+
                         EmployerId = user.EmployeeNumber,
                         LocationId = user.LocationId,
                     };

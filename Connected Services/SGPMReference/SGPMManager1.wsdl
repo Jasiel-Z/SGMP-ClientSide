@@ -50,13 +50,13 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" />
+      <xsd:import schemaLocation="http://192.168.1.129:8082/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IProjectsManagement_GetProjectDetails_InputMessage">
@@ -94,6 +94,36 @@
   </wsdl:message>
   <wsdl:message name="IBeneficiaryManagement_GetCompanies_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_RegisterPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterPerson" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_RegisterPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_RegisterCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterCompany" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_RegisterCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_setBeneficiaryDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:setBeneficiaryDetails" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_setBeneficiaryDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:setBeneficiaryDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_RfcInUse_InputMessage">
+    <wsdl:part name="parameters" element="tns:RfcInUse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_RfcInUse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RfcInUseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_CurpInUse_InputMessage">
+    <wsdl:part name="parameters" element="tns:CurpInUse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_CurpInUse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CurpInUseResponse" />
   </wsdl:message>
   <wsdl:message name="IRequestManagement_RegisterRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:RegisterRequest" />
@@ -175,6 +205,26 @@
     <wsdl:operation name="GetCompanies">
       <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/GetCompanies" message="tns:IBeneficiaryManagement_GetCompanies_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/GetCompaniesResponse" message="tns:IBeneficiaryManagement_GetCompanies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterPerson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/RegisterPerson" message="tns:IBeneficiaryManagement_RegisterPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/RegisterPersonResponse" message="tns:IBeneficiaryManagement_RegisterPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/RegisterCompany" message="tns:IBeneficiaryManagement_RegisterCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/RegisterCompanyResponse" message="tns:IBeneficiaryManagement_RegisterCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="setBeneficiaryDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/setBeneficiaryDetails" message="tns:IBeneficiaryManagement_setBeneficiaryDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/setBeneficiaryDetailsResponse" message="tns:IBeneficiaryManagement_setBeneficiaryDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RfcInUse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/RfcInUse" message="tns:IBeneficiaryManagement_RfcInUse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/RfcInUseResponse" message="tns:IBeneficiaryManagement_RfcInUse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CurpInUse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/CurpInUse" message="tns:IBeneficiaryManagement_CurpInUse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/CurpInUseResponse" message="tns:IBeneficiaryManagement_CurpInUse_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRequestManagement">
@@ -271,6 +321,51 @@
     </wsdl:operation>
     <wsdl:operation name="GetCompanies">
       <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/GetCompanies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterPerson">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/RegisterPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCompany">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/RegisterCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setBeneficiaryDetails">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/setBeneficiaryDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RfcInUse">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/RfcInUse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurpInUse">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/CurpInUse" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

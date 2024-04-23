@@ -72,7 +72,7 @@ namespace SGMP_Client
         private void GetRequestsFromProyect()
         {
 
-            int folio = project.Folio;
+            string folio = project.Folio;
             Requests = Client.GetRequestsOfProject(folio).ToList();
 
             if(Requests != null)

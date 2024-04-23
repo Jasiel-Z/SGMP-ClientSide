@@ -5,7 +5,7 @@
       <xs:element minOccurs="0" name="AttentionGroup" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="BeneficiaryNumbers" type="xs:int" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Folio" type="xs:int" />
+      <xs:element minOccurs="0" name="Folio" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Modality" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
@@ -24,7 +24,7 @@
       <xs:element minOccurs="0" name="GrantingPolicy" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ProyectFolio" type="xs:int" />
+      <xs:element minOccurs="0" name="ProyectFolio" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ProjectPolicy" nillable="true" type="tns:ProjectPolicy" />

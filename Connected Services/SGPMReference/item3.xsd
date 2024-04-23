@@ -22,7 +22,7 @@
       <xs:element minOccurs="0" name="BeneficiaryId" type="xs:int" />
       <xs:element minOccurs="0" name="CreationTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="ProyectFolio" type="xs:int" />
+      <xs:element minOccurs="0" name="ProyectFolio" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
