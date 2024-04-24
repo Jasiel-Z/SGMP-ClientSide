@@ -51,7 +51,9 @@ namespace SGMP_Client
 
         private void GoBeneficiariesModule(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            GUI_BeneficiaryList gUI_Beneficiary =  new GUI_BeneficiaryList();
+            gUI_Beneficiary.Show();
+            this.Close();
         }
 
         private void GoRequestsModule(object sender, MouseButtonEventArgs e)

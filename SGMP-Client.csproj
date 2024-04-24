@@ -61,6 +61,14 @@
       <DependentUpon>GUI_LocalitiesList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility.cs" />
+    <Page Include="GUI_BeneficiaryDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_BeneficiaryList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI_GenerateOpinion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -77,14 +85,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI_Locality.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI_Policy.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="GUI_RegisterRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,7 +97,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI_User.xaml">
+    <Page Include="GUI_UpdateBeneficiary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -109,7 +109,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Connected Services\SGPMManagerService\Reference.cs">
+    <Compile Include="Connected Services\SGPMReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -118,20 +118,20 @@
     <Compile Include="DTO%27s\DTOPerson.cs" />
     <Compile Include="DTO%27s\DTOProject.cs" />
     <Compile Include="DTO%27s\User.cs" />
+    <Compile Include="GUI_BeneficiaryDetails.xaml.cs">
+      <DependentUpon>GUI_BeneficiaryDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_BeneficiaryList.xaml.cs">
+      <DependentUpon>GUI_BeneficiaryList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_GenerateOpinion.xaml.cs">
+      <DependentUpon>GUI_GenerateOpinion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI_Login.xaml.cs">
       <DependentUpon>GUI_Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI_MainMenu.xaml.cs">
       <DependentUpon>GUI_MainMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI_GenerateOpinion.xaml.cs">
-      <DependentUpon>GUI_GenerateOpinion.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI_Locality.xaml.cs">
-      <DependentUpon>GUI_Locality.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI_Policy.xaml.cs">
-      <DependentUpon>GUI_Policy.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI_RegisterRequest.xaml.cs">
       <DependentUpon>GUI_RegisterRequest.xaml</DependentUpon>
@@ -142,8 +142,8 @@
     <Compile Include="GUI_RequestsMenu.xaml.cs">
       <DependentUpon>GUI_RequestsMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI_User.xaml.cs">
-      <DependentUpon>GUI_User.xaml</DependentUpon>
+    <Compile Include="GUI_UpdateBeneficiary.xaml.cs">
+      <DependentUpon>GUI_UpdateBeneficiary.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -168,40 +168,34 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\SGPMManagerService\item.xsd">
+    <None Include="Connected Services\SGPMReference\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SGPMManagerService\item1.xsd">
+    <None Include="Connected Services\SGPMReference\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SGPMManagerService\item2.xsd">
+    <None Include="Connected Services\SGPMReference\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SGPMManagerService\item3.xsd">
+    <None Include="Connected Services\SGPMReference\item3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SGPMManagerService\item4.xsd">
+    <None Include="Connected Services\SGPMReference\item4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SGPMManagerService\item5.xsd">
+    <None Include="Connected Services\SGPMReference\item5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SGPMManagerService\item6.xsd">
+    <None Include="Connected Services\SGPMReference\item6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SGPMManagerService\item7.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\SGPMManagerService\item71.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\SGPMManagerService\SGMP_Client.SGPMManagerService.Beneficiary.datasource">
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Beneficiary.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SGPMManagerService\SGMP_Client.SGPMManagerService.Company.datasource">
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Company.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SGPMManagerService\SGMP_Client.SGPMManagerService.File.datasource">
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.File.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SGPMManagerService\SGMP_Client.SGPMManagerService.Locality.datasource">
@@ -210,19 +204,19 @@
     <None Include="Connected Services\SGPMManagerService\SGMP_Client.SGPMManagerService.Person.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SGPMManagerService\SGMP_Client.SGPMManagerService.Project.datasource">
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Project.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SGPMManagerService\SGMP_Client.SGPMManagerService.ProjectPolicy.datasource">
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.ProjectPolicy.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SGPMManagerService\SGMP_Client.SGPMManagerService.Request.datasource">
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.Request.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SGPMManagerService\SGMP_Client.SGPMManagerService.User.datasource">
+    <None Include="Connected Services\SGPMReference\SGMP_Client.SGPMReference.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SGPMManagerService\SGPMManager.wsdl" />
+    <None Include="Connected Services\SGPMReference\SGPMManager1.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -244,19 +238,16 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\SGPMManagerService\" />
+    <WCFMetadataStorage Include="Connected Services\SGPMReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SGPMManagerService\item.disco" />
+    <None Include="Connected Services\SGPMReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SGPMManagerService\configuration91.svcinfo" />
+    <None Include="Connected Services\SGPMReference\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SGPMManagerService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SGPMManagerService\Reference.svcmap">
+    <None Include="Connected Services\SGPMReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

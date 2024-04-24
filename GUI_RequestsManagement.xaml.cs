@@ -72,20 +72,20 @@ namespace SGMP_Client
         private void GetRequestsFromProyect()
         {
 
-            int folio = project.Folio;
+            string folio = project.Folio;
             Requests = Client.GetRequestsOfProject(folio).ToList();
 
             if(Requests != null)
             {
                 foreach (Request request in Requests)
                 {
-                    MessageBox.Show(request.State);
                     liv_requests.Items.Add(request);
                 }
             }
             else
             {
-                MessageBox.Show("Errro");
+                MessageBox.Show("No se pudieron recuperar los registros, por favor inténtelo más tarde"
+                 , "Error de conexión con la base de datos");
             }
         }
     }

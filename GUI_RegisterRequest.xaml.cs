@@ -40,6 +40,7 @@ namespace SGMP_Client
             lib_files.ItemsSource = AttachFiles;
             client = new SGPMManagerService.ProjectsManagementClient();
             this.project = project;
+            GetProyectDetails();
         }
 
 
@@ -131,17 +132,17 @@ namespace SGMP_Client
 
             if (validData)
             {
-                SGPMManagerService.SolicitudSet request = new SGPMManagerService.SolicitudSet
+                SGPMReference.Solicitudes request = new SGPMReference.Solicitudes
                 {
                     estado = "creada",
                     fechaCreacion = System.DateTime.Now,
-                    ProyectoFolio = project.Folio,
-                    BeneficiarioId = GetBeneficiaryId(),
+                    Folio = project.Folio,
+                    IdBeneficiario = GetBeneficiaryId(),
                 };
 
                 SGPMManagerService.RequestManagementClient client = new SGPMManagerService.RequestManagementClient();
 
-                bool beneficiaryFound = client.BeneficiaryHasRequest((int)request.BeneficiarioId, request.ProyectoFolio);
+                bool beneficiaryFound = client.BeneficiaryHasRequest((int)request.IdBeneficiario, request.Folio);
 
                 if(beneficiaryFound)
                 {
@@ -153,7 +154,9 @@ namespace SGMP_Client
                     if (result >= 1)
                     {
                         MessageBox.Show("La solicitud  ha sido registrada", "Registro exitoso");
-                        ClearFields();
+                        GUI_RequestsManagement requestsManagement = new GUI_RequestsManagement(project);
+                        requestsManagement.Show();
+                        this.Close();
                     }
                     else
                     {

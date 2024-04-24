@@ -71,11 +71,15 @@ namespace SGMP_Client
             {
                 foreach(Project project in Projects)
                 {
-                    MessageBox.Show(project.ToString());
                     lib_proyects.Items.Add(project);
 
                 }
 
+            }
+            else
+            {
+                MessageBox.Show("No se pudieron recuperar los registros, por favor inténtelo más tarde"
+                    ,"Error de conexión con la base de datos");
             }
 
         }
