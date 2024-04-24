@@ -211,6 +211,12 @@
   <wsdl:message name="ILocalityManagement_GetLocalities_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetLocalitiesResponse" />
   </wsdl:message>
+  <wsdl:message name="ILocalityManagement_UpdateLocality_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLocality" />
+  </wsdl:message>
+  <wsdl:message name="ILocalityManagement_UpdateLocality_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLocalityResponse" />
+  </wsdl:message>
   <wsdl:message name="IPolicyManagement_SavePolicy_InputMessage">
     <wsdl:part name="parameters" element="tns:SavePolicy" />
   </wsdl:message>
@@ -309,6 +315,10 @@
     <wsdl:operation name="GetLocalities">
       <wsdl:input wsaw:Action="http://tempuri.org/ILocalityManagement/GetLocalities" message="tns:ILocalityManagement_GetLocalities_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILocalityManagement/GetLocalitiesResponse" message="tns:ILocalityManagement_GetLocalities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocality">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILocalityManagement/UpdateLocality" message="tns:ILocalityManagement_UpdateLocality_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILocalityManagement/UpdateLocalityResponse" message="tns:ILocalityManagement_UpdateLocality_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IPolicyManagement">
@@ -518,6 +528,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLocalities">
       <soap12:operation soapAction="http://tempuri.org/ILocalityManagement/GetLocalities" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocality">
+      <soap12:operation soapAction="http://tempuri.org/ILocalityManagement/UpdateLocality" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

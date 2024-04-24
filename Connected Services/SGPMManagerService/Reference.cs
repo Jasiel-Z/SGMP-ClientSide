@@ -4552,6 +4552,12 @@ namespace SGMP_Client.SGPMManagerService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocalityManagement/GetLocalities", ReplyAction="http://tempuri.org/ILocalityManagement/GetLocalitiesResponse")]
         System.Threading.Tasks.Task<SGMP_Client.SGPMManagerService.Locality[]> GetLocalitiesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocalityManagement/UpdateLocality", ReplyAction="http://tempuri.org/ILocalityManagement/UpdateLocalityResponse")]
+        int UpdateLocality(SGMP_Client.SGPMManagerService.Locality locality);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocalityManagement/UpdateLocality", ReplyAction="http://tempuri.org/ILocalityManagement/UpdateLocalityResponse")]
+        System.Threading.Tasks.Task<int> UpdateLocalityAsync(SGMP_Client.SGPMManagerService.Locality locality);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4603,6 +4609,14 @@ namespace SGMP_Client.SGPMManagerService {
         
         public System.Threading.Tasks.Task<SGMP_Client.SGPMManagerService.Locality[]> GetLocalitiesAsync() {
             return base.Channel.GetLocalitiesAsync();
+        }
+        
+        public int UpdateLocality(SGMP_Client.SGPMManagerService.Locality locality) {
+            return base.Channel.UpdateLocality(locality);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateLocalityAsync(SGMP_Client.SGPMManagerService.Locality locality) {
+            return base.Channel.UpdateLocalityAsync(locality);
         }
     }
     
