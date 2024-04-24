@@ -146,7 +146,6 @@
       <xs:element minOccurs="0" name="IdRecurso" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Proyectos" nillable="true" type="tns:ArrayOfProyectos" />
       <xs:element minOccurs="0" name="Recursos" nillable="true" type="tns:Recursos" />
-      <xs:element minOccurs="0" name="Recursos1" nillable="true" type="tns:ArrayOfRecursos" />
       <xs:element minOccurs="0" name="cantidad" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="fechaEntrega" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="lugarEntrega" nillable="true" type="xs:string" />
@@ -167,12 +166,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfOrdenesEntrega" nillable="true" type="tns:ArrayOfOrdenesEntrega" />
-  <xs:complexType name="ArrayOfRecursos">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Recursos" nillable="true" type="tns:Recursos" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfRecursos" nillable="true" type="tns:ArrayOfRecursos" />
   <xs:complexType name="ArrayOfProyectoPoliticaOtorgamiento">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="ProyectoPoliticaOtorgamiento" nillable="true" type="tns:ProyectoPoliticaOtorgamiento" />

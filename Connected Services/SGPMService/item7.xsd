@@ -75,6 +75,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetProjectsFromLocality">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="locationId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectsFromLocalityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" minOccurs="0" name="GetProjectsFromLocalityResult" nillable="true" type="q6:ArrayOfProject" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetBeneficiaries">
     <xs:complexType>
       <xs:sequence />
@@ -83,7 +97,7 @@
   <xs:element name="GetBeneficiariesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="GetBeneficiariesResult" nillable="true" type="q6:ArrayOfBeneficiary" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="GetBeneficiariesResult" nillable="true" type="q7:ArrayOfBeneficiary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -97,7 +111,7 @@
   <xs:element name="GetPersonsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="GetPersonsResult" nillable="true" type="q7:ArrayOfPerson" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="GetPersonsResult" nillable="true" type="q8:ArrayOfPerson" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -111,15 +125,15 @@
   <xs:element name="GetCompaniesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="GetCompaniesResult" nillable="true" type="q8:ArrayOfCompany" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="GetCompaniesResult" nillable="true" type="q9:ArrayOfCompany" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RegisterPerson">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="beneficiary" nillable="true" type="q9:Beneficiary" />
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="person" nillable="true" type="q10:Person" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="beneficiary" nillable="true" type="q10:Beneficiary" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="person" nillable="true" type="q11:Person" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -133,8 +147,8 @@
   <xs:element name="RegisterCompany">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="beneficiary" nillable="true" type="q11:Beneficiary" />
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="company" nillable="true" type="q12:Company" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="beneficiary" nillable="true" type="q12:Beneficiary" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="company" nillable="true" type="q13:Company" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -148,7 +162,7 @@
   <xs:element name="setBeneficiaryDetails">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="beneficiary" nillable="true" type="q13:Beneficiary" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="beneficiary" nillable="true" type="q14:Beneficiary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -187,10 +201,38 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getPerson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="beneficiaryId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPersonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="getPersonResult" nillable="true" type="q15:Person" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCompany">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="beneficiaryId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCompanyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="getCompanyResult" nillable="true" type="q16:Company" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="RegisterRequest">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" minOccurs="0" name="request" nillable="true" type="q14:Solicitudes" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" minOccurs="0" name="request" nillable="true" type="q17:Solicitudes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -204,7 +246,7 @@
   <xs:element name="RegisterRequestDocumentation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="files" nillable="true" type="q15:ArrayOfFile" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="files" nillable="true" type="q18:ArrayOfFile" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -225,15 +267,15 @@
   <xs:element name="RecoverRequestDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="RecoverRequestDetailsResult" nillable="true" type="q16:Request" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="RecoverRequestDetailsResult" nillable="true" type="q19:Request" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RegisterRequestWithDocuments">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" minOccurs="0" name="request" nillable="true" type="q17:Solicitudes" />
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="files" nillable="true" type="q18:ArrayOfFile" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/SGPM_DataBAse" minOccurs="0" name="request" nillable="true" type="q20:Solicitudes" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="files" nillable="true" type="q21:ArrayOfFile" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -269,14 +311,14 @@
   <xs:element name="GetRequestFilesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="GetRequestFilesResult" nillable="true" type="q19:ArrayOfFile" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="GetRequestFilesResult" nillable="true" type="q22:ArrayOfFile" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RegisterOpinion">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="opinion" nillable="true" type="q20:Opinion" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="opinion" nillable="true" type="q23:Opinion" />
         <xs:element minOccurs="0" name="requestId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -298,7 +340,7 @@
   <xs:element name="GetRequestsOfProjectResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="GetRequestsOfProjectResult" nillable="true" type="q21:ArrayOfRequest" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IRequestManagement" minOccurs="0" name="GetRequestsOfProjectResult" nillable="true" type="q24:ArrayOfRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -313,14 +355,14 @@
   <xs:element name="GetUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" minOccurs="0" name="GetUserResult" nillable="true" type="q22:User" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" minOccurs="0" name="GetUserResult" nillable="true" type="q25:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SaveUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" minOccurs="0" name="user" nillable="true" type="q23:User" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" minOccurs="0" name="user" nillable="true" type="q26:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -362,7 +404,7 @@
   <xs:element name="SaveLocality">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/SGPM_Contracts.ILocalityManagement" minOccurs="0" name="locality" nillable="true" type="q24:Locality" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/SGPM_Contracts.ILocalityManagement" minOccurs="0" name="locality" nillable="true" type="q27:Locality" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -395,14 +437,14 @@
   <xs:element name="GetLocalitiesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/SGPM_Contracts.ILocalityManagement" minOccurs="0" name="GetLocalitiesResult" nillable="true" type="q25:ArrayOfLocality" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/SGPM_Contracts.ILocalityManagement" minOccurs="0" name="GetLocalitiesResult" nillable="true" type="q28:ArrayOfLocality" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateLocality">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/SGPM_Contracts.ILocalityManagement" minOccurs="0" name="locality" nillable="true" type="q26:Locality" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/SGPM_Contracts.ILocalityManagement" minOccurs="0" name="locality" nillable="true" type="q29:Locality" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -416,7 +458,7 @@
   <xs:element name="SavePolicy">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IPolicyManagement" minOccurs="0" name="policy" nillable="true" type="q27:Policy" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IPolicyManagement" minOccurs="0" name="policy" nillable="true" type="q30:Policy" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -430,7 +472,7 @@
   <xs:element name="SaveBankAccount">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBankAccountManagement" minOccurs="0" name="account" nillable="true" type="q28:BankAccount" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBankAccountManagement" minOccurs="0" name="account" nillable="true" type="q31:BankAccount" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -444,7 +486,7 @@
   <xs:element name="UpdateBankAccount">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBankAccountManagement" minOccurs="0" name="account" nillable="true" type="q29:BankAccount" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBankAccountManagement" minOccurs="0" name="account" nillable="true" type="q32:BankAccount" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -465,14 +507,14 @@
   <xs:element name="GetBankAccountResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBankAccountManagement" minOccurs="0" name="GetBankAccountResult" nillable="true" type="q30:BankAccount" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBankAccountManagement" minOccurs="0" name="GetBankAccountResult" nillable="true" type="q33:BankAccount" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SaveDeliveryOrden">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" minOccurs="0" name="deliveryOrden" nillable="true" type="q31:DeliveryOrden" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" minOccurs="0" name="deliveryOrden" nillable="true" type="q34:DeliveryOrden" />
         <xs:element minOccurs="0" name="folio" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -494,7 +536,7 @@
   <xs:element name="GetDeliveryOrdenResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" minOccurs="0" name="GetDeliveryOrdenResult" nillable="true" type="q32:DeliveryOrden" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" minOccurs="0" name="GetDeliveryOrdenResult" nillable="true" type="q35:DeliveryOrden" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -506,7 +548,7 @@
   <xs:element name="GetResourcesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" minOccurs="0" name="GetResourcesResult" nillable="true" type="q33:ArrayOfResource" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" minOccurs="0" name="GetResourcesResult" nillable="true" type="q36:ArrayOfResource" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

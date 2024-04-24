@@ -8,9 +8,12 @@
   <xs:element name="ArrayOfBeneficiary" nillable="true" type="tns:ArrayOfBeneficiary" />
   <xs:complexType name="Beneficiary">
     <xs:sequence>
+      <xs:element minOccurs="0" name="AccountId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyId" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="LocalityId" type="xs:int" />
+      <xs:element minOccurs="0" name="PersonId" type="xs:int" />
       <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RFC" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />

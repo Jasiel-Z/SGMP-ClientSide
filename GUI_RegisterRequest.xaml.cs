@@ -132,7 +132,7 @@ namespace SGMP_Client
 
             if (validData)
             {
-                SGPMReference.Solicitudes request = new SGPMReference.Solicitudes
+                SGPMService.Solicitudes request = new SGPMService.Solicitudes
                 {
                     estado = "creada",
                     fechaCreacion = System.DateTime.Now,

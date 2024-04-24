@@ -1,4 +1,4 @@
-﻿using SGMP_Client.SGPMManagerService;
+﻿using SGMP_Client.SGPMService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,7 +62,7 @@ namespace SGMP_Client
                 Township = township
             };
 
-            SGPMManagerService.LocalityManagementClient client = new SGPMManagerService.LocalityManagementClient();
+            SGPMService.LocalityManagementClient client = new   SGPMService.LocalityManagementClient();
 
             int result = client.SaveLocality(locality);
 
@@ -85,7 +85,7 @@ namespace SGMP_Client
                 Township = township
             };
 
-            SGPMManagerService.LocalityManagementClient client = new SGPMManagerService.LocalityManagementClient();
+            SGPMService.LocalityManagementClient client = new SGPMService.LocalityManagementClient();
             int result = client.UpdateLocality(locality);
 
             if (result == 1)

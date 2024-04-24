@@ -1,4 +1,4 @@
-﻿using SGMP_Client.SGPMManagerService;
+﻿using SGMP_Client.SGPMService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -111,7 +111,7 @@ namespace SGMP_Client
 
         private int SaveUser(User user)
         {
-            SGPMManagerService.UserManagementClient client = new SGPMManagerService.UserManagementClient();
+            SGPMService.UserManagementClient client = new SGPMService.UserManagementClient();
 
             int result = client.SaveUser(user);
 
@@ -163,7 +163,7 @@ namespace SGMP_Client
             bool isEmployeeNumberValid = false;
             if (employeeNumber.Length == 8 && Regex.IsMatch(employeeNumber, "^[0-9]+$"))
             {
-                SGPMManagerService.UserManagementClient client = new SGPMManagerService.UserManagementClient();
+                SGPMService.UserManagementClient client = new SGPMService.UserManagementClient();
                 
                 if (client.ValidateEmployeeNumberDoesNotExist(employeeNumber))
                 {
@@ -190,7 +190,7 @@ namespace SGMP_Client
             bool isEmailValid = false;
             if ((Regex.IsMatch(email, "^[a-zA-Z0-9\\-_]{5,20}@(gob)\\.mx$")))
             {
-                SGPMManagerService.UserManagementClient client = new SGPMManagerService.UserManagementClient();
+                SGPMService.UserManagementClient client = new SGPMService.UserManagementClient();
 
                 if (client.ValidateEmailDoesNotExist(email))
                 {
@@ -274,7 +274,7 @@ namespace SGMP_Client
         private List<Locality> GetLocalitiesFromDatabase()
         {
             var localities = new List<Locality>();
-            SGPMManagerService.LocalityManagementClient client = new SGPMManagerService.LocalityManagementClient();
+            SGPMService.LocalityManagementClient client = new SGPMService.LocalityManagementClient();
 
             var localitiesFromDatabaseList = client.GetLocalities();
 
