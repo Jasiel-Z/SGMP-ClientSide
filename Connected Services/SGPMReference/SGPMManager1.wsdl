@@ -125,6 +125,18 @@
   <wsdl:message name="IBeneficiaryManagement_CurpInUse_OutputMessage">
     <wsdl:part name="parameters" element="tns:CurpInUseResponse" />
   </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_getPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPerson" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_getPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_getCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:getCompany" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_getCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getCompanyResponse" />
+  </wsdl:message>
   <wsdl:message name="IRequestManagement_RegisterRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:RegisterRequest" />
   </wsdl:message>
@@ -225,6 +237,14 @@
     <wsdl:operation name="CurpInUse">
       <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/CurpInUse" message="tns:IBeneficiaryManagement_CurpInUse_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/CurpInUseResponse" message="tns:IBeneficiaryManagement_CurpInUse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPerson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/getPerson" message="tns:IBeneficiaryManagement_getPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/getPersonResponse" message="tns:IBeneficiaryManagement_getPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/getCompany" message="tns:IBeneficiaryManagement_getCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/getCompanyResponse" message="tns:IBeneficiaryManagement_getCompany_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRequestManagement">
@@ -366,6 +386,24 @@
     </wsdl:operation>
     <wsdl:operation name="CurpInUse">
       <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/CurpInUse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPerson">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/getPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompany">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/getCompany" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

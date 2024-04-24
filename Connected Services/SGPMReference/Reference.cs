@@ -273,13 +273,22 @@ namespace SGMP_Client.SGPMReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AccountIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CompanyIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int LocalityIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PersonIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PhoneNumberField;
@@ -301,6 +310,19 @@ namespace SGMP_Client.SGPMReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AccountId {
+            get {
+                return this.AccountIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AccountIdField, value) != true)) {
+                    this.AccountIdField = value;
+                    this.RaisePropertyChanged("AccountId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string City {
             get {
                 return this.CityField;
@@ -309,6 +331,19 @@ namespace SGMP_Client.SGPMReference {
                 if ((object.ReferenceEquals(this.CityField, value) != true)) {
                     this.CityField = value;
                     this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CompanyId {
+            get {
+                return this.CompanyIdField;
+            }
+            set {
+                if ((this.CompanyIdField.Equals(value) != true)) {
+                    this.CompanyIdField = value;
+                    this.RaisePropertyChanged("CompanyId");
                 }
             }
         }
@@ -335,6 +370,19 @@ namespace SGMP_Client.SGPMReference {
                 if ((this.LocalityIdField.Equals(value) != true)) {
                     this.LocalityIdField = value;
                     this.RaisePropertyChanged("LocalityId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PersonId {
+            get {
+                return this.PersonIdField;
+            }
+            set {
+                if ((this.PersonIdField.Equals(value) != true)) {
+                    this.PersonIdField = value;
+                    this.RaisePropertyChanged("PersonId");
                 }
             }
         }
@@ -4087,6 +4135,18 @@ namespace SGMP_Client.SGPMReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/CurpInUse", ReplyAction="http://tempuri.org/IBeneficiaryManagement/CurpInUseResponse")]
         System.Threading.Tasks.Task<bool> CurpInUseAsync(string curp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/getPerson", ReplyAction="http://tempuri.org/IBeneficiaryManagement/getPersonResponse")]
+        SGMP_Client.SGPMReference.Person getPerson(int beneficiaryId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/getPerson", ReplyAction="http://tempuri.org/IBeneficiaryManagement/getPersonResponse")]
+        System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Person> getPersonAsync(int beneficiaryId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/getCompany", ReplyAction="http://tempuri.org/IBeneficiaryManagement/getCompanyResponse")]
+        SGMP_Client.SGPMReference.Company getCompany(int beneficiaryId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/getCompany", ReplyAction="http://tempuri.org/IBeneficiaryManagement/getCompanyResponse")]
+        System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Company> getCompanyAsync(int beneficiaryId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4178,6 +4238,22 @@ namespace SGMP_Client.SGPMReference {
         
         public System.Threading.Tasks.Task<bool> CurpInUseAsync(string curp) {
             return base.Channel.CurpInUseAsync(curp);
+        }
+        
+        public SGMP_Client.SGPMReference.Person getPerson(int beneficiaryId) {
+            return base.Channel.getPerson(beneficiaryId);
+        }
+        
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Person> getPersonAsync(int beneficiaryId) {
+            return base.Channel.getPersonAsync(beneficiaryId);
+        }
+        
+        public SGMP_Client.SGPMReference.Company getCompany(int beneficiaryId) {
+            return base.Channel.getCompany(beneficiaryId);
+        }
+        
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMReference.Company> getCompanyAsync(int beneficiaryId) {
+            return base.Channel.getCompanyAsync(beneficiaryId);
         }
     }
     

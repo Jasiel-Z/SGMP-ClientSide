@@ -13,20 +13,14 @@
         </Grid.RowDefinitions>
         <Label Content="Lista de beneficiarios." HorizontalAlignment="Left" Margin="21,8,0,0" VerticalAlignment="Top" FontSize="28" FontWeight="Bold" Height="47" Width="522"/>
         <Rectangle HorizontalAlignment="Center" Height="5" Margin="0,53,0,0" Fill="Sienna" Stroke="Silver" VerticalAlignment="Top" Width="1138" RenderTransformOrigin="0.5,0.5"/>
-        <ListView x:Name="liv_requests" Grid.Row="1"  Margin="41,48,367,220">
+        <ListView x:Name="liv_requests" Grid.Row="1"  Margin="41,48,152,220" HorizontalAlignment="Center" MouseDoubleClick="liv_requests_MouseDoubleClick">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Nombre del beneficiario" DisplayMemberBinding="{Binding beneficiaryId}" Width="200"/>
-                    <GridViewColumn Header="Ciudad" DisplayMemberBinding="{Binding Phone}" Width="200"/>
+                    <GridViewColumn Header="Identificador" DisplayMemberBinding="{Binding Id}" Width="200"/>
+                    <GridViewColumn Header="Teléfono" DisplayMemberBinding="{Binding PhoneNumber}" Width="200"/>
                     <GridViewColumn Header="Calle" DisplayMemberBinding="{Binding Street}" Width="200"/>
-                    <GridViewColumn Header="Celular" DisplayMemberBinding="{Binding City}" Width="200"/>
-                    <GridViewColumn Width="Auto">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Ir a dictamen"  Click="Btn_Go_Register"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    <GridViewColumn Header="Ciudad" DisplayMemberBinding="{Binding City}" Width="200"/>
+                    <GridViewColumn Header="RFC" DisplayMemberBinding="{Binding RFC}" Width="200"/>
                 </GridView>
             </ListView.View>
         </ListView>

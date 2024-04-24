@@ -25,6 +25,7 @@ namespace SGMP_Client
         public GUI_BeneficiaryList()
         {
             InitializeComponent();
+            Client = new SGPMReference.BeneficiaryManagementClient();
             Beneficiaries = new List<Beneficiary>();
             GetBeneficiaries();
         }
@@ -48,21 +49,52 @@ namespace SGMP_Client
         private void GetBeneficiaries()
         {
             //mover cuando se tenga el id del empleado
-            int localityId = 1; 
-            Beneficiaries = Client.GetRequestsOfProject(folio).ToList();
+            int localityId = 1;
 
-            if (Beneficiaries != null)
+            try
             {
-                foreach (Request request in Requests)
+                Beneficiaries = Client.GetBeneficiaries().ToList();
+
+                if (Beneficiaries != null)
                 {
-                    liv_requests.Items.Add(request);
+                    foreach (Beneficiary beneficiary in Beneficiaries)
+                    {
+                        liv_requests.Items.Add(beneficiary);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se pudieron recuperar los registros, por favor inténtelo más tarde"
+                     , "Error de conexión con la base de datos");
                 }
             }
-            else
+            catch (TimeoutException ex)
             {
-                MessageBox.Show("No se pudieron recuperar los registros, por favor inténtelo más tarde"
-                 , "Error de conexión con la base de datos");
+                MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
+                   "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+        }
+
+        private void liv_requests_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Beneficiary selectedBeneficiary = (Beneficiary)liv_requests.SelectedItem;
+
+            if (selectedBeneficiary != null)
+            {
+                GUI_UpdateBeneficiary gUI_Update = new GUI_UpdateBeneficiary(selectedBeneficiary);
+                gUI_Update.Show();
+                this.Close();
+            }
+        }
+
+        private bool ValidateData()
+        {
+            bool validData = true;
+
+
+
+            return validData;
         }
     }
 }

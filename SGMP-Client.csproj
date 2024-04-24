@@ -89,6 +89,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI_UpdateBeneficiary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -129,6 +133,9 @@
     </Compile>
     <Compile Include="GUI_RequestsMenu.xaml.cs">
       <DependentUpon>GUI_RequestsMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_UpdateBeneficiary.xaml.cs">
+      <DependentUpon>GUI_UpdateBeneficiary.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

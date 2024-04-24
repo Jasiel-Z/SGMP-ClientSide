@@ -34,10 +34,7 @@ namespace SGMP_Client
             this.Close();
         }
 
-        private int registerBeneficiary()
-        {
-            return 1;
-        }
+
 
         private void Btn_Register_Beneficiary(object sender, RoutedEventArgs e)
         {
@@ -53,7 +50,7 @@ namespace SGMP_Client
                     {
                         if (validatePersonInformation() && validateBeneficiaryInformation())
                         {
-                            registerBeneficiary();
+                            registerPerson();
                         }
                         else
                         {
@@ -61,7 +58,6 @@ namespace SGMP_Client
                                 "Información faltante", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
                     }
-
                     else
                     {
                         if (validateCompanyInformation() && validateBeneficiaryInformation())
@@ -113,7 +109,7 @@ namespace SGMP_Client
                     };
 
                     int result = client.RegisterPerson(newBeneficiary, newPerson);
-                    if (result > 1)
+                    if (result != -1)
                     {
                         MessageBox.Show("El beneficiario se he registrado en el sistema", "Registro realizado",
                             MessageBoxButton.OK, MessageBoxImage.Information);
@@ -161,7 +157,7 @@ namespace SGMP_Client
                     };
 
                     int result = client.RegisterCompany(newBeneficiary, newCompany);
-                    if(result > 1)
+                    if(result != -1)
                     {
                         MessageBox.Show("El beneficiario se he registrado en el sistema", "Registro realizado",
                             MessageBoxButton.OK, MessageBoxImage.Information);
