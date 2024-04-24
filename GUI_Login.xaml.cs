@@ -20,12 +20,12 @@ namespace SGMP_Client
     public partial class GUI_Login : Window
     {
 
-        SGPMManagerService.UserManagementClient Client { get; set; }
+        SGPMService.UserManagementClient Client { get; set; }
         public GUI_Login()
         {
             InitializeComponent();
 
-           Client = new SGPMManagerService.UserManagementClient();
+           Client = new SGPMService.UserManagementClient();
 
         }
 
@@ -34,10 +34,10 @@ namespace SGMP_Client
             bool validData = ValidateFields();
             if (validData)
             {
-                Client = new SGPMManagerService.UserManagementClient();
+                Client = new SGPMService.UserManagementClient();
 
                 String hashedPassword = Utility.ComputeSha256Hash(pb_password.Password);
-                SGPMManagerService.User user = Client.GetUser(tb_email.Text, hashedPassword);
+                SGPMService.User user = Client.GetUser(tb_email.Text, hashedPassword);
 
                 if (user != null)
                 {

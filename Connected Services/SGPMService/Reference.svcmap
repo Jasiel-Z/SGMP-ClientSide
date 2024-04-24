@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="86771a9f-40a4-48fd-b3ad-ba6afe76175e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8082/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="f922a043-0c0b-4035-9940-cfd5055b0fb0" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd10" />
+    <MetadataFile FileName="SGPMManager.wsdl" MetadataType="Wsdl" ID="2e0263b5-caad-43f2-b574-22cc86db0781" SourceId="1" SourceUrl="http://localhost:8082/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="b836e200-e4e6-4498-804e-5200f7fec84b" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd8" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="047837d8-2309-4d08-84e2-e7a253e0b401" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd9" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="26ae42f3-f562-4a33-995b-89e954cf8515" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd4" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="2dcd9a35-3036-4d87-b893-7c3c9baa524d" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd5" />
+    <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="9ca30ebe-b00d-43d1-82f4-d17cc7c8fc1f" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd6" />
+    <MetadataFile FileName="item6.xsd" MetadataType="Schema" ID="859dc7bf-cf03-4968-90a1-408d1f6e5c5f" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd7" />
+    <MetadataFile FileName="item7.xsd" MetadataType="Schema" ID="e530360b-07ae-45f8-a907-cd97c4905368" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd0" />
+    <MetadataFile FileName="item8.xsd" MetadataType="Schema" ID="6640c531-f62d-47b6-9bc9-ad81bdc4e96e" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd1" />
+    <MetadataFile FileName="item9.xsd" MetadataType="Schema" ID="06cac19f-9ab7-4371-b6ed-49907c53c127" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd2" />
+    <MetadataFile FileName="item10.xsd" MetadataType="Schema" ID="b35dee5c-ffc3-435c-9e90-64a87cfd5a15" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd3" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="f0fcb664-8c1b-4744-a95c-4f3ffd6d774c" SourceId="1" SourceUrl="http://localhost:8082/?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,4 +1,4 @@
-﻿using SGMP_Client.SGPMReference;
+﻿using SGMP_Client.SGPMService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace SGMP_Client
     {
 
         private Beneficiary Beneficiary { get; set; }
-        private SGMP_Client.SGPMReference.BeneficiaryManagementClient client; 
+        private SGMP_Client.SGPMService.BeneficiaryManagementClient client; 
         public GUI_UpdateBeneficiary(Beneficiary beneficiary)
         {
             InitializeComponent();

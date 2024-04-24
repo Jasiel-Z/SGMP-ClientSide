@@ -1,4 +1,4 @@
-﻿using SGMP_Client.SGPMReference;
+﻿using SGMP_Client.SGPMService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,7 +78,7 @@ namespace SGMP_Client
         {
             try
             {
-                SGPMReference.BeneficiaryManagementClient client = new BeneficiaryManagementClient();
+                SGPMService.BeneficiaryManagementClient client = new BeneficiaryManagementClient();
                 if (client.CurpInUse(tb_curp.Text))
                 {
                     MessageBox.Show("La CURP que ha ingresado se encuentra en uso dentro del sistema", "CURP en uso",
@@ -134,7 +134,7 @@ namespace SGMP_Client
         {
             try
             {
-                SGPMReference.BeneficiaryManagementClient client = new BeneficiaryManagementClient();
+                SGPMService.BeneficiaryManagementClient client = new BeneficiaryManagementClient();
                 if (client.RfcInUse(tb_rfc.Text))
                 {
                     MessageBox.Show("El RFC que ha ingresado se encuentra en uso dentro del sistema", "RFC en uso",

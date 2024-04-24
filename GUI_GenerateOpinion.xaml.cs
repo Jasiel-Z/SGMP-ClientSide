@@ -1,5 +1,5 @@
 ﻿using Microsoft.Win32;
-using SGMP_Client.SGPMManagerService;
+using SGMP_Client.SGPMService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,26 +22,26 @@ namespace SGMP_Client
     public partial class GUI_GenerateOpinion : Window
     {
 
-        public List<SGPMManagerService.File> Files { get; set; }
-        SGPMManagerService.ProjectsManagementClient Client;
+        public List<SGPMService.File> Files { get; set; }
+        SGPMService.ProjectsManagementClient Client;
         private Project project;
 
-        public SGMP_Client.SGPMManagerService.Person Person { get; set; }
-        public SGMP_Client.SGPMManagerService.Company Company { get; set; }
+        public SGMP_Client.SGPMService.Person Person { get; set; }
+        public SGMP_Client.SGPMService.Company Company { get; set; }
 
         private Request request;
 
-        public SGPMManagerService.Beneficiary Beneficiary { get; set; }
+        public SGPMService.Beneficiary Beneficiary { get; set; }
 
-        public List<SGMP_Client.SGPMManagerService.ProjectPolicy> ProjectPolicies { get; set; }
+        public List<SGMP_Client.SGPMService.ProjectPolicy> ProjectPolicies { get; set; }
 
 
         public GUI_GenerateOpinion(Project project, Request request)
         {
             InitializeComponent();
 
-            Files = new List<SGPMManagerService.File>();
-            Client = new SGPMManagerService.ProjectsManagementClient();
+            Files = new List<SGPMService.File>();
+            Client = new SGPMService.ProjectsManagementClient();
             this.project = project;
             this.request = request;
             GetProyectDetails();
@@ -121,7 +121,7 @@ namespace SGMP_Client
 
         private void GetFiles()
         {
-            SGPMManagerService.RequestManagementClient client = new RequestManagementClient();
+            SGPMService.RequestManagementClient client = new RequestManagementClient();
             Files = client.GetRequestFiles(request.Id).ToList();
             foreach (var file in Files)
             {
@@ -248,7 +248,7 @@ namespace SGMP_Client
                         };
 
 
-                        SGPMManagerService.RequestManagementClient client = new SGPMManagerService.RequestManagementClient();
+                        SGPMService.RequestManagementClient client = new SGPMService.RequestManagementClient();
                         int result = client.RegisterOpinion(opinion, request.Id);
                         if (result >= 1)
                         {

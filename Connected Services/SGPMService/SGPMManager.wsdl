@@ -72,6 +72,30 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IBankAccountManagement_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IDeliveryOrdenManagement_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -83,6 +107,8 @@
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.ILocalityManagement" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IPolicyManagement" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBankAccountManagement" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IProjectsManagement_GetProjectDetails_InputMessage">
@@ -91,17 +117,29 @@
   <wsdl:message name="IProjectsManagement_GetProjectDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProjectDetailsResponse" />
   </wsdl:message>
+  <wsdl:message name="IProjectsManagement_RegisteredProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisteredProjects" />
+  </wsdl:message>
+  <wsdl:message name="IProjectsManagement_RegisteredProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisteredProjectsResponse" />
+  </wsdl:message>
   <wsdl:message name="IProjectsManagement_GetProjectPolicies_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProjectPolicies" />
   </wsdl:message>
   <wsdl:message name="IProjectsManagement_GetProjectPolicies_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProjectPoliciesResponse" />
   </wsdl:message>
-  <wsdl:message name="IProjectsManagement_GetProjectsFromLocality_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetProjectsFromLocality" />
+  <wsdl:message name="IProjectsManagement_GetLocalidads_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocalidads" />
   </wsdl:message>
-  <wsdl:message name="IProjectsManagement_GetProjectsFromLocality_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetProjectsFromLocalityResponse" />
+  <wsdl:message name="IProjectsManagement_GetLocalidads_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocalidadsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProjectsManagement_GetDependencies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDependencies" />
+  </wsdl:message>
+  <wsdl:message name="IProjectsManagement_GetDependencies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDependenciesResponse" />
   </wsdl:message>
   <wsdl:message name="IBeneficiaryManagement_GetBeneficiaries_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBeneficiaries" />
@@ -120,6 +158,36 @@
   </wsdl:message>
   <wsdl:message name="IBeneficiaryManagement_GetCompanies_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_RegisterPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterPerson" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_RegisterPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_RegisterCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterCompany" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_RegisterCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_setBeneficiaryDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:setBeneficiaryDetails" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_setBeneficiaryDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:setBeneficiaryDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_RfcInUse_InputMessage">
+    <wsdl:part name="parameters" element="tns:RfcInUse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_RfcInUse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RfcInUseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_CurpInUse_InputMessage">
+    <wsdl:part name="parameters" element="tns:CurpInUse" />
+  </wsdl:message>
+  <wsdl:message name="IBeneficiaryManagement_CurpInUse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CurpInUseResponse" />
   </wsdl:message>
   <wsdl:message name="IRequestManagement_RegisterRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:RegisterRequest" />
@@ -223,18 +291,62 @@
   <wsdl:message name="IPolicyManagement_SavePolicy_OutputMessage">
     <wsdl:part name="parameters" element="tns:SavePolicyResponse" />
   </wsdl:message>
+  <wsdl:message name="IBankAccountManagement_SaveBankAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveBankAccount" />
+  </wsdl:message>
+  <wsdl:message name="IBankAccountManagement_SaveBankAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveBankAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBankAccountManagement_UpdateBankAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBankAccount" />
+  </wsdl:message>
+  <wsdl:message name="IBankAccountManagement_UpdateBankAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBankAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBankAccountManagement_GetBankAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBankAccount" />
+  </wsdl:message>
+  <wsdl:message name="IBankAccountManagement_GetBankAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBankAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDeliveryOrdenManagement_SaveDeliveryOrden_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDeliveryOrden" />
+  </wsdl:message>
+  <wsdl:message name="IDeliveryOrdenManagement_SaveDeliveryOrden_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDeliveryOrdenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDeliveryOrdenManagement_GetDeliveryOrden_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliveryOrden" />
+  </wsdl:message>
+  <wsdl:message name="IDeliveryOrdenManagement_GetDeliveryOrden_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliveryOrdenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDeliveryOrdenManagement_GetResources_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetResources" />
+  </wsdl:message>
+  <wsdl:message name="IDeliveryOrdenManagement_GetResources_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResourcesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProjectsManagement">
     <wsdl:operation name="GetProjectDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectDetails" message="tns:IProjectsManagement_GetProjectDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectDetailsResponse" message="tns:IProjectsManagement_GetProjectDetails_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RegisteredProjects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/RegisteredProjects" message="tns:IProjectsManagement_RegisteredProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/RegisteredProjectsResponse" message="tns:IProjectsManagement_RegisteredProjects_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetProjectPolicies">
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectPolicies" message="tns:IProjectsManagement_GetProjectPolicies_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectPoliciesResponse" message="tns:IProjectsManagement_GetProjectPolicies_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetProjectsFromLocality">
-      <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectsFromLocality" message="tns:IProjectsManagement_GetProjectsFromLocality_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectsFromLocalityResponse" message="tns:IProjectsManagement_GetProjectsFromLocality_OutputMessage" />
+    <wsdl:operation name="GetLocalidads">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetLocalidads" message="tns:IProjectsManagement_GetLocalidads_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/GetLocalidadsResponse" message="tns:IProjectsManagement_GetLocalidads_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDependencies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetDependencies" message="tns:IProjectsManagement_GetDependencies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/GetDependenciesResponse" message="tns:IProjectsManagement_GetDependencies_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IBeneficiaryManagement">
@@ -249,6 +361,26 @@
     <wsdl:operation name="GetCompanies">
       <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/GetCompanies" message="tns:IBeneficiaryManagement_GetCompanies_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/GetCompaniesResponse" message="tns:IBeneficiaryManagement_GetCompanies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterPerson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/RegisterPerson" message="tns:IBeneficiaryManagement_RegisterPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/RegisterPersonResponse" message="tns:IBeneficiaryManagement_RegisterPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/RegisterCompany" message="tns:IBeneficiaryManagement_RegisterCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/RegisterCompanyResponse" message="tns:IBeneficiaryManagement_RegisterCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="setBeneficiaryDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/setBeneficiaryDetails" message="tns:IBeneficiaryManagement_setBeneficiaryDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/setBeneficiaryDetailsResponse" message="tns:IBeneficiaryManagement_setBeneficiaryDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RfcInUse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/RfcInUse" message="tns:IBeneficiaryManagement_RfcInUse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/RfcInUseResponse" message="tns:IBeneficiaryManagement_RfcInUse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CurpInUse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeneficiaryManagement/CurpInUse" message="tns:IBeneficiaryManagement_CurpInUse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeneficiaryManagement/CurpInUseResponse" message="tns:IBeneficiaryManagement_CurpInUse_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRequestManagement">
@@ -327,11 +459,48 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IPolicyManagement/SavePolicyResponse" message="tns:IPolicyManagement_SavePolicy_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:portType name="IBankAccountManagement">
+    <wsdl:operation name="SaveBankAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankAccountManagement/SaveBankAccount" message="tns:IBankAccountManagement_SaveBankAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankAccountManagement/SaveBankAccountResponse" message="tns:IBankAccountManagement_SaveBankAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBankAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankAccountManagement/UpdateBankAccount" message="tns:IBankAccountManagement_UpdateBankAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankAccountManagement/UpdateBankAccountResponse" message="tns:IBankAccountManagement_UpdateBankAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBankAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankAccountManagement/GetBankAccount" message="tns:IBankAccountManagement_GetBankAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankAccountManagement/GetBankAccountResponse" message="tns:IBankAccountManagement_GetBankAccount_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IDeliveryOrdenManagement">
+    <wsdl:operation name="SaveDeliveryOrden">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDeliveryOrdenManagement/SaveDeliveryOrden" message="tns:IDeliveryOrdenManagement_SaveDeliveryOrden_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDeliveryOrdenManagement/SaveDeliveryOrdenResponse" message="tns:IDeliveryOrdenManagement_SaveDeliveryOrden_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryOrden">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDeliveryOrdenManagement/GetDeliveryOrden" message="tns:IDeliveryOrdenManagement_GetDeliveryOrden_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDeliveryOrdenManagement/GetDeliveryOrdenResponse" message="tns:IDeliveryOrdenManagement_GetDeliveryOrden_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResources">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDeliveryOrdenManagement/GetResources" message="tns:IDeliveryOrdenManagement_GetResources_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDeliveryOrdenManagement/GetResourcesResponse" message="tns:IDeliveryOrdenManagement_GetResources_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IProjectsManagement" type="tns:IProjectsManagement">
     <wsp:PolicyReference URI="#NetTcpBinding_IProjectsManagement_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="GetProjectDetails">
       <soap12:operation soapAction="http://tempuri.org/IProjectsManagement/GetProjectDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisteredProjects">
+      <soap12:operation soapAction="http://tempuri.org/IProjectsManagement/RegisteredProjects" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -348,8 +517,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetProjectsFromLocality">
-      <soap12:operation soapAction="http://tempuri.org/IProjectsManagement/GetProjectsFromLocality" style="document" />
+    <wsdl:operation name="GetLocalidads">
+      <soap12:operation soapAction="http://tempuri.org/IProjectsManagement/GetLocalidads" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDependencies">
+      <soap12:operation soapAction="http://tempuri.org/IProjectsManagement/GetDependencies" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -381,6 +559,51 @@
     </wsdl:operation>
     <wsdl:operation name="GetCompanies">
       <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/GetCompanies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterPerson">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/RegisterPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCompany">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/RegisterCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setBeneficiaryDetails">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/setBeneficiaryDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RfcInUse">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/RfcInUse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurpInUse">
+      <soap12:operation soapAction="http://tempuri.org/IBeneficiaryManagement/CurpInUse" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -558,6 +781,68 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IBankAccountManagement" type="tns:IBankAccountManagement">
+    <wsp:PolicyReference URI="#NetTcpBinding_IBankAccountManagement_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SaveBankAccount">
+      <soap12:operation soapAction="http://tempuri.org/IBankAccountManagement/SaveBankAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBankAccount">
+      <soap12:operation soapAction="http://tempuri.org/IBankAccountManagement/UpdateBankAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBankAccount">
+      <soap12:operation soapAction="http://tempuri.org/IBankAccountManagement/GetBankAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IDeliveryOrdenManagement" type="tns:IDeliveryOrdenManagement">
+    <wsp:PolicyReference URI="#NetTcpBinding_IDeliveryOrdenManagement_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SaveDeliveryOrden">
+      <soap12:operation soapAction="http://tempuri.org/IDeliveryOrdenManagement/SaveDeliveryOrden" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryOrden">
+      <soap12:operation soapAction="http://tempuri.org/IDeliveryOrdenManagement/GetDeliveryOrden" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResources">
+      <soap12:operation soapAction="http://tempuri.org/IDeliveryOrdenManagement/GetResources" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="SGPMManager">
     <wsdl:port name="NetTcpBinding_IProjectsManagement" binding="tns:NetTcpBinding_IProjectsManagement">
       <soap12:address location="net.tcp://localhost:8083/SGPM_Services" />
@@ -590,6 +875,18 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IPolicyManagement" binding="tns:NetTcpBinding_IPolicyManagement">
+      <soap12:address location="net.tcp://localhost:8083/SGPM_Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8083/SGPM_Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IBankAccountManagement" binding="tns:NetTcpBinding_IBankAccountManagement">
+      <soap12:address location="net.tcp://localhost:8083/SGPM_Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8083/SGPM_Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IDeliveryOrdenManagement" binding="tns:NetTcpBinding_IDeliveryOrdenManagement">
       <soap12:address location="net.tcp://localhost:8083/SGPM_Services" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8083/SGPM_Services</wsa10:Address>

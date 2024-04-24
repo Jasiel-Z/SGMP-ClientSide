@@ -1,4 +1,4 @@
-﻿using SGMP_Client.SGPMManagerService;
+﻿using SGMP_Client.SGPMService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +21,13 @@ namespace SGMP_Client
     public partial class GUI_RequestsMenu : Window
     {
 
-        private SGPMManagerService.ProjectsManagementClient Client;
+        private SGPMService.ProjectsManagementClient Client;
         private List<Project> Projects { get; set; }  
 
         public GUI_RequestsMenu()
         {
             InitializeComponent();
-            Client = new SGPMManagerService.ProjectsManagementClient();
+            Client = new SGPMService.ProjectsManagementClient();
             Projects = new List<Project>();
             GetProjectsFromLocality();
 

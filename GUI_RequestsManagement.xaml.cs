@@ -1,4 +1,4 @@
-﻿using SGMP_Client.SGPMManagerService;
+﻿using SGMP_Client.SGPMService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +22,14 @@ namespace SGMP_Client
     {
 
         private Project project;
-        private SGPMManagerService.RequestManagementClient Client;
+        private SGPMService.RequestManagementClient Client;
         private List<Request> Requests {  get; set; }
 
         public GUI_RequestsManagement(Project project)
         {
             InitializeComponent();
             this.project = project;
-            Client = new SGPMManagerService.RequestManagementClient();
+            Client = new SGPMService.RequestManagementClient();
             Requests = new List<Request>();
             GetRequestsFromProyect();
             lb_proyect_name.Content = project.Name;
