@@ -71,6 +71,12 @@
     <Compile Include="GUI_Policy.xaml.cs">
       <DependentUpon>GUI_Policy.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI_SaveBankAccount.xaml.cs">
+      <DependentUpon>GUI_SaveBankAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_SaveDeliveryOrden.xaml.cs">
+      <DependentUpon>GUI_SaveDeliveryOrden.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI_User.xaml.cs">
       <DependentUpon>GUI_User.xaml</DependentUpon>
     </Compile>
@@ -116,6 +122,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI_RequestsMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_SaveBankAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_SaveDeliveryOrden.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
