@@ -10,45 +10,45 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0"/>
             <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0" Margin="-195,2,42,-2" RenderTransformOrigin="0.5,0.5"/>
 
-        <Grid Grid.Column="1" HorizontalAlignment="Left" Width="1023" Margin="-27,0,0,0" Grid.ColumnSpan="2">
+        <Grid Grid.Column="1" HorizontalAlignment="Left" Width="1178" Margin="-182,0,0,5" Grid.ColumnSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="67*"/>
-                <RowDefinition Height="118*"/>
-                <RowDefinition Height="181*"/>
+                <RowDefinition Height="65*"/>
+                <RowDefinition Height="54*"/>
+                <RowDefinition Height="180*"/>
                 <RowDefinition Height="258*"/>
             </Grid.RowDefinitions>
             <Rectangle HorizontalAlignment="Center" Height="5" Margin="0,51,0,0" Fill="Sienna" Stroke="Silver" VerticalAlignment="Top" Width="999" RenderTransformOrigin="0.5,0.5"/>
             <Label Content="Detalles de dictamen." HorizontalAlignment="Left" Margin="12,4,0,0" VerticalAlignment="Top" FontSize="28" FontWeight="Bold" Height="47" Width="293"/>
             <Label Content="Detalles de solicitud." HorizontalAlignment="Left" Margin="13,65,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Grid.RowSpan="2" Height="39" Width="224"/>
-            <Label Content="Fecha:" HorizontalAlignment="Left" Margin="13,36,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="65"/>
-            <TextBox x:Name="tb_request_date" HorizontalAlignment="Left" Margin="19,71,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="30" FontSize="20"/>
-            <TextBox x:Name="tb_beneficiary_name" HorizontalAlignment="Left" Margin="226,71,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="30" FontSize="20"/>
-            <TextBox x:Name="tb_benef_cellphone" HorizontalAlignment="Left" Margin="434,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="30" FontSize="20"/>
-            <Label Content="Nombre(s):" HorizontalAlignment="Left" Margin="224,36,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="108"/>
-            <Label Content="Teléfono:" HorizontalAlignment="Left" Margin="426,33,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="162"/>
-            <Label Content="Dirección:" HorizontalAlignment="Left" Margin="645,29,0,0" Grid.Row="1" VerticalAlignment="Top" Width="170" Height="39" FontSize="20"/>
-            <TextBox x:Name="tb_address" HorizontalAlignment="Left" Margin="654,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="30" RenderTransformOrigin="0.247,0.246" FontSize="20"/>
-            <Label Content="Detalles del proyecto:" HorizontalAlignment="Left" Margin="13,6,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Height="39" Width="234"/>
-            <Label Content="Modalidad:" HorizontalAlignment="Left" Margin="13,49,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="234"/>
-            <Label Content="Grupo de apoyo:" HorizontalAlignment="Left" Margin="436,55,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="0.829,0.733" FontSize="20" Height="37" Width="168"/>
-            <Label Content="Tipo:" HorizontalAlignment="Left" Margin="661,49,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="170"/>
-            <TextBox x:Name="tb_modality" HorizontalAlignment="Left" Margin="22,97,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="376" Height="60" FontSize="20"/>
-            <TextBox x:Name="tb_group" HorizontalAlignment="Left" Margin="441,94,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="30" FontSize="20"/>
-            <TextBox x:Name="tb_type" HorizontalAlignment="Left" Margin="664,95,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="30" FontSize="20"/>
-            <Label Content="Documentación:" HorizontalAlignment="Left" Margin="2,8,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-            <Label Content="Comentarios:" HorizontalAlignment="Left" Margin="683,9,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-            <Label Content="Políticas de participación:" HorizontalAlignment="Left" Margin="285,12,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-            <TextBox x:Name="tb_comments" HorizontalAlignment="Left" Margin="684,51,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="321" Height="90" FontSize="20"/>
-            <Button Content="Cancelar" HorizontalAlignment="Left" Margin="618,193,0,0" Grid.Row="3" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Background="#FFD44646" Foreground="White" Click="Btn_Cancel_Click"/>
-            <Button Content="Enviar dictamen" HorizontalAlignment="Left" Margin="816,193,0,0" Grid.Row="3" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Foreground="White" Background="#FF33AA3E" Click="Btn_Register_Opinion"/>
-            <ListBox Name="lib_files" Grid.Row="3"  Margin="9,51,765,94"/>
-            <ListBox x:Name="lib_policies" Grid.Row="3"  Margin="282,53,366,80"/>
-            <StackPanel x:Name="sp_politics" Grid.Row="3" Margin="288,188,558,14">
+            <Label Content="Fecha:" HorizontalAlignment="Left" Margin="13,36,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="65" Grid.RowSpan="2"/>
+            <TextBox x:Name="tb_request_date" IsReadOnly="True" HorizontalAlignment="Left" Margin="19,6,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="30" FontSize="20"/>
+            <TextBox x:Name="tb_state" IsReadOnly="True" HorizontalAlignment="Left" Margin="226,6,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="30" FontSize="20"/>
+            <TextBox x:Name="tb_folio" IsReadOnly="True" HorizontalAlignment="Left" Margin="434,5,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="30" FontSize="20"/>
+            <Label Content="Estado:" HorizontalAlignment="Left" Margin="224,36,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="108" Grid.RowSpan="2"/>
+            <Label Content="Folio del proyecto:" HorizontalAlignment="Left" Margin="426,33,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="174" Grid.RowSpan="2"/>
+            <Label Content="Detalles del proyecto:" HorizontalAlignment="Left" Margin="13,6,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Height="39" Width="234"/>
+            <Label Content="Descripción:" HorizontalAlignment="Left" Margin="13,49,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="37" Width="234"/>
+            <Label Content="Grupo de apoyo:" HorizontalAlignment="Left" Margin="436,55,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="0.829,0.733" FontSize="20" Height="37" Width="168"/>
+            <Label Content="Tipo:" HorizontalAlignment="Left" Margin="661,49,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="37" Width="170"/>
+            <TextBox x:Name="tb_description" IsReadOnly="True" HorizontalAlignment="Left" Margin="22,97,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="376" Height="60" FontSize="20"/>
+            <TextBox x:Name="tb_group" IsReadOnly="True" HorizontalAlignment="Left" Margin="441,94,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="30" FontSize="20"/>
+            <TextBox x:Name="tb_type" IsReadOnly="True" HorizontalAlignment="Left" Margin="664,95,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="30" FontSize="20"/>
+            <Label Content="Documentación:" HorizontalAlignment="Left" Margin="2,8,0,0" Grid.Row="4" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Height="37" Width="163"/>
+            <Label Content="Comentarios:" HorizontalAlignment="Left" Margin="683,9,0,0" Grid.Row="4" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Height="37" Width="135"/>
+            <Label Content="Políticas de participación:" HorizontalAlignment="Left" Margin="285,12,0,0" Grid.Row="4" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Height="37" Width="250"/>
+            <TextBox x:Name="tb_comments" HorizontalAlignment="Left" Margin="684,51,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="321" Height="90" FontSize="20"/>
+            <Button Content="Cancelar" HorizontalAlignment="Left" Margin="618,193,0,0" Grid.Row="4" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Background="#FFD44646" Foreground="White" Click="Btn_Cancel_Click"/>
+            <Button Content="Enviar dictamen" HorizontalAlignment="Left" Margin="816,193,0,0" Grid.Row="4" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Foreground="White" Background="#FF33AA3E" Click="Btn_Register_Opinion"/>
+            <ListBox Name="lib_files" Grid.Row="4"  Margin="9,51,765,94"/>
+            <ListBox x:Name="lib_policies" Grid.Row="4"  Margin="282,53,366,80"/>
+            <StackPanel x:Name="sp_politics" Grid.Row="4" Margin="288,188,558,14">
                 <RadioButton  x:Name="rb_accomplish" Content="Cumple las políticas" Checked="RadioButton_Checked" Margin="3,5,3,3"/>
                 <RadioButton x:Name="rb_no_accomplish" Content="No cumple las políticas" Checked="RadioButton_Checked" Margin="3,5,3,3"/>
 

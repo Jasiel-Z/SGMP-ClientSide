@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IProjectsManagement" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Project">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttentionGroup" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BeneficiaryNumbers" type="xs:int" />
+      <xs:element minOccurs="0" name="Dependecy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="End" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Evidence" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Folio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Modality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupportAmount" type="xs:int" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Project" nillable="true" type="tns:Project" />
+  <xs:complexType name="ArrayOfProjectPolicy">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProjectPolicy" nillable="true" type="tns:ProjectPolicy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProjectPolicy" nillable="true" type="tns:ArrayOfProjectPolicy" />
+  <xs:complexType name="ProjectPolicy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GrantingPolicy" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProyectFolio" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectPolicy" nillable="true" type="tns:ProjectPolicy" />
+  <xs:complexType name="ArrayOfLocalidad">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Localidad" nillable="true" type="tns:Localidad" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLocalidad" nillable="true" type="tns:ArrayOfLocalidad" />
+  <xs:complexType name="Localidad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdLocalidad" type="xs:int" />
+      <xs:element minOccurs="0" name="NameLocalidad" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Localidad" nillable="true" type="tns:Localidad" />
+  <xs:complexType name="ArrayOfDependency">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Dependency" nillable="true" type="tns:Dependency" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDependency" nillable="true" type="tns:ArrayOfDependency" />
+  <xs:complexType name="Dependency">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdDependency" type="xs:int" />
+      <xs:element minOccurs="0" name="NameDependency" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Dependency" nillable="true" type="tns:Dependency" />
+  <xs:complexType name="ArrayOfProject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProject" nillable="true" type="tns:ArrayOfProject" />
+</xs:schema>

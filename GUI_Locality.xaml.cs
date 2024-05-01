@@ -1,4 +1,4 @@
-﻿using SGMP_Client.SGPMManagerService;
+﻿using SGMP_Client.SGPMService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,48 +21,89 @@ namespace SGMP_Client
     /// </summary>
     public partial class GUI_Locality : Window
     {
+        private int localityId;
+
         public GUI_Locality()
         {
             InitializeComponent();
         }
 
+        public void LoadLocality(Locality locality)
+        {
+            this.localityId = locality.LocalityID;
+
+            tbxLocalityName.Text = locality.Name;
+            tbxTownship.Text = locality.Township;
+        }
+
         private void Btn_Save_Locality_Click(object sender, RoutedEventArgs e)
         {
             string localityName = tbxLocalityName.Text.ToString();
-            if (ValidateField(localityName))
-            {
-                int result = SaveLocality(localityName);
+            string township = tbxTownship.Text.ToString();
 
-                if (result == 1)
+            if (ValidateFields(localityName, township))
+            {
+                if (this.localityId == 0)
                 {
-                    MessageBox.Show("Se ha guardado la nueva localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                    SaveLocality(localityName, township);
                 }
                 else
                 {
-                    MessageBox.Show("Ha ocurrido un error al intentar guardar la nueva localidad. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    UpdateLocality(localityName, township);
                 }
             }
         }
 
-        private int SaveLocality(string localityName)
+        private void SaveLocality(string localityName, string township)
         {
             Locality locality = new Locality
             {
-                Name = localityName
+                Name = localityName,
+                Township = township
             };
 
-            SGPMManagerService.LocalityManagementClient client = new SGPMManagerService.LocalityManagementClient();
+            SGPMService.LocalityManagementClient client = new   SGPMService.LocalityManagementClient();
 
             int result = client.SaveLocality(locality);
 
-            return result;
+            if (result == 1)
+            {
+                MessageBox.Show("Se ha guardado la nueva localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Ha ocurrido un error al intentar guardar la nueva localidad. Por favor intente de nuevo más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-        private bool ValidateField(string localityName)
+        private void UpdateLocality(string localityName, string township)
+        {
+            Locality locality = new Locality
+            {
+                LocalityID = this.localityId,
+                Name = localityName,
+                Township = township
+            };
+
+            SGPMService.LocalityManagementClient client = new SGPMService.LocalityManagementClient();
+            int result = client.UpdateLocality(locality);
+
+            if (result == 1)
+            {
+                MessageBox.Show("Se ha actualizado información de la localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Ha ocurrido un error al intentar actualizar la localidad. Por favor intente de nuevo más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private bool ValidateFields(string localityName, string township)
         {
             bool isLocalityNameValid = false;
+            bool isTownshipValid = false;
 
-            if (!string.IsNullOrEmpty(localityName))
+            if (!string.IsNullOrEmpty(localityName) && !string.IsNullOrEmpty(township))
             {
                 lbEmptyFieldsMessage.Visibility = Visibility.Hidden;
 
@@ -75,13 +116,23 @@ namespace SGMP_Client
                 {
                     lbInvalidLocalityNameMessage.Visibility = Visibility.Visible;
                 }
+
+                if (township.Length <= 40)
+                {
+                    isTownshipValid = true;
+                    lbInvalidTownshipMessage.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lbInvalidLocalityNameMessage.Visibility = Visibility.Visible;
+                }
             } 
             else
             {
                 lbEmptyFieldsMessage.Visibility = Visibility.Visible;
             }
 
-            return isLocalityNameValid;
+            return isLocalityNameValid && isTownshipValid;
         }
 
         private void Btn_Cancel_Click(object sender, RoutedEventArgs e)

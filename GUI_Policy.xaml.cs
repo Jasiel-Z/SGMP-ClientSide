@@ -1,4 +1,4 @@
-﻿using SGMP_Client.SGPMManagerService;
+﻿using SGMP_Client.SGPMService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,7 +53,7 @@ namespace SGMP_Client
                 Description = policyDescription
             };
 
-            SGPMManagerService.PolicyManagementClient client = new SGPMManagerService.PolicyManagementClient();
+            SGPMService.PolicyManagementClient client = new SGPMService.PolicyManagementClient();
 
             int result = client.SavePolicy(policy);
             return result;

@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using System.Runtime.CompilerServices;
-using SGMP_Client.SGPMManagerService;
+using SGMP_Client.SGPMService;
 using SGMP_Client.DTO_s;
 using System.Runtime.InteropServices.WindowsRuntime;
 
@@ -28,18 +28,19 @@ namespace SGMP_Client
     {
 
         public ObservableCollection<string> AttachFiles { get; set; }
-        public List<SGPMManagerService.File> Files { get; set; }
-        SGPMManagerService.ProjectsManagementClient client;
+        public List<SGPMService.File> Files { get; set; }
+        SGPMService.ProjectsManagementClient client;
         private Project project;
 
         public GUI_RegisterRequest(Project project)
         {
             InitializeComponent();
             AttachFiles = new ObservableCollection<string>();
-            Files = new List<SGPMManagerService.File>();
+            Files = new List<SGPMService.File>();
             lib_files.ItemsSource = AttachFiles;
-            client = new SGPMManagerService.ProjectsManagementClient();
+            client = new SGPMService.ProjectsManagementClient();
             this.project = project;
+            GetProyectDetails();
         }
 
 
@@ -63,7 +64,7 @@ namespace SGMP_Client
                         byte[] fileBytes = new byte[fileStream.Length];
                         fileStream.Read(fileBytes, 0, (int)fileStream.Length);
 
-                        SGPMManagerService.File file = new SGPMManagerService.File
+                        SGPMService.File file = new SGPMService.File
                         {
                             Name = System.IO.Path.GetFileName(ruta),
                             Content = new byte[0],
@@ -89,7 +90,7 @@ namespace SGMP_Client
         private void Btn_Cancel_Request_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult cancelationResult = MessageBox.Show("¿Estás seguro de que deseas cancelar?", 
-                "Confirmar cancelación", MessageBoxButton.OKCancel);
+                "Confirmar cancelación", MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
             if (cancelationResult == MessageBoxResult.OK)
             {
@@ -107,8 +108,8 @@ namespace SGMP_Client
                 string selectedFileName = lib_files.SelectedItem.ToString();
                 AttachFiles.Remove(selectedFileName);
 
-                SGPMManagerService.File fileToRemove = null;
-                foreach (SGPMManagerService.File file in Files)
+                SGPMService.File fileToRemove = null;
+                foreach (SGPMService.File file in Files)
                 {
                     if (file.Name == selectedFileName)
                     {
@@ -131,37 +132,48 @@ namespace SGMP_Client
 
             if (validData)
             {
-                SGPMManagerService.SolicitudSet request = new SGPMManagerService.SolicitudSet
+                SGPMService.Solicitudes request = new SGPMService.Solicitudes
                 {
                     estado = "creada",
                     fechaCreacion = System.DateTime.Now,
-                    ProyectoFolio = project.Folio,
-                    BeneficiarioId = GetBeneficiaryId(),
+                    Folio = project.Folio,
+                    IdBeneficiario = GetBeneficiaryId(),
                 };
 
-                SGPMManagerService.RequestManagementClient client = new SGPMManagerService.RequestManagementClient();
-
-                bool beneficiaryFound = client.BeneficiaryHasRequest((int)request.BeneficiarioId, request.ProyectoFolio);
-
-                if(beneficiaryFound)
+                try
                 {
-                    MessageBox.Show("El beneficiario ya cuenta con una solicitud para el proyecto actual", "Beneficiario registrado");
-                }
-                else
-                {
-                    int result = client.RegisterRequestWithDocuments(request, Files.ToArray());
-                    if (result >= 1)
+                    SGPMService.RequestManagementClient client = new SGPMService.RequestManagementClient();
+
+                    bool beneficiaryFound = client.BeneficiaryHasRequest((int)request.IdBeneficiario, request.Folio);
+
+                    if (beneficiaryFound)
                     {
-                        MessageBox.Show("La solicitud  ha sido registrada", "Registro exitoso");
-                        ClearFields();
+                        MessageBox.Show("El beneficiario ya cuenta con una solicitud para el proyecto actual", "Beneficiario registrado", 
+                            MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else
                     {
-                        MessageBox.Show("No fue posible guardar el registro, por favor inténtelo más tarde", 
-                            "Problema de conexión con la base de datos");
+                        int result = client.RegisterRequestWithDocuments(request, Files.ToArray());
+                        if (result >= 1)
+                        {
+                            MessageBox.Show("La solicitud  ha sido registrada", "Registro exitoso", MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+                            GUI_RequestsManagement requestsManagement = new GUI_RequestsManagement(project);
+                            requestsManagement.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No fue posible guardar el registro, por favor inténtelo más tarde",
+                                "Problema de conexión con la base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
                 }
-
+                catch (TimeoutException ex)
+                {
+                    MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
+                 "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
 
             }
         }
@@ -171,7 +183,8 @@ namespace SGMP_Client
             bool result = true;
             if (Files.Count == 0)
             {
-                MessageBox.Show("Una solicitud no puede ser registrada sin documentos. Por favor inténtelo de nuevo","Datos incompletos");
+                MessageBox.Show("Una solicitud no puede ser registrada sin documentos. Por favor inténtelo de nuevo",
+                    "Datos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 result = false;
 
             }
@@ -222,9 +235,9 @@ namespace SGMP_Client
 
             if (tipoBeneficiario == "Persona")
             {
-                SGPMManagerService.BeneficiaryManagementClient client = new SGPMManagerService.BeneficiaryManagementClient();
-                List<SGMP_Client.SGPMManagerService.Person> personsList = client.GetPersons(beneficiaryName).ToList();
-                MessageBox.Show("Todo bien");
+                SGPMService.BeneficiaryManagementClient client = new SGPMService.BeneficiaryManagementClient();
+                List<SGMP_Client.SGPMService.Person> personsList = client.GetPersons(beneficiaryName).ToList();
+
 
                 lib_beneficiaries.Items.Clear();
 
@@ -238,9 +251,8 @@ namespace SGMP_Client
             }
             else if (tipoBeneficiario == "Empresa")
             {
-                SGPMManagerService.BeneficiaryManagementClient client = new SGPMManagerService.BeneficiaryManagementClient();
-                List<SGMP_Client.SGPMManagerService.Company> companiesList = client.GetCompanies(beneficiaryName).ToList();
-                MessageBox.Show("Todo bien");
+                SGPMService.BeneficiaryManagementClient client = new SGPMService.BeneficiaryManagementClient();
+                List<SGMP_Client.SGPMService.Company> companiesList = client.GetCompanies(beneficiaryName).ToList();
 
                 lib_beneficiaries.Items.Clear();
 
@@ -274,9 +286,9 @@ namespace SGMP_Client
                 object selectedItem = listBox.SelectedItem;
 
 
-                if (selectedItem is SGMP_Client.SGPMManagerService.Person)
+                if (selectedItem is SGMP_Client.SGPMService.Person)
                 {
-                    SGMP_Client.SGPMManagerService.Person selectedPerson = (SGMP_Client.SGPMManagerService.Person)selectedItem;
+                    SGMP_Client.SGPMService.Person selectedPerson = (SGMP_Client.SGPMService.Person)selectedItem;
 
                     tb_beneficiary_name.Text = selectedPerson.Name;
                     tb_benef_lastN.Text = selectedPerson.LastName;
@@ -284,9 +296,9 @@ namespace SGMP_Client
                     tb_cellphone.Text = selectedPerson.PhoneNumber;
 
                 }
-                else if (selectedItem is SGMP_Client.SGPMManagerService.Company)
+                else if (selectedItem is SGMP_Client.SGPMService.Company)
                 {
-                    SGMP_Client.SGPMManagerService.Company selectedCompany = (SGMP_Client.SGPMManagerService.Company)selectedItem;
+                    SGMP_Client.SGPMService.Company selectedCompany = (SGMP_Client.SGPMService.Company)selectedItem;
 
                     tb_beneficiary_name.Text = selectedCompany.Name;
                     tb_cellphone.Text = selectedCompany.PhoneNumber;

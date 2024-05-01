@@ -1,4 +1,4 @@
-﻿using SGMP_Client.SGPMManagerService;
+﻿using SGMP_Client.SGPMService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +22,14 @@ namespace SGMP_Client
     {
 
         private Project project;
-        private SGPMManagerService.RequestManagementClient Client;
+        private SGPMService.RequestManagementClient Client;
         private List<Request> Requests {  get; set; }
 
         public GUI_RequestsManagement(Project project)
         {
             InitializeComponent();
             this.project = project;
-            Client = new SGPMManagerService.RequestManagementClient();
+            Client = new SGPMService.RequestManagementClient();
             Requests = new List<Request>();
             GetRequestsFromProyect();
             lb_proyect_name.Content = project.Name;
@@ -63,8 +63,9 @@ namespace SGMP_Client
             }
             else
             {
-                MessageBox.Show("Por favor selecciona el registro de la tabla y luego presiona el botón", "No se ha seleccionado " +
-                    "un proyecto");
+                MessageBox.Show("Por favor selecciona el registro de la tabla y luego presiona el botón", 
+                    "No se ha seleccionado " +
+                    "un proyecto", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
 
         }
@@ -72,21 +73,30 @@ namespace SGMP_Client
         private void GetRequestsFromProyect()
         {
 
-            int folio = project.Folio;
-            Requests = Client.GetRequestsOfProject(folio).ToList();
-
-            if(Requests != null)
+            string folio = project.Folio;
+            try
             {
-                foreach (Request request in Requests)
+                Requests = Client.GetRequestsOfProject(folio).ToList();
+
+                if (Requests != null)
                 {
-                    MessageBox.Show(request.State);
-                    liv_requests.Items.Add(request);
+                    foreach (Request request in Requests)
+                    {
+                        liv_requests.Items.Add(request);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se pudieron recuperar los registros, por favor inténtelo más tarde"
+                     , "Error de conexión con la base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            else
+            catch (TimeoutException ex )
             {
-                MessageBox.Show("Errro");
+                MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
+                    "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
         }
     }
 }
