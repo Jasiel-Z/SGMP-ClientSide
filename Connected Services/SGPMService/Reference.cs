@@ -5185,11 +5185,29 @@ namespace SGMP_Client.SGPMService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetUser", ReplyAction="http://tempuri.org/IUserManagement/GetUserResponse")]
         System.Threading.Tasks.Task<SGMP_Client.SGPMService.User> GetUserAsync(string email, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetUsersGeneralInfo", ReplyAction="http://tempuri.org/IUserManagement/GetUsersGeneralInfoResponse")]
+        SGMP_Client.SGPMService.User[] GetUsersGeneralInfo(int pageNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetUsersGeneralInfo", ReplyAction="http://tempuri.org/IUserManagement/GetUsersGeneralInfoResponse")]
+        System.Threading.Tasks.Task<SGMP_Client.SGPMService.User[]> GetUsersGeneralInfoAsync(int pageNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetUserDetailsByEmployeeNumber", ReplyAction="http://tempuri.org/IUserManagement/GetUserDetailsByEmployeeNumberResponse")]
+        SGMP_Client.SGPMService.User GetUserDetailsByEmployeeNumber(int employeeNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetUserDetailsByEmployeeNumber", ReplyAction="http://tempuri.org/IUserManagement/GetUserDetailsByEmployeeNumberResponse")]
+        System.Threading.Tasks.Task<SGMP_Client.SGPMService.User> GetUserDetailsByEmployeeNumberAsync(int employeeNumber);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/SaveUser", ReplyAction="http://tempuri.org/IUserManagement/SaveUserResponse")]
         int SaveUser(SGMP_Client.SGPMService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/SaveUser", ReplyAction="http://tempuri.org/IUserManagement/SaveUserResponse")]
         System.Threading.Tasks.Task<int> SaveUserAsync(SGMP_Client.SGPMService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UpdateUser", ReplyAction="http://tempuri.org/IUserManagement/UpdateUserResponse")]
+        int UpdateUser(SGMP_Client.SGPMService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UpdateUser", ReplyAction="http://tempuri.org/IUserManagement/UpdateUserResponse")]
+        System.Threading.Tasks.Task<int> UpdateUserAsync(SGMP_Client.SGPMService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ValidateEmailDoesNotExist", ReplyAction="http://tempuri.org/IUserManagement/ValidateEmailDoesNotExistResponse")]
         bool ValidateEmailDoesNotExist(string email);
@@ -5239,12 +5257,36 @@ namespace SGMP_Client.SGPMService {
             return base.Channel.GetUserAsync(email, password);
         }
         
+        public SGMP_Client.SGPMService.User[] GetUsersGeneralInfo(int pageNumber) {
+            return base.Channel.GetUsersGeneralInfo(pageNumber);
+        }
+        
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMService.User[]> GetUsersGeneralInfoAsync(int pageNumber) {
+            return base.Channel.GetUsersGeneralInfoAsync(pageNumber);
+        }
+        
+        public SGMP_Client.SGPMService.User GetUserDetailsByEmployeeNumber(int employeeNumber) {
+            return base.Channel.GetUserDetailsByEmployeeNumber(employeeNumber);
+        }
+        
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMService.User> GetUserDetailsByEmployeeNumberAsync(int employeeNumber) {
+            return base.Channel.GetUserDetailsByEmployeeNumberAsync(employeeNumber);
+        }
+        
         public int SaveUser(SGMP_Client.SGPMService.User user) {
             return base.Channel.SaveUser(user);
         }
         
         public System.Threading.Tasks.Task<int> SaveUserAsync(SGMP_Client.SGPMService.User user) {
             return base.Channel.SaveUserAsync(user);
+        }
+        
+        public int UpdateUser(SGMP_Client.SGPMService.User user) {
+            return base.Channel.UpdateUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateUserAsync(SGMP_Client.SGPMService.User user) {
+            return base.Channel.UpdateUserAsync(user);
         }
         
         public bool ValidateEmailDoesNotExist(string email) {
@@ -5267,6 +5309,12 @@ namespace SGMP_Client.SGPMService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SGPMService.ILocalityManagement")]
     public interface ILocalityManagement {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocalityManagement/GetLocalityByID", ReplyAction="http://tempuri.org/ILocalityManagement/GetLocalityByIDResponse")]
+        SGMP_Client.SGPMService.Locality GetLocalityByID(int localityID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocalityManagement/GetLocalityByID", ReplyAction="http://tempuri.org/ILocalityManagement/GetLocalityByIDResponse")]
+        System.Threading.Tasks.Task<SGMP_Client.SGPMService.Locality> GetLocalityByIDAsync(int localityID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocalityManagement/SaveLocality", ReplyAction="http://tempuri.org/ILocalityManagement/SaveLocalityResponse")]
         int SaveLocality(SGMP_Client.SGPMService.Locality locality);
@@ -5318,6 +5366,14 @@ namespace SGMP_Client.SGPMService {
         
         public LocalityManagementClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public SGMP_Client.SGPMService.Locality GetLocalityByID(int localityID) {
+            return base.Channel.GetLocalityByID(localityID);
+        }
+        
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMService.Locality> GetLocalityByIDAsync(int localityID) {
+            return base.Channel.GetLocalityByIDAsync(localityID);
         }
         
         public int SaveLocality(SGMP_Client.SGPMService.Locality locality) {

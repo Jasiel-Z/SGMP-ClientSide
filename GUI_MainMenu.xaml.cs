@@ -32,8 +32,8 @@ namespace SGMP_Client
 
         private void GoUserSModule(object sender, MouseButtonEventArgs e)
         {
-            Window userWindow = new GUI_User();
-            userWindow.Show();
+            Window userMenuWindow = new GUI_UserMenu();
+            userMenuWindow.Show();
             this.Close();
         }
 
@@ -44,8 +44,8 @@ namespace SGMP_Client
 
         private void GoLocationsModule(object sender, MouseButtonEventArgs e)
         {
-            Window locationWindow = new GUI_Locality();
-            locationWindow.Show();
+            Window localityMenuWindow = new GUI_LocalityMenu();
+            localityMenuWindow.Show();
             this.Close();
         }
 

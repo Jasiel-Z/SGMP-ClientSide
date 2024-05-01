@@ -25,7 +25,7 @@
                 <RowDefinition Height="151*"/>
             </Grid.RowDefinitions>
 
-            <Label Content="Registro de Localidad." HorizontalAlignment="Left" Margin="4,5,0,0" VerticalAlignment="Top" Height="51" Width="492" FontSize="28" FontWeight="Bold"/>
+            <Label x:Name="lbTitle" Content="Registro de Localidad." HorizontalAlignment="Left" Margin="4,5,0,0" VerticalAlignment="Top" Height="51" Width="492" FontSize="28" FontWeight="Bold"/>
             <Rectangle HorizontalAlignment="Center" Height="5" Margin="0,53,0,0" Fill="Sienna" Stroke="Silver" VerticalAlignment="Top" Width="999" RenderTransformOrigin="0.5,0.5"/>
 
             <Button Content="Cancelar" HorizontalAlignment="Left" Margin="598,101,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Width="170" Height="45" Background="#FFD44646" Foreground="White" Click="Btn_Cancel_Click"/>
