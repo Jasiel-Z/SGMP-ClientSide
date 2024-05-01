@@ -155,6 +155,7 @@ namespace SGMP_Client
                         City = tb_city.Text,
                         Street = tb_street.Text,
                         RFC = tb_rfc.Text,
+                        LocalityId =  DTO_s.User.UserClient.EmployeeNumber,
 
                     };
 

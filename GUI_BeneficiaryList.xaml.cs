@@ -48,8 +48,7 @@ namespace SGMP_Client
 
         private void GetBeneficiaries()
         {
-            //mover cuando se tenga el id del empleado
-            int localityId = 1;
+            int localityId = DTO_s.User.UserClient.EmployeeNumber;
 
             try
             {

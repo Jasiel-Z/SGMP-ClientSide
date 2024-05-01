@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.ServiceModel.Configuration;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,13 +24,16 @@ namespace SGMP_Client
     {
 
         private Beneficiary Beneficiary { get; set; }
-        private SGMP_Client.SGPMService.BeneficiaryManagementClient client; 
+        private SGMP_Client.SGPMService.BeneficiaryManagementClient client;
+        private bool HaveBankAccount { get; set; }
         public GUI_UpdateBeneficiary(Beneficiary beneficiary)
         {
+            HaveBankAccount = false;
             InitializeComponent();
             this.Beneficiary = beneficiary;
             ShowBeneficiaryInformation();
             GetBeneficiaryTypeInformation();
+            GetAccountInformation();
         }
 
 
@@ -89,6 +93,16 @@ namespace SGMP_Client
 
         private void GetAccountInformation()
         {
+            SGPMService.BankAccountManagementClient bankClient  = new SGPMService.BankAccountManagementClient();
+            BankAccount bankAccount = bankClient.GetBankAccount(Beneficiary.Id);
+            if(bankAccount != null)
+            {
+                tb_account_holder.Text = bankAccount.Name; 
+                tb_account_number.Text = bankAccount.AccountNumber;
+                btn_add_account.Content = "Modificar cuenta";
+                HaveBankAccount = true;
+                
+            }
 
         }
         #endregion
@@ -209,7 +223,14 @@ namespace SGMP_Client
 
         private void Btn_AddAccount_Click(object sender, RoutedEventArgs e)
         {
- 
+            if (HaveBankAccount)
+            {
+
+            }
+            else
+            {
+
+            }
         }
     }
 }
