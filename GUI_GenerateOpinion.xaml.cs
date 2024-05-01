@@ -55,54 +55,56 @@ namespace SGMP_Client
         #region Recovery data
         private void GetProyectDetails()
         {
-
             tb_description.Text = project.Description;
             tb_group.Text = project.AttentionGroup;
             tb_type.Text = project.Type;
-
-
-        }
-
-        private void GetBeneficiaryDetails()
-        {
 
         }
 
 
         private void GetPolicies()
         {
-            ProjectPolicies = Client.GetProjectPolicies(project.Folio).ToList();
-            foreach (var policy in ProjectPolicies)
+            try
             {
-                var listBoxItem = new ListBoxItem();
-                listBoxItem.Content = policy;
-
-                var checkBox = new CheckBox();
-                checkBox.Content = "Cumple";
-                checkBox.IsChecked = false;
-
-                checkBox.Checked += (sender, e) =>
+                ProjectPolicies = Client.GetProjectPolicies(project.Folio).ToList();
+                foreach (var policy in ProjectPolicies)
                 {
-                    var isChecked = (sender as CheckBox).IsChecked;
-                    var currentPolicy = listBoxItem.Content as ProjectPolicy;
-                    if (isChecked != null && currentPolicy != null)
+                    var listBoxItem = new ListBoxItem();
+                    listBoxItem.Content = policy;
+
+                    var checkBox = new CheckBox();
+                    checkBox.Content = "Cumple";
+                    checkBox.IsChecked = false;
+
+                    checkBox.Checked += (sender, e) =>
                     {
-                    }
-                };
+                        var isChecked = (sender as CheckBox).IsChecked;
+                        var currentPolicy = listBoxItem.Content as ProjectPolicy;
+                        if (isChecked != null && currentPolicy != null)
+                        {
+                        }
+                    };
 
-                listBoxItem.Content = new StackPanel()
-                {
-                    Orientation = Orientation.Horizontal,
-                    Children =
-            {
+                    listBoxItem.Content = new StackPanel()
+                    {
+                        Orientation = Orientation.Horizontal,
+                        Children =
+                    {
                 new TextBlock() { Text = policy.Name, Margin = new Thickness(5) },
                 new TextBlock() { Text = policy.Description, Margin = new Thickness(5) },
                 checkBox
-            }
-                };
+                    }
+                    };
 
-                lib_policies.Items.Add(listBoxItem);
+                    lib_policies.Items.Add(listBoxItem);
+                }
             }
+            catch (TimeoutException ex)
+            {
+                MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
+                 "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+          
 
         }
 
@@ -121,37 +123,46 @@ namespace SGMP_Client
 
         private void GetFiles()
         {
-            SGPMService.RequestManagementClient client = new RequestManagementClient();
-            Files = client.GetRequestFiles(request.Id).ToList();
-            foreach (var file in Files)
+            try
             {
-                var listBoxItem = new ListBoxItem();
-
-                listBoxItem.DataContext = file;
-
-                var downloadButton = new Button();
-                downloadButton.Content = "Descargar";
-                downloadButton.Click += (sender, e) =>
+                SGPMService.RequestManagementClient client = new RequestManagementClient();
+                Files = client.GetRequestFiles(request.Id).ToList();
+                foreach (var file in Files)
                 {
-                    var selectedFile = (sender as Button).DataContext as File;
-                    if (selectedFile != null)
+                    var listBoxItem = new ListBoxItem();
+
+                    listBoxItem.DataContext = file;
+
+                    var downloadButton = new Button();
+                    downloadButton.Content = "Descargar";
+                    downloadButton.Click += (sender, e) =>
                     {
-                        DownloadFile(selectedFile);
-                    }
-                };
+                        var selectedFile = (sender as Button).DataContext as File;
+                        if (selectedFile != null)
+                        {
+                            DownloadFile(selectedFile);
+                        }
+                    };
 
-                listBoxItem.Content = new StackPanel()
-                {
-                    Orientation = Orientation.Horizontal,
-                    Children =
+                    listBoxItem.Content = new StackPanel()
+                    {
+                        Orientation = Orientation.Horizontal,
+                        Children =
             {
                 new TextBlock() { Text = file.Name, Margin = new Thickness(5) },
                 downloadButton
             }
-                };
+                    };
 
-                lib_files.Items.Add(listBoxItem);
+                    lib_files.Items.Add(listBoxItem);
+                }
             }
+            catch (TimeoutException ex)
+            {
+                MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
+                 "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+          
         }
 
 
@@ -203,7 +214,7 @@ namespace SGMP_Client
         private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult cancelationResult = MessageBox.Show("¿Estás seguro de que deseas cancelar?",
-            "Confirmar cancelación", MessageBoxButton.OKCancel);
+            "Confirmar cancelación", MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
             if (cancelationResult == MessageBoxResult.OK)
             {
@@ -220,7 +231,7 @@ namespace SGMP_Client
                 if (IsOptionSelected())
                 {
                     MessageBoxResult confirmation = MessageBox.Show("¿Estás seguro de enviar el dictamen de la solicitud?",
-                    "Confirmación de registro", MessageBoxButton.OKCancel);
+                    "Confirmación de registro", MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
 
                     bool solution = DeterminateSolution();
@@ -247,26 +258,36 @@ namespace SGMP_Client
                         
                         };
 
+                        try
+                        {
+                            SGPMService.RequestManagementClient client = new SGPMService.RequestManagementClient();
+                            int result = client.RegisterOpinion(opinion, request.Id);
+                            if (result >= 1)
+                            {
+                                MessageBox.Show("El dictamen ha sido registrado en el sistema", "Registro exitoso", 
+                                    MessageBoxButton.OK, MessageBoxImage.Information);
+                                GUI_RequestsManagement requestsManagement = new GUI_RequestsManagement(project);
+                                requestsManagement.Show();
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrió un problema con la base de datos, por favor inténtelo más tarde",
+                                    "Problema de conexión con la base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                        }
+                        catch (TimeoutException ex)
+                        {
+                            MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
+                                "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
 
-                        SGPMService.RequestManagementClient client = new SGPMService.RequestManagementClient();
-                        int result = client.RegisterOpinion(opinion, request.Id);
-                        if (result >= 1)
-                        {
-                            MessageBox.Show("Registro realizado con éxito");
-                            GUI_RequestsManagement requestsManagement = new GUI_RequestsManagement(project);
-                            requestsManagement.Show();
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ocurrió un problema con la base de datos, por favor inténtelo más tarde",
-                                "Problema de conexión con la base de datos");
-                        }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Por favor selecciona una opción para el cumplimiento de las políticas", "Datos faltantes");
+                    MessageBox.Show("Por favor selecciona una opción para el cumplimiento de las políticas", 
+                        "Datos faltantes", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
 
@@ -280,7 +301,8 @@ namespace SGMP_Client
             if(tb_comments.Text == "")
             {
                 valid = false;
-                MessageBox.Show("Un dictamen debe tener comentarios, por favor ingrese uno", "Datos faltantes");
+                MessageBox.Show("Un dictamen debe tener comentarios, por favor ingrese uno", "Datos faltantes", MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
             }
             return valid;
         }

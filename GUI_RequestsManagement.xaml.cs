@@ -63,8 +63,9 @@ namespace SGMP_Client
             }
             else
             {
-                MessageBox.Show("Por favor selecciona el registro de la tabla y luego presiona el botón", "No se ha seleccionado " +
-                    "un proyecto");
+                MessageBox.Show("Por favor selecciona el registro de la tabla y luego presiona el botón", 
+                    "No se ha seleccionado " +
+                    "un proyecto", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
 
         }
@@ -73,20 +74,29 @@ namespace SGMP_Client
         {
 
             string folio = project.Folio;
-            Requests = Client.GetRequestsOfProject(folio).ToList();
-
-            if(Requests != null)
+            try
             {
-                foreach (Request request in Requests)
+                Requests = Client.GetRequestsOfProject(folio).ToList();
+
+                if (Requests != null)
                 {
-                    liv_requests.Items.Add(request);
+                    foreach (Request request in Requests)
+                    {
+                        liv_requests.Items.Add(request);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se pudieron recuperar los registros, por favor inténtelo más tarde"
+                     , "Error de conexión con la base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            else
+            catch (TimeoutException ex )
             {
-                MessageBox.Show("No se pudieron recuperar los registros, por favor inténtelo más tarde"
-                 , "Error de conexión con la base de datos");
+                MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
+                    "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
         }
     }
 }

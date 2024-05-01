@@ -34,41 +34,53 @@ namespace SGMP_Client
             bool validData = ValidateFields();
             if (validData)
             {
-                Client = new SGPMService.UserManagementClient();
-
-                String hashedPassword = Utility.ComputeSha256Hash(pb_password.Password);
-                SGPMService.User user = Client.GetUser(tb_email.Text, hashedPassword);
-
-                if (user != null)
+                try
                 {
-                    MessageBox.Show("Inicio de sesión exitoso", "Puede ingresar al sistema");
+                    Client = new SGPMService.UserManagementClient();
 
-                    DTO_s.User.UserClient = new DTO_s.User()
+                    String hashedPassword = Utility.ComputeSha256Hash(pb_password.Password);
+                    SGPMService.User user = Client.GetUser(tb_email.Text, hashedPassword);
+
+                    if (user != null)
                     {
-                        UserId = user.UserId,
-                        Email = user.Email,
-                        Password = user.Password,
+                        MessageBox.Show("Inicio de sesión exitoso", "Puede ingresar al sistema", MessageBoxButton.OK,
+                            MessageBoxImage.Information);
 
-                        EmployeeNumber = user.EmployeeNumber,
-                        Name = user.Name,
-                        MiddleName = user.MiddleName,
-                        LastName = user.LastName,
-                        Role = user.Role,
-                        PhoneNumber = user.PhoneNumber,
-                        City = user.City,
-                        Street = user.Street,
-                        Number = user.Number,
-                        LocationId = user.LocationId,
-                    };
+                        DTO_s.User.UserClient = new DTO_s.User()
+                        {
+                            UserId = user.UserId,
+                            Email = user.Email,
+                            Password = user.Password,
 
-                    GUI_MainMenu mainMenu = new GUI_MainMenu();
-                    mainMenu.Show();
-                    this.Close();
+                            EmployeeNumber = user.EmployeeNumber,
+                            Name = user.Name,
+                            MiddleName = user.MiddleName,
+                            LastName = user.LastName,
+                            Role = user.Role,
+                            PhoneNumber = user.PhoneNumber,
+                            City = user.City,
+                            Street = user.Street,
+                            Number = user.Number,
+                            LocationId = user.LocationId,
+                        };
 
+                        GUI_MainMenu mainMenu = new GUI_MainMenu();
+                        mainMenu.Show();
+                        this.Close();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("El correo o contraseña ingresados son incorrectos, por favor inténtelo de nuevo",
+                            "Problema de autenticación", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
-                else{
-                    MessageBox.Show("No se encontró el usuario");
+                catch(TimeoutException ex)
+                {
+                    MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
+                 "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+
             }
 
 

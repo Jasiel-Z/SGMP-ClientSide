@@ -29,9 +29,16 @@ namespace SGMP_Client
 
         private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            GUI_BeneficiaryList gUI_Beneficiary = new GUI_BeneficiaryList();
-            gUI_Beneficiary.Show();
-            this.Close();
+            MessageBoxResult cancelationResult = MessageBox.Show("¿Deseas volver a la ventana anterior? Todos los" +
+                "cambios realizados serán descartados", "Confirmar cancelación", MessageBoxButton.OKCancel, 
+                MessageBoxImage.Question);
+
+            if (cancelationResult == MessageBoxResult.OK)
+            {
+                GUI_BeneficiaryList gUI_Beneficiary = new GUI_BeneficiaryList();
+                gUI_Beneficiary.Show();
+                this.Close();
+            }
         }
 
 

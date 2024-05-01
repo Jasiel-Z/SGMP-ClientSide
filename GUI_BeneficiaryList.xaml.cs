@@ -65,7 +65,7 @@ namespace SGMP_Client
                 else
                 {
                     MessageBox.Show("No se pudieron recuperar los registros, por favor inténtelo más tarde"
-                     , "Error de conexión con la base de datos");
+                     , "Error de conexión con la base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (TimeoutException ex)
