@@ -34,6 +34,9 @@ namespace SGMP_Client
 
             tbxLocalityName.Text = locality.Name;
             tbxTownship.Text = locality.Township;
+
+            this.Title = "Modificar Localidad";
+            this.lbTitle.Content = "Modificar Localidad";
         }
 
         private void Btn_Save_Locality_Click(object sender, RoutedEventArgs e)
@@ -90,7 +93,7 @@ namespace SGMP_Client
 
             if (result == 1)
             {
-                MessageBox.Show("Se ha actualizado información de la localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Se ha actualizado la información de la localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -137,9 +140,19 @@ namespace SGMP_Client
 
         private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Window mainMenuWindow = new GUI_MainMenu();
-            mainMenuWindow.Show();
-            this.Close();
+            if (!this.Title.Equals("Modificar Localidad"))
+            {
+                Window localityMenuWindow = new GUI_LocalityMenu();
+                localityMenuWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                Window localityListWindow = new GUI_LocalitiesList();
+                localityListWindow.Show();
+                this.Close();
+            }
+            
         }
     }
 }

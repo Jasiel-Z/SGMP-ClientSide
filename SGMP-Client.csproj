@@ -68,11 +68,20 @@
     <Compile Include="GUI_Locality.xaml.cs">
       <DependentUpon>GUI_Locality.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI_LocalityMenu.xaml.cs">
+      <DependentUpon>GUI_LocalityMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI_Policy.xaml.cs">
       <DependentUpon>GUI_Policy.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI_User.xaml.cs">
       <DependentUpon>GUI_User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_UserMenu.xaml.cs">
+      <DependentUpon>GUI_UserMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_UsersList.xaml.cs">
+      <DependentUpon>GUI_UsersList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility.cs" />
     <Page Include="GUI_BeneficiaryDetails.xaml">
@@ -94,6 +103,10 @@
     <Page Include="GUI_Locality.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI_LocalityMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI_Login.xaml">
       <SubType>Designer</SubType>
@@ -126,6 +139,14 @@
     <Page Include="GUI_User.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI_UserMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_UsersList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
