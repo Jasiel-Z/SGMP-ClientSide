@@ -28,8 +28,8 @@ namespace SGMP_Client
         private bool HaveBankAccount { get; set; }
         public GUI_UpdateBeneficiary(Beneficiary beneficiary)
         {
-            HaveBankAccount = false;
             InitializeComponent();
+            HaveBankAccount = false;
             this.Beneficiary = beneficiary;
             ShowBeneficiaryInformation();
             GetBeneficiaryTypeInformation();
@@ -53,14 +53,14 @@ namespace SGMP_Client
             client = new BeneficiaryManagementClient();
             try
             {
-                if (Beneficiary.PersonId != 0)
+                if (Beneficiary.Id != 0)
                 {
-                    Person person = client.getPerson(Beneficiary.PersonId);
+                    Person person = client.getPerson(Beneficiary.Id);
                     ShowPersonInformation(person);
                 }
                 else
                 {
-                    Company company = client.getCompany(Beneficiary.CompanyId);
+                    Company company = client.getCompany(Beneficiary.Id);
                     ShowCompanyInformation(company);
                 }
             }
@@ -223,14 +223,8 @@ namespace SGMP_Client
 
         private void Btn_AddAccount_Click(object sender, RoutedEventArgs e)
         {
-            if (HaveBankAccount)
-            {
-
-            }
-            else
-            {
-
-            }
+                GUI_SaveBankAccount bankAccount = new GUI_SaveBankAccount(Beneficiary.Id);
+                bankAccount.Show();
         }
     }
 }

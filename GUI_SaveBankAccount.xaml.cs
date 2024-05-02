@@ -26,15 +26,17 @@ namespace SGMP_Client
     {
         private SGPMService.BankAccountManagementClient BankAccountManager = new SGPMService.BankAccountManagementClient();
         private Collection<bool> AccountValidate = new Collection<bool>();
+        private int IdBeneficary;
 
 
-        public GUI_SaveBankAccount()
+        public GUI_SaveBankAccount(int _IdBeneficiary)
         {
             InitializeComponent();
+            IdBeneficary = _IdBeneficiary;
             AccountValidate.Add(false);
             AccountValidate.Add(false);
 
-            var account = BankAccountManager.GetBankAccount(3);
+            var account = BankAccountManager.GetBankAccount(IdBeneficary);
             if (account != null)
             {
                 txtAccount.Text = account.AccountNumber;
@@ -77,7 +79,7 @@ namespace SGMP_Client
             {
                 Name = txtName.Text,
                 AccountNumber = txtAccount.Text,
-                IdBeneficiary = 3
+                IdBeneficiary = IdBeneficary
             };
             var result = BankAccountManager.SaveBankAccount(account);
             if (result == 0)
@@ -129,7 +131,7 @@ namespace SGMP_Client
             {
                 Name = txtName.Text,
                 AccountNumber = txtAccount.Text,
-                IdBeneficiary = 3
+                IdBeneficiary = IdBeneficary
             };
             var result = BankAccountManager.UpdateBankAccount(account);
             if (result == 0)

@@ -57,7 +57,7 @@ namespace SGMP_Client
             project.Folio = txtFolio.Text;
             project.Name = txtName.Text.Trim();
             project.Description = tbxDescription.Text.Trim();
-            project.Status = (string)cmbEstado.SelectedValue;
+            project.Status = cmbEstado.SelectedValue.ToString();
             project.Modality = (string)cmbModalidad.SelectedValue;
             project.End = (DateTime)dapcEnd.SelectedDate;
             project.Evidence = (DateTime)dapcEvidencia.SelectedDate;

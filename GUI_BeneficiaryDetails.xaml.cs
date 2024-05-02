@@ -102,9 +102,9 @@ namespace SGMP_Client
                     {
                         PhoneNumber = tb_phone.Text,
                         City = tb_city.Text,
-                        Street = tb_street.Text,   
+                        Street = tb_street.Text,
                         RFC = tb_rfc.Text,
-
+                        LocalityId = DTO_s.User.UserClient.LocationId
                     };
 
                     Person newPerson = new Person
@@ -112,7 +112,7 @@ namespace SGMP_Client
                         Name = tb_name.Text,
                         LastName = tb_lastname.Text,
                         SurName = tb_middlename.Text,
-                        CURP = tb_curp.Text,    
+                        CURP = tb_curp.Text,   
                     };
 
                     int result = client.RegisterPerson(newBeneficiary, newPerson);
@@ -155,8 +155,7 @@ namespace SGMP_Client
                         City = tb_city.Text,
                         Street = tb_street.Text,
                         RFC = tb_rfc.Text,
-                        LocalityId =  DTO_s.User.UserClient.EmployeeNumber,
-
+                        LocalityId =  DTO_s.User.UserClient.LocationId
                     };
 
                     Company newCompany = new Company

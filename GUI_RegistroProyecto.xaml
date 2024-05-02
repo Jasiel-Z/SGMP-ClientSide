@@ -36,7 +36,7 @@
             <DatePicker x:Name="dapcEnd" Grid.Row="0" HorizontalAlignment="Left" Margin="817,61,0,0" VerticalAlignment="Top" Height="35"/>
 
             <Label Content="Estado:" HorizontalAlignment="Left" Margin="21,132,0,0" VerticalAlignment="Top" FontSize="15"/>
-            <ComboBox x:Name="cmbEstado" HorizontalAlignment="Left" Margin="21,169,0,0" VerticalAlignment="Top" Width="174" Height="35" SelectedValuePath="Status" SelectionChanged="ComboBox_SelectionChanged"/>
+            <ComboBox x:Name="cmbEstado" HorizontalAlignment="Left" Margin="21,169,0,0" VerticalAlignment="Top" Width="174" Height="35" SelectionChanged="ComboBox_SelectionChanged"/>
             <Label Grid.Row="0" Content="Localidad:" HorizontalAlignment="Left" Margin="263,132,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.039,0.579" FontSize="15"/>
             <ComboBox x:Name="cmbLocalidad" Grid.Row="0" HorizontalAlignment="Left" Margin="263,168,0,0" VerticalAlignment="Top" Width="207" Height="34" DisplayMemberPath="NameLocalidad" SelectedValuePath="IdLocalidad" SelectionChanged="ComboBox_SelectionChanged"/>
             <Label Grid.Row="0" Content="Dependencia:" HorizontalAlignment="Left" Margin="550,126,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.039,0.579" FontSize="15"/>
