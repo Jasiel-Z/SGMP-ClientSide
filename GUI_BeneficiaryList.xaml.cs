@@ -48,8 +48,7 @@ namespace SGMP_Client
 
         private void GetBeneficiaries()
         {
-            //mover cuando se tenga el id del empleado
-            int localityId = 1;
+            int localityId = DTO_s.User.UserClient.EmployeeNumber;
 
             try
             {
@@ -65,7 +64,7 @@ namespace SGMP_Client
                 else
                 {
                     MessageBox.Show("No se pudieron recuperar los registros, por favor inténtelo más tarde"
-                     , "Error de conexión con la base de datos");
+                     , "Error de conexión con la base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (TimeoutException ex)

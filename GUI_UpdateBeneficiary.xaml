@@ -39,7 +39,7 @@
             <Label Name="lb_curp" Content="CURP" HorizontalAlignment="Left" Margin="872,101,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
             <Button Content="Actualizar información" HorizontalAlignment="Left" Margin="946,180,0,0" Grid.Row="3" VerticalAlignment="Top" Width="214" Height="45" FontSize="20" Foreground="White" Background="#FF33AA3E" Click="Btn_Update_Beneficiary"/>
             <Button Content="Volver" HorizontalAlignment="Left" Margin="706,179,0,0" Grid.Row="3" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Background="#FF3FA6C9" Foreground="White" Click="Btn_Goback_Click"/>
-            <Button Content="Agregar tarjeta" HorizontalAlignment="Left" Margin="483,181,0,0" Grid.Row="3" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Background="#FF3FA6C9" Foreground="White" Click="Btn_AddAccount_Click"/>
+            <Button x:Name="btn_add_account" Content="Agregar tarjeta" HorizontalAlignment="Left" Margin="483,181,0,0" Grid.Row="3" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Background="#FF3FA6C9" Foreground="White" Click="Btn_AddAccount_Click"/>
             <Label Content="Cuenta bancaria:" HorizontalAlignment="Left" Margin="42,9,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Height="39" Width="224" Grid.Row="3"/>
             <TextBox x:Name="tb_account_number" IsReadOnly="True" MaxLength="50" HorizontalAlignment="Left" Margin="50,102,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="30" FontSize="20"/>
             <Label Content="Número de cuenta:" HorizontalAlignment="Left" Margin="49,51,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="37" Width="209"/>
