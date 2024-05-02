@@ -17,7 +17,7 @@
         <TextBox x:Name="txtAmount" HorizontalAlignment="Left" Margin="283,117,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="117" Height="29"/>
         <Button Content="Nuevo Recurso" HorizontalAlignment="Left" Margin="28,158,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.237,-0.048"/>
         <Button x:Name="btnSave" Content="Generar Orden" HorizontalAlignment="Left" Margin="196,197,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.439,-0.624" Width="89" Height="20" Click="btnSave_Click"/>
-        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="318,197,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.439,-0.624" Width="89" Height="20"/>
+        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="318,197,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.439,-0.624" Width="89" Height="20" Click="Button_Click"/>
 
     </Grid>
 </Window>

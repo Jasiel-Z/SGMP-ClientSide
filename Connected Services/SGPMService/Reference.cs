@@ -4842,6 +4842,12 @@ namespace SGMP_Client.SGPMService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/GetProjectPolicies", ReplyAction="http://tempuri.org/IProjectsManagement/GetProjectPoliciesResponse")]
         System.Threading.Tasks.Task<SGMP_Client.SGPMService.ProjectPolicy[]> GetProjectPoliciesAsync(string idProject);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/GetAllProjects", ReplyAction="http://tempuri.org/IProjectsManagement/GetAllProjectsResponse")]
+        SGMP_Client.SGPMService.Project[] GetAllProjects();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/GetAllProjects", ReplyAction="http://tempuri.org/IProjectsManagement/GetAllProjectsResponse")]
+        System.Threading.Tasks.Task<SGMP_Client.SGPMService.Project[]> GetAllProjectsAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/GetLocalidads", ReplyAction="http://tempuri.org/IProjectsManagement/GetLocalidadsResponse")]
         SGMP_Client.SGPMService.Localidad[] GetLocalidads();
         
@@ -4912,6 +4918,14 @@ namespace SGMP_Client.SGPMService {
             return base.Channel.GetProjectPoliciesAsync(idProject);
         }
         
+        public SGMP_Client.SGPMService.Project[] GetAllProjects() {
+            return base.Channel.GetAllProjects();
+        }
+        
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMService.Project[]> GetAllProjectsAsync() {
+            return base.Channel.GetAllProjectsAsync();
+        }
+        
         public SGMP_Client.SGPMService.Localidad[] GetLocalidads() {
             return base.Channel.GetLocalidads();
         }
@@ -4942,10 +4956,10 @@ namespace SGMP_Client.SGPMService {
     public interface IBeneficiaryManagement {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/GetBeneficiaries", ReplyAction="http://tempuri.org/IBeneficiaryManagement/GetBeneficiariesResponse")]
-        SGMP_Client.SGPMService.Beneficiary[] GetBeneficiaries();
+        SGMP_Client.SGPMService.Beneficiary[] GetBeneficiaries(int localityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/GetBeneficiaries", ReplyAction="http://tempuri.org/IBeneficiaryManagement/GetBeneficiariesResponse")]
-        System.Threading.Tasks.Task<SGMP_Client.SGPMService.Beneficiary[]> GetBeneficiariesAsync();
+        System.Threading.Tasks.Task<SGMP_Client.SGPMService.Beneficiary[]> GetBeneficiariesAsync(int localityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBeneficiaryManagement/GetPersons", ReplyAction="http://tempuri.org/IBeneficiaryManagement/GetPersonsResponse")]
         SGMP_Client.SGPMService.Person[] GetPersons(string name);
@@ -5029,12 +5043,12 @@ namespace SGMP_Client.SGPMService {
                 base(binding, remoteAddress) {
         }
         
-        public SGMP_Client.SGPMService.Beneficiary[] GetBeneficiaries() {
-            return base.Channel.GetBeneficiaries();
+        public SGMP_Client.SGPMService.Beneficiary[] GetBeneficiaries(int localityId) {
+            return base.Channel.GetBeneficiaries(localityId);
         }
         
-        public System.Threading.Tasks.Task<SGMP_Client.SGPMService.Beneficiary[]> GetBeneficiariesAsync() {
-            return base.Channel.GetBeneficiariesAsync();
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMService.Beneficiary[]> GetBeneficiariesAsync(int localityId) {
+            return base.Channel.GetBeneficiariesAsync(localityId);
         }
         
         public SGMP_Client.SGPMService.Person[] GetPersons(string name) {

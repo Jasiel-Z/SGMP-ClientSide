@@ -52,7 +52,7 @@ namespace SGMP_Client
 
             try
             {
-                Beneficiaries = Client.GetBeneficiaries().ToList();
+                Beneficiaries = Client.GetBeneficiaries(localityId).ToList();
 
                 if (Beneficiaries != null)
                 {

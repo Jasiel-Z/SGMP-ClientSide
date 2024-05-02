@@ -80,5 +80,10 @@ namespace SGMP_Client
                 cmbResource.Items.Add(resource);
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

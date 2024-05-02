@@ -39,7 +39,9 @@ namespace SGMP_Client
 
         private void GoProjectsModule(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            GUI_ListaProyecto projectsList = new GUI_ListaProyecto();
+            projectsList.Show();
+            this.Close();
         }
 
         private void GoLocationsModule(object sender, MouseButtonEventArgs e)

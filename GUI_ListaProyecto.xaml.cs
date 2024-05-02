@@ -30,63 +30,77 @@ namespace SGMP_Client
 
         private void DisplayProjectList()
         {
-            foreach (var project in ProjectsManagementClient.GetProjectsFromLocality(1))
+            var f = ProjectsManagementClient.GetAllProjects();
+            Console.WriteLine(f.Length);
+            foreach (var project in f)
             {
-                Border border = new Border
-                {
-                    Width = 600,
-                    Height = 80,
-                    Background = Brushes.LightBlue,
-                    Margin = new Thickness(2),
-                };
+                var border = new Border();
+                border.BorderBrush = Brushes.Black;
+                border.BorderThickness = new Thickness(1);
+                border.CornerRadius = new CornerRadius(5);
+                border.Padding = new Thickness(5);
+                border.Margin = new Thickness(0, 0, 0, 10);
 
-                Grid grid = new Grid();
+                // Crear Grid
+                var grid = new Grid();
+                grid.Height = 134;
+                grid.Width = 935;
+                grid.Background = Brushes.White;
 
-                Button editarButton = new Button
-                {
-                    Content = "Editar",
-                    HorizontalAlignment = HorizontalAlignment.Left,
-                    VerticalAlignment = VerticalAlignment.Center,
-                };
+                // Crear Image
+                var image = new Image();
+                image.HorizontalAlignment = HorizontalAlignment.Left;
+                image.Height = 100;
+                image.Margin = new Thickness(14, 15, 0, 0);
+                image.VerticalAlignment = VerticalAlignment.Top;
+                image.Width = 100;
+                image.Source = new BitmapImage(new System.Uri("Icons/folder.png", System.UriKind.Relative));
 
-                Ellipse ellipse = new Ellipse
-                {
-                    Width = 40,
-                    Height = 40,
-                    Margin = new Thickness(10, 0, 0, 0),
-                };
+                // Crear Label
+                var label = new Label();
+                label.Content = project.Name;
+                label.HorizontalAlignment = HorizontalAlignment.Left;
+                label.Margin = new Thickness(118, 3, 0, 0);
+                label.VerticalAlignment = VerticalAlignment.Top;
+                label.Width = 607;
+                label.FontWeight = FontWeights.Bold;
+                label.FontSize = 20;
 
-                ImageBrush imageBrush = new ImageBrush();
-                //imageBrush.ImageSource = new BitmapImage(new Uri(imagePath));
-                //ellipse.Fill = imageBrush;
+                // Crear TextBlock
+                var textBlock = new TextBlock();
+                textBlock.Text = project.Description.Length > 200 ? project.Description.Substring(0, 200) : project.Description;
+                textBlock.HorizontalAlignment = HorizontalAlignment.Left;
+                textBlock.Margin = new Thickness(119, 45, 0, 0);
+                textBlock.TextWrapping = TextWrapping.Wrap;
+                textBlock.VerticalAlignment = VerticalAlignment.Top;
+                textBlock.Height = 50;
+                textBlock.Width = 702;
+                textBlock.FontSize = 14;
 
-                Label lblNombreProyecto = new Label
-                {
-                    Content = project.Modality,
-                    FontSize = 18,
-                    VerticalAlignment = VerticalAlignment.Center,
-                    Margin = new Thickness(60, 0, 0, 0),
-                };
+                // Crear Button
+                var button = new Button();
+                button.Content = "Ver más";
+                button.HorizontalAlignment = HorizontalAlignment.Left;
+                button.Margin = new Thickness(800, 100, 0, 0);
+                button.VerticalAlignment = VerticalAlignment.Top;
+                button.Width = 100;
+                button.Height = 29;
+                button.Background = Brushes.LightGreen;
+                button.Foreground = Brushes.White;
 
-                TextBlock txtDescripcion = new TextBlock
-                {
-                    Text = "Hola",//project.Description.Length > 100 ? project.Description.Substring(0, 100) : project.Description,
-                    TextWrapping = TextWrapping.Wrap,
-                    VerticalAlignment = VerticalAlignment.Center,
-                    Margin = new Thickness(60, 20, 0, 0),
-                };
-
-                editarButton.Click += (sender, e) => {
-                    GUI_RegistroProyecto registroProyecto = new GUI_RegistroProyecto();
+                button.Click += (sender, e) => {
+                    GUI_RegistroProyecto registroProyecto = new GUI_RegistroProyecto(project.Folio);
                     this.Close();
                     registroProyecto.Show();
                 };
 
-                grid.Children.Add(editarButton);
-                grid.Children.Add(ellipse);
-                grid.Children.Add(lblNombreProyecto);
-                grid.Children.Add(txtDescripcion);
+                // Agregar elementos al Grid
+                grid.Children.Add(image);
+                grid.Children.Add(label);
+                grid.Children.Add(textBlock);
+                grid.Children.Add(button);
 
+                // Agregar Grid al Border
                 border.Child = grid;
 
                 WrpProjectList.Children.Add(border);
@@ -95,10 +109,16 @@ namespace SGMP_Client
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SGPMService.Project project = new SGPMService.Project();
-            GUI_RegistroProyecto registroProyecto = new GUI_RegistroProyecto();
+            GUI_RegistroProyecto registroProyecto = new GUI_RegistroProyecto("");
             this.Close();
             registroProyecto.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            GUI_MainMenu menu = new GUI_MainMenu();
+            menu.Show();
+            this.Close();
         }
     }
 }
