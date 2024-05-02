@@ -22,14 +22,17 @@ namespace SGMP_Client
     public partial class GUI_SaveDeliveryOrden : Window
     {
         private SGPMService.DeliveryOrdenManagementClient _client = new SGPMService.DeliveryOrdenManagementClient();
-
-        public GUI_SaveDeliveryOrden()
+        private string Folio;
+        private int idDeliveryOrden = 0;
+        public GUI_SaveDeliveryOrden(string folio)
         {
+            Folio = folio;
             InitializeComponent();
             FillComboBox();
-            var orden = _client.GetDeliveryOrden(3);
+            var orden = _client.GetDeliveryOrden(Folio);
             if (orden != null)
             {
+                idDeliveryOrden = orden.IdDeliveryOrden;
                 txtPlace.Text = orden.DeliveryPlace;
                 txtAmount.Text = orden.Amount;
                 dtpDate.SelectedDate = orden.DeliveryDate;
@@ -45,12 +48,26 @@ namespace SGMP_Client
                 DeliveryDate = dtpDate.DisplayDate,
                 Amount = txtAmount.Text
             };
+            if (idDeliveryOrden != 0)
+            {
+                deliveryOrden.IdDeliveryOrden = idDeliveryOrden;
+            }
             Resource Resource = new Resource
             {
                 IdResource = (int)cmbResource.SelectedValue
             };
             deliveryOrden.Resource = Resource;
-            _client.SaveDeliveryOrden(deliveryOrden, "F1234");
+            int result = _client.SaveDeliveryOrden(deliveryOrden, Folio);
+            if(result == 0)
+            {
+                MessageBox.Show("Se ha guardado correctamente la orden de entrega", "Cambios Guardados", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("A ocurrido un error, intente nuevamente más tarde", "Cambios No Guardados", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
         }
 
         private void FillComboBox()
