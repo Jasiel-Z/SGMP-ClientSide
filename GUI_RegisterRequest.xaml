@@ -30,8 +30,8 @@
             <TextBox x:Name="tb_modality" IsReadOnly="True" HorizontalAlignment="Left" Margin="9,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
             <TextBox x:Name="tb_group" IsReadOnly="true" HorizontalAlignment="Left" Margin="348,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
             <Label Content="Grupo de atención:" HorizontalAlignment="Left" Margin="339,35,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.35,0.52" Height="37" Width="189"/>
-            <Label Content="Tipo:" HorizontalAlignment="Left" Margin="660,35,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.159,0.383" Height="37" Width="141"/>
-            <TextBox x:Name="tb_type" IsReadOnly="True" HorizontalAlignment="Left" Margin="666,68,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20"/>
+            <Label Content="Tipo:" HorizontalAlignment="Left" Margin="660,35,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.159,0.383" Height="37" Width="141" Visibility="Hidden"/>
+            <TextBox x:Name="tb_type" IsReadOnly="True" HorizontalAlignment="Left" Margin="666,68,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="30" FontSize="20" Visibility="Hidden"/>
 
             <Label Content="Datos del beneficiario." HorizontalAlignment="Left" Margin="10,3,0,0" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Height="39" Width="242"/>
             <Label Content="Ingrese el nombre a buscar:" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="18" Height="37" Width="291"/>

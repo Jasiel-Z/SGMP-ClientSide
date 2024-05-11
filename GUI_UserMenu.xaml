@@ -1,10 +1,11 @@
-﻿<Window x:Class="SGMP_Client.GUI_LocalitiesList"
+﻿<Window x:Class="SGMP_Client.GUI_UserMenu"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGMP_Client"
         mc:Ignorable="d"
-        Title="Lista de Localidades" Height="640" Width="1200">
+        Title="Menú Usuarios" Height="640" Width="1200">
     <Grid Margin="0,-5,1,5" HorizontalAlignment="Right" Width="1025">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -24,18 +25,12 @@
                 <RowDefinition Height="151*"/>
             </Grid.RowDefinitions>
 
-            <Label Content="Lista de Localidades" HorizontalAlignment="Left" Margin="4,5,0,0" VerticalAlignment="Top" Height="51" Width="492" FontSize="28" FontWeight="Bold"/>
+            <Label Content="Menú Usuarios" HorizontalAlignment="Left" Margin="4,5,0,0" VerticalAlignment="Top" Height="51" Width="492" FontSize="28" FontWeight="Bold"/>
             <Rectangle HorizontalAlignment="Center" Height="5" Margin="0,53,0,0" Fill="Sienna" Stroke="Silver" VerticalAlignment="Top" Width="999" RenderTransformOrigin="0.5,0.5"/>
 
             <Button Content="Cancelar" HorizontalAlignment="Left" Margin="819,101,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Width="170" Height="45" Background="#FFD44646" Foreground="White" Click="Btn_Cancel_Click"/>
-            
-            <ListBox x:Name="lbxLocalities" ItemsSource="{Binding Localities}" Margin="0,33,0,0" Grid.RowSpan="3" Grid.Row="1" Height="446" VerticalAlignment="Top" HorizontalAlignment="Center" Width="981" FontSize="20">
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListBoxItem_MouseLeftButtonDown"/>
-                    </Style>
-                </ListBox.ItemContainerStyle>   
-            </ListBox>
+            <Button Content="Registrar Usuario" HorizontalAlignment="Center" Margin="0,49,0,0" Grid.Row="2" VerticalAlignment="Top" Height="54" Width="281" Click="Btn_Register_User_Click"/>
+            <Button Content="Lista de Usuarios" HorizontalAlignment="Center" Margin="0,132,0,0" Grid.Row="2" VerticalAlignment="Top" Height="54" Width="281" Click="Btn_Users_List_Click"/>
         </Grid>
 
     </Grid>

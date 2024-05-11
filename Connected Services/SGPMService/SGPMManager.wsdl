@@ -129,6 +129,12 @@
   <wsdl:message name="IProjectsManagement_GetProjectPolicies_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProjectPoliciesResponse" />
   </wsdl:message>
+  <wsdl:message name="IProjectsManagement_GetAllProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProjects" />
+  </wsdl:message>
+  <wsdl:message name="IProjectsManagement_GetAllProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProjectsResponse" />
+  </wsdl:message>
   <wsdl:message name="IProjectsManagement_GetLocalidads_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLocalidads" />
   </wsdl:message>
@@ -382,6 +388,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectPolicies" message="tns:IProjectsManagement_GetProjectPolicies_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectPoliciesResponse" message="tns:IProjectsManagement_GetProjectPolicies_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllProjects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetAllProjects" message="tns:IProjectsManagement_GetAllProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/GetAllProjectsResponse" message="tns:IProjectsManagement_GetAllProjects_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetLocalidads">
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetLocalidads" message="tns:IProjectsManagement_GetLocalidads_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/GetLocalidadsResponse" message="tns:IProjectsManagement_GetLocalidads_OutputMessage" />
@@ -580,6 +590,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetProjectPolicies">
       <soap12:operation soapAction="http://tempuri.org/IProjectsManagement/GetProjectPolicies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProjects">
+      <soap12:operation soapAction="http://tempuri.org/IProjectsManagement/GetAllProjects" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

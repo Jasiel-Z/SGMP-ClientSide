@@ -62,17 +62,38 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="GUI_ListaProyecto.xaml.cs">
+      <DependentUpon>GUI_ListaProyecto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI_LocalitiesList.xaml.cs">
       <DependentUpon>GUI_LocalitiesList.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI_Locality.xaml.cs">
       <DependentUpon>GUI_Locality.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI_LocalityMenu.xaml.cs">
+      <DependentUpon>GUI_LocalityMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI_Policy.xaml.cs">
       <DependentUpon>GUI_Policy.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI_RegistroProyecto.xaml.cs">
+      <DependentUpon>GUI_RegistroProyecto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_SaveBankAccount.xaml.cs">
+      <DependentUpon>GUI_SaveBankAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_SaveDeliveryOrden.xaml.cs">
+      <DependentUpon>GUI_SaveDeliveryOrden.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI_User.xaml.cs">
       <DependentUpon>GUI_User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_UserMenu.xaml.cs">
+      <DependentUpon>GUI_UserMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_UsersList.xaml.cs">
+      <DependentUpon>GUI_UsersList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility.cs" />
     <Page Include="GUI_BeneficiaryDetails.xaml">
@@ -87,6 +108,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI_ListaProyecto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI_LocalitiesList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -94,6 +119,10 @@
     <Page Include="GUI_Locality.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI_LocalityMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI_Login.xaml">
       <SubType>Designer</SubType>
@@ -111,11 +140,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI_RegistroProyecto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI_RequestsManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI_RequestsMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_SaveBankAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_SaveDeliveryOrden.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,6 +167,14 @@
     <Page Include="GUI_User.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI_UserMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_UsersList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -341,6 +390,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\folder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

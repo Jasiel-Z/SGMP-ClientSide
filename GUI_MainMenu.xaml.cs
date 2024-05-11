@@ -32,20 +32,22 @@ namespace SGMP_Client
 
         private void GoUserSModule(object sender, MouseButtonEventArgs e)
         {
-            Window userWindow = new GUI_User();
-            userWindow.Show();
+            Window userMenuWindow = new GUI_UserMenu();
+            userMenuWindow.Show();
             this.Close();
         }
 
         private void GoProjectsModule(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            GUI_ListaProyecto projectsList = new GUI_ListaProyecto();
+            projectsList.Show();
+            this.Close();
         }
 
         private void GoLocationsModule(object sender, MouseButtonEventArgs e)
         {
-            Window locationWindow = new GUI_Locality();
-            locationWindow.Show();
+            Window localityMenuWindow = new GUI_LocalityMenu();
+            localityMenuWindow.Show();
             this.Close();
         }
 

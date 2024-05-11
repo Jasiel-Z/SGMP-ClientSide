@@ -22,7 +22,9 @@ namespace SGMP_Client
     /// </summary>
     public partial class GUI_User : Window
     {
-        private Dictionary<string, int> localitiesDictionary = new Dictionary<string, int>();
+        private Dictionary<int, string> localitiesDictionary = new Dictionary<int, string>();
+        private int employeeNumber = 0;
+        private string userEmail = string.Empty;
 
         public GUI_User()
         {
@@ -40,19 +42,41 @@ namespace SGMP_Client
             };
             
             List<string> localitiesNames = new List<string>();
-            localitiesDictionary = new Dictionary<string, int>();
+            localitiesDictionary = new Dictionary<int, string>();
             var localities = GetLocalitiesFromDatabase();
             foreach (var locality in localities)
             {
                 string localityTownship;
                 localityTownship = locality.Name + ", " + locality.Township;
                 localitiesNames.Add(localityTownship);
-                localitiesDictionary[localityTownship] = locality.LocalityID;
+                localitiesDictionary[locality.LocalityID] = localityTownship;
             }
             localitiesNames.Sort();
 
             cbRole.ItemsSource = roles;
             cbLocality.ItemsSource = localitiesNames;
+        }
+
+        public void LoadUser(User user)
+        {
+            this.employeeNumber = user.EmployeeNumber;
+            this.userEmail = user.Email;
+
+            this.Title = "Modificar Usuario";
+            lbTitle.Content = "Modificar Usuario";
+            tbxStaffNumber.IsEnabled = false;
+
+            tbxStaffNumber.Text = user.EmployeeNumber.ToString();
+            tbxName.Text = user.Name;
+            tbxMiddleName.Text = user.MiddleName;
+            tbxLastName.Text = user.LastName;
+            tbxPhoneNumber.Text = user.PhoneNumber;
+            tbxCity.Text = user.City;
+            tbxStreet.Text = user.Street;
+            tbxNumber.Text = user.Number.ToString();
+            cbRole.SelectedItem = user.Role;
+            cbLocality.SelectedItem = localitiesDictionary[user.LocationId];
+            tbxEMail.Text = user.Email;
         }
 
         private void Btn_Save_User_Click(object sender, RoutedEventArgs e)
@@ -89,33 +113,61 @@ namespace SGMP_Client
                     Number = int.Parse(number),
                     PhoneNumber = phoneNumber,
                     Role = role,
-                    LocationId = localitiesDictionary[locality],
+                    LocationId = localitiesDictionary.FirstOrDefault(x => x.Value == locality).Key,
                     EmployeeNumber = int.Parse(staffNumberString),
-                    Email = email,
-                    Password = Utility.ComputeSha256Hash(password)
+                    Email = email,             
                 };
 
-                int result = SaveUser(user);
-
-                if (result == 2)
+                if (string.IsNullOrEmpty(password))
                 {
-                    MessageBox.Show("Se ha guardado el nuevo usuario correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                    user.Password = "";
                 }
                 else
                 {
-                    MessageBox.Show("Ha ocurrido un error al intentar guardar el nuevo usuario. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    Console.WriteLine(result);
+                    user.Password = Utility.ComputeSha256Hash(password);
+                }
+
+                if (employeeNumber == 0)
+                {
+                    SaveUser(user);
+                }
+                else
+                {
+                    UpdateUser(user);
                 }
             }
         }
 
-        private int SaveUser(User user)
+        private void SaveUser(User user)
         {
             SGPMService.UserManagementClient client = new SGPMService.UserManagementClient();
 
             int result = client.SaveUser(user);
 
-            return result;
+            if (result > 0)
+            {
+                MessageBox.Show("Se ha guardado el nuevo usuario correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Ha ocurrido un error al intentar guardar el nuevo usuario. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void UpdateUser(User user) 
+        {
+            SGPMService.UserManagementClient client = new SGPMService.UserManagementClient();
+
+            int result = client.UpdateUser(user);
+
+            if (result > 0)
+            {
+                MessageBox.Show("Se ha actualizado la información del usuario correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Ha ocurrido un error al intentar actualizar la información del nuevo usuario. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private bool ValidateUserFields(string employeeNumber, string email, string password, string repeatPassword)
@@ -124,7 +176,7 @@ namespace SGMP_Client
             bool isEmailValid = false;
             bool isPasswordValid = false;
 
-            if (!string.IsNullOrEmpty(employeeNumber.ToString()) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(repeatPassword))
+            if (!string.IsNullOrEmpty(employeeNumber.ToString()) && !string.IsNullOrEmpty(email))
             {
                 lbEmptyFieldsMessage.Visibility = Visibility.Hidden;
 
@@ -165,7 +217,7 @@ namespace SGMP_Client
             {
                 SGPMService.UserManagementClient client = new SGPMService.UserManagementClient();
                 
-                if (client.ValidateEmployeeNumberDoesNotExist(employeeNumber))
+                if (this.employeeNumber > 0 || client.ValidateEmployeeNumberDoesNotExist(employeeNumber))
                 {
                     isEmployeeNumberValid = true;            
                     lbInvalidEmployeeNumberMessage.Visibility = Visibility.Hidden;
@@ -192,7 +244,7 @@ namespace SGMP_Client
             {
                 SGPMService.UserManagementClient client = new SGPMService.UserManagementClient();
 
-                if (client.ValidateEmailDoesNotExist(email))
+                if (email.Equals(this.userEmail) || (client.ValidateEmailDoesNotExist(email)))
                 {
                     isEmailValid = true;
                     lbInvalidEmailMessage.Visibility = Visibility.Hidden;
@@ -215,26 +267,43 @@ namespace SGMP_Client
         public bool ValidatePassword(string password, string repeatPassword) 
         {
             bool isPasswordValid;
-            if (Regex.IsMatch(password, "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#.$($)\\-_])[A-Za-z\\d$@$!%*?&#.$($)\\-_]{8,16}$"))
-            {
-                tbInvalidPasswordMessage.Visibility = Visibility.Hidden;
 
-                if (password.Equals(repeatPassword))
+            if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(repeatPassword))
+            {
+                if (Regex.IsMatch(password, "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#.$($)\\-_])[A-Za-z\\d$@$!%*?&#.$($)\\-_]{8,16}$"))
                 {
-                    isPasswordValid = true;
-                    lbUnmatchingPasswordMessage.Visibility = Visibility.Hidden;
+                    tbInvalidPasswordMessage.Visibility = Visibility.Hidden;
+
+                    if (password.Equals(repeatPassword))
+                    {
+                        isPasswordValid = true;
+                        lbUnmatchingPasswordMessage.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        isPasswordValid = false;
+                        lbUnmatchingPasswordMessage.Visibility = Visibility.Visible;
+                    }
                 }
                 else
                 {
                     isPasswordValid = false;
-                    lbUnmatchingPasswordMessage.Visibility = Visibility.Visible;
+                    tbInvalidPasswordMessage.Visibility = Visibility.Visible;
                 }
             }
             else
             {
-                isPasswordValid = false;
-                tbInvalidPasswordMessage.Visibility = Visibility.Visible;
+                if (employeeNumber > 0)
+                {
+                    isPasswordValid = true;
+                }
+                else
+                {
+                    isPasswordValid = false;
+                    lbEmptyFieldsMessage.Visibility = Visibility.Visible;
+                }
             }
+            
             return isPasswordValid;
         }
 
@@ -266,9 +335,19 @@ namespace SGMP_Client
 
         private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Window mainMenuWindow = new GUI_MainMenu();
-            mainMenuWindow.Show();
-            this.Close();
+            if (employeeNumber > 0)
+            {
+                Window usersListWindow = new GUI_UsersList();
+                usersListWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                Window userMenuWindow = new GUI_UserMenu();
+                userMenuWindow.Show();
+                this.Close();
+            }
+            
         }
 
         private List<Locality> GetLocalitiesFromDatabase()
