@@ -4,17 +4,19 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="AttentionGroup" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="BeneficiaryNumbers" type="xs:int" />
-      <xs:element minOccurs="0" name="Dependecy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Dependecy" type="xs:int" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="End" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Evidence" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Folio" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" type="xs:int" />
       <xs:element minOccurs="0" name="Modality" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Solicitud" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Start" type="xs:dateTime" />
       <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SupportAmount" type="xs:int" />
+      <xs:element minOccurs="0" name="SupportAmount" type="xs:double" />
       <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
