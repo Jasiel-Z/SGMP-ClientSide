@@ -25,14 +25,25 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Image x:Name="im_projects" HorizontalAlignment="Left" Height="190" Margin="68,30,0,0" VerticalAlignment="Top" Width="180" Source="/proyecto.png"/>
-            <Image x:Name="im_beneficiaries" Grid.Column="1" HorizontalAlignment="Left" Height="190" Margin="56,39,0,0" VerticalAlignment="Top" Width="180" Source="/beneficiario.png"/>
+            <Image x:Name="im_beneficiaries" Grid.Column="1" HorizontalAlignment="Left" Height="190" Margin="64,39,0,0" VerticalAlignment="Top" Width="180" Source="/Icons/beneficiario.png"/>
             <Image x:Name="im_requests" Grid.Column="2" HorizontalAlignment="Center" Height="190" Margin="0,39,0,0" VerticalAlignment="Top" Width="180" Source="/solicitud.png"/>
             <Image x:Name="im_location" Grid.Column="3" HorizontalAlignment="Left" Height="190" Margin="70,40,0,0" VerticalAlignment="Top" Width="180" Source="/marcador-de-posicion.png"/>
             <Image x:Name="im_users" HorizontalAlignment="Left" Height="190" Margin="72,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="180" Source="/programador.png"/>
-            <Label Content="Gestión de proyectos" HorizontalAlignment="Left" Margin="82,222,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-            <Label Content="Gestión de beneficiarios" HorizontalAlignment="Left" Margin="70,234,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
-            <Label Content="Gestión de solicitudes" HorizontalAlignment="Left" Margin="77,231,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="2"/>
-            <Label Content="Gestión de localidades" HorizontalAlignment="Left" Margin="81,231,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="3"/>
+            <Label Name="lb_projects" Content="Proyectos" HorizontalAlignment="Left" Margin="78,222,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+            <Label Name="lb_beneficiaries" Content="Beneficiarios" HorizontalAlignment="Left" Margin="70,234,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="1">
+                <Label.Background>
+                    <ImageBrush/>
+                </Label.Background>
+            </Label>
+            <Label Name="lb_requests" Content="Solicitudes" HorizontalAlignment="Center" Margin="0,231,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="2"/>
+            <Label Name="lb_localities" Content="localidades" HorizontalAlignment="Left" Margin="81,231,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Column="3"/>
+            <Label Name="lb_users" Content="Usuarios" HorizontalAlignment="Left" Margin="125,225,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Row="1"/>
+            <Image x:Name="im_policies" Grid.Column="1" HorizontalAlignment="Left" Height="190" Margin="66,35,0,0" Grid.Row="1" VerticalAlignment="Top" Width="180" Source="/Icons/normas.png">
+
+            </Image>
+            <Label Name="lb_policies" Content="Políticas de participación" HorizontalAlignment="Center" Margin="0,222,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
+            <Button Content="Cerrar sesión" HorizontalAlignment="Left" Margin="71,199,0,0" VerticalAlignment="Top" FontSize="20" Height="45" Width="170" Background="#FF33AA3E" Foreground="White" Click="Btn_Logout" Grid.Column="3" Grid.Row="1"/>
+            <Button Content="Salir" HorizontalAlignment="Left" Margin="77,199,0,0" VerticalAlignment="Top" FontSize="20" Height="45" Width="170" Background="#FFD44646" Foreground="White" Click="Btn_Exit" Grid.Row="1" Grid.Column="2"/>
         </Grid>
         <Rectangle HorizontalAlignment="Left" Height="5" Margin="26,51,0,0" Fill="Sienna" Stroke="Silver" VerticalAlignment="Top" Width="1152" RenderTransformOrigin="0.5,0.5"/>
     </Grid>

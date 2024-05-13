@@ -120,6 +120,10 @@ namespace SGMP_Client
                     {
                         MessageBox.Show("El beneficiario se he registrado en el sistema", "Registro realizado",
                             MessageBoxButton.OK, MessageBoxImage.Information);
+                        Window guiBeneficiaries = new GUI_BeneficiaryList();
+                        this.Close();
+                        guiBeneficiaries.Show();
+
                     }
                     else
                     {
@@ -168,6 +172,7 @@ namespace SGMP_Client
                     {
                         MessageBox.Show("El beneficiario se he registrado en el sistema", "Registro realizado",
                             MessageBoxButton.OK, MessageBoxImage.Information);
+                        
                     }
                     else
                     {

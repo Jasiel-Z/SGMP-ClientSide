@@ -26,5 +26,6 @@
         </ListView>
         <Button Content="Regresar" HorizontalAlignment="Left" Margin="722,465,0,0" Grid.Row="1" VerticalAlignment="Top" Height="41" Width="135" FontSize="20" FontWeight="Bold" Background="#FF529BE2" Foreground="#FFFFFDFD" Click="Btn_Go_MainMenu"/>
         <Button Content="Registrar beneficiario" HorizontalAlignment="Left" Margin="925,465,0,0" Grid.Row="1" VerticalAlignment="Top" Height="41" Width="230" FontSize="20" FontWeight="Bold" Background="#FF29D643" Foreground="#FFFFFDFD" Click="Btn_Go_Register"/>
+        <Label Content="Presiona clic derecho dos veces sobre el elemento que desees visualizar" HorizontalAlignment="Left" Margin="44,9,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-5.747,-11.958" FontWeight="Bold"/>
     </Grid>
 </Window>

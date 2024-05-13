@@ -98,5 +98,16 @@ namespace SGMP_Client
             }
 
         }
+
+        private void liv_requests_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Request selectedRequest = (Request)liv_requests.SelectedItem;
+            if (selectedRequest != null)
+            {
+                GUI_GenerateOpinion requestsManagement = new GUI_GenerateOpinion(project, selectedRequest);
+                requestsManagement.Show();
+                this.Close();
+            }
+        }
     }
 }

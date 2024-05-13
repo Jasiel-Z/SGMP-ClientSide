@@ -163,6 +163,12 @@ namespace SGMP_Client
             if (result > 0)
             {
                 MessageBox.Show("Se ha actualizado la información del usuario correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (areSingletonUserUpdated(user))
+                {
+                    updateSingleton(user);
+                    MessageBox.Show("Ha actualizado su propia cuenta, será redirigido al inicio de sesión para cargar los cambios.", "Redireccionando a inicio de sesión", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             else
             {
@@ -363,6 +369,25 @@ namespace SGMP_Client
             }
 
             return localities;
+        }
+
+        private void updateSingleton(User user)
+        {
+            SGMP_Client.DTO_s.User.UserClient.Logout();
+            Window loginWindow = new GUI_Login();
+            this.Close();
+            loginWindow.Show();
+
+        }
+
+        private bool areSingletonUserUpdated(User user)
+        {
+            if (SGMP_Client.DTO_s.User.UserClient.EmployeeNumber.Equals(user.EmployeeNumber))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

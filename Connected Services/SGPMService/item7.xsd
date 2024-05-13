@@ -239,7 +239,7 @@
   <xs:element name="getCompanyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="getCompanyResult" nillable="true" type="q16:Company" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBeneficiaryManagement" minOccurs="0" name="getCompanyResult" nillable="true" type="q17:Company" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -398,34 +398,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" minOccurs="0" name="GetUserDetailsByEmployeeNumberResult" nillable="true" type="q28:User" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetUsersGeneralInfo">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="pageNumber" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetUsersGeneralInfoResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" minOccurs="0" name="GetUsersGeneralInfoResult" nillable="true" type="q26:ArrayOfUser" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetUserDetailsByEmployeeNumber">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="employeeNumber" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetUserDetailsByEmployeeNumberResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" minOccurs="0" name="GetUserDetailsByEmployeeNumberResult" nillable="true" type="q27:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

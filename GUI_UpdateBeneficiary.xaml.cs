@@ -34,6 +34,15 @@ namespace SGMP_Client
             ShowBeneficiaryInformation();
             GetBeneficiaryTypeInformation();
             GetAccountInformation();
+            im_help.MouseLeftButtonDown += ShowInformation;
+
+        }
+
+        private void ShowInformation(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Los apartados que se pueden modificar son:" +
+                "teléfono, ciudad y calle", "Actualización de beneficiario", MessageBoxButton.OK, 
+                MessageBoxImage.Information);
         }
 
 
@@ -53,7 +62,7 @@ namespace SGMP_Client
             client = new BeneficiaryManagementClient();
             try
             {
-                if (Beneficiary.Id != 0)
+                if (Beneficiary.PersonId != 0)
                 {
                     Person person = client.getPerson(Beneficiary.Id);
                     ShowPersonInformation(person);

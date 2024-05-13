@@ -1618,6 +1618,9 @@ namespace SGMP_Client.SGPMService {
         private System.Nullable<int> IdDependenciaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IdLocalidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> IdOrdenEntregaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1652,9 +1655,6 @@ namespace SGMP_Client.SGPMService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string grupoAtencionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> idLocalidadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string modalidadField;
@@ -1716,6 +1716,19 @@ namespace SGMP_Client.SGPMService {
                 if ((this.IdDependenciaField.Equals(value) != true)) {
                     this.IdDependenciaField = value;
                     this.RaisePropertyChanged("IdDependencia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IdLocalidad {
+            get {
+                return this.IdLocalidadField;
+            }
+            set {
+                if ((this.IdLocalidadField.Equals(value) != true)) {
+                    this.IdLocalidadField = value;
+                    this.RaisePropertyChanged("IdLocalidad");
                 }
             }
         }
@@ -1872,19 +1885,6 @@ namespace SGMP_Client.SGPMService {
                 if ((object.ReferenceEquals(this.grupoAtencionField, value) != true)) {
                     this.grupoAtencionField = value;
                     this.RaisePropertyChanged("grupoAtencion");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> idLocalidad {
-            get {
-                return this.idLocalidadField;
-            }
-            set {
-                if ((this.idLocalidadField.Equals(value) != true)) {
-                    this.idLocalidadField = value;
-                    this.RaisePropertyChanged("idLocalidad");
                 }
             }
         }
