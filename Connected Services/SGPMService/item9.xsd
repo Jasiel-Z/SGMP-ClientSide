@@ -12,6 +12,7 @@
       <xs:element minOccurs="0" name="Location" type="xs:int" />
       <xs:element minOccurs="0" name="Modality" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RemainingBeneficiaries" type="xs:int" />
       <xs:element minOccurs="0" name="Solicitud" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Start" type="xs:dateTime" />
       <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />

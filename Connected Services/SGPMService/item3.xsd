@@ -128,6 +128,7 @@
       <xs:element minOccurs="0" name="OrdenesEntrega" nillable="true" type="tns:OrdenesEntrega" />
       <xs:element minOccurs="0" name="ProyectoPoliticaOtorgamiento" nillable="true" type="tns:ArrayOfProyectoPoliticaOtorgamiento" />
       <xs:element minOccurs="0" name="Solicitudes" nillable="true" type="tns:ArrayOfSolicitudes" />
+      <xs:element minOccurs="0" name="beneficiariosRestantes" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="fechaFin" nillable="true" type="xs:dateTime" />

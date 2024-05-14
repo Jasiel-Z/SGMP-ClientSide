@@ -3,6 +3,7 @@ using SGMP_Client.SGPMService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Configuration;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -57,7 +58,7 @@ namespace SGMP_Client
         {
             tb_description.Text = project.Description;
             tb_group.Text = project.AttentionGroup;
-            tb_type.Text = project.Type;
+            tb_type.Text = project.SupportAmount.ToString() + " MXN";
 
         }
 
@@ -99,7 +100,7 @@ namespace SGMP_Client
                     lib_policies.Items.Add(listBoxItem);
                 }
             }
-            catch (TimeoutException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
                  "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -157,7 +158,7 @@ namespace SGMP_Client
                     lib_files.Items.Add(listBoxItem);
                 }
             }
-            catch (TimeoutException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
                  "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -171,7 +172,7 @@ namespace SGMP_Client
         {
             string rutaArchivoOriginal = selectedFile.Description;
 
-            string directorioDestino = SeleccionarDirectorio();
+            string directorioDestino = SelectDirectory();
 
             if (directorioDestino != null)
             {
@@ -193,7 +194,7 @@ namespace SGMP_Client
         }
 
 
-        private string SeleccionarDirectorio()
+        private string SelectDirectory()
         {
             OpenFileDialog dialogo = new OpenFileDialog();
             dialogo.Title = "Seleccione una carpeta";
@@ -258,28 +259,37 @@ namespace SGMP_Client
                         
                         };
 
-                        try
+                        if (project.RemainingBeneficiaries <= 0 && opinion.State.Equals("aceptado"))
                         {
-                            SGPMService.RequestManagementClient client = new SGPMService.RequestManagementClient();
-                            int result = client.RegisterOpinion(opinion, request.Id);
-                            if (result >= 1)
-                            {
-                                MessageBox.Show("El dictamen ha sido registrado en el sistema", "Registro exitoso", 
-                                    MessageBoxButton.OK, MessageBoxImage.Information);
-                                GUI_RequestsManagement requestsManagement = new GUI_RequestsManagement(project);
-                                requestsManagement.Show();
-                                this.Close();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Ocurrió un problema con la base de datos, por favor inténtelo más tarde",
-                                    "Problema de conexión con la base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
-                            }
+                            MessageBox.Show("El número máximo de beneficiarios para el proyecto ha sido alcanzado. Debe rechazar esta solicitud",
+                                "Número máximo de beneficiarios alcanzado", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
-                        catch (TimeoutException ex)
+                        else
                         {
-                            MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
-                                "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
+                            try
+                            {
+                                SGPMService.RequestManagementClient client = new SGPMService.RequestManagementClient();
+                                int result = client.RegisterOpinion(opinion, request.Id);
+                                if (result >= 1)
+                                {
+                                    updateRemainingBeneficiaries();
+                                    MessageBox.Show("El dictamen ha sido registrado en el sistema", "Registro exitoso",
+                                        MessageBoxButton.OK, MessageBoxImage.Information);
+                                    GUI_RequestsManagement requestsManagement = new GUI_RequestsManagement(project);
+                                    requestsManagement.Show();
+                                    this.Close();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Ocurrió un problema con la base de datos, por favor inténtelo más tarde",
+                                        "Problema de conexión con la base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
+                                    "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
                         }
 
                     }
@@ -340,6 +350,23 @@ namespace SGMP_Client
         private bool IsOptionSelected()
         {
             return rb_accomplish.IsChecked == true || rb_no_accomplish.IsChecked == true;
+        }
+
+
+        private void updateRemainingBeneficiaries()
+        {
+            SGPMService.ProjectsManagementClient client = new SGPMService.ProjectsManagementClient();
+            try
+            {
+                int result = client.updateRemainingBeneficiaries(project.Folio);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
+                                 "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
     }
 }

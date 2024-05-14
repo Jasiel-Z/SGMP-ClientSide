@@ -95,5 +95,32 @@ namespace SGMP_Client
 
             return validData;
         }
+
+        private void tb_search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = tb_search.Text.ToLower();
+
+            liv_requests.Items.Clear(); // Limpiar la colección existente en el ListView
+
+            if (string.IsNullOrEmpty(searchText))
+            {
+                // Si el TextBox de búsqueda está vacío, muestra todos los beneficiarios
+                foreach (var beneficiary in Beneficiaries)
+                {
+                    liv_requests.Items.Add(beneficiary); // Agregar cada beneficiario a la colección del ListView
+                }
+            }
+            else
+            {
+                // Filtra la lista de beneficiarios basándose en el texto de búsqueda
+                foreach (var beneficiary in Beneficiaries)
+                {
+                    if (beneficiary.RFC != null && beneficiary.RFC.ToLower().Contains(searchText))
+                    {
+                        liv_requests.Items.Add(beneficiary); // Agregar beneficiario que coincide con el texto de búsqueda
+                    }
+                }
+            }
+        }
     }
 }

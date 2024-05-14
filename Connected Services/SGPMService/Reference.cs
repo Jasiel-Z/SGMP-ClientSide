@@ -53,6 +53,9 @@ namespace SGMP_Client.SGPMService {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RemainingBeneficiariesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime SolicitudField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -206,6 +209,19 @@ namespace SGMP_Client.SGPMService {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RemainingBeneficiaries {
+            get {
+                return this.RemainingBeneficiariesField;
+            }
+            set {
+                if ((this.RemainingBeneficiariesField.Equals(value) != true)) {
+                    this.RemainingBeneficiariesField = value;
+                    this.RaisePropertyChanged("RemainingBeneficiaries");
                 }
             }
         }
@@ -1636,6 +1652,9 @@ namespace SGMP_Client.SGPMService {
         private SGMP_Client.SGPMService.Solicitudes[] SolicitudesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> beneficiariosRestantesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descripcionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1794,6 +1813,19 @@ namespace SGMP_Client.SGPMService {
                 if ((object.ReferenceEquals(this.SolicitudesField, value) != true)) {
                     this.SolicitudesField = value;
                     this.RaisePropertyChanged("Solicitudes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> beneficiariosRestantes {
+            get {
+                return this.beneficiariosRestantesField;
+            }
+            set {
+                if ((this.beneficiariosRestantesField.Equals(value) != true)) {
+                    this.beneficiariosRestantesField = value;
+                    this.RaisePropertyChanged("beneficiariosRestantes");
                 }
             }
         }
@@ -4865,6 +4897,12 @@ namespace SGMP_Client.SGPMService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/GetProjectsFromLocality", ReplyAction="http://tempuri.org/IProjectsManagement/GetProjectsFromLocalityResponse")]
         System.Threading.Tasks.Task<SGMP_Client.SGPMService.Project[]> GetProjectsFromLocalityAsync(int locationId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/updateRemainingBeneficiaries", ReplyAction="http://tempuri.org/IProjectsManagement/updateRemainingBeneficiariesResponse")]
+        int updateRemainingBeneficiaries(string folio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectsManagement/updateRemainingBeneficiaries", ReplyAction="http://tempuri.org/IProjectsManagement/updateRemainingBeneficiariesResponse")]
+        System.Threading.Tasks.Task<int> updateRemainingBeneficiariesAsync(string folio);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4948,6 +4986,14 @@ namespace SGMP_Client.SGPMService {
         
         public System.Threading.Tasks.Task<SGMP_Client.SGPMService.Project[]> GetProjectsFromLocalityAsync(int locationId) {
             return base.Channel.GetProjectsFromLocalityAsync(locationId);
+        }
+        
+        public int updateRemainingBeneficiaries(string folio) {
+            return base.Channel.updateRemainingBeneficiaries(folio);
+        }
+        
+        public System.Threading.Tasks.Task<int> updateRemainingBeneficiariesAsync(string folio) {
+            return base.Channel.updateRemainingBeneficiariesAsync(folio);
         }
     }
     

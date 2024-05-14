@@ -36,7 +36,7 @@
             <Label Content="Detalles del proyecto:" HorizontalAlignment="Left" Margin="13,6,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Height="39" Width="234"/>
             <Label Content="Descripción:" HorizontalAlignment="Left" Margin="13,49,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="37" Width="234"/>
             <Label Content="Grupo de apoyo:" HorizontalAlignment="Left" Margin="436,55,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="0.829,0.733" FontSize="20" Height="37" Width="168"/>
-            <Label Content="Tipo:" HorizontalAlignment="Left" Margin="661,49,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="37" Width="170"/>
+            <Label Content="Monto de apoyo:" HorizontalAlignment="Left" Margin="661,49,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="37" Width="170"/>
             <TextBox x:Name="tb_description" IsReadOnly="True" HorizontalAlignment="Left" Margin="22,97,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="376" Height="60" FontSize="20"/>
             <TextBox x:Name="tb_group" IsReadOnly="True" HorizontalAlignment="Left" Margin="441,94,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="30" FontSize="20"/>
             <TextBox x:Name="tb_type" IsReadOnly="True" HorizontalAlignment="Left" Margin="664,95,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="30" FontSize="20"/>
