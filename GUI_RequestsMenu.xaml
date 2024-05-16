@@ -11,26 +11,20 @@
             <RowDefinition Height="65*"/>
             <RowDefinition Height="369*"/>
         </Grid.RowDefinitions>
-        <ListView Name="lib_proyects" Margin="55,20,257,105" Grid.Row="1">
+        <ListView Name="lib_proyects" Margin="55,73,257,127" Grid.Row="1" MouseDoubleClick="liv_projects_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nombre de proyecto" DisplayMemberBinding="{Binding Name}" Width="200"/>
                     <GridViewColumn Header="Descripción" DisplayMemberBinding="{Binding Description}" Width="200"/>
-                    <GridViewColumn Header="Grupo de apoyo" DisplayMemberBinding="{Binding AttentionGroup}" Width="200"/>
-                    <GridViewColumn Header="Tipo" DisplayMemberBinding="{Binding Type}" Width="200"/>
-                    <GridViewColumn Width="Auto">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Ver solicitudes" Click="Btn_See_Requests"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    <GridViewColumn Header="Folio" DisplayMemberBinding="{Binding Folio}" Width="200"/>
+                    <GridViewColumn Header="Grupo de atención" DisplayMemberBinding="{Binding AttentionGroup}" Width="200"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <Label Content="Lista de proyectos." HorizontalAlignment="Left" Margin="26,7,0,0" VerticalAlignment="Top" FontSize="28" Height="47" Width="273" FontWeight="Bold"/>
         <Rectangle HorizontalAlignment="Center" Height="5" Margin="0,53,0,0" Fill="Sienna" Stroke="Silver" VerticalAlignment="Top" Width="1160" RenderTransformOrigin="0.5,0.5"/>
         <Button Content="Regresar" HorizontalAlignment="Left" Margin="64,465,0,0" Grid.Row="1" VerticalAlignment="Top" Height="41" Width="135" FontSize="20" FontWeight="Bold" Background="#FF529BE2" Foreground="#FFFFFDFD" Click="Btn_Go_MainMenu"/>
+        <Label Content="Presiona clic izquierdo dos veces sobre el elemento que desees visualizar" HorizontalAlignment="Left" Margin="62,21,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-5.747,-11.958" FontWeight="Bold"/>
 
     </Grid>
 </Window>

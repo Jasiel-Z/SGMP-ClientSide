@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,10 +25,17 @@ namespace SGMP_Client
         SGPMService.UserManagementClient Client { get; set; }
         public GUI_Login()
         {
-            InitializeComponent();
-
+           InitializeComponent();
            Client = new SGPMService.UserManagementClient();
+            this.KeyDown += GUI_Login_KeyDown;
+        }
 
+        private void GUI_Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Btn_Login(sender, e);
+            }
         }
 
         private void Btn_Login(object sender, RoutedEventArgs e)
@@ -75,7 +84,7 @@ namespace SGMP_Client
                             "Problema de autenticación", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
-                catch(TimeoutException ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
                  "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -91,9 +100,11 @@ namespace SGMP_Client
         {
             bool result = true;
 
-            if (tb_email.Text == "")
+            if (string.IsNullOrEmpty(tb_email.Text)  || 
+                string.IsNullOrEmpty(pb_password.Password))
             {
-                MessageBox.Show("Ingresa todos los datos","Datos faltantes");
+                MessageBox.Show("Ingresa todos los datos","Datos faltantes", 
+                    MessageBoxButton.OK, MessageBoxImage.Exclamation);
 
             }
             else
@@ -106,5 +117,9 @@ namespace SGMP_Client
             return result;
         }
 
+        private void Btn_Exit(object sender, RoutedEventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
     }
 }

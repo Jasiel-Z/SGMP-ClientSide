@@ -122,11 +122,13 @@
       <xs:element minOccurs="0" name="Dependencias" nillable="true" type="tns:Dependencias" />
       <xs:element minOccurs="0" name="Folio" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdDependencia" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdLocalidad" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="IdOrdenEntrega" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Localidades" nillable="true" type="tns:Localidades" />
       <xs:element minOccurs="0" name="OrdenesEntrega" nillable="true" type="tns:OrdenesEntrega" />
       <xs:element minOccurs="0" name="ProyectoPoliticaOtorgamiento" nillable="true" type="tns:ArrayOfProyectoPoliticaOtorgamiento" />
       <xs:element minOccurs="0" name="Solicitudes" nillable="true" type="tns:ArrayOfSolicitudes" />
+      <xs:element minOccurs="0" name="beneficiariosRestantes" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="fechaFin" nillable="true" type="xs:dateTime" />
@@ -134,7 +136,6 @@
       <xs:element minOccurs="0" name="fechaLimiteEvidencias" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="fechaLimiteSolicitudes" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="grupoAtencion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="idLocalidad" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="modalidad" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="montoApoyo" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />

@@ -8,35 +8,35 @@
         Title="Información del beneficiario" Height="640" Width="1200">
     <Grid>
 
-        <Grid>
+        <Grid Margin="0,6,0,-6">
             <Grid.RowDefinitions>
                 <RowDefinition Height="67*"/>
-                <RowDefinition Height="118*"/>
-                <RowDefinition Height="181*"/>
-                <RowDefinition Height="258*"/>
+                <RowDefinition Height="155*"/>
+                <RowDefinition Height="156*"/>
+                <RowDefinition Height="246*"/>
             </Grid.RowDefinitions>
 
 
 
             <Label Content="Formulario de registro de beneficiario." HorizontalAlignment="Left" Margin="21,8,0,0" VerticalAlignment="Top" FontSize="28" FontWeight="Bold" Height="47" Width="522"/>
             <Rectangle HorizontalAlignment="Left" Height="5" Margin="22,53,0,0" Fill="Sienna" Stroke="Silver" VerticalAlignment="Top" Width="1145" RenderTransformOrigin="0.5,0.5"/>
-            <TextBox x:Name="tb_phone" MaxLength="10" PreviewTextInput="TextBox_PreviewTextInput" IsReadOnly="False" HorizontalAlignment="Left" Margin="37,61,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="30" FontSize="20"/>
-            <Label Content="Teléfono:" HorizontalAlignment="Left" Margin="41,17,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
-            <Label Content="Ciudad:" HorizontalAlignment="Left" Margin="298,16,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
-            <TextBox x:Name="tb_city" IsReadOnly="False" MaxLength="25"  HorizontalAlignment="Left" Margin="303,61,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="30" FontSize="20"/>
-            <Label Content="Calle:" HorizontalAlignment="Left" Margin="558,21,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
-            <Label Content="RFC (opcional): " HorizontalAlignment="Left" Margin="872,21,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
-            <TextBox x:Name="tb_street" IsReadOnly="False" MaxLength="75"  HorizontalAlignment="Left" Margin="556,61,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="30" FontSize="20"/>
-            <TextBox x:Name="tb_rfc" IsReadOnly="True" MaxLength="13"  HorizontalAlignment="Left" Margin="880,58,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="30" FontSize="20"/>
-            <Label Content="Tipo de beneficiario:" HorizontalAlignment="Left" Margin="37,1,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Height="39" Width="224" Grid.Row="2"/>
-            <TextBox x:Name="tb_name" IsReadOnly="True" MaxLength="50" HorizontalAlignment="Left" Margin="52,143,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="30" FontSize="20"/>
-            <Label Content="Nombre:" HorizontalAlignment="Left" Margin="52,99,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
-            <Label Name="lb_Lastname" Content="Apellido paterno:" HorizontalAlignment="Left" Margin="300,102,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
-            <TextBox x:Name="tb_lastname" IsReadOnly="True" MaxLength="35" HorizontalAlignment="Left" Margin="303,142,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="30" FontSize="20"/>
-            <Label Name="lb_middlename" Content="Apellido materno:" HorizontalAlignment="Left" Margin="598,103,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
-            <TextBox x:Name="tb_middlename" IsReadOnly="True" MaxLength="35"  HorizontalAlignment="Left" Margin="602,141,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="30" FontSize="20"/>
-            <TextBox x:Name="tb_curp" IsReadOnly="True" MaxLength="19"  HorizontalAlignment="Left" Margin="876,137,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="30" FontSize="20"/>
-            <Label Name="lb_curp" Content="CURP" HorizontalAlignment="Left" Margin="872,101,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
+            <TextBox x:Name="tb_phone" MaxLength="10" PreviewTextInput="TextBox_PreviewTextInput" IsReadOnly="False" HorizontalAlignment="Left" Margin="37,105,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="30" FontSize="20"/>
+            <Label Content="Teléfono:" HorizontalAlignment="Left" Margin="41,61,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
+            <Label Content="Ciudad:" HorizontalAlignment="Left" Margin="298,58,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
+            <TextBox x:Name="tb_city" IsReadOnly="False" MaxLength="25"  HorizontalAlignment="Left" Margin="303,105,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="30" FontSize="20"/>
+            <Label Content="Calle:" HorizontalAlignment="Left" Margin="558,53,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
+            <Label Content="RFC (opcional): " HorizontalAlignment="Left" Margin="872,53,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
+            <TextBox x:Name="tb_street" IsReadOnly="False" MaxLength="75"  HorizontalAlignment="Left" Margin="556,107,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="30" FontSize="20"/>
+            <TextBox x:Name="tb_rfc" IsReadOnly="True" MaxLength="13"  HorizontalAlignment="Left" Margin="880,105,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="30" FontSize="20"/>
+            <Label Content="Tipo de beneficiario:" HorizontalAlignment="Left" Margin="37,15,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Height="39" Width="224" Grid.Row="2"/>
+            <TextBox x:Name="tb_name" IsReadOnly="True" MaxLength="50" HorizontalAlignment="Left" Margin="52,109,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="30" FontSize="20"/>
+            <Label Content="Nombre:" HorizontalAlignment="Left" Margin="52,63,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
+            <Label Name="lb_Lastname" Content="Apellido paterno:" HorizontalAlignment="Left" Margin="300,0,0,0" Grid.Row="2" VerticalAlignment="Center" FontSize="20" Height="37" Width="164"/>
+            <TextBox x:Name="tb_lastname" IsReadOnly="True" MaxLength="35" HorizontalAlignment="Left" Margin="303,108,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="30" FontSize="20"/>
+            <Label Name="lb_middlename" Content="Apellido materno:" HorizontalAlignment="Left" Margin="598,61,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20" Height="37" Width="164"/>
+            <TextBox x:Name="tb_middlename" IsReadOnly="True" MaxLength="35"  HorizontalAlignment="Left" Margin="602,99,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="30" FontSize="20"/>
+            <TextBox x:Name="tb_curp" IsReadOnly="True" MaxLength="19"  HorizontalAlignment="Left" Margin="876,97,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="30" FontSize="20"/>
+            <Label Name="lb_curp" Content="CURP" HorizontalAlignment="Left" Margin="872,61,0,58" Grid.Row="2" FontSize="20" Width="164"/>
             <Button Content="Actualizar información" HorizontalAlignment="Left" Margin="946,180,0,0" Grid.Row="3" VerticalAlignment="Top" Width="214" Height="45" FontSize="20" Foreground="White" Background="#FF33AA3E" Click="Btn_Update_Beneficiary"/>
             <Button Content="Volver" HorizontalAlignment="Left" Margin="706,179,0,0" Grid.Row="3" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Background="#FF3FA6C9" Foreground="White" Click="Btn_Goback_Click"/>
             <Button x:Name="btn_add_account" Content="Agregar tarjeta" HorizontalAlignment="Left" Margin="483,181,0,0" Grid.Row="3" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Background="#FF3FA6C9" Foreground="White" Click="Btn_AddAccount_Click"/>
@@ -45,6 +45,8 @@
             <Label Content="Número de cuenta:" HorizontalAlignment="Left" Margin="49,51,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="37" Width="209"/>
             <Label Content="Titular:" HorizontalAlignment="Left" Margin="310,51,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="20" Height="37" Width="209"/>
             <TextBox x:Name="tb_account_holder" IsReadOnly="True" MaxLength="50" HorizontalAlignment="Left" Margin="305,99,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="334" Height="30" FontSize="20"/>
+            <Image x:Name="im_help" HorizontalAlignment="Left" Height="60" Margin="52,66,0,0" VerticalAlignment="Top" Width="70" Source="/Icons/pregunta.png" Grid.RowSpan="2"/>
         </Grid>
+        <Label Content="Label" HorizontalAlignment="Left" Height="24" Margin="1495,517,0,0" VerticalAlignment="Top" Width="515"/>
     </Grid>
 </Window>

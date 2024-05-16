@@ -31,6 +31,7 @@
             <PasswordBox x:Name="pb_password" HorizontalAlignment="Left" Margin="40,386,0,0" VerticalAlignment="Top" Width="300" Height="40" FontSize="20"/>
             <Label Content="Inicio de sesión." HorizontalAlignment="Left" Margin="40,22,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
             <Button Content="Iniciar sesión" HorizontalAlignment="Left" Margin="388,520,0,0" VerticalAlignment="Top" FontSize="20" Height="45" Width="170" Background="#FF33AA3E" Foreground="White" Click="Btn_Login"/>
+            <Button Content="Salir" HorizontalAlignment="Left" Margin="160,521,0,0" VerticalAlignment="Top" FontSize="20" Height="45" Width="170" Background="#FFD44646" Foreground="White" Click="Btn_Exit"/>
         </Grid>
 
 

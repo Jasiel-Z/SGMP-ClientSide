@@ -184,9 +184,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DTO%27s\DTOCompany.cs" />
-    <Compile Include="DTO%27s\DTOPerson.cs" />
-    <Compile Include="DTO%27s\DTOProject.cs" />
     <Compile Include="DTO%27s\User.cs" />
     <Compile Include="GUI_BeneficiaryDetails.xaml.cs">
       <DependentUpon>GUI_BeneficiaryDetails.xaml</DependentUpon>
@@ -341,9 +338,6 @@
     <Resource Include="iconoVeracruz.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="agregar-archivo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Icons\proyecto.png" />
   </ItemGroup>
   <ItemGroup>
@@ -351,9 +345,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\beneficiario.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="beneficiario.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\solicitud.png" />
@@ -393,6 +384,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\normas %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\normas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\pregunta.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

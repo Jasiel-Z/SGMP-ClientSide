@@ -15,24 +15,18 @@
         <Label Content="Lista de solicitudes." HorizontalAlignment="Left" Margin="22,17,0,0" VerticalAlignment="Top" FontSize="28" FontWeight="Bold"/>
         <Button Content="Nueva solicitud" HorizontalAlignment="Left" Margin="936,451,0,0" Grid.Row="1" VerticalAlignment="Top" Height="38" Width="185" Background="#FF33AA3E" Foreground="White" FontSize="20" Click="Btn_Register_Request_Click"/>
         <Button Content="Volver" HorizontalAlignment="Left" Margin="710,450,0,0" Grid.Row="1" VerticalAlignment="Top" Background="#FF3FA6C9" FontSize="20" Foreground="White" Width="185" Height="38"  Click="Btn_Goback_Click"/>
-        <ListView Name="liv_requests" Grid.Row="1"  Margin="40,65,368,203">
+        <ListView Name="liv_requests" Grid.Row="1"  Margin="40,110,368,158" MouseDoubleClick="liv_requests_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Número de solicitud" DisplayMemberBinding="{Binding Id}" Width="200"/>
                     <GridViewColumn Header="Estado" DisplayMemberBinding="{Binding State}" Width="200"/>
                     <GridViewColumn Header="Fecha de creación" DisplayMemberBinding="{Binding CreationTime}" Width="200"/>
                     <GridViewColumn Header="Número de beneficiario" DisplayMemberBinding="{Binding BeneficiaryId}" Width="200"/>
-                    <GridViewColumn Width="Auto">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Ir a dictamen"  Click="Btn_Go_Opinion_Click"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
         <Label Name="lb_proyect_name" Content="hola" HorizontalAlignment="Left" Margin="44,5,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Width="586" FontWeight="Bold"/>
+        <Label Content="Presiona clic derecho dos veces sobre el elemento que desees visualizar" HorizontalAlignment="Left" Margin="44,75,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-5.747,-11.958" FontWeight="Bold"/>
 
     </Grid>
 </Window>

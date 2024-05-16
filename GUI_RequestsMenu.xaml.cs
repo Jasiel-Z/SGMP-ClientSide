@@ -92,5 +92,16 @@ namespace SGMP_Client
  
 
         }
+
+        private void liv_projects_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Project selectedProject = (Project)lib_proyects.SelectedItem;
+            if (selectedProject != null)
+            {
+                GUI_RequestsManagement requestsManagement = new GUI_RequestsManagement(selectedProject);
+                requestsManagement.Show();
+                this.Close();
+            }   
+        }
     }
 }

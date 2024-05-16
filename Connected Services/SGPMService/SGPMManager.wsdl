@@ -153,6 +153,12 @@
   <wsdl:message name="IProjectsManagement_GetProjectsFromLocality_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProjectsFromLocalityResponse" />
   </wsdl:message>
+  <wsdl:message name="IProjectsManagement_updateRemainingBeneficiaries_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateRemainingBeneficiaries" />
+  </wsdl:message>
+  <wsdl:message name="IProjectsManagement_updateRemainingBeneficiaries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateRemainingBeneficiariesResponse" />
+  </wsdl:message>
   <wsdl:message name="IBeneficiaryManagement_GetBeneficiaries_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBeneficiaries" />
   </wsdl:message>
@@ -404,6 +410,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectsFromLocality" message="tns:IProjectsManagement_GetProjectsFromLocality_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectsFromLocalityResponse" message="tns:IProjectsManagement_GetProjectsFromLocality_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="updateRemainingBeneficiaries">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/updateRemainingBeneficiaries" message="tns:IProjectsManagement_updateRemainingBeneficiaries_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProjectsManagement/updateRemainingBeneficiariesResponse" message="tns:IProjectsManagement_updateRemainingBeneficiaries_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IBeneficiaryManagement">
     <wsdl:operation name="GetBeneficiaries">
@@ -626,6 +636,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetProjectsFromLocality">
       <soap12:operation soapAction="http://tempuri.org/IProjectsManagement/GetProjectsFromLocality" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRemainingBeneficiaries">
+      <soap12:operation soapAction="http://tempuri.org/IProjectsManagement/updateRemainingBeneficiaries" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

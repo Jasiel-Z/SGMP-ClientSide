@@ -56,7 +56,7 @@
                 </StackPanel>
             </Button>
 
-            <ListBox  x:Name="lib_files" Grid.Row="3"  Margin="13,40,736,14">
+            <ListBox  x:Name="lib_files" Grid.Row="3"  Margin="13,40,906,14">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding}" Margin="5"/>
@@ -75,7 +75,7 @@
                 <ComboBoxItem Content="Empresa"/>
             </ComboBox>
 
-            <ListBox x:Name="lib_beneficiaries" Grid.Row="2" SelectionChanged="lib_beneficiaries_SelectionChanged" Margin="16,130,675,18">
+            <ListBox x:Name="lib_beneficiaries" Grid.Row="2" SelectionChanged="lib_beneficiaries_SelectionChanged" Margin="16,130,883,18">
 
             </ListBox>
             <Button Content="Buscar" HorizontalAlignment="Left" Margin="224,69,0,0" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="90" Background="#FF22ABD9" Foreground="#FFF3F3F3" FontSize="16" RenderTransformOrigin="0.215,0.395" Click="Btn_Search_Beneficiary"/>

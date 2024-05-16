@@ -28,8 +28,17 @@ namespace SGMP_Client
             im_location.MouseLeftButtonDown += GoLocationsModule;
             im_projects.MouseLeftButtonDown += GoProjectsModule;
             im_users.MouseLeftButtonDown += GoUserSModule;
+            im_policies.MouseLeftButtonDown += GoPoliciesModule;
+            hideModules();
         }
 
+        private void GoPoliciesModule(object sender, MouseButtonEventArgs e)
+        {
+            Window policyWindow = new GUI_Policy();
+            this.Close();
+            policyWindow.Show();
+        }
+        
         private void GoUserSModule(object sender, MouseButtonEventArgs e)
         {
             Window userMenuWindow = new GUI_UserMenu();
@@ -39,8 +48,8 @@ namespace SGMP_Client
 
         private void GoProjectsModule(object sender, MouseButtonEventArgs e)
         {
-            GUI_ListaProyecto projectsList = new GUI_ListaProyecto();
-            projectsList.Show();
+            GUI_ListaProyecto projectsListWindow = new GUI_ListaProyecto();
+            projectsListWindow.Show();
             this.Close();
         }
 
@@ -53,16 +62,75 @@ namespace SGMP_Client
 
         private void GoBeneficiariesModule(object sender, MouseButtonEventArgs e)
         {
-            GUI_BeneficiaryList gUI_Beneficiary =  new GUI_BeneficiaryList();
-            gUI_Beneficiary.Show();
+            GUI_BeneficiaryList beneficiaryWindow =  new GUI_BeneficiaryList();
+            beneficiaryWindow.Show();
             this.Close();
         }
 
         private void GoRequestsModule(object sender, MouseButtonEventArgs e)
         {
-            GUI_RequestsMenu requestsMenu = new GUI_RequestsMenu();
-            requestsMenu.Show();
+            GUI_RequestsMenu requestWindow = new GUI_RequestsMenu();
+            requestWindow.Show();
             this.Close();
+        }
+
+
+        private void hideModules()
+        {
+            string role = SGMP_Client.DTO_s.User.UserClient.Role;
+            if (role.Equals("Administrador")) 
+            {
+                im_beneficiaries.Visibility = Visibility.Collapsed;
+                im_location.Visibility = Visibility.Collapsed; 
+                im_policies.Visibility = Visibility.Collapsed;
+                im_projects.Visibility = Visibility.Collapsed;
+                im_requests.Visibility = Visibility.Collapsed;
+
+                lb_beneficiaries.Visibility= Visibility.Collapsed;
+                lb_localities.Visibility= Visibility.Collapsed;
+                lb_policies.Visibility= Visibility.Collapsed;
+                lb_projects.Visibility= Visibility.Collapsed;
+                lb_requests.Visibility= Visibility.Collapsed;  
+
+
+            }
+            else if (role.Equals("Director"))
+            {
+                im_beneficiaries.Visibility = Visibility.Collapsed;
+                im_policies.Visibility = Visibility.Collapsed;
+                im_requests.Visibility = Visibility.Collapsed;
+                im_users.Visibility = Visibility.Collapsed;
+
+                lb_beneficiaries.Visibility = Visibility.Collapsed;
+                lb_policies.Visibility = Visibility.Collapsed;
+                lb_requests.Visibility = Visibility.Collapsed;
+                lb_users.Visibility = Visibility.Collapsed;  
+
+
+            }
+            else
+            {
+                im_users.Visibility = Visibility.Collapsed;
+                im_projects.Visibility = Visibility.Collapsed;
+
+                lb_users.Visibility = Visibility.Collapsed;
+                lb_projects.Visibility = Visibility.Collapsed;
+
+            }
+        }
+
+        private void Btn_Exit(object sender, RoutedEventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
+
+        private void Btn_Logout(object sender, RoutedEventArgs e)
+        {
+            SGMP_Client.DTO_s.User.UserClient.Logout();
+            Window loginWindow = new GUI_Login();
+            this.Close();
+            loginWindow.Show();
+
         }
     }
 }

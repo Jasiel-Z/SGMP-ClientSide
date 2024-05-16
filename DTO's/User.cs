@@ -11,8 +11,9 @@ namespace SGMP_Client.DTO_s
     {
         private static User userClient;
 
-        public static User UserClient { get { return userClient; } set { userClient = value; } }
-
+        public static User UserClient { 
+            get { return userClient; } 
+            set { userClient = value; } }
 
         public int UserId { get; set; }
 
@@ -41,5 +42,10 @@ namespace SGMP_Client.DTO_s
         public int Number { get; set; }
 
         public int LocationId { get; set; }
+
+        public void Logout()
+        {
+            userClient = null;
+        }
     }
 }
