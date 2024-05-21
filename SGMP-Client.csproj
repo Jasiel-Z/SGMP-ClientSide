@@ -74,8 +74,14 @@
     <Compile Include="GUI_LocalityMenu.xaml.cs">
       <DependentUpon>GUI_LocalityMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI_PoliciesList.xaml.cs">
+      <DependentUpon>GUI_PoliciesList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI_Policy.xaml.cs">
       <DependentUpon>GUI_Policy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_PolicyMenu.xaml.cs">
+      <DependentUpon>GUI_PolicyMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI_RegistroProyecto.xaml.cs">
       <DependentUpon>GUI_RegistroProyecto.xaml</DependentUpon>
@@ -132,9 +138,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI_PoliciesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI_Policy.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI_PolicyMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI_RegisterRequest.xaml">
       <SubType>Designer</SubType>
@@ -293,6 +307,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SGPMService\SGMP_Client.SGPMService.Person.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SGPMService\SGMP_Client.SGPMService.Policy.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SGPMService\SGMP_Client.SGPMService.Project.datasource">
