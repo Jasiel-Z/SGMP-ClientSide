@@ -86,6 +86,12 @@
     <Compile Include="GUI_SaveDeliveryOrden.xaml.cs">
       <DependentUpon>GUI_SaveDeliveryOrden.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI_SolicitudesEvidenciaLista.xaml.cs">
+      <DependentUpon>GUI_SolicitudesEvidenciaLista.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_SubirEvidencia.xaml.cs">
+      <DependentUpon>GUI_SubirEvidencia.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI_User.xaml.cs">
       <DependentUpon>GUI_User.xaml</DependentUpon>
     </Compile>
@@ -157,6 +163,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI_SaveDeliveryOrden.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_SolicitudesEvidenciaLista.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI_SubirEvidencia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,6 +258,9 @@
     <None Include="Connected Services\SGPMService\item10.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\SGPMService\item11.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\SGPMService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -301,7 +318,13 @@
     <None Include="Connected Services\SGPMService\SGMP_Client.SGPMService.ProjectPolicy.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\SGPMService\SGMP_Client.SGPMService.ProjectShow.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\SGPMService\SGMP_Client.SGPMService.Request.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SGPMService\SGMP_Client.SGPMService.RequestShow.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SGPMService\SGMP_Client.SGPMService.Resource.datasource">

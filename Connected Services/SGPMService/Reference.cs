@@ -4852,6 +4852,205 @@ namespace SGMP_Client.SGPMService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProjectShow", Namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement")]
+    [System.SerializableAttribute()]
+    public partial class ProjectShow : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FolioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Folio {
+            get {
+                return this.FolioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FolioField, value) != true)) {
+                    this.FolioField = value;
+                    this.RaisePropertyChanged("Folio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RequestShow", Namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement")]
+    [System.SerializableAttribute()]
+    public partial class RequestShow : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BeneficiaryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BeneficiaryName {
+            get {
+                return this.BeneficiaryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BeneficiaryNameField, value) != true)) {
+                    this.BeneficiaryNameField = value;
+                    this.RaisePropertyChanged("BeneficiaryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Evidence", Namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement")]
+    [System.SerializableAttribute()]
+    public partial class Evidence : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdRequestField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] fileField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdRequest {
+            get {
+                return this.IdRequestField;
+            }
+            set {
+                if ((this.IdRequestField.Equals(value) != true)) {
+                    this.IdRequestField = value;
+                    this.RaisePropertyChanged("IdRequest");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] file {
+            get {
+                return this.fileField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.fileField, value) != true)) {
+                    this.fileField = value;
+                    this.RaisePropertyChanged("file");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SGPMService.IProjectsManagement")]
     public interface IProjectsManagement {
@@ -5743,6 +5942,81 @@ namespace SGMP_Client.SGPMService {
         
         public System.Threading.Tasks.Task<SGMP_Client.SGPMService.Resource[]> GetResourcesAsync() {
             return base.Channel.GetResourcesAsync();
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SGPMService.IEvidenceManagement")]
+    public interface IEvidenceManagement {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEvidenceManagement/GetFinishProjectsd", ReplyAction="http://tempuri.org/IEvidenceManagement/GetFinishProjectsdResponse")]
+        SGMP_Client.SGPMService.ProjectShow[] GetFinishProjectsd();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEvidenceManagement/GetFinishProjectsd", ReplyAction="http://tempuri.org/IEvidenceManagement/GetFinishProjectsdResponse")]
+        System.Threading.Tasks.Task<SGMP_Client.SGPMService.ProjectShow[]> GetFinishProjectsdAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEvidenceManagement/GetFinishRequestsd", ReplyAction="http://tempuri.org/IEvidenceManagement/GetFinishRequestsdResponse")]
+        SGMP_Client.SGPMService.RequestShow[] GetFinishRequestsd(string folio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEvidenceManagement/GetFinishRequestsd", ReplyAction="http://tempuri.org/IEvidenceManagement/GetFinishRequestsdResponse")]
+        System.Threading.Tasks.Task<SGMP_Client.SGPMService.RequestShow[]> GetFinishRequestsdAsync(string folio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEvidenceManagement/SaveEvidence", ReplyAction="http://tempuri.org/IEvidenceManagement/SaveEvidenceResponse")]
+        int SaveEvidence(SGMP_Client.SGPMService.Evidence evidence);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEvidenceManagement/SaveEvidence", ReplyAction="http://tempuri.org/IEvidenceManagement/SaveEvidenceResponse")]
+        System.Threading.Tasks.Task<int> SaveEvidenceAsync(SGMP_Client.SGPMService.Evidence evidence);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IEvidenceManagementChannel : SGMP_Client.SGPMService.IEvidenceManagement, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class EvidenceManagementClient : System.ServiceModel.ClientBase<SGMP_Client.SGPMService.IEvidenceManagement>, SGMP_Client.SGPMService.IEvidenceManagement {
+        
+        public EvidenceManagementClient() {
+        }
+        
+        public EvidenceManagementClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public EvidenceManagementClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EvidenceManagementClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EvidenceManagementClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public SGMP_Client.SGPMService.ProjectShow[] GetFinishProjectsd() {
+            return base.Channel.GetFinishProjectsd();
+        }
+        
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMService.ProjectShow[]> GetFinishProjectsdAsync() {
+            return base.Channel.GetFinishProjectsdAsync();
+        }
+        
+        public SGMP_Client.SGPMService.RequestShow[] GetFinishRequestsd(string folio) {
+            return base.Channel.GetFinishRequestsd(folio);
+        }
+        
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMService.RequestShow[]> GetFinishRequestsdAsync(string folio) {
+            return base.Channel.GetFinishRequestsdAsync(folio);
+        }
+        
+        public int SaveEvidence(SGMP_Client.SGPMService.Evidence evidence) {
+            return base.Channel.SaveEvidence(evidence);
+        }
+        
+        public System.Threading.Tasks.Task<int> SaveEvidenceAsync(SGMP_Client.SGPMService.Evidence evidence) {
+            return base.Channel.SaveEvidenceAsync(evidence);
         }
     }
 }

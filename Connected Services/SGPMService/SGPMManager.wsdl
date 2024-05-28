@@ -96,6 +96,18 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IEvidenceManagement_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -109,6 +121,7 @@
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IPolicyManagement" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBankAccountManagement" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IProjectsManagement_GetProjectDetails_InputMessage">
@@ -381,6 +394,24 @@
   <wsdl:message name="IDeliveryOrdenManagement_GetResources_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetResourcesResponse" />
   </wsdl:message>
+  <wsdl:message name="IEvidenceManagement_GetFinishProjectsd_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFinishProjectsd" />
+  </wsdl:message>
+  <wsdl:message name="IEvidenceManagement_GetFinishProjectsd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFinishProjectsdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEvidenceManagement_GetFinishRequestsd_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFinishRequestsd" />
+  </wsdl:message>
+  <wsdl:message name="IEvidenceManagement_GetFinishRequestsd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFinishRequestsdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEvidenceManagement_SaveEvidence_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveEvidence" />
+  </wsdl:message>
+  <wsdl:message name="IEvidenceManagement_SaveEvidence_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveEvidenceResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProjectsManagement">
     <wsdl:operation name="GetProjectDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectsManagement/GetProjectDetails" message="tns:IProjectsManagement_GetProjectDetails_InputMessage" />
@@ -575,6 +606,20 @@
     <wsdl:operation name="GetResources">
       <wsdl:input wsaw:Action="http://tempuri.org/IDeliveryOrdenManagement/GetResources" message="tns:IDeliveryOrdenManagement_GetResources_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDeliveryOrdenManagement/GetResourcesResponse" message="tns:IDeliveryOrdenManagement_GetResources_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IEvidenceManagement">
+    <wsdl:operation name="GetFinishProjectsd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEvidenceManagement/GetFinishProjectsd" message="tns:IEvidenceManagement_GetFinishProjectsd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEvidenceManagement/GetFinishProjectsdResponse" message="tns:IEvidenceManagement_GetFinishProjectsd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFinishRequestsd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEvidenceManagement/GetFinishRequestsd" message="tns:IEvidenceManagement_GetFinishRequestsd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEvidenceManagement/GetFinishRequestsdResponse" message="tns:IEvidenceManagement_GetFinishRequestsd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveEvidence">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEvidenceManagement/SaveEvidence" message="tns:IEvidenceManagement_SaveEvidence_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEvidenceManagement/SaveEvidenceResponse" message="tns:IEvidenceManagement_SaveEvidence_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IProjectsManagement" type="tns:IProjectsManagement">
@@ -1014,6 +1059,37 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IEvidenceManagement" type="tns:IEvidenceManagement">
+    <wsp:PolicyReference URI="#NetTcpBinding_IEvidenceManagement_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetFinishProjectsd">
+      <soap12:operation soapAction="http://tempuri.org/IEvidenceManagement/GetFinishProjectsd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFinishRequestsd">
+      <soap12:operation soapAction="http://tempuri.org/IEvidenceManagement/GetFinishRequestsd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveEvidence">
+      <soap12:operation soapAction="http://tempuri.org/IEvidenceManagement/SaveEvidence" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="SGPMManager">
     <wsdl:port name="NetTcpBinding_IProjectsManagement" binding="tns:NetTcpBinding_IProjectsManagement">
       <soap12:address location="net.tcp://localhost:8083/SGPM_Services" />
@@ -1058,6 +1134,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IDeliveryOrdenManagement" binding="tns:NetTcpBinding_IDeliveryOrdenManagement">
+      <soap12:address location="net.tcp://localhost:8083/SGPM_Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8083/SGPM_Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IEvidenceManagement" binding="tns:NetTcpBinding_IEvidenceManagement">
       <soap12:address location="net.tcp://localhost:8083/SGPM_Services" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8083/SGPM_Services</wsa10:Address>

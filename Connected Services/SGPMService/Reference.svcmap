@@ -26,6 +26,7 @@
     <MetadataFile FileName="SGPMManager.wsdl" MetadataType="Wsdl" ID="2e0263b5-caad-43f2-b574-22cc86db0781" SourceId="1" SourceUrl="http://localhost:8082/?wsdl" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="b836e200-e4e6-4498-804e-5200f7fec84b" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd8" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="047837d8-2309-4d08-84e2-e7a253e0b401" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd9" />
+    <MetadataFile FileName="item11.xsd" MetadataType="Schema" ID="84178fc3-4927-4253-ad74-9bf05b677a00" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd11" />
     <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="26ae42f3-f562-4a33-995b-89e954cf8515" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd4" />
     <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="2dcd9a35-3036-4d87-b893-7c3c9baa524d" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd5" />
     <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="9ca30ebe-b00d-43d1-82f4-d17cc7c8fc1f" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd6" />
