@@ -9,6 +9,7 @@
   <xs:import schemaLocation="http://localhost:8082/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IPolicyManagement" />
   <xs:import schemaLocation="http://localhost:8082/?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBankAccountManagement" />
   <xs:import schemaLocation="http://localhost:8082/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" />
+  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" />
   <xs:element name="GetProjectDetails">
     <xs:complexType>
       <xs:sequence>
@@ -671,6 +672,46 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" minOccurs="0" name="GetResourcesResult" nillable="true" type="q44:ArrayOfResource" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFinishProjectsd">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFinishProjectsdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" minOccurs="0" name="GetFinishProjectsdResult" nillable="true" type="q42:ArrayOfProjectShow" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFinishRequestsd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="folio" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFinishRequestsdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" minOccurs="0" name="GetFinishRequestsdResult" nillable="true" type="q43:ArrayOfRequestShow" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveEvidence">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" minOccurs="0" name="evidence" nillable="true" type="q44:Evidence" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveEvidenceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveEvidenceResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
