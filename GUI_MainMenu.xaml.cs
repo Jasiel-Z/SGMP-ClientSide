@@ -29,8 +29,18 @@ namespace SGMP_Client
             im_projects.MouseLeftButtonDown += GoProjectsModule;
             im_users.MouseLeftButtonDown += GoUserSModule;
             im_policies.MouseLeftButtonDown += GoPoliciesModule;
+            im_evidencies.MouseLeftButtonDown += GoEvidenciesModule;
+
             hideModules();
         }
+
+        private void GoEvidenciesModule(object sender, MouseButtonEventArgs e)
+        {
+            Window evidenciesWindow = new GUI_SolicitudesEvidenciaLista();
+            this.Close();
+            evidenciesWindow.Show();
+        }
+
 
         private void GoPoliciesModule(object sender, MouseButtonEventArgs e)
         {
@@ -85,12 +95,15 @@ namespace SGMP_Client
                 im_policies.Visibility = Visibility.Collapsed;
                 im_projects.Visibility = Visibility.Collapsed;
                 im_requests.Visibility = Visibility.Collapsed;
+                im_evidencies.Visibility = Visibility.Collapsed;
+
 
                 lb_beneficiaries.Visibility= Visibility.Collapsed;
                 lb_localities.Visibility= Visibility.Collapsed;
                 lb_policies.Visibility= Visibility.Collapsed;
                 lb_projects.Visibility= Visibility.Collapsed;
-                lb_requests.Visibility= Visibility.Collapsed;  
+                lb_requests.Visibility= Visibility.Collapsed;
+                lb_evidencies.Visibility = Visibility.Collapsed;
 
 
             }
@@ -100,11 +113,13 @@ namespace SGMP_Client
                 im_policies.Visibility = Visibility.Collapsed;
                 im_requests.Visibility = Visibility.Collapsed;
                 im_users.Visibility = Visibility.Collapsed;
+                im_evidencies.Visibility = Visibility.Collapsed;
 
                 lb_beneficiaries.Visibility = Visibility.Collapsed;
                 lb_policies.Visibility = Visibility.Collapsed;
                 lb_requests.Visibility = Visibility.Collapsed;
-                lb_users.Visibility = Visibility.Collapsed;  
+                lb_users.Visibility = Visibility.Collapsed;
+                lb_evidencies.Visibility = Visibility.Collapsed;
 
 
             }
