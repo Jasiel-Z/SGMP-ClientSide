@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.ServiceModel.Configuration;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +22,22 @@ namespace SGMP_Client
     /// </summary>
     public partial class GUI_Policy : Window
     {
+        private Policy policyToBeModified = new Policy();
+
         public GUI_Policy()
         {
             InitializeComponent();
+        }
+
+        public void LoadPolicy(Policy policy)
+        {
+            this.policyToBeModified = policy;
+
+            tbxName.Text = policy.Name;
+            tbxDescription.Text = policy.Description;
+
+            this.Title = "Modificar Política";
+            this.lbTitle.Content = "Modificar Política";
         }
 
         private void Btn_Save_Policy_Click(object sender, RoutedEventArgs e)
@@ -33,7 +47,30 @@ namespace SGMP_Client
 
             if (ValidateFields(policyName, policyDescription))
             {
-                int result = SavePolicy(policyName, policyDescription);
+                if (!string.IsNullOrEmpty(this.policyToBeModified.Name))
+                {
+                    UpdatePolicy(policyName, policyDescription);
+                }
+                else
+                {
+                    SavePolicy(policyName, policyDescription);
+                }
+            }
+        }
+
+        private void SavePolicy(string policyName, string policyDescription)
+        {
+            Policy policy = new Policy
+            {
+                Name = policyName,
+                Description = policyDescription
+            };
+
+            try
+            {
+                SGPMService.PolicyManagementClient client = new SGPMService.PolicyManagementClient();
+                int result = client.SavePolicy(policy);
+
                 if (result == 1)
                 {
                     MessageBox.Show("Se ha guardado la nueva política de participación correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -43,20 +80,56 @@ namespace SGMP_Client
                     MessageBox.Show("Ha ocurrido un error al intentar guardar la nueva política de participación. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Ha ocurrido un error al conectar con el Servidor. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                SGMP_Client.DTO_s.User.UserClient.Logout();
+                Window loginWindow = new GUI_Login();
+                this.Close();
+                loginWindow.Show();
+            }
         }
 
-        private int SavePolicy(string policyName, string policyDescription)
+        private void UpdatePolicy(string policyName, string policyDescription)
         {
             Policy policy = new Policy
             {
+                PolicyID = policyToBeModified.PolicyID,
                 Name = policyName,
                 Description = policyDescription
             };
 
-            SGPMService.PolicyManagementClient client = new SGPMService.PolicyManagementClient();
+            try
+            {
+                if (!policy.Name.Equals(policyToBeModified.Name) || !policy.Description.Equals(policyToBeModified.Description))
+                {
+                    SGPMService.PolicyManagementClient client = new SGPMService.PolicyManagementClient();
+                    int result = client.UpdatePolicy(policy);
 
-            int result = client.SavePolicy(policy);
-            return result;
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Se ha actualizado la información de la política de participación correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error al actualizar la política de participación. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Modifique alguno de los campos antes de continuar.", "Error en la operación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Ha ocurrido un error al conectar con el Servidor. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                SGMP_Client.DTO_s.User.UserClient.Logout();
+                Window loginWindow = new GUI_Login();
+                this.Close();
+                loginWindow.Show();
+            }
         }
 
         private bool ValidateFields(string policyName, string policyDescription)
@@ -100,9 +173,18 @@ namespace SGMP_Client
 
         private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Window mainMenuWindow = new GUI_MainMenu();
-            mainMenuWindow.Show();
-            this.Close();
+            if (string.IsNullOrEmpty(this.policyToBeModified.Name))
+            {
+                Window policyMenuWindow = new GUI_PolicyMenu();
+                policyMenuWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                Window policiesListWindow = new GUI_PoliciesList();
+                policiesListWindow.Show();
+                this.Close();
+            }
         }
     }
 }

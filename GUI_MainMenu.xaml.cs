@@ -44,9 +44,9 @@ namespace SGMP_Client
 
         private void GoPoliciesModule(object sender, MouseButtonEventArgs e)
         {
-            Window policyWindow = new GUI_Policy();
+            Window policyMenuWindow = new GUI_PolicyMenu();
             this.Close();
-            policyWindow.Show();
+            policyMenuWindow.Show();
         }
         
         private void GoUserSModule(object sender, MouseButtonEventArgs e)

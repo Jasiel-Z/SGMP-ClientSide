@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,9 +34,21 @@ namespace SGMP_Client
 
         private void Btn_Localities_List_Click(object sender, RoutedEventArgs e)
         {
-            Window localitiesListWindow = new GUI_LocalitiesList();
-            localitiesListWindow.Show();
-            this.Close();
+            try
+            {
+                Window localitiesListWindow = new GUI_LocalitiesList();
+                localitiesListWindow.Show();
+                this.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Ha ocurrido un error al conectar con el Servidor. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                SGMP_Client.DTO_s.User.UserClient.Logout();
+                Window loginWindow = new GUI_Login();
+                this.Close();
+                loginWindow.Show();
+            }
         }
 
         private void Btn_Cancel_Click(object sender, RoutedEventArgs e)

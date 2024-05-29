@@ -12,18 +12,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SGMP_Client
 {
     /// <summary>
-    /// Interaction logic for GUI_UsersList.xaml
+    /// Interaction logic for GUI_PoliciesList.xaml
     /// </summary>
-    public partial class GUI_UsersList : Window
+    public partial class GUI_PoliciesList : Window
     {
-        private Dictionary<int, User> usersDictionary = new Dictionary<int, User>();
+        private List<Policy> policies = new List<Policy>();
 
-        public GUI_UsersList()
+        public GUI_PoliciesList()
         {
             InitializeComponent();
             AddListItems();
@@ -33,50 +34,43 @@ namespace SGMP_Client
         {
             try
             {
-                SGPMService.UserManagementClient client = new SGPMService.UserManagementClient();
-                User[] usersFromDB = client.GetUsersGeneralInfo();
+                SGPMService.PolicyManagementClient client = new SGPMService.PolicyManagementClient();
+                Policy[] policiesFromDB = client.GetPolicies();
 
-                foreach (User user in usersFromDB)
+                foreach (var policy in policiesFromDB)
                 {
+                    policies.Add(policy);
+
                     ListBoxItem item = new ListBoxItem
                     {
-                        Content = user.EmployeeNumber + "  -  " + user.MiddleName + " " + user.LastName + " " + user.Name,
-                        Tag = user.EmployeeNumber
+                        Content = policy.Name,
+                        Tag = policy.PolicyID
                     };
-
-                    usersDictionary.Add(user.EmployeeNumber, user);
-
-                    lbxUsers.Items.Add(item);
+                    lbxPolicies.Items.Add(item);
                 }
             }
             catch (EndpointNotFoundException)
             {
                 throw new EndpointNotFoundException();
             }
+            
         }
 
         private void ListBoxItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try
             {
-                SGPMService.UserManagementClient client = new SGPMService.UserManagementClient();
+                SGPMService.PolicyManagementClient client = new SGPMService.PolicyManagementClient();
                 var item = sender as ListBoxItem;
 
                 if (item != null)
                 {
-                    User remainingUserData = client.GetUserDetailsByEmployeeNumber((int)item.Tag);
-                    usersDictionary[(int)item.Tag].Role = remainingUserData.Role;
-                    usersDictionary[(int)item.Tag].PhoneNumber = remainingUserData.PhoneNumber;
-                    usersDictionary[(int)item.Tag].Street = remainingUserData.Street;
-                    usersDictionary[(int)item.Tag].City = remainingUserData.City;
-                    usersDictionary[(int)item.Tag].Number = remainingUserData.Number;
-                    usersDictionary[(int)item.Tag].LocationId = remainingUserData.LocationId;
-                    usersDictionary[(int)item.Tag].UserId = remainingUserData.UserId;
-                    usersDictionary[(int)item.Tag].Email = remainingUserData.Email;
+                    Policy policy = client.GetPolicy((int)item.Tag);
+                    policy.PolicyID = (int)item.Tag;
 
-                    GUI_User userWindow = new GUI_User();
-                    userWindow.LoadUser(usersDictionary[(int)item.Tag]);
-                    userWindow.Show();
+                    GUI_Policy localityWindow = new GUI_Policy();
+                    localityWindow.LoadPolicy(policy);
+                    localityWindow.Show();
                     this.Close();
                 }
             }
@@ -89,12 +83,13 @@ namespace SGMP_Client
                 this.Close();
                 loginWindow.Show();
             }
+            
         }
 
         private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Window userMenuWindow = new GUI_UserMenu();
-            userMenuWindow.Show();
+            Window policyMenuWindow = new GUI_PolicyMenu();
+            policyMenuWindow.Show();
             this.Close();
         }
 
@@ -107,7 +102,7 @@ namespace SGMP_Client
             {
                 RestoreListBoxItems();
 
-                foreach (var item in lbxUsers.Items)
+                foreach (var item in lbxPolicies.Items)
                 {
                     if (item.ToString().IndexOf(filter, StringComparison.OrdinalIgnoreCase) < 0)
                     {
@@ -117,7 +112,7 @@ namespace SGMP_Client
 
                 foreach (var item in itemsToRemove)
                 {
-                    lbxUsers.Items.Remove(item);
+                    lbxPolicies.Items.Remove(item);
                 }
             }
             else
@@ -128,16 +123,16 @@ namespace SGMP_Client
 
         private void RestoreListBoxItems()
         {
-            lbxUsers.Items.Clear();
+            lbxPolicies.Items.Clear();
 
-            foreach (var user in usersDictionary)
+            foreach (var policy in policies)
             {
                 ListBoxItem item = new ListBoxItem
                 {
-                    Content = user.Key + "  -  " + user.Value.MiddleName + " " + user.Value.LastName + " " + user.Value.Name,
-                    Tag = user.Key
+                    Content = policy.Name,
+                    Tag = policy.PolicyID
                 };
-                lbxUsers.Items.Add(item);
+                lbxPolicies.Items.Add(item);
             }
         }
     }

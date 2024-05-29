@@ -376,6 +376,23 @@
   </wsdl:message>
   <wsdl:message name="IPolicyManagement_GetPolicysOfProject_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPolicysOfProjectResponse" />
+  <wsdl:message name="IPolicyManagement_GetPolicy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPolicy" />
+  </wsdl:message>
+  <wsdl:message name="IPolicyManagement_GetPolicy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPolicyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPolicyManagement_GetPolicies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPolicies" />
+  </wsdl:message>
+  <wsdl:message name="IPolicyManagement_GetPolicies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPoliciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPolicyManagement_UpdatePolicy_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePolicy" />
+  </wsdl:message>
+  <wsdl:message name="IPolicyManagement_UpdatePolicy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePolicyResponse" />
   </wsdl:message>
   <wsdl:message name="IBankAccountManagement_SaveBankAccount_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveBankAccount" />
@@ -609,6 +626,17 @@
     <wsdl:operation name="GetPolicysOfProject">
       <wsdl:input wsaw:Action="http://tempuri.org/IPolicyManagement/GetPolicysOfProject" message="tns:IPolicyManagement_GetPolicysOfProject_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPolicyManagement/GetPolicysOfProjectResponse" message="tns:IPolicyManagement_GetPolicysOfProject_OutputMessage" />
+    <wsdl:operation name="GetPolicy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolicyManagement/GetPolicy" message="tns:IPolicyManagement_GetPolicy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolicyManagement/GetPolicyResponse" message="tns:IPolicyManagement_GetPolicy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPolicies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolicyManagement/GetPolicies" message="tns:IPolicyManagement_GetPolicies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolicyManagement/GetPoliciesResponse" message="tns:IPolicyManagement_GetPolicies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePolicy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolicyManagement/UpdatePolicy" message="tns:IPolicyManagement_UpdatePolicy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolicyManagement/UpdatePolicyResponse" message="tns:IPolicyManagement_UpdatePolicy_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IBankAccountManagement">
@@ -1029,6 +1057,8 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllPolicies">
       <soap12:operation soapAction="http://tempuri.org/IPolicyManagement/GetAllPolicies" style="document" />
+    <wsdl:operation name="GetPolicy">
+      <soap12:operation soapAction="http://tempuri.org/IPolicyManagement/GetPolicy" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1038,6 +1068,8 @@
     </wsdl:operation>
     <wsdl:operation name="AddPolicyToProject">
       <soap12:operation soapAction="http://tempuri.org/IPolicyManagement/AddPolicyToProject" style="document" />
+    <wsdl:operation name="GetPolicies">
+      <soap12:operation soapAction="http://tempuri.org/IPolicyManagement/GetPolicies" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1047,6 +1079,8 @@
     </wsdl:operation>
     <wsdl:operation name="GetPolicysOfProject">
       <soap12:operation soapAction="http://tempuri.org/IPolicyManagement/GetPolicysOfProject" style="document" />
+    <wsdl:operation name="UpdatePolicy">
+      <soap12:operation soapAction="http://tempuri.org/IPolicyManagement/UpdatePolicy" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

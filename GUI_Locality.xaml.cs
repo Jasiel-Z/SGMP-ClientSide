@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.ServiceModel.Configuration;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace SGMP_Client
     /// </summary>
     public partial class GUI_Locality : Window
     {
-        private int localityId;
+        private Locality localityToBeModified = new Locality();
 
         public GUI_Locality()
         {
@@ -30,7 +31,7 @@ namespace SGMP_Client
 
         public void LoadLocality(Locality locality)
         {
-            this.localityId = locality.LocalityID;
+            localityToBeModified = locality;
 
             tbxLocalityName.Text = locality.Name;
             tbxTownship.Text = locality.Township;
@@ -46,7 +47,7 @@ namespace SGMP_Client
 
             if (ValidateFields(localityName, township))
             {
-                if (this.localityId == 0)
+                if (localityToBeModified.LocalityID == 0)
                 {
                     SaveLocality(localityName, township);
                 }
@@ -65,40 +66,73 @@ namespace SGMP_Client
                 Township = township
             };
 
-            SGPMService.LocalityManagementClient client = new   SGPMService.LocalityManagementClient();
-
-            int result = client.SaveLocality(locality);
-
-            if (result == 1)
+            try
             {
-                MessageBox.Show("Se ha guardado la nueva localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                SGPMService.LocalityManagementClient client = new SGPMService.LocalityManagementClient();
+                int result = client.SaveLocality(locality);
+
+                if (result == 1)
+                {
+                    MessageBox.Show("Se ha guardado la nueva localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Ha ocurrido un error al intentar guardar la nueva localidad. Por favor intente de nuevo más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else
+            catch (EndpointNotFoundException)
             {
-                MessageBox.Show("Ha ocurrido un error al intentar guardar la nueva localidad. Por favor intente de nuevo más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ha ocurrido un error al conectar con el Servidor. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                SGMP_Client.DTO_s.User.UserClient.Logout();
+                Window loginWindow = new GUI_Login();
+                this.Close();
+                loginWindow.Show();
             }
+
         }
 
         private void UpdateLocality(string localityName, string township)
         {
             Locality locality = new Locality
             {
-                LocalityID = this.localityId,
+                LocalityID = localityToBeModified.LocalityID,
                 Name = localityName,
                 Township = township
             };
 
-            SGPMService.LocalityManagementClient client = new SGPMService.LocalityManagementClient();
-            int result = client.UpdateLocality(locality);
+            try
+            {
+                if (!locality.Name.Equals(localityToBeModified.Name) || !locality.Township.Equals(localityToBeModified.Township))
+                {
+                    SGPMService.LocalityManagementClient client = new SGPMService.LocalityManagementClient();
+                    int result = client.UpdateLocality(locality);
 
-            if (result == 1)
-            {
-                MessageBox.Show("Se ha actualizado la información de la localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Se ha actualizado la información de la localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error al intentar actualizar la localidad. Por favor intente de nuevo más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Modifique alguno de los campos antes de continuar.", "Error en la operación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
-            else
+            catch (EndpointNotFoundException)
             {
-                MessageBox.Show("Ha ocurrido un error al intentar actualizar la localidad. Por favor intente de nuevo más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ha ocurrido un error al conectar con el Servidor. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                SGMP_Client.DTO_s.User.UserClient.Logout();
+                Window loginWindow = new GUI_Login();
+                this.Close();
+                loginWindow.Show();
             }
+
+
         }
 
         private bool ValidateFields(string localityName, string township)
