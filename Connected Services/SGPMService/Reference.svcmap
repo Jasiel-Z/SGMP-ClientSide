@@ -23,6 +23,7 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="f922a043-0c0b-4035-9940-cfd5055b0fb0" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd10" />
+    <MetadataFile FileName="item12.xsd" MetadataType="Schema" ID="48515bbd-c59c-413d-b60b-d3aa8570e912" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd12" />
     <MetadataFile FileName="SGPMManager.wsdl" MetadataType="Wsdl" ID="2e0263b5-caad-43f2-b574-22cc86db0781" SourceId="1" SourceUrl="http://localhost:8082/?wsdl" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="b836e200-e4e6-4498-804e-5200f7fec84b" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd8" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="047837d8-2309-4d08-84e2-e7a253e0b401" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd9" />

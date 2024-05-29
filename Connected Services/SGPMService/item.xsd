@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="DeliveryOrden">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBankAccountManagement" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBankAccountManagement" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="BankAccount">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Amount" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DeliveryDate" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="DeliveryPlace" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdDeliveryOrden" type="xs:int" />
-      <xs:element minOccurs="0" name="Resource" nillable="true" type="tns:Resource" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DeliveryOrden" nillable="true" type="tns:DeliveryOrden" />
-  <xs:complexType name="Resource">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="IdResource" type="xs:int" />
+      <xs:element minOccurs="0" name="AccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdBeneficiary" type="xs:int" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Resource" nillable="true" type="tns:Resource" />
-  <xs:complexType name="ArrayOfResource">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Resource" nillable="true" type="tns:Resource" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfResource" nillable="true" type="tns:ArrayOfResource" />
+  <xs:element name="BankAccount" nillable="true" type="tns:BankAccount" />
 </xs:schema>
