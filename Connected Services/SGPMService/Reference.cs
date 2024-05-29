@@ -5757,6 +5757,24 @@ namespace SGMP_Client.SGPMService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPolicyManagement/SavePolicy", ReplyAction="http://tempuri.org/IPolicyManagement/SavePolicyResponse")]
         System.Threading.Tasks.Task<int> SavePolicyAsync(SGMP_Client.SGPMService.Policy policy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPolicyManagement/GetAllPolicies", ReplyAction="http://tempuri.org/IPolicyManagement/GetAllPoliciesResponse")]
+        SGMP_Client.SGPMService.Policy[] GetAllPolicies();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPolicyManagement/GetAllPolicies", ReplyAction="http://tempuri.org/IPolicyManagement/GetAllPoliciesResponse")]
+        System.Threading.Tasks.Task<SGMP_Client.SGPMService.Policy[]> GetAllPoliciesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPolicyManagement/AddPolicyToProject", ReplyAction="http://tempuri.org/IPolicyManagement/AddPolicyToProjectResponse")]
+        int AddPolicyToProject(string idProject, int[] listPolicys);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPolicyManagement/AddPolicyToProject", ReplyAction="http://tempuri.org/IPolicyManagement/AddPolicyToProjectResponse")]
+        System.Threading.Tasks.Task<int> AddPolicyToProjectAsync(string idProject, int[] listPolicys);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPolicyManagement/GetPolicysOfProject", ReplyAction="http://tempuri.org/IPolicyManagement/GetPolicysOfProjectResponse")]
+        int[] GetPolicysOfProject(string idProject);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPolicyManagement/GetPolicysOfProject", ReplyAction="http://tempuri.org/IPolicyManagement/GetPolicysOfProjectResponse")]
+        System.Threading.Tasks.Task<int[]> GetPolicysOfProjectAsync(string idProject);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -5792,6 +5810,30 @@ namespace SGMP_Client.SGPMService {
         
         public System.Threading.Tasks.Task<int> SavePolicyAsync(SGMP_Client.SGPMService.Policy policy) {
             return base.Channel.SavePolicyAsync(policy);
+        }
+        
+        public SGMP_Client.SGPMService.Policy[] GetAllPolicies() {
+            return base.Channel.GetAllPolicies();
+        }
+        
+        public System.Threading.Tasks.Task<SGMP_Client.SGPMService.Policy[]> GetAllPoliciesAsync() {
+            return base.Channel.GetAllPoliciesAsync();
+        }
+        
+        public int AddPolicyToProject(string idProject, int[] listPolicys) {
+            return base.Channel.AddPolicyToProject(idProject, listPolicys);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddPolicyToProjectAsync(string idProject, int[] listPolicys) {
+            return base.Channel.AddPolicyToProjectAsync(idProject, listPolicys);
+        }
+        
+        public int[] GetPolicysOfProject(string idProject) {
+            return base.Channel.GetPolicysOfProject(idProject);
+        }
+        
+        public System.Threading.Tasks.Task<int[]> GetPolicysOfProjectAsync(string idProject) {
+            return base.Channel.GetPolicysOfProjectAsync(idProject);
         }
     }
     

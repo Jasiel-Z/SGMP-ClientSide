@@ -29,11 +29,12 @@ namespace SGMP_Client
             InitializeComponent();
 
             Project project = ProjectsManagementClient.GetProjectDetails(idProject);
-
+            txtbEstado.Text = "Por Comenzar";
             if (project != null)
             {
                 FillData(project);
                 btnOrdenEntrega.Visibility = Visibility.Visible;
+                btnPolicy.Visibility = Visibility.Visible;
             }
             FillComboBoxes();
             dapcStart.SelectedDateChanged += ValidateStartDate;
@@ -57,7 +58,7 @@ namespace SGMP_Client
             project.Folio = txtFolio.Text;
             project.Name = txtName.Text.Trim();
             project.Description = tbxDescription.Text.Trim();
-            project.Status = cmbEstado.SelectedValue.ToString();
+            project.Status = "Por Comenzar";
             project.Modality = (string)cmbModalidad.SelectedValue;
             project.End = (DateTime)dapcEnd.SelectedDate;
             project.Evidence = (DateTime)dapcEvidencia.SelectedDate;
@@ -81,13 +82,6 @@ namespace SGMP_Client
 
         private void FillComboBoxes()
         {
-            List<string> estados = new List<string>();
-            estados.Add("Activo");
-            estados.Add("Finalizado");
-            estados.Add("Por Comenzar");
-
-            cmbEstado.ItemsSource = estados;
-
             List<string> modalidad = new List<string>();
             modalidad.Add("Comida");
             modalidad.Add("Beca");
@@ -115,7 +109,7 @@ namespace SGMP_Client
             txtFolio.Text = project.Folio;
             txtName.Text = project.Name;
             tbxDescription.Text = project.Description;
-            cmbEstado.SelectedValue = project.Status;
+            txtbEstado.Text = project.Status;
             cmbModalidad.SelectedValue = project.Modality;
             dapcEnd.SelectedDate = project.End;
             dapcEvidencia.SelectedDate = project.Evidence;
@@ -294,7 +288,6 @@ namespace SGMP_Client
                                    !string.IsNullOrWhiteSpace(txtFolio.Text) &&
                                    dapcStart.SelectedDate.HasValue &&
                                    dapcEnd.SelectedDate.HasValue &&
-                                   cmbEstado.SelectedItem != null &&
                                    cmbLocalidad.SelectedItem != null &&
                                    cmbDependencia.SelectedItem != null &&
                                    cmbModalidad.SelectedItem != null &&
@@ -317,5 +310,10 @@ namespace SGMP_Client
             CheckFieldsAndEnableSaveButton();
         }
 
+        private void OpernPolicys(object sender, RoutedEventArgs e)
+        {
+            GUI_AddPolicyToProject policy = new GUI_AddPolicyToProject(idProject);
+            policy.Show();
+        }
     }
 }

@@ -1,37 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfProjectShow">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="DeliveryOrden">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProjectShow" nillable="true" type="tns:ProjectShow" />
+      <xs:element minOccurs="0" name="Amount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeliveryDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DeliveryPlace" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdDeliveryOrden" type="xs:int" />
+      <xs:element minOccurs="0" name="Resource" nillable="true" type="tns:Resource" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfProjectShow" nillable="true" type="tns:ArrayOfProjectShow" />
-  <xs:complexType name="ProjectShow">
+  <xs:element name="DeliveryOrden" nillable="true" type="tns:DeliveryOrden" />
+  <xs:complexType name="Resource">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Folio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdResource" type="xs:int" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ProjectShow" nillable="true" type="tns:ProjectShow" />
-  <xs:complexType name="ArrayOfRequestShow">
+  <xs:element name="Resource" nillable="true" type="tns:Resource" />
+  <xs:complexType name="ArrayOfResource">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="RequestShow" nillable="true" type="tns:RequestShow" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Resource" nillable="true" type="tns:Resource" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfRequestShow" nillable="true" type="tns:ArrayOfRequestShow" />
-  <xs:complexType name="RequestShow">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BeneficiaryName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="RequestShow" nillable="true" type="tns:RequestShow" />
-  <xs:complexType name="Evidence">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="IdRequest" type="xs:int" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="file" nillable="true" type="xs:base64Binary" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Evidence" nillable="true" type="tns:Evidence" />
+  <xs:element name="ArrayOfResource" nillable="true" type="tns:ArrayOfResource" />
 </xs:schema>

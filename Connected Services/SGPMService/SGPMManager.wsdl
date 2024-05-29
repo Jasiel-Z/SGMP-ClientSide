@@ -119,9 +119,10 @@
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IUserManagement" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.ILocalityManagement" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IPolicyManagement" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBankAccountManagement" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd9" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IBankAccountManagement" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IDeliveryOrdenManagement" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IProjectsManagement_GetProjectDetails_InputMessage">
@@ -358,6 +359,24 @@
   <wsdl:message name="IPolicyManagement_SavePolicy_OutputMessage">
     <wsdl:part name="parameters" element="tns:SavePolicyResponse" />
   </wsdl:message>
+  <wsdl:message name="IPolicyManagement_GetAllPolicies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPolicies" />
+  </wsdl:message>
+  <wsdl:message name="IPolicyManagement_GetAllPolicies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPoliciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPolicyManagement_AddPolicyToProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPolicyToProject" />
+  </wsdl:message>
+  <wsdl:message name="IPolicyManagement_AddPolicyToProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPolicyToProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPolicyManagement_GetPolicysOfProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPolicysOfProject" />
+  </wsdl:message>
+  <wsdl:message name="IPolicyManagement_GetPolicysOfProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPolicysOfProjectResponse" />
+  </wsdl:message>
   <wsdl:message name="IBankAccountManagement_SaveBankAccount_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveBankAccount" />
   </wsdl:message>
@@ -578,6 +597,18 @@
     <wsdl:operation name="SavePolicy">
       <wsdl:input wsaw:Action="http://tempuri.org/IPolicyManagement/SavePolicy" message="tns:IPolicyManagement_SavePolicy_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPolicyManagement/SavePolicyResponse" message="tns:IPolicyManagement_SavePolicy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPolicies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolicyManagement/GetAllPolicies" message="tns:IPolicyManagement_GetAllPolicies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolicyManagement/GetAllPoliciesResponse" message="tns:IPolicyManagement_GetAllPolicies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPolicyToProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolicyManagement/AddPolicyToProject" message="tns:IPolicyManagement_AddPolicyToProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolicyManagement/AddPolicyToProjectResponse" message="tns:IPolicyManagement_AddPolicyToProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPolicysOfProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolicyManagement/GetPolicysOfProject" message="tns:IPolicyManagement_GetPolicysOfProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolicyManagement/GetPolicysOfProjectResponse" message="tns:IPolicyManagement_GetPolicysOfProject_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IBankAccountManagement">
@@ -989,6 +1020,33 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="SavePolicy">
       <soap12:operation soapAction="http://tempuri.org/IPolicyManagement/SavePolicy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPolicies">
+      <soap12:operation soapAction="http://tempuri.org/IPolicyManagement/GetAllPolicies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPolicyToProject">
+      <soap12:operation soapAction="http://tempuri.org/IPolicyManagement/AddPolicyToProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPolicysOfProject">
+      <soap12:operation soapAction="http://tempuri.org/IPolicyManagement/GetPolicysOfProject" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

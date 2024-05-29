@@ -62,6 +62,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="GUI_AddPolicyToProject.xaml.cs">
+      <DependentUpon>GUI_AddPolicyToProject.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI_ListaProyecto.xaml.cs">
       <DependentUpon>GUI_ListaProyecto.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <DependentUpon>GUI_UsersList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility.cs" />
+    <Page Include="GUI_AddPolicyToProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI_BeneficiaryDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -261,6 +268,9 @@
     <None Include="Connected Services\SGPMService\item11.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\SGPMService\item12.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\SGPMService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -310,6 +320,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SGPMService\SGMP_Client.SGPMService.Person.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SGPMService\SGMP_Client.SGPMService.Policy.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SGPMService\SGMP_Client.SGPMService.Project.datasource">
