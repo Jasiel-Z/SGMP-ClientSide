@@ -683,7 +683,7 @@
   <xs:element name="GetFinishProjectsdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" minOccurs="0" name="GetFinishProjectsdResult" nillable="true" type="q42:ArrayOfProjectShow" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" minOccurs="0" name="GetFinishProjectsdResult" nillable="true" type="q45:ArrayOfProjectShow" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -697,14 +697,14 @@
   <xs:element name="GetFinishRequestsdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" minOccurs="0" name="GetFinishRequestsdResult" nillable="true" type="q43:ArrayOfRequestShow" />
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" minOccurs="0" name="GetFinishRequestsdResult" nillable="true" type="q46:ArrayOfRequestShow" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SaveEvidence">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" minOccurs="0" name="evidence" nillable="true" type="q44:Evidence" />
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/SGPM_Contracts.IEvidenceManagement" minOccurs="0" name="evidence" nillable="true" type="q47:Evidence" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
