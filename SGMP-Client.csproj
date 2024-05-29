@@ -375,13 +375,7 @@
     <Resource Include="Icons\iconoVeracruz.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="iconoVeracruz.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Icons\proyecto.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="proyecto.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\beneficiario.png" />
@@ -390,19 +384,10 @@
     <Resource Include="Icons\solicitud.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="solicitud.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Icons\marcador-de-posicion.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="marcador-de-posicion.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Icons\programador.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="programador.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\SGPMService\" />
@@ -433,6 +418,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\pregunta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\evidencia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\investigacion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
