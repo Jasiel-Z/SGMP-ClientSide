@@ -31,7 +31,6 @@ namespace SGMP_Client
         private void DisplayProjectList()
         {
             var f = ProjectsManagementClient.GetAllProjects();
-            Console.WriteLine(f.Length);
             foreach (var project in f)
             {
                 var border = new Border();
