@@ -6,17 +6,19 @@
         xmlns:local="clr-namespace:SGMP_Client"
         mc:Ignorable="d"
         Title="Registrar Cuenta Bancaria" Height="240" Width="310">
-    <Grid>
-        <Label Content="Nombre del Titular" HorizontalAlignment="Left" Margin="32,23,0,0" VerticalAlignment="Top" Width="114"/>
-        <Label x:Name="lblErrorName" Content="Nombre Invalido" HorizontalAlignment="Left" Margin="29,75,0,0" VerticalAlignment="Top" Width="114" Foreground="Red" Visibility="Hidden"/>
-        <Label Content="Numero de Cuenta" HorizontalAlignment="Left" Margin="32,0,0,0" VerticalAlignment="Center" Width="114" RenderTransformOrigin="0.37,-1.112"/>
-        <Label x:Name="lblErrorAccountLength" Content="El numero de cuenta debe tener 18 digitos" HorizontalAlignment="Left" Margin="29,141,0,0" VerticalAlignment="Top" Width="243" RenderTransformOrigin="0.37,-1.112"  Foreground="Red" Visibility="Hidden"/>
-        <Label x:Name="lblErrorAccount" Content="El numero de cuenta debe tener 18 digitos" HorizontalAlignment="Left" Margin="29,141,0,0" VerticalAlignment="Top" Width="243" RenderTransformOrigin="0.37,-1.112"  Foreground="Red" Visibility="Hidden"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Center" Margin="0,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Height="29" KeyUp="ValidateNameInput"/>
-        <TextBox x:Name="txtAccount" HorizontalAlignment="Center" Margin="0,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Height="29" KeyUp="ValidateAccountInput"/>
-        <Button x:Name="btnSave" IsEnabled="False" Content="Guardar" HorizontalAlignment="Left" Margin="134,167,0,0" VerticalAlignment="Top" Width="64" Click="btnSave_Click"/>
-        <Button x:Name="btnUpdate" IsEnabled="False" Content="Guardar Cambios" HorizontalAlignment="Left" Margin="89,167,0,0" VerticalAlignment="Top" Width="109" Visibility="Hidden" Click="btnUpdate_Click"/>
-        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="223,167,0,0" VerticalAlignment="Top" Width="64" Click="Button_Click"/>
+    <Viewbox Stretch="Fill">
+        <Grid Height="224" Width="310">
+            <Label Content="Nombre del Titular" HorizontalAlignment="Left" Margin="32,23,0,0" VerticalAlignment="Top" Width="114"/>
+            <Label x:Name="lblErrorName" Content="Nombre Invalido" HorizontalAlignment="Left" Margin="29,75,0,0" VerticalAlignment="Top" Width="114" Foreground="Red" Visibility="Hidden"/>
+            <Label Content="Numero de Cuenta" HorizontalAlignment="Left" Margin="32,0,0,0" VerticalAlignment="Center" Width="114" RenderTransformOrigin="0.37,-1.112"/>
+            <Label x:Name="lblErrorAccountLength" Content="El numero de cuenta debe tener 18 digitos" HorizontalAlignment="Left" Margin="29,141,0,0" VerticalAlignment="Top" Width="243" RenderTransformOrigin="0.37,-1.112"  Foreground="Red" Visibility="Hidden"/>
+            <Label x:Name="lblErrorAccount" Content="El numero de cuenta debe tener 18 digitos" HorizontalAlignment="Left" Margin="29,141,0,0" VerticalAlignment="Top" Width="243" RenderTransformOrigin="0.37,-1.112"  Foreground="Red" Visibility="Hidden"/>
+            <TextBox x:Name="txtName" HorizontalAlignment="Center" Margin="0,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Height="29" KeyUp="ValidateNameInput" MaxHeight="75"/>
+            <TextBox x:Name="txtAccount" HorizontalAlignment="Center" Margin="0,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Height="29" KeyUp="ValidateAccountInput" MaxLength="18"/>
+            <Button x:Name="btnSave" IsEnabled="False" Content="Guardar" HorizontalAlignment="Left" Margin="134,167,0,0" VerticalAlignment="Top" Width="64" Click="btnSave_Click"/>
+            <Button x:Name="btnUpdate" IsEnabled="False" Content="Guardar Cambios" HorizontalAlignment="Left" Margin="89,167,0,0" VerticalAlignment="Top" Width="109" Visibility="Hidden" Click="btnUpdate_Click"/>
+            <Button Content="Cancelar" HorizontalAlignment="Left" Margin="223,167,0,0" VerticalAlignment="Top" Width="64" Click="Button_Click"/>
 
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Window>

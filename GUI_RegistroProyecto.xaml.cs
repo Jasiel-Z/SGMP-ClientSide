@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,20 +24,41 @@ namespace SGMP_Client
 
         private SGPMService.ProjectsManagementClient ProjectsManagementClient = new SGPMService.ProjectsManagementClient();
         private string idProject;
+        private bool hasConfirmedNewProject = false;
+        private string succesMessage = "Se ha creado el proyecto correctamente";
+        private string errorMessage = "Ha ocurrido un problema al registrar el proyecto, intentelo nuevamente más tarde";
+        private Project projectEdit = null;
+
         public GUI_RegistroProyecto(string _idProject)
         {
             idProject = _idProject;
             InitializeComponent();
 
-            Project project = ProjectsManagementClient.GetProjectDetails(idProject);
-            txtbEstado.Text = "Por Comenzar";
-            if (project != null)
+            try
             {
-                FillData(project);
+                FillComboBoxes();
+                projectEdit = ProjectsManagementClient.GetProjectDetails(idProject);
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                erroServer();
+            }
+            catch (TimeoutException ex)
+            {
+                erroServer();
+            }
+
+            txtbEstado.Text = "Por Comenzar"; 
+
+            if (projectEdit != null)
+            {
+                succesMessage = "Se ha modificado el proyecto correctamente";
+                errorMessage = "Ha ocurrido un problema al registrar los cambios, intentelo nuevamente más tarde";
+                FillData(projectEdit);
                 btnOrdenEntrega.Visibility = Visibility.Visible;
                 btnPolicy.Visibility = Visibility.Visible;
             }
-            FillComboBoxes();
+
             dapcStart.SelectedDateChanged += ValidateStartDate;
             dapcEnd.SelectedDateChanged += ValidateEndDate;
             dapcSolicitud.SelectedDateChanged += ValidateSolicitudDate;
@@ -51,33 +73,66 @@ namespace SGMP_Client
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if(IsTextAllowed(txtBeneficiarios.Text.Trim()) && IsTextAllowed(txtAmount.Text.Trim()))
+            {
+                int amount = int.Parse(txtAmount.Text.Trim());
+                int beneficary = int.Parse(txtBeneficiarios.Text.Trim());
 
-            SGPMService.Project project = new SGPMService.Project();
-            project.AttentionGroup = (string)cmbGrupoAtencion.SelectedValue;
-            project.Start = (DateTime)dapcStart.SelectedDate;
-            project.Folio = txtFolio.Text;
-            project.Name = txtName.Text.Trim();
-            project.Description = tbxDescription.Text.Trim();
-            project.Status = "Por Comenzar";
-            project.Modality = (string)cmbModalidad.SelectedValue;
-            project.End = (DateTime)dapcEnd.SelectedDate;
-            project.Evidence = (DateTime)dapcEvidencia.SelectedDate;
-            project.Dependecy = (int)cmbDependencia.SelectedValue;
-            project.Location = (int)cmbLocalidad.SelectedValue;
-            project.BeneficiaryNumbers = int.Parse(txtBeneficiarios.Text.Trim());
-            project.SupportAmount = int.Parse(txtAmount.Text);
-            project.Solicitud = (DateTime)dapcSolicitud.SelectedDate;
+                if (ValidateNumbers("Monto", amount) && ValidateNumbers("Beneficiarios", beneficary))
+                {
+                    SGPMService.Project project = new SGPMService.Project();
+                    project.AttentionGroup = (string)cmbGrupoAtencion.SelectedValue;
+                    project.Start = (DateTime)dapcStart.SelectedDate;
+                    project.Folio = txtFolio.Text;
+                    project.Name = txtName.Text.Trim();
+                    project.Description = tbxDescription.Text.Trim();
+                    project.Status = "Por Comenzar";
+                    project.Modality = (string)cmbModalidad.SelectedValue;
+                    project.End = (DateTime)dapcEnd.SelectedDate;
+                    project.Evidence = (DateTime)dapcEvidencia.SelectedDate;
+                    project.Dependecy = (int)cmbDependencia.SelectedValue;
+                    project.Location = (int)cmbLocalidad.SelectedValue;
+                    project.Solicitud = (DateTime)dapcSolicitud.SelectedDate;
+                    project.BeneficiaryNumbers = beneficary;
+                    project.SupportAmount = amount;
 
-            ProjectsManagementClient.RegisteredProjects(project);
+                    int result;
 
-            GUI_ListaProyecto lista = new GUI_ListaProyecto();
-            this.Close();
-            lista.Show();
-        }
 
-        private ProjectsManagementClient GetProjectsManagementClient()
-        {
-            return ProjectsManagementClient;
+                    try
+                    {
+                        result = ProjectsManagementClient.RegisteredProjects(project);
+                    }
+                    catch (System.ServiceModel.EndpointNotFoundException ex)
+                    {
+                        erroServer();
+                        return;
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        erroServer();
+                        return;
+                    }
+
+                    if (result == 1)
+                    {
+                        MessageBox.Show(succesMessage, "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                        GUI_ListaProyecto lista = new GUI_ListaProyecto();
+                        this.Close();
+                        lista.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show(errorMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Los campos Numero de beneficiarios y Monto solo aceptan valores numericos positivos");
+                txtAmount.Text = string.Empty;
+                txtBeneficiarios.Text = string.Empty;
+            }
         }
 
         private void FillComboBoxes()
@@ -98,7 +153,6 @@ namespace SGMP_Client
 
             cmbDependencia.ItemsSource = ProjectsManagementClient.GetDependencies();
             cmbLocalidad.ItemsSource = ProjectsManagementClient.GetLocalidads();
-
 
         }
 
@@ -122,15 +176,32 @@ namespace SGMP_Client
 
         private void btnOrdenEntrega_Click(object sender, RoutedEventArgs e)
         {
-            GUI_SaveDeliveryOrden deliveryOrden = new GUI_SaveDeliveryOrden(idProject);
-            deliveryOrden.Show();
+            GUI_SaveDeliveryOrden deliveryOrden = new GUI_SaveDeliveryOrden(this, idProject, projectEdit.SupportAmount.ToString(), projectEdit.Start, projectEdit.End);
+            try
+            {
+                deliveryOrden.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());   
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            GUI_ListaProyecto menu = new GUI_ListaProyecto();
-            this.Close();
-            menu.Show();
+            MessageBoxResult result = MessageBox.Show(
+                       "¿Seguro de que desea descartar los cambios realizados?",
+                       "Confirmar cancelación de cambios",
+                       MessageBoxButton.OKCancel,
+                       MessageBoxImage.Question
+                   );
+
+            if (result == MessageBoxResult.OK)
+            {
+                GUI_ListaProyecto menu = new GUI_ListaProyecto();
+                this.Close();
+                menu.Show();
+            }
         }
 
         private void ValidateStartDate(object sender, SelectionChangedEventArgs e)
@@ -148,7 +219,7 @@ namespace SGMP_Client
                 dapcEvidencia.IsEnabled = false;
 
                 DateTime selectedDate = datePicker.SelectedDate.Value;
-                DateTime currentDate = DateTime.Today;         
+                DateTime currentDate = DateTime.Today;
 
                 if (selectedDate < currentDate)
                 {
@@ -190,7 +261,7 @@ namespace SGMP_Client
                 CheckFieldsAndEnableSaveButton();
             }
         }
-        
+
         private void ValidateSolicitudDate(object sender, SelectionChangedEventArgs e)
         {
             DatePicker datePickerSolicitud = sender as DatePicker;
@@ -210,7 +281,7 @@ namespace SGMP_Client
                 CheckFieldsAndEnableSaveButton();
             }
         }
-        
+
         private void ValidateEvidenceDate(object sender, SelectionChangedEventArgs e)
         {
             DatePicker datePickerEvidencia = sender as DatePicker;
@@ -312,8 +383,73 @@ namespace SGMP_Client
 
         private void OpernPolicys(object sender, RoutedEventArgs e)
         {
-            GUI_AddPolicyToProject policy = new GUI_AddPolicyToProject(idProject);
-            policy.Show();
+            GUI_AddPolicyToProject policy = new GUI_AddPolicyToProject(this, idProject);
+            try
+            { 
+                policy.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                this.Close();
+            }
+        }
+
+        private void TxtFolio_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!hasConfirmedNewProject)
+            {
+                TextBox textBox = sender as TextBox;
+                if (textBox != null)
+                {
+                    MessageBoxResult result = MessageBox.Show(
+                        "Al cambiar el folio se creará un nuevo proyecto ¿Seguro que desea continuar?",
+                        "Confirmar creación de nuevo proyecto",
+                        MessageBoxButton.OKCancel,
+                        MessageBoxImage.Question
+                    );
+
+                    if (result == MessageBoxResult.OK)
+                    {
+                        hasConfirmedNewProject = true;
+                        textBox.CaretIndex = textBox.Text.Length;
+                    }
+                    else
+                    {
+                        textBox.TextChanged -= TxtFolio_TextChanged;
+                        textBox.Text = idProject;
+                        textBox.TextChanged += TxtFolio_TextChanged;
+
+                        Keyboard.ClearFocus();
+                    }
+                }
+            }
+        }
+
+        private static bool IsTextAllowed(string text)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            return !regex.IsMatch(text);
+        }
+
+        private bool ValidateNumbers(string field, int number)
+        {
+            bool result = true;
+            if (number == 0)
+            {
+                MessageBox.Show(string.Format("El campo {0} debe ser mayor a 0.", field));
+                result = false;
+            }
+
+            return result;
+        }
+
+        private void erroServer()
+        {
+            MessageBox.Show("Ha ocurrido un error al intentar conectarse al servidor, Intente nuevamente más tarde", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            GUI_Login login = new GUI_Login();
+            login.Show();
+            this.Close();
         }
     }
 }

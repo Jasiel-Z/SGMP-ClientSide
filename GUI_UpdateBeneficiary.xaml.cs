@@ -232,8 +232,15 @@ namespace SGMP_Client
 
         private void Btn_AddAccount_Click(object sender, RoutedEventArgs e)
         {
-                GUI_SaveBankAccount bankAccount = new GUI_SaveBankAccount(Beneficiary.Id);
-                bankAccount.Show();
+            GUI_SaveBankAccount bankAccount = new GUI_SaveBankAccount(this, Beneficiary.Id);
+            try
+            {
+                bankAccount.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

@@ -27,16 +27,33 @@ namespace SGMP_Client
         private SGPMService.BankAccountManagementClient BankAccountManager = new SGPMService.BankAccountManagementClient();
         private Collection<bool> AccountValidate = new Collection<bool>();
         private int IdBeneficary;
+        private Window ParentWindow;
 
-
-        public GUI_SaveBankAccount(int _IdBeneficiary)
+        public GUI_SaveBankAccount(Window parent, int _IdBeneficiary)
         {
             InitializeComponent();
             IdBeneficary = _IdBeneficiary;
+            ParentWindow = parent;
             AccountValidate.Add(false);
             AccountValidate.Add(false);
 
-            var account = BankAccountManager.GetBankAccount(IdBeneficary);
+            BankAccount account;
+
+            try
+            {
+                account = BankAccountManager.GetBankAccount(IdBeneficary);
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                ErroServer();
+                return;
+            }
+            catch (TimeoutException ex)
+            {
+                ErroServer();
+                return;
+            }
+
             if (account != null)
             {
                 txtAccount.Text = account.AccountNumber;
@@ -81,7 +98,24 @@ namespace SGMP_Client
                 AccountNumber = txtAccount.Text,
                 IdBeneficiary = IdBeneficary
             };
-            var result = BankAccountManager.SaveBankAccount(account);
+
+            int result;
+
+            try
+            {
+                result = BankAccountManager.SaveBankAccount(account);
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                ErroServer();
+                return;
+            }
+            catch (TimeoutException ex)
+            {
+                ErroServer();
+                return;
+            }
+
             if (result == 0)
             {
                 MessageBox.Show("Se ha registrado correctamente la cuenta bancaria", "Cambios Guardados", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -100,19 +134,27 @@ namespace SGMP_Client
             btnUpdate.IsEnabled = false;
             AccountValidate[1] = false;
             var account = txtAccount.Text.Trim();
-            if (account.Length != 18)
+            if (IsTextAllowed(account))
             {
-                lblErrorAccountLength.Visibility = Visibility.Visible;
+                if (account.Length != 18)
+                {
+                    lblErrorAccountLength.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    AccountValidate[1] = true;
+                }
+
+                if (AccountValidate[0] == true && AccountValidate[1] == true)
+                {
+                    btnSave.IsEnabled = true;
+                    btnUpdate.IsEnabled = true;
+                }
             }
             else
             {
-                AccountValidate[1] = true;
-            }
-
-            if (AccountValidate[0] == true && AccountValidate[1] == true)
-            {
-                btnSave.IsEnabled = true;
-                btnUpdate.IsEnabled = true;
+                MessageBox.Show("El campo cuenta bancaria solo acepta valores numericos", "Valor invalido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                txtAccount.Text = txtAccount.Text.Substring(0, txtAccount.Text.Length - 1);
             }
         }
 
@@ -133,7 +175,23 @@ namespace SGMP_Client
                 AccountNumber = txtAccount.Text,
                 IdBeneficiary = IdBeneficary
             };
-            var result = BankAccountManager.UpdateBankAccount(account);
+            int result;
+
+            try
+            {
+                result = BankAccountManager.UpdateBankAccount(account);
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                ErroServer();
+                return;
+            }
+            catch (TimeoutException ex)
+            {
+                ErroServer();
+                return;
+            }
+
             if (result == 0)
             {
                 MessageBox.Show("Se ha actualizado correctamente la cuenta bancaria", "Cambios Guardados", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -143,6 +201,21 @@ namespace SGMP_Client
             {
                 MessageBox.Show("A ocurrido un error, intente nuevamente más tarde", "Cambios No Guardados", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private static bool IsTextAllowed(string text)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            return !regex.IsMatch(text);
+        }
+
+        private void ErroServer()
+        {
+            MessageBox.Show("Ha ocurrido un error al intentar conectarse al servidor, Intente nuevamente más tarde", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            GUI_Login login = new GUI_Login();
+            ParentWindow.Close();
+            this.Close();
+            login.Show();
         }
     }
 }

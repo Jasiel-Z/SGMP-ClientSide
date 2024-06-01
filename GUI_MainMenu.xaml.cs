@@ -59,7 +59,15 @@ namespace SGMP_Client
         private void GoProjectsModule(object sender, MouseButtonEventArgs e)
         {
             GUI_ListaProyecto projectsListWindow = new GUI_ListaProyecto();
-            projectsListWindow.Show();
+            try
+            {
+                projectsListWindow.Show();
+            }
+            catch(Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
+            
             this.Close();
         }
 
