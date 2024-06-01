@@ -47,7 +47,7 @@ namespace SGMP_Client
 
             if (ValidateFields(policyName, policyDescription))
             {
-                if (!string.IsNullOrEmpty(this.policyToBeModified.Name))
+                if (!string.IsNullOrWhiteSpace(this.policyToBeModified.Name))
                 {
                     UpdatePolicy(policyName, policyDescription);
                 }
@@ -69,15 +69,27 @@ namespace SGMP_Client
             try
             {
                 SGPMService.PolicyManagementClient client = new SGPMService.PolicyManagementClient();
-                int result = client.SavePolicy(policy);
 
-                if (result == 1)
+                if (client.ValidatePolicyDoesNotExist(policy))
                 {
-                    MessageBox.Show("Se ha guardado la nueva política de participación correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                    int result = client.SavePolicy(policy);
+
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Se ha guardado la nueva política de participación correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        Window policyMenuWindow = new GUI_PolicyMenu();
+                        policyMenuWindow.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error al intentar guardar la nueva política de participación. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Ha ocurrido un error al intentar guardar la nueva política de participación. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Ya existe una política con el mismo nombre y descripción.", "La política ya existe.", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             catch (EndpointNotFoundException)
@@ -105,16 +117,28 @@ namespace SGMP_Client
                 if (!policy.Name.Equals(policyToBeModified.Name) || !policy.Description.Equals(policyToBeModified.Description))
                 {
                     SGPMService.PolicyManagementClient client = new SGPMService.PolicyManagementClient();
-                    int result = client.UpdatePolicy(policy);
 
-                    if (result == 1)
+                    if (client.ValidatePolicyDoesNotExist(policy))
                     {
-                        MessageBox.Show("Se ha actualizado la información de la política de participación correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                        int result = client.UpdatePolicy(policy);
+
+                        if (result == 1)
+                        {
+                            MessageBox.Show("Se ha actualizado la información de la política de participación correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                            Window policiesListWindow = new GUI_PoliciesList();
+                            policiesListWindow.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ha ocurrido un error al actualizar la política de participación. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Ha ocurrido un error al actualizar la política de participación. Por favor intente más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
+                        MessageBox.Show("Ya existe una política con el mismo nombre y descripción.", "La política ya existe.", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }  
                 }
                 else
                 {
@@ -137,7 +161,7 @@ namespace SGMP_Client
             bool isPolicyNameValid = false;
             bool isPolicyDescriptionValid = false;
 
-            if (!string.IsNullOrEmpty(policyName) && !string.IsNullOrEmpty(policyDescription)) 
+            if (!string.IsNullOrWhiteSpace(policyName) && !string.IsNullOrWhiteSpace(policyDescription)) 
             {
                 lbEmptyFieldsMessage.Visibility = Visibility.Hidden;
 
@@ -173,7 +197,7 @@ namespace SGMP_Client
 
         private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(this.policyToBeModified.Name))
+            if (string.IsNullOrWhiteSpace(this.policyToBeModified.Name))
             {
                 Window policyMenuWindow = new GUI_PolicyMenu();
                 policyMenuWindow.Show();

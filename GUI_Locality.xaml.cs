@@ -69,15 +69,27 @@ namespace SGMP_Client
             try
             {
                 SGPMService.LocalityManagementClient client = new SGPMService.LocalityManagementClient();
-                int result = client.SaveLocality(locality);
 
-                if (result == 1)
+                if (client.ValidateLocalityDoesNotExist(locality))
                 {
-                    MessageBox.Show("Se ha guardado la nueva localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                    int result = client.SaveLocality(locality);
+
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Se ha guardado la nueva localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        Window localityMenuWindow = new GUI_LocalityMenu();
+                        localityMenuWindow.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error al intentar guardar la nueva localidad. Por favor intente de nuevo más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Ha ocurrido un error al intentar guardar la nueva localidad. Por favor intente de nuevo más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Ya existe una localidad con el mismo nombre y municipio.", "La Localidad ya existe", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             catch (EndpointNotFoundException)
@@ -106,15 +118,26 @@ namespace SGMP_Client
                 if (!locality.Name.Equals(localityToBeModified.Name) || !locality.Township.Equals(localityToBeModified.Township))
                 {
                     SGPMService.LocalityManagementClient client = new SGPMService.LocalityManagementClient();
-                    int result = client.UpdateLocality(locality);
-
-                    if (result == 1)
+                    if (client.ValidateLocalityDoesNotExist(locality))
                     {
-                        MessageBox.Show("Se ha actualizado la información de la localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                        int result = client.UpdateLocality(locality);
+
+                        if (result == 1)
+                        {
+                            MessageBox.Show("Se ha actualizado la información de la localidad correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                            Window localityListWindow = new GUI_LocalitiesList();
+                            localityListWindow.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ha ocurrido un error al intentar actualizar la localidad. Por favor intente de nuevo más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Ha ocurrido un error al intentar actualizar la localidad. Por favor intente de nuevo más tarde.", "Ocurrió un Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Ya existe una localidad con el mismo nombre y municipio.", "La Localidad ya existe", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
                 else
@@ -140,7 +163,7 @@ namespace SGMP_Client
             bool isLocalityNameValid = false;
             bool isTownshipValid = false;
 
-            if (!string.IsNullOrEmpty(localityName) && !string.IsNullOrEmpty(township))
+            if (!string.IsNullOrWhiteSpace(localityName) && !string.IsNullOrWhiteSpace(township))
             {
                 lbEmptyFieldsMessage.Visibility = Visibility.Hidden;
 

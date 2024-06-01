@@ -395,6 +395,12 @@
   <wsdl:message name="IPolicyManagement_UpdatePolicy_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePolicyResponse" />
   </wsdl:message>
+  <wsdl:message name="IPolicyManagement_ValidatePolicyDoesNotExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidatePolicyDoesNotExist" />
+  </wsdl:message>
+  <wsdl:message name="IPolicyManagement_ValidatePolicyDoesNotExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidatePolicyDoesNotExistResponse" />
+  </wsdl:message>
   <wsdl:message name="IBankAccountManagement_SaveBankAccount_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveBankAccount" />
   </wsdl:message>
@@ -639,6 +645,10 @@
     <wsdl:operation name="UpdatePolicy">
       <wsdl:input wsaw:Action="http://tempuri.org/IPolicyManagement/UpdatePolicy" message="tns:IPolicyManagement_UpdatePolicy_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPolicyManagement/UpdatePolicyResponse" message="tns:IPolicyManagement_UpdatePolicy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidatePolicyDoesNotExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolicyManagement/ValidatePolicyDoesNotExist" message="tns:IPolicyManagement_ValidatePolicyDoesNotExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolicyManagement/ValidatePolicyDoesNotExistResponse" message="tns:IPolicyManagement_ValidatePolicyDoesNotExist_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IBankAccountManagement">
@@ -1104,6 +1114,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdatePolicy">
       <soap12:operation soapAction="http://tempuri.org/IPolicyManagement/UpdatePolicy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidatePolicyDoesNotExist">
+      <soap12:operation soapAction="http://tempuri.org/IPolicyManagement/ValidatePolicyDoesNotExist" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

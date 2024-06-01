@@ -117,7 +117,7 @@ namespace SGMP_Client
                     Email = email,             
                 };
 
-                if (string.IsNullOrEmpty(password))
+                if (string.IsNullOrWhiteSpace(password))
                 {
                     user.Password = "";
                 }
@@ -147,6 +147,10 @@ namespace SGMP_Client
                 if (result > 0)
                 {
                     MessageBox.Show("Se ha guardado el nuevo usuario correctamente.", "Operación Exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    Window userMenuWindow = new GUI_UserMenu();
+                    userMenuWindow.Show();
+                    this.Close();
                 }
                 else
                 {
@@ -174,7 +178,7 @@ namespace SGMP_Client
                 if (!user.Name.Equals(userToBeModified.Name) || !user.MiddleName.Equals(userToBeModified.MiddleName) || !user.LastName.Equals(userToBeModified.LastName) ||
                     !user.City.Equals(userToBeModified.City) || !user.Street.Equals(userToBeModified.Street) || user.Number != userToBeModified.Number ||
                     !user.PhoneNumber.Equals(userToBeModified.PhoneNumber) || !user.Role.Equals(userToBeModified.Role) || !user.Email.Equals(userToBeModified.Email) ||
-                    !string.IsNullOrEmpty(pwbPassword.Password))
+                    !string.IsNullOrWhiteSpace(pwbPassword.Password))
                 {
                     result = client.UpdateUser(user);
 
@@ -186,6 +190,12 @@ namespace SGMP_Client
                         {
                             updateSingleton(user);
                             MessageBox.Show("Ha actualizado su propia cuenta, será redirigido al inicio de sesión para cargar los cambios.", "Redireccionando a inicio de sesión", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            Window usersListWindow = new GUI_UsersList();
+                            usersListWindow.Show();
+                            this.Close();
                         }
                     }
                     else
@@ -215,7 +225,7 @@ namespace SGMP_Client
             bool isEmailValid = false;
             bool isPasswordValid = false;
 
-            if (!string.IsNullOrEmpty(employeeNumber.ToString()) && !string.IsNullOrEmpty(email))
+            if (!string.IsNullOrWhiteSpace(employeeNumber.ToString()) && !string.IsNullOrWhiteSpace(email))
             {
                 lbEmptyFieldsMessage.Visibility = Visibility.Hidden;
 
@@ -235,8 +245,8 @@ namespace SGMP_Client
         {
             bool areFieldsValid = false;
 
-            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(middleName) && !string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(city) && !string.IsNullOrEmpty(street) 
-                && !string.IsNullOrEmpty(number) && !string.IsNullOrEmpty(phoneNumber) && !string.IsNullOrEmpty(role) && !string.IsNullOrEmpty(locality))
+            if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(middleName) && !string.IsNullOrWhiteSpace(lastName) && !string.IsNullOrWhiteSpace(city) && !string.IsNullOrWhiteSpace(street) 
+                && !string.IsNullOrWhiteSpace(number) && !string.IsNullOrWhiteSpace(phoneNumber) && !string.IsNullOrWhiteSpace(role) && !string.IsNullOrWhiteSpace(locality))
             {
                 lbEmptyFieldsMessage.Visibility = Visibility.Hidden;
                 areFieldsValid = true;
@@ -332,7 +342,7 @@ namespace SGMP_Client
         {
             bool isPasswordValid;
 
-            if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(repeatPassword))
+            if (!string.IsNullOrWhiteSpace(password) && !string.IsNullOrWhiteSpace(repeatPassword))
             {
                 if (Regex.IsMatch(password, "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#.$($)\\-_])[A-Za-z\\d$@$!%*?&#.$($)\\-_]{8,16}$"))
                 {
