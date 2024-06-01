@@ -1,5 +1,6 @@
 ﻿using SGMP_Client.SGPMService;
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -54,7 +55,7 @@ namespace SGMP_Client
 					}
 					else
 					{
-						MessageBox.Show("Se han encontrado celdas vacías, por favor ingresa toda la información",
+						MessageBox.Show("Se han encontrado celdas vacías o valores no válidos, por favor ingresa toda la información",
 								"Información faltante", MessageBoxButton.OK, MessageBoxImage.Warning);
 					}
 				}
@@ -66,7 +67,7 @@ namespace SGMP_Client
 					}
 					else
 					{
-						MessageBox.Show("Se han encontrado celdas vacías, por favor ingresa toda la información",
+						MessageBox.Show("Se han encontrado celdas vacías o valores inválidos, por favor ingresa toda la información",
 							"Información faltante", MessageBoxButton.OK, MessageBoxImage.Warning);
 					}
 				}
@@ -76,62 +77,64 @@ namespace SGMP_Client
 
 		private void registerPerson()
 		{
-			try
-			{
-				SGPMService.BeneficiaryManagementClient client = new BeneficiaryManagementClient();
-				if (client.CurpInUse(tb_curp.Text))
-				{
-					MessageBox.Show("La CURP que ha ingresado se encuentra en uso dentro del sistema", "CURP en uso",
-						MessageBoxButton.OK, MessageBoxImage.Information);
-				}
-				else if (client.RfcInUse(tb_rfc.Text))
-				{
-					MessageBox.Show("El RFC que ha ingresado se encuentra en uso dentro del sistema", "RFC en uso",
-						MessageBoxButton.OK, MessageBoxImage.Information);
-				}
-				else
-				{
-					Beneficiary newBeneficiary = new Beneficiary
-					{
-						PhoneNumber = tb_phone.Text,
-						City = tb_city.Text,
-						Street = tb_street.Text,
-						RFC = tb_rfc.Text,
-						LocalityId = DTO_s.User.UserClient.LocationId
-					};
+            try
+            {
+                SGPMService.BeneficiaryManagementClient client = new BeneficiaryManagementClient();
+                if (client.CurpInUse(tb_curp.Text))
+                {
+                    MessageBox.Show("La CURP que ha ingresado se encuentra en uso dentro del sistema", "CURP en uso",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else if (!string.IsNullOrWhiteSpace(tb_rfc.Text) && client.RfcInUse(tb_rfc.Text))
+                {
+                    MessageBox.Show("El RFC que ha ingresado se encuentra en uso dentro del sistema", "RFC en uso",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    Beneficiary newBeneficiary = new Beneficiary
+                    {
+                        PhoneNumber = tb_phone.Text,
+                        City = tb_city.Text,
+                        Street = tb_street.Text,
+                        LocalityId = DTO_s.User.UserClient.LocationId
+                    };
 
-					Person newPerson = new Person
-					{
-						Name = tb_name.Text,
-						LastName = tb_lastname.Text,
-						SurName = tb_middlename.Text,
-						CURP = tb_curp.Text,
-					};
+                    Person newPerson = new Person
+                    {
+                        Name = tb_name.Text,
+                        LastName = tb_lastname.Text,
+                        SurName = tb_middlename.Text,
+                        CURP = tb_curp.Text,
+                    };
 
-					int result = client.RegisterPerson(newBeneficiary, newPerson);
-					if (result != -1)
-					{
-						MessageBox.Show("El beneficiario se he registrado en el sistema", "Registro realizado",
-							MessageBoxButton.OK, MessageBoxImage.Information);
-						Window guiBeneficiaries = new GUI_BeneficiaryList();
-						this.Close();
-						guiBeneficiaries.Show();
+                    if (!string.IsNullOrWhiteSpace(tb_rfc.Text))
+                    {
+                        newBeneficiary.RFC = tb_rfc.Text;
+                    }
 
-					}
-					else
-					{
-						MessageBox.Show("No se ha podido establecer conexión con la base de datos", "Registro fallido",
-							MessageBoxButton.OK, MessageBoxImage.Error);
-					}
-
-				}
-			}
-			catch (TimeoutException ex)
-			{
-				MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
-					"Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
-			}
-		}
+                    int result = client.RegisterPerson(newBeneficiary, newPerson);
+                    if (result != -1)
+                    {
+                        MessageBox.Show("El beneficiario se ha registrado en el sistema", "Registro realizado",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+                        Window guiBeneficiaries = new GUI_BeneficiaryList();
+                        this.Close();
+                        guiBeneficiaries.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se ha podido establecer conexión con la base de datos", "Registro fallido",
+                            MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+            catch (TimeoutException ex)
+            {
+                MessageBox.Show("No fue posible establecer conexión con el servidor, por favor inténtelo más tarde",
+                    "Problema de conexión con el servidor", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
 
 		private void registerCompany()
@@ -193,7 +196,19 @@ namespace SGMP_Client
 		{
 			bool result = true;
 
-			if (string.IsNullOrWhiteSpace(tb_name.Text))
+            if (!EsCURPValido(tb_curp.Text))
+            {
+                tb_curp.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            else
+            {
+                tb_curp.BorderBrush = Brushes.Black;
+                MessageBox.Show("CURP VÁLIDA", "CURP");
+
+            }
+
+            if (string.IsNullOrWhiteSpace(tb_name.Text))
 			{
 				tb_name.BorderBrush = Brushes.Red;
 				result = false;
@@ -221,27 +236,26 @@ namespace SGMP_Client
 			{
 				tb_middlename.BorderBrush = Brushes.Black;
 			}
-			if (!EsCURPValido(tb_curp.Text))
-			{
-				tb_curp.BorderBrush = Brushes.Red;
-				result = false;
-			}
-			else
-			{
-				tb_curp.BorderBrush = Brushes.Black;
-				MessageBox.Show("CURP VÁLIDA", "CURP");
-
-			}
-
 
 			return result;
 		}
 
 		private bool validateBeneficiaryInformation()
 		{
-
 			bool result = true;
-			if (!EsNumeroTelefonoValido(tb_phone.Text))
+
+            if (!EsRFCValido(tb_rfc.Text))
+            {
+                tb_rfc.BorderBrush = Brushes.Red;
+                Console.WriteLine(tb_rfc.Text);
+                result = false;
+            }
+            else
+            {
+                tb_rfc.BorderBrush = Brushes.Black;
+            }
+
+            if (!EsNumeroTelefonoValido(tb_phone.Text))
 			{
 				tb_phone.BorderBrush = Brushes.Red;
 				result = false;
@@ -260,18 +274,6 @@ namespace SGMP_Client
 			{
 				tb_city.BorderBrush = Brushes.Black;
 			}
-
-			if (!EsRFCValido(tb_rfc.Text))
-			{
-				tb_rfc.BorderBrush = Brushes.Red;
-				Console.WriteLine(tb_rfc.Text);
-				result = false;
-			}
-			else
-			{
-				tb_rfc.BorderBrush = Brushes.Black;
-			}
-
 			if (string.IsNullOrWhiteSpace(tb_street.Text))
 			{
 				tb_street.BorderBrush = Brushes.Red;
@@ -354,13 +356,34 @@ namespace SGMP_Client
 
 		private bool EsCURPValido(string curp)
 		{
-			curp = curp.Trim();
-			Console.WriteLine("Curp de tb :" + tb_curp.Text);
+            curp = curp.Trim();
 
-			string curpPattern = @"^[A-Z]{4}\d{6}[HM][A-Z]{2}[A-Z0-9]{3}\d$";
+            if (curp.Length != 18)
+            {
+                Console.WriteLine("La CURP debe tener una longitud de 18 caracteres.");
+                return false;
+            }
 
-			return Regex.IsMatch(tb_curp.Text, curpPattern);
-		}
+            for (int i = 0; i < 4; i++)
+            {
+                if (!char.IsLetter(curp[i]))
+                {
+                    Console.WriteLine("Los primeros 4 caracteres de la CURP deben ser letras.");
+                    return false;
+                }
+            }
+
+            for (int i = 4; i < 10; i++)
+            {
+                if (!char.IsDigit(curp[i]))
+                {
+                    Console.WriteLine("Los siguientes 6 caracteres de la CURP deben ser dígitos.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
 		#endregion
 

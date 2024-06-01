@@ -110,16 +110,7 @@ namespace SGMP_Client
                 string selectedFileName = lib_files.SelectedItem.ToString();
                 AttachFiles.Remove(selectedFileName);
 
-                SGPMService.File fileToRemove = null;
-                foreach (SGPMService.File file in Files)
-                {
-                    if (file.Name == selectedFileName)
-                    {
-                        fileToRemove = file;
-                        break;
-                    }
-                }
-
+                SGPMService.File fileToRemove = Files.FirstOrDefault(file => file.Description == selectedFileName);
                 if (fileToRemove != null)
                 {
                     Files.Remove(fileToRemove);
@@ -185,10 +176,19 @@ namespace SGMP_Client
             bool result = true;
             if (Files.Count == 0)
             {
+                result = false;
                 MessageBox.Show("Una solicitud no puede ser registrada sin documentos. Por favor inténtelo de nuevo",
                     "Datos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
-                result = false;
+                return result;
 
+            }
+
+            if (lib_beneficiaries.SelectedItem == null)
+            {
+                result = false;
+                MessageBox.Show("Una solicitud no puede ser registrada sin seleccionar un beneficiario. Por favor inténtelo de nuevo",
+                    "Datos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return result;
             }
 
             return result;
