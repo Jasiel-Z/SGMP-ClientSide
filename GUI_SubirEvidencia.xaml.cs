@@ -32,6 +32,8 @@ namespace SGMP_Client
         public GUI_SubirEvidencia(int idRequest,string idProject)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             IdRequest = idRequest;
             IdProject = idProject;
         }

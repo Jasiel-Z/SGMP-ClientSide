@@ -23,6 +23,8 @@ namespace SGMP_Client
         public GUI_LocalityMenu()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
         }
 
         private void Btn_Register_Locality_Click(object sender, RoutedEventArgs e)

@@ -40,6 +40,7 @@ namespace SGMP_Client
         public GUI_GenerateOpinion(Project project, Request request)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             Files = new List<SGPMService.File>();
             Client = new SGPMService.ProjectsManagementClient();

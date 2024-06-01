@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGMP_Client"
         mc:Ignorable="d"
-        Title="Lista de beneficiarios" Height="640" Width="1200">
+        Title="Lista de beneficiarios" Height="640" Width="1200"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="-2,0,2,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="79*"/>

@@ -27,6 +27,8 @@ namespace SGMP_Client
         {
             idProject = _idProject;
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
 
             Project project = ProjectsManagementClient.GetProjectDetails(idProject);
             txtbEstado.Text = "Por Comenzar";

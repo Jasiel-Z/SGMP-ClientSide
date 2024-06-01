@@ -23,6 +23,8 @@ namespace SGMP_Client
         public GUI_UserMenu()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
         }
 
         private void Btn_Users_List_Click(object sender, RoutedEventArgs e)

@@ -32,6 +32,8 @@ namespace SGMP_Client
         public GUI_SaveBankAccount(int _IdBeneficiary)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             IdBeneficary = _IdBeneficiary;
             AccountValidate.Add(false);
             AccountValidate.Add(false);

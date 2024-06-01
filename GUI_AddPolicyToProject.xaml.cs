@@ -27,6 +27,8 @@ namespace SGMP_Client
         {
             this.folio = folio;
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             AddPolicyVisual();
             var list = client.GetPolicysOfProject(folio);
             if (list != null)

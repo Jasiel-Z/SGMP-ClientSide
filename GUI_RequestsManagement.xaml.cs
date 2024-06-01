@@ -28,6 +28,8 @@ namespace SGMP_Client
         public GUI_RequestsManagement(Project project)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             this.project = project;
             Client = new SGPMService.RequestManagementClient();
             Requests = new List<Request>();

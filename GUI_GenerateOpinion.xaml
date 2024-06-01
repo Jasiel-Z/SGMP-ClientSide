@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGMP_Client"
         mc:Ignorable="d"
-        Title= "Dictamen de solicitud" Height="640" Width="1200">
+        Title= "Dictamen de solicitud" Height="640" Width="1200"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="200,0,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0"/>
@@ -43,7 +44,7 @@
             <Label Content="Documentación:" HorizontalAlignment="Left" Margin="2,8,0,0" Grid.Row="4" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Height="37" Width="163"/>
             <Label Content="Comentarios:" HorizontalAlignment="Left" Margin="683,9,0,0" Grid.Row="4" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Height="37" Width="135"/>
             <Label Content="Políticas de participación:" HorizontalAlignment="Left" Margin="285,12,0,0" Grid.Row="4" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Height="37" Width="250"/>
-            <TextBox x:Name="tb_comments" HorizontalAlignment="Left" Margin="684,51,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="321" Height="121" FontSize="20"/>
+            <TextBox x:Name="tb_comments" HorizontalAlignment="Left" Margin="684,51,0,0" Grid.Row="4"  MaxLength="400" TextWrapping="Wrap" VerticalAlignment="Top" Width="321" Height="121" FontSize="20"/>
             <Button Content="Cancelar" HorizontalAlignment="Left" Margin="618,193,0,0" Grid.Row="4" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Background="#FFD44646" Foreground="White" Click="Btn_Cancel_Click"/>
             <Button Content="Enviar dictamen" HorizontalAlignment="Left" Margin="816,193,0,0" Grid.Row="4" VerticalAlignment="Top" Width="170" Height="45" FontSize="20" Foreground="White" Background="#FF33AA3E" Click="Btn_Register_Opinion"/>
             <ListBox Name="lib_files" Grid.Row="4"  Margin="9,51,922,94"/>

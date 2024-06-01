@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGMP_Client"
         mc:Ignorable="d"
-        Title="RegistroProyecto" Height="640" Width="1200">
+        Title="RegistroProyecto" Height="640" Width="1200"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="200,0,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0"/>

@@ -24,6 +24,8 @@ namespace SGMP_Client
         public GUI_PolicyMenu()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
         }
 
         private void Btn_Register_Policy_Click(object sender, RoutedEventArgs e)

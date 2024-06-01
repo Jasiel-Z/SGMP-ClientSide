@@ -25,6 +25,8 @@ namespace SGMP_Client
         public GUI_SolicitudesEvidenciaLista()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             DisplayProjectList();
         }
 

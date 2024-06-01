@@ -35,6 +35,8 @@ namespace SGMP_Client
         public GUI_RegisterRequest(Project project)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             AttachFiles = new ObservableCollection<string>();
             Files = new List<SGPMService.File>();
             lib_files.ItemsSource = AttachFiles;

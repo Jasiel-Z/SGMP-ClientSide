@@ -28,6 +28,8 @@ namespace SGMP_Client
         {
             Folio = folio;
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             FillComboBox();
             var orden = _client.GetDeliveryOrden(Folio);
             if (orden != null)

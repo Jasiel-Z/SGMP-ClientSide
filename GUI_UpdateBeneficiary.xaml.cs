@@ -29,6 +29,8 @@ namespace SGMP_Client
         public GUI_UpdateBeneficiary(Beneficiary beneficiary)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             HaveBankAccount = false;
             this.Beneficiary = beneficiary;
             ShowBeneficiaryInformation();

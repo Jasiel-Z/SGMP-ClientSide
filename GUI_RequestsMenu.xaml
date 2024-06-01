@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGMP_Client"
         mc:Ignorable="d"
-        Title="Proyectos en curso" Height="640" Width="1200">
+        Title="Proyectos en curso" Height="640" Width="1200" 
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="65*"/>
@@ -21,7 +22,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="Lista de proyectos." HorizontalAlignment="Left" Margin="26,7,0,0" VerticalAlignment="Top" FontSize="28" Height="47" Width="273" FontWeight="Bold"/>
+        <Label Content="Lista de proyectos en tu localidad " HorizontalAlignment="Left" Margin="26,7,0,0" VerticalAlignment="Top" FontSize="28" Height="47" Width="467" FontWeight="Bold"/>
         <Rectangle HorizontalAlignment="Center" Height="5" Margin="0,53,0,0" Fill="Sienna" Stroke="Silver" VerticalAlignment="Top" Width="1160" RenderTransformOrigin="0.5,0.5"/>
         <Button Content="Regresar" HorizontalAlignment="Left" Margin="64,465,0,0" Grid.Row="1" VerticalAlignment="Top" Height="41" Width="135" FontSize="20" FontWeight="Bold" Background="#FF529BE2" Foreground="#FFFFFDFD" Click="Btn_Go_MainMenu"/>
         <Label Content="Presiona clic izquierdo dos veces sobre el elemento que desees visualizar" HorizontalAlignment="Left" Margin="62,21,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-5.747,-11.958" FontWeight="Bold"/>
