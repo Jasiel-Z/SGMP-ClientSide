@@ -28,6 +28,8 @@ namespace SGMP_Client
            InitializeComponent();
            Client = new SGPMService.UserManagementClient();
             this.KeyDown += GUI_Login_KeyDown;
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
         }
 
         private void GUI_Login_KeyDown(object sender, KeyEventArgs e)

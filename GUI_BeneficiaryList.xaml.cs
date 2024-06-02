@@ -25,6 +25,8 @@ namespace SGMP_Client
         public GUI_BeneficiaryList()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             Client = new SGPMService.BeneficiaryManagementClient();
             Beneficiaries = new List<Beneficiary>();
             GetBeneficiaries();

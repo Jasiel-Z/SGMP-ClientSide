@@ -23,6 +23,8 @@ namespace SGMP_Client
         public GUI_MainMenu()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             im_requests.MouseLeftButtonDown += GoRequestsModule;
             im_beneficiaries.MouseLeftButtonDown += GoBeneficiariesModule;
             im_location.MouseLeftButtonDown += GoLocationsModule;
@@ -135,9 +137,12 @@ namespace SGMP_Client
             {
                 im_users.Visibility = Visibility.Collapsed;
                 im_projects.Visibility = Visibility.Collapsed;
+                im_location.Visibility = Visibility.Collapsed;
 
                 lb_users.Visibility = Visibility.Collapsed;
                 lb_projects.Visibility = Visibility.Collapsed;
+                lb_localities.Visibility = Visibility.Collapsed;
+
 
             }
         }

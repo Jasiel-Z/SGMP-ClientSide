@@ -29,11 +29,13 @@ namespace SGMP_Client
         public GUI_UpdateBeneficiary(Beneficiary beneficiary)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             HaveBankAccount = false;
             this.Beneficiary = beneficiary;
             ShowBeneficiaryInformation();
             GetBeneficiaryTypeInformation();
-            GetAccountInformation();
+            //GetAccountInformation();
             im_help.MouseLeftButtonDown += ShowInformation;
 
         }
@@ -106,8 +108,8 @@ namespace SGMP_Client
             BankAccount bankAccount = bankClient.GetBankAccount(Beneficiary.Id);
             if(bankAccount != null)
             {
-                tb_account_holder.Text = bankAccount.Name; 
-                tb_account_number.Text = bankAccount.AccountNumber;
+                //tb_account_holder.Text = bankAccount.Name; 
+                //tb_account_number.Text = bankAccount.AccountNumber;
                 btn_add_account.Content = "Modificar cuenta";
                 HaveBankAccount = true;
                 

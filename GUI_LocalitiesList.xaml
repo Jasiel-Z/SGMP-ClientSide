@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Lista de Localidades" Height="640" Width="1200">
+        Title="Lista de Localidades" Height="640" Width="1200" 
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="0,-5,1,5" HorizontalAlignment="Right" Width="1025">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>

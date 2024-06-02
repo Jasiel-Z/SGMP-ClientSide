@@ -32,7 +32,9 @@ namespace SGMP_Client
             int[] list = null;
             parentWindow = parent;
             InitializeComponent();
-
+            
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            
             try
             {
                 AddPolicyVisual();

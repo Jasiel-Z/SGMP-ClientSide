@@ -29,6 +29,8 @@ namespace SGMP_Client
         public GUI_User()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             LoadComboBoxes();
         }
 

@@ -27,6 +27,8 @@ namespace SGMP_Client
         public GUI_RequestsMenu()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             Client = new SGPMService.ProjectsManagementClient();
             Projects = new List<Project>();
             GetProjectsFromLocality();

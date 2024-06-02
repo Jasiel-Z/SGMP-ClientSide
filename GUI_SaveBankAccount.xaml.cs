@@ -32,6 +32,8 @@ namespace SGMP_Client
         public GUI_SaveBankAccount(Window parent, int _IdBeneficiary)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             IdBeneficary = _IdBeneficiary;
             ParentWindow = parent;
             AccountValidate.Add(false);

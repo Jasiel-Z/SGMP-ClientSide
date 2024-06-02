@@ -40,6 +40,8 @@ namespace SGMP_Client
             this.endDate = end;
 
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             FillComboBox();
             txtAmount.Text = _amount;
 

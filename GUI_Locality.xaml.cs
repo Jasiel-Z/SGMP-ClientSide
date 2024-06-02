@@ -27,6 +27,8 @@ namespace SGMP_Client
         public GUI_Locality()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
         }
 
         public void LoadLocality(Locality locality)

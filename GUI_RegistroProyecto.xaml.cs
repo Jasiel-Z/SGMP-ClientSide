@@ -33,6 +33,8 @@ namespace SGMP_Client
         {
             idProject = _idProject;
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
 
             try
             {

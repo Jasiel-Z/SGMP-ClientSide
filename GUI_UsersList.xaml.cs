@@ -26,6 +26,8 @@ namespace SGMP_Client
         public GUI_UsersList()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             AddListItems();
         }
 
