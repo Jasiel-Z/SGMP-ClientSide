@@ -6,12 +6,10 @@
         mc:Ignorable="d"
         Title="RegistroProyecto" Height="640" Width="1200" 
         WindowStartupLocation="CenterScreen">
-    <Grid Margin="200,0,0,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0"/>
-            <ColumnDefinition Width="0"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+    <Viewbox HorizontalAlignment="Center">
+        <Grid>
+            <Label Content="Informacion General:" HorizontalAlignment="Left" Margin="7,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Height="30" Width="159" />
+            <Separator HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" Height="32" Width="1004" />
 
             <Label Content="Nombre del proyecto:" HorizontalAlignment="Left" Margin="22,35,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="146"/>
             <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="28,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" Height="35" TextChanged="TextBox_TextChanged" MaxLength="150"/>

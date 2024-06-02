@@ -7,9 +7,10 @@
         mc:Ignorable="d"
         Title="Registrar Cuenta Bancaria" Height="240" Width="310" 
         WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Label Content="Evidencia:" HorizontalAlignment="Left" Margin="32,23,0,0" VerticalAlignment="Top" Width="114"/>
-        <Label x:Name="lblErrorName" Content="Nombre Invalido" HorizontalAlignment="Left" Margin="29,75,0,0" VerticalAlignment="Top" Width="114" Foreground="Red" Visibility="Hidden"/>
+    <Viewbox Stretch="Fill">
+        <Grid Height="224" Width="310">
+            <Label Content="Evidencia:" HorizontalAlignment="Left" Margin="32,23,0,0" VerticalAlignment="Top" Width="114"/>
+            <Label x:Name="lblErrorName" Content="Nombre Invalido" HorizontalAlignment="Left" Margin="29,75,0,0" VerticalAlignment="Top" Width="114" Foreground="Red" Visibility="Hidden"/>
 
             <Border BorderBrush="Black" BorderThickness="1" Margin="10,49,10,69">
                 <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
