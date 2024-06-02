@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SGMP_Client.SGPMService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -30,8 +31,23 @@ namespace SGMP_Client
 
         private void DisplayProjectList()
         {
-            var f = ProjectsManagementClient.GetAllProjects();
-            foreach (var project in f)
+            Project[] projectList = null;
+            try
+            {
+                projectList = ProjectsManagementClient.GetAllProjects();
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                erroServer();
+                return;
+            }
+            catch (TimeoutException ex)
+            {
+                erroServer();
+                return;
+            }
+
+            foreach (var project in projectList)
             {
                 var border = new Border();
                 border.BorderBrush = Brushes.Black;
@@ -89,8 +105,15 @@ namespace SGMP_Client
 
                 button.Click += (sender, e) => {
                     GUI_RegistroProyecto registroProyecto = new GUI_RegistroProyecto(project.Folio);
+                    try
+                    {
+                        registroProyecto.Show();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                     this.Close();
-                    registroProyecto.Show();
                 };
 
                 // Agregar elementos al Grid
@@ -110,13 +133,29 @@ namespace SGMP_Client
         {
             GUI_RegistroProyecto registroProyecto = new GUI_RegistroProyecto("");
             this.Close();
-            registroProyecto.Show();
+            try
+            {
+                registroProyecto.Show();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{ex.Message}");
+            }
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             GUI_MainMenu menu = new GUI_MainMenu();
             menu.Show();
+            this.Close();
+        }
+
+        private void erroServer()
+        {
+            MessageBox.Show("Ha ocurrido un error al intentar conectarse al servidor, Intente nuevamente más tarde", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            GUI_Login login = new GUI_Login();
+            login.Show();
             this.Close();
         }
     }

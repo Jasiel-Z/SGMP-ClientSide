@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SGMP_Client.SGPMService;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,13 +24,30 @@ namespace SGMP_Client
     {
         private SGPMService.PolicyManagementClient client = new SGPMService.PolicyManagementClient();
         private string folio;
+        private Window parentWindow;
 
-        public GUI_AddPolicyToProject(string folio)
+        public GUI_AddPolicyToProject(Window parent, string folio)
         {
             this.folio = folio;
+            int[] list = null;
+            parentWindow = parent;
             InitializeComponent();
-            AddPolicyVisual();
-            var list = client.GetPolicysOfProject(folio);
+
+            try
+            {
+                AddPolicyVisual();
+                list = client.GetPolicysOfProject(folio);
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                erroServer();
+            }
+            catch (TimeoutException ex)
+            {
+                erroServer();
+            }
+
+
             if (list != null)
             {
                 MarkSelectedValues(list);
@@ -37,7 +56,21 @@ namespace SGMP_Client
 
         private void AddPolicyVisual()
         {
-            var policyList = client.GetAllPolicies();
+            Policy[] policyList = null;
+
+            try
+            {
+                policyList  = client.GetAllPolicies();
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                erroServer();
+            }
+            catch (TimeoutException ex)
+            {
+                erroServer();
+            }
+            
             foreach (var policy in policyList)
             {
                 var border = new Border();
@@ -89,7 +122,7 @@ namespace SGMP_Client
 
                 WrpPolicyList.Children.Add(border);
             }
-            
+
         }
 
         private List<int> GetSelectedValues()
@@ -157,18 +190,52 @@ namespace SGMP_Client
         {
             var list = GetSelectedValues();
             int[] array = list.ToArray();
-            client.AddPolicyToProject(folio, array);
-            MessageBox.Show("Se han registrado correctamente las politicas");
-            this.Close();
+            int result = 0;
+            try
+            {
+                result = client.AddPolicyToProject(folio, array);
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                erroServer();
+                return;
+            }
+            catch (TimeoutException ex)
+            {
+                erroServer();
+                return;
+            }
+
+            if(result >= 1)
+            {
+                MessageBox.Show("Se han registrado correctamente las politicas");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Ha ocurrido un error al intentar guardar las politicas, Intente nuevamente más tarde", 
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void CloseWindow(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("¿Seguro que desea cancelar el registro?", "Confirmar salida", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("¿Seguro que desea cancelar el registro?", 
+                "Confirmar salida", MessageBoxButton.OKCancel, MessageBoxImage.Question);
             if (result == MessageBoxResult.OK)
             {
                 this.Close();
             }
+        }
+
+        private void erroServer()
+        {
+            MessageBox.Show("Ha ocurrido un error al intentar conectarse al servidor, Intente nuevamente más tarde", 
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            GUI_Login login = new GUI_Login();
+            login.Show();
+            this.parentWindow.Close();
+            this.Close();
         }
     }
 }

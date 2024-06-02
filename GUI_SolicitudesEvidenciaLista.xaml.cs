@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SGMP_Client.SGPMService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -30,9 +31,24 @@ namespace SGMP_Client
 
         private void DisplayProjectList()
         {
-            var f = ProjectsManagementClient.GetFinishProjectsd();
+            ProjectShow[] projectList;
+            try
+            {
+                projectList = ProjectsManagementClient.GetFinishProjectsd();
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                ErroServer();
+                return;
+            }
+            catch (TimeoutException ex)
+            {
+                ErroServer();
+                return;
+            }
+
             WrpProjectList.Children.Clear();
-            foreach (var project in f)
+            foreach (var project in projectList)
             {
                 var border = new Border();
                 border.BorderBrush = Brushes.Black;
@@ -98,9 +114,25 @@ namespace SGMP_Client
 
         private void DisplayRequestList(string folio)
         {
-            var f = ProjectsManagementClient.GetFinishRequestsd(folio);
+            RequestShow[] requestList;
+
+            try
+            {
+                requestList = ProjectsManagementClient.GetFinishRequestsd(folio);
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                ErroServer();
+                return;
+            }
+            catch (TimeoutException ex)
+            {
+                ErroServer();
+                return;
+            }
+
             WrpProjectList.Children.Clear();
-            foreach (var project in f)
+            foreach (var project in requestList)
             {
                 var border = new Border();
                 border.BorderBrush = Brushes.Black;
@@ -146,8 +178,9 @@ namespace SGMP_Client
                 button.Foreground = Brushes.White;
 
                 button.Click += (sender, e) => {
-                    GUI_SubirEvidencia uploadEvidence = new GUI_SubirEvidencia(project.Id, IdProject);
-                    uploadEvidence.Show();
+                    GUI_SubirEvidencia uploadEvidence = new GUI_SubirEvidencia(this, project.Id, IdProject);
+                    uploadEvidence.ShowDialog();
+
                 };
 
                 // Agregar elementos al Grid
@@ -174,6 +207,14 @@ namespace SGMP_Client
             GUI_MainMenu menu = new GUI_MainMenu();
             menu.Show();
             this.Close();
+        }
+
+        private void ErroServer()
+        {
+            MessageBox.Show("Ha ocurrido un error al intentar conectarse al servidor, Intente nuevamente más tarde", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            GUI_Login login = new GUI_Login();
+            this.Close();
+            login.Show();
         }
     }
 }

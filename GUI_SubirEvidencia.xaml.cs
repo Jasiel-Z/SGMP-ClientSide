@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using System.IO.Compression;
+using System.Security.Principal;
 
 namespace SGMP_Client
 {
@@ -28,12 +29,14 @@ namespace SGMP_Client
         private SGPMService.EvidenceManagementClient EvidenceManagementClient = new SGPMService.EvidenceManagementClient();
         private int IdRequest; 
         private string IdProject;
+        private Window ParentWindow;
 
-        public GUI_SubirEvidencia(int idRequest,string idProject)
+        public GUI_SubirEvidencia(Window parent, int idRequest,string idProject)
         {
             InitializeComponent();
             IdRequest = idRequest;
             IdProject = idProject;
+            ParentWindow = parent;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -49,14 +52,24 @@ namespace SGMP_Client
         private void UploadFiles(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            openFileDialog.Filter = "Image files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
             if (openFileDialog.ShowDialog() == true)
             {
-                btnSave.IsEnabled = true;
-                string selectedFilePath = openFileDialog.FileName;
-                EvidenceFiles.Add(selectedFilePath);
-                string fileName = System.IO.Path.GetFileName(selectedFilePath);
-                AddFileVisual(fileName);
+                string selectedFileName = openFileDialog.FileName;
+                FileInfo fileInfo = new FileInfo(selectedFileName);
+
+                if (fileInfo.Length > 50 * 1024)
+                {
+                    MessageBox.Show("El archivo seleccionado es mayor a 50 KB. Por favor, seleccione un archivo más pequeño.", "Archivo demasiado grande", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else
+                {
+                    string selectedFilePath = openFileDialog.FileName;
+                    EvidenceFiles.Add(selectedFilePath);
+                    string fileName = System.IO.Path.GetFileName(selectedFilePath);
+                    AddFileVisual(fileName);
+                    btnSave.IsEnabled = true;
+                }
             }
         }
 
@@ -100,18 +113,33 @@ namespace SGMP_Client
         private void SaveEvidence()
         {
             var result = 0;
-            foreach(var file in EvidenceFiles)
+
+            try
             {
-                byte[] compressedFileBytes = CompressFile(file);
-                string fileName = System.IO.Path.GetFileName(file);
-                Evidence evidence = new Evidence
+                foreach (var file in EvidenceFiles)
                 {
-                    Name = IdRequest + IdProject + fileName,
-                    IdRequest = IdRequest,
-                    file = compressedFileBytes
-                };
-                result += EvidenceManagementClient.SaveEvidence(evidence);
+                    byte[] compressedFileBytes = CompressFile(file);
+                    string fileName = System.IO.Path.GetFileName(file);
+                    Evidence evidence = new Evidence
+                    {
+                        Name = IdRequest + IdProject + fileName,
+                        IdRequest = IdRequest,
+                        file = compressedFileBytes
+                    };
+                    result += EvidenceManagementClient.SaveEvidence(evidence);
+                }
             }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                ErroServer();
+                return;
+            }
+            catch (TimeoutException ex)
+            {
+                ErroServer();
+                return;
+            }
+
             if (result == EvidenceFiles.Count())
             {
                 MessageBox.Show("Archivos guardados correctamente");
@@ -132,6 +160,15 @@ namespace SGMP_Client
                     return compressedFileStream.ToArray();
                 }
             }
+        }
+
+        private void ErroServer()
+        {
+            MessageBox.Show("Ha ocurrido un error al intentar conectarse al servidor, Intente nuevamente más tarde", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            GUI_Login login = new GUI_Login();
+            ParentWindow.Close();
+            this.Close();
+            login.Show();
         }
     }
 }
